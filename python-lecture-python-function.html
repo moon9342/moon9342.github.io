@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Python 기초강의(4) - Python function</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/python-lecture-python-function" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Python 기초강의(4) - Python function" />
+    <meta property="og:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta property="og:url" content="http://localhost:4000/python-lecture-python-function" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-03-05T01:40:00+09:00" />
+    <meta property="article:modified_time" content="2020-03-05T01:40:00+09:00" />
+    <meta property="article:tag" content="Python" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Python 기초강의(4) - Python function" />
+    <meta name="twitter:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Python" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/python-lecture-python-function",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/python-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/python-lecture-python-function"
+    },
+    "description": "Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Python 기초강의(4) - Python function" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 March 2020"> 4 March 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/python/'>PYTHON</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Python 기초강의(4) - Python function</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/python-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">영상설명</strong></p>
+
+<p>이번 영상은 Python 언어의 <code class="highlighter-rouge">function</code> 영상입니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Python function</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python 사용자 정의 함수</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python 내장 함수</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python lambda</strong></p>
+
+<blockquote>
+  <p>Python 기초강의 - Python 함수</p>
+</blockquote>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/LvnoSrcNOIA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python function</strong></p>
+
+<p>python 함수의 body에는 최소한 한 개 이상의 문장이 필요합니다. 만약 내용이 없는 함수를 
+만들 경우 <code class="highlighter-rouge">pass</code> keyword를 사용해야 합니다.</p>
+
+<p>함수명은 가독성을 높이기 위해 필요에 따라 밑줄로 구분 된 단어와 함께 소문자를 이용하는것을 원칙으로 합니다.</p>
+
+<p>Python의 함수는 내장함수와 사용자 정의 함수로 구분할 수 있습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python 사용자 정의 함수</strong></p>
+
+<p>먼저 user define 함수를 정의하고 사용하는 몇가지 예를 살펴보도록 하겠습니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">사용자 정의 함수</strong></p>
+
+<p>함수를 정의할때는 <code class="highlighter-rouge">def</code> 키워드를 이용해서 함수를 정의합니다. 함수의 인자를
+명시할 때는 당연히 데이터 타입을 명시하지 않습니다. Python은 하나의 
+함수가 다양한 데이터 타입의 입력인자를 받아서 처리할 수 있도록 
+유연하게 설계되어 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># python user define function</span>
+
+<span class="k">def</span> <span class="nf">my_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">my_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"result의 값은 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">다수의 인자 전달</strong></p>
+
+<p>함수로 전달되는 인자의 수가 가변적일 때 tuple형태로 인자를
+전달할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">my_sum</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>          <span class="c"># tuple형태로 전달</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)):</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s">"결과값은 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">여러개의 리턴값 사용</strong></p>
+
+<p>Python은 함수의 리턴값을 여러 개 사용할 수 있습니다. 정확히 말하자면,
+여러개의 값을 tuple로 만들어서 리턴하는 형태로 함수의 리턴값은 사실 한 개 입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">multi_return</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">result1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">result2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">result1</span><span class="p">,</span> <span class="n">result2</span>
+
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">multi_return</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+
+<span class="n">data1</span><span class="p">,</span> <span class="n">data2</span> <span class="o">=</span> <span class="n">multi_return</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"두수의 합 : {0}, 두수의 곱 : {1}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">default parameter의 사용</strong></p>
+
+<p>함수의 입력 인자에 기본값을 지정할 수 있습니다. 입력 인자에 명시적인
+값이 전달되지 않았을 경우 기본값으로 지정된 값을 사용한다는 의미이고
+당연히 맨 마지막 인자에만 기본값을 지정할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">default_param</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">c</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="n">result1</span> <span class="o">=</span> <span class="n">default_param</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">default_param</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">mutable vs immutable</strong></p>
+
+<p>함수의 입력인자가 list, dict 등인 경우 mutable 특징을 가집니다. 즉, 함수내에서
+해당 인자의 내용을 변경하면 원래 데이터인 list, dict의 내용이 변경됩니다. 이런 특징을
+<code class="highlighter-rouge">mutable</code>이라고 합니다.</p>
+
+<p>반대로 숫자, 문자열, tuple 등은 immutable 특징을 가집니다. 함수내에서
+해당 인자의 내용을 변경하여도 원래의 데이터에는 변형이 이루어지지 않음을 
+의미합니다. 이런 특징을 <code class="highlighter-rouge">immutable</code>이라고 합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># mutable vs. immutable</span>
+<span class="c"># call-by-value &amp; call-by-reference</span>
+
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">tmp_number</span><span class="p">,</span> <span class="n">tmp_list</span><span class="p">):</span>
+    <span class="n">tmp_number</span> <span class="o">=</span> <span class="n">tmp_number</span> <span class="o">+</span> <span class="mi">100</span>
+    <span class="n">tmp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">data_x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">my_func</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span><span class="n">data_list</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"data_x의 값은 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"data_list의 값은 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_list</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">local variable vs global variable</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># local variable vs global variable</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="mi">100</span>
+
+
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">tmp</span>     <span class="c"># tmp를 global scope에서 찾는다.</span>
+    <span class="n">tmp</span> <span class="o">+=</span> <span class="n">x</span>       <span class="c"># 만약 tmp를 global로 선언하지 않았다면</span>
+                   <span class="c"># local variable ( 초기화 x -&gt; error )</span>
+    <span class="k">return</span> <span class="n">tmp</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">my_func</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python 내장 함수</strong></p>
+
+<p>Python은 상당히 많은 내장 함수를 제공합니다. 이를 통해 데이터 처리를 
+간편하게 할 수 있습니다. 간단한 연산부터 데이터 타입의 변환같은 처리를
+쉽게 할 수 있습니다.</p>
+
+<p>기본적인 내장 함수는 알아 두어야 할 필요가 있습니다.</p>
+
+<blockquote>
+  <p>기본 내장 함수</p>
+  <ul>
+    <li><code class="highlighter-rouge">abs(x)</code> : 절대값을 return</li>
+    <li><code class="highlighter-rouge">all(x)</code> : 반복 가능한 자료형 x에 대해 x가 모두 참이면 True, 그렇지 않으면 False</li>
+    <li><code class="highlighter-rouge">any(x)</code> : 반복 가능한 자료형 x에 대해 x중 하나라도 참이면 True, 그렇지 않으면 False</li>
+    <li><code class="highlighter-rouge">eval(expression)</code> : 실행 가능한 문자열을 입력 받아서 문자열을 실행한 결과값을 return</li>
+    <li><code class="highlighter-rouge">int(x)</code> : 입력값을 정수형태로 return</li>
+    <li><code class="highlighter-rouge">len(x)</code> : 입력값 x의 길이를 return</li>
+    <li><code class="highlighter-rouge">list(x)</code> : 반복 가능한 자료형 x를 입력 받아 list로 만들어서 return</li>
+    <li><code class="highlighter-rouge">str(x)</code> : 문자열 형태로 변환하여 return</li>
+    <li><code class="highlighter-rouge">tuple(x)</code> : 반복 가능한 자료형을 입력받아 tuple로 바꾸어 return</li>
+    <li><code class="highlighter-rouge">type(x)</code> : 입력값의 데이터 타입을 return</li>
+  </ul>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python built-in functions</span>
+
+<span class="c"># python의 내장함수</span>
+
+<span class="c"># dir() : 사용가능한 변수와 함수를 리스트 형태로 return</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">({</span><span class="s">"key"</span> <span class="p">:</span> <span class="mi">100</span><span class="p">}))</span>   <span class="c"># dictionary에서 사용가능한 변수와 함수</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">([]))</span>              <span class="c"># list에서 사용가능한 변수와 함수</span>
+
+<span class="c"># divmod(a,b) : a를 b로 나눈 몫과 나머지를 tuple로 반환</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">divmod</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c"># enumerate() : 순서가 있는 자료형을 입력으로 받아</span>
+<span class="c">#               index값을 포함하는 enumerate 객체 return</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s">"Show"</span><span class="p">,</span><span class="s">"me"</span><span class="p">,</span> <span class="s">"the"</span><span class="p">,</span> <span class="s">"money"</span><span class="p">])</span>
+<span class="n">myList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">myList</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s">"Show"</span><span class="p">,</span><span class="s">"me"</span><span class="p">,</span> <span class="s">"the"</span><span class="p">,</span> <span class="s">"money"</span><span class="p">]):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    
+<span class="c"># id() : 객체의 고유 주소값(reference) return</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="c"># join() : 일반적으로 리스트를 특정 구분자를 포함하여 </span>
+<span class="c">#          문자열로 변환할 때 많이 사용</span>
+<span class="n">animal</span> <span class="o">=</span> <span class="p">[</span><span class="s">"멍멍이"</span><span class="p">,</span><span class="s">"사자"</span><span class="p">,</span><span class="s">"호랑이"</span><span class="p">,</span><span class="s">"개"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">animal</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">animal</span><span class="p">))</span>
+
+<span class="c"># map() : 특정함수에 입력값을 주어 반복 호출</span>
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c"># max(), min() : 최대값, 최소값 return</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="s">"This is a sample Text"</span><span class="p">))</span>
+
+<span class="c"># pow(x,y) : x를 y 제곱한 결과 return</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c"># sorted() : 입력값을 정렬한 후 그 결과를 list로 리턴</span>
+
+<span class="c"># sorted()는 기본 내장함수로 정렬된 list를 return하는 반면</span>
+<span class="c"># list의 sort() 함수는 list를 정렬하고 결과를 return하지 않음</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="c"># None</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>        <span class="c"># 정렬되어 있음</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="c"># 정렬된 결과</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>        <span class="c"># 원본은 변함 없음.</span>
+
+<span class="c"># zip() : 동일한 개수로 이루어진 자료형을 묶어 주는 역할</span>
+<span class="c">#         일반적으로 list나 tuple형태로 변환해서 사용</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">str</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span><span class="s">"World"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="nb">str</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s">"Hello1234"</span><span class="p">,</span><span class="s">"World"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python lambda</strong></p>
+
+<p><code class="highlighter-rouge">lambda</code>(람다)는 한 줄로 함수를 정의하는 방법입니다. 단, 함수의 이름이 
+명시되지 않기 때문에 anonymous function이라고도 합니다.</p>
+
+<p>함수명이 없기 때문에 일반적으로 람다식(lambda expression)은 변수에 할당되어서
+사용됩니다. 이런 특징을 <code class="highlighter-rouge">first class</code>라고 하는데 이는 뒤쪽 강의에서 다시 설명하도록
+하겠습니다.</p>
+
+<p><code class="highlighter-rouge">lambda</code>는 입력 값을 대체 표현식으로 대체해주는 역할을 합니다. 따라서 일반적인 함수와는
+약간 다릅니다.</p>
+
+<p>사용하는 형식은 다음과 같습니다.</p>
+
+<blockquote>
+  <p>변수 = lambda 입력변수1, 입력변수2, … : 대체 표현식</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># labmda</span>
+
+<span class="c"># lambda의 모든 입력인자를 다 이용하는 </span>
+<span class="c"># 대체식을 사용하지 않아도 된다.</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span> <span class="p">:</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>    <span class="c"># x3은 대체식에서 사용되지 않았다.</span>
+
+<span class="c"># 일반적인 함수의 형태로 인식하면 </span>
+<span class="c"># 다음과 같이 사용해야 될 것이라고 생각하기 쉽다.</span>
+<span class="c"># f = lambda x1,x2,x3 : return (x1 + x2)</span>
+<span class="c"># 하지만 표현식이 대체되는 개념이기 때문에 </span>
+<span class="c"># return 구문을 사용하면 안된다.</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/python/">Python</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/python/">
+                                
+                                    See all 21 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-program-exercise-1">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-program-exercise-1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강좌(5) - Python 연습문제(1)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include python-lecture-table-of-contents.html %} --- **Python program 연습문제**{: class="subtitle_fontAwesome" } 지금까지 Python 언어의 기본적인 사항들에 대해서 살펴보았습니다. 그럼 간단하게 몇몇개의 프로그래밍 문제를 해결하고 넘어가도록 하죠. 이 문제들을 꼭 작성해야 다음으로 넘어갈 수 있는건</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-control-statement">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-control-statement">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강의(3) - Python 제어문</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) -</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Python 기초강의(4) - Python function</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Python+%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98%284%29+-+Python+function&amp;url=https://moon9342.github.io/python-lecture-python-function"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/python-lecture-python-function"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Library, Framework, Architecture, Platform</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/architecture-platform-terminology" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Library, Framework, Architecture, Platform" />
+    <meta property="og:description" content="Introduction Library, Framework, Architecture, Platform은 우리가 너무나 많이 들어본 용어이고 그 의미도 대충 알고 있습니다. 하지만 명확하게 설명해봐!! 라고 한다면 주춤 주춤하게 만드는 용어이기도 합니다. 이번 포스트는 저 위에 나열된 4개의 용어에 대한 간략한 정리입니다. Library 가장 쉬운 개념입니다. 일반적으로 Library는 다른 프로그램에서 링크 되기 위해 사용되는 하나 이상의 function" />
+    <meta property="og:url" content="http://localhost:4000/architecture-platform-terminology" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/terminology-logo.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-01-26T22:39:00+09:00" />
+    <meta property="article:modified_time" content="2018-01-26T22:39:00+09:00" />
+    <meta property="article:tag" content="Et-cetera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Library, Framework, Architecture, Platform" />
+    <meta name="twitter:description" content="Introduction Library, Framework, Architecture, Platform은 우리가 너무나 많이 들어본 용어이고 그 의미도 대충 알고 있습니다. 하지만 명확하게 설명해봐!! 라고 한다면 주춤 주춤하게 만드는 용어이기도 합니다. 이번 포스트는 저 위에 나열된 4개의 용어에 대한 간략한 정리입니다. Library 가장 쉬운 개념입니다. 일반적으로 Library는 다른 프로그램에서 링크 되기 위해 사용되는 하나 이상의 function" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/terminology-logo.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Et-cetera" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/architecture-platform-terminology",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/terminology-logo.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/architecture-platform-terminology"
+    },
+    "description": "Introduction Library, Framework, Architecture, Platform은 우리가 너무나 많이 들어본 용어이고 그 의미도 대충 알고 있습니다. 하지만 명확하게 설명해봐!! 라고 한다면 주춤 주춤하게 만드는 용어이기도 합니다. 이번 포스트는 저 위에 나열된 4개의 용어에 대한 간략한 정리입니다. Library 가장 쉬운 개념입니다. 일반적으로 Library는 다른 프로그램에서 링크 되기 위해 사용되는 하나 이상의 function"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Library, Framework, Architecture, Platform" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="26 January 2018">26 January 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/et-cetera/'>ET-CETERA</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Library, Framework, Architecture, Platform</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/terminology-logo.jpg)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><strong class="post_introduction">Introduction</strong></p>
+
+<p><code class="highlighter-rouge">Library</code>, <code class="highlighter-rouge">Framework</code>, <code class="highlighter-rouge">Architecture</code>, <code class="highlighter-rouge">Platform</code>은 우리가 너무나 많이 들어본 용어이고 그 의미도 
+대충 알고 있습니다. 하지만 <strong>명확하게 설명해봐!!</strong> 라고 한다면 주춤 주춤하게 만드는 용어이기도 합니다.</p>
+
+<p>이번 포스트는 저 위에 나열된 4개의 용어에 대한 간략한 정리입니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Library</strong></p>
+
+<p>가장 쉬운 개념입니다. 일반적으로 <code class="highlighter-rouge">Library</code>는 다른 프로그램에서 링크 되기 위해 사용되는 하나 이상의 <code class="highlighter-rouge">function</code> 혹은 <code class="highlighter-rouge">class</code>
+들의 집합이며 이들은 일반적으로 파일형태로 존재합니다.</p>
+
+<p>Library를 사용하는 가장 큰 목적은 <strong>코드의 재사용성을 높이기 위함</strong>이지요. 
+자주 사용되는 기능들은 매번 새롭게 작성하지 말고 function이나 class 형태로 만들어 놓고 필요할 때 
+그 기능을 쉽게 불러다가 사용하자는 개념입니다.</p>
+
+<ul>
+  <li>
+    <p>Library의 가장 간단한 예로는 <code class="highlighter-rouge">jQuery</code>가 있습니다. Front-End 작업을 할 때 DOM 구조에서 내가 원하는 Element를 
+빠르고 쉽게 찾아 DOM 에서 제거하고 싶을 때 jQuery Library를 이용하면 단 1줄에 해결할 수 있습니다. 순수 JavaScript로 
+작업하려면 많은 양의 복잡한 코드를 직접 작성해야 합니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Java</code>에서 사용하는 여러 외부 <code class="highlighter-rouge">class</code> 역시 모두 Library입니다. Java에서 랜덤값을 얻고싶을 때 우리는 Random class를
+이용해 instance를 생성하고 method를 호출해서 간단하게 원하는 범위의 랜덤값을 도출할 수 있습니다. 만약 Library를
+이용하지 않고 랜덤값을 구할려면 역시나 복잡한 로직과 연산을 우리가 직접 구현해야 됩니다.</p>
+  </li>
+  <li>
+    <p>비슷한 예로 Java에서 <code class="highlighter-rouge">JSON</code> 데이터를 처리할 때 역시 특정 Library class를 이용하면 쉽게 처리할 수 있습니다. 
+가장 대표적인 Library는 <code class="highlighter-rouge">Jackson</code>이 아닐까 합니다. 이 Library class들을 이용하면 프로그램에서 
+JSON 데이터를 아주 쉽게 핸들링 할 수 있습니다.</p>
+  </li>
+</ul>
+
+<p>이렇듯 <code class="highlighter-rouge">Library</code>는 <strong>프로그램을 작성할 때 필요한 단위 기능을 모아놓은 모듈</strong>이라고 볼 수 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Platform</strong></p>
+
+<p><code class="highlighter-rouge">Platform</code>은 <strong>“Software를 실행시킬 수 있는 실행환경(Runtime Environment)”</strong>을 의미합니다.</p>
+
+<p>예를 들어 보자면, 우리가 사용하는 모든 <code class="highlighter-rouge">OS</code>(Operation System)는 모두 Platform입니다. Windows Platform은
+windows 응용 프로그램을 실행시키기 위한 실행 환경이고 Linux Platform은 Linux 응용 프로그램을 실행시키기 위한
+실행 환경이란 말이지요.</p>
+
+<p>Java 배울 때 처음에 <code class="highlighter-rouge">JVM</code>(Java Virtual Machine)이란 걸 배우게 됩니다. 우리가 작성한 모든 Java 프로그램은 JVM위에서 
+동작하게 됩니다. 다시 말하면 JVM은 Platform입니다. Java 프로그램을 실행시켜 줄 수 있는 실행 환경이란 말이지요.</p>
+
+<p>개념적으로 본다면 우리가 사용하는 <code class="highlighter-rouge">Web</code>이라는 서비스 역시 Platform 범주에 들어가게 됩니다. 정확하게는 Web 이라는 서비스가 아닌
+Web Server와 Web Client(browser)로 구성되는 실행환경이 우리가 작성한 Front-End Web Application이 실행되는 Platform 이라
+볼 수 있습니다.</p>
+
+<p>Java의 예에서 알 수 있듯이 Platform은 <code class="highlighter-rouge">Hierarchical</code> 구조를 가질 수 있습니다. 제일 하단에 OS Platform이 있고 그 위에 JVM이
+실행되는 것이죠. 다시 JVM은 Java 프로그램을 실행시킬 수 있는 Platform이 되고 그 위에 사용자가 작성한 Java 프로그램이
+실행되는 것입니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Architecture</strong></p>
+
+<p>알고는 있지만 딱히 설명하라면 어버버하게 만드는 개념입니다. <code class="highlighter-rouge">Architecture</code>는 소프트웨어의 특징을 결정짓는 설계 구조
+입니다. 말이 좀 어렵습니다.</p>
+
+<p>Architecture는 다음과 같은 내용을 포함합니다.</p>
+
+<ul>
+  <li>
+    <p><strong>소프트웨어의 주요 구성 요소에 대한 정의</strong>가 포함됩니다. 소프트웨어의 주요 구성 요소란 소프트웨어를 구성하고 
+있는 컴포넌트 혹은 모듈을 의미합니다. 어떤 기능의 컴포넌트들이 소프트웨어에 필요한지를 구상해서 구성 요소를 정의합니다.
+( View Component, Service Component, Database Component, Transaction component, Message Component 등등)</p>
+  </li>
+  <li>
+    <p>이런 <strong>소프트웨어 주요 구성 요소들 간에 어떤식의 구성이 이루어지고 있는지 정의</strong>합니다. 
+한 컴포넌트가 다른 컴포넌트와 어떤 관계로 연결되는지에 대한 정의를 지칭한다고 보시면 됩니다. 일반적으로 유지보수성을
+높이기 위해 Layered Model을 기반으로 컴포넌트간의 연결 관계를 정의합니다.</p>
+  </li>
+  <li>
+    <p>결국 <strong>소프트웨어의 주요 구성 요소들 간에 연관관계가 맺어지는데 이들 간의 상호 인터페이스는 어떻게 할지를 정의</strong>합니다. 
+어떤 값이 넘어가고 이 값을 받아서 결과값으로 어떤 값을 리턴해주는지에 대한 명세를 포함합니다.</p>
+  </li>
+  <li>
+    <p>소프트웨어의 주요 구성 요소가 하는 중요한 동작 방식을 정의합니다.</p>
+  </li>
+</ul>
+
+<p>위와 같은 내용으로 Architecture를 이해하시면 됩니다. Architecture는 결국 소프트웨어의 주요 특징을 결정하기 때문에 
+개발에 미치는 영향이 아주 높은 상당히 중요한 부분이라 볼 수 있습니다.</p>
+
+<p>Architecture에 대해 한가지 더 기억하셔야 할 점은 <code class="highlighter-rouge">Architecture</code>는 <strong>구체적인 구현을 포함하지 않습니다.</strong> 
+즉, 어떤 프로그래밍 언어를 사용할 것인지, Library는 어떤것을 사용할 것인지, 개발 지원 프로그램은 어떤것들을 이용할 
+것인지에 대한 내용은 Architecture에는 포함되지 않습니다. 
+하지만 특수한 경우 Architecture안에 구체적인 표현이 포함 될 수는 있습니다. 하지만 본질적으로 
+Architecture는 기술적인 설계를 명시하는 것이지 구체적인 구현 방법은 포함하지 않습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Framework</strong></p>
+
+<p><code class="highlighter-rouge">Framework</code>은 소프트웨어 프로젝트가 개발 될 수 있는 뼈대 구조를 지칭합니다. 역시 말이 좀 어려운데요. 다음과 같은 사항을
+포함합니다.</p>
+
+<ul>
+  <li>소프트웨어 개발시 필요한 지원프로그램</li>
+  <li>Library (Framework은 Library를 포함하는 상위개념입니다.)</li>
+  <li>프로그래밍 언어</li>
+  <li>소프트웨어 구성 요소들을 연결시켜주고 동작시켜주는 소프트웨어(일반적으로 Container라고 합니다.)</li>
+</ul>
+
+<p>Framework은 소프트웨어 구성 요소들이 어떻게 동작하는지에 대한 규약이 정해져 있습니다. 이 규약대로
+프로그램은 진행이 될 것이고 프로그래머는 기능 구현에만 초점을 맞추어 빠르게 개발을 진행 시킬 수 있습니다.</p>
+
+<p>Framework 도입의 가장 큰 목적 중 하나는 바로 <strong>유지보수</strong>입니다. 정해진 규칙대로 프로그램이 동작하고 작성되어야 하다보니
+다른 사람이 프로그램을 분석하는데 시간이 오래 걸리지 않고 유지보수하는것도 상대적으로 쉽게 진행이 됩니다. Library를
+기반으로 하는 프로그램은 모든 로직을 개발자가 직접 구현하기 때문에 다른 개발자가 유지보수하기 쉽지 않은 것에 비해
+Framework은 이런 유지보수 측면에서 강점을 가질 수 있습니다.</p>
+
+<p>개발 시 기본 골격이 되는 프로그램 코드가 제공되는것이 일반적인데 이 또한 Framework의 특징이라고 할 수 있습니다.
+( <code class="highlighter-rouge">Scaffolding</code> 이라고 합니다. )</p>
+
+<p>Framework부분은 사실 더 써야 하는 사항이 많습니다. 하지만 차이점 위주로 살펴본 것이니 위의 내용 정도만
+이해해도 충분하지 않을까 합니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/et-cetera/">Et-cetera</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/arduino">Arduino</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/can">CAN Protocol</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/hadoop">Hadoop 설치와 활용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/et-cetera/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/continuous-integration">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/continuous-integration-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/continuous-integration">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">What is Continuous Integration?</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>**Introduction**{: class="post_introduction" } CI는 `Continuous Integration`의 약자로 우리나라 말로 굳이 번역하자면 **"지속적인 통합"** 정도가 되겠네요. 여기서는 간단하게 Continuous Integration이 어떤 개념인지 살펴보도록 하겠습니다. --- **{% include subtitle-fontawesome.html %} CI(Continuous Integration)란 무엇인가?** 소프트웨에 개발은</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/browser-detect-script">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/browser-kind-logo.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/browser-detect-script">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">클라이언트 Browser 확인방법</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Introduction 사이트에 접속한 Client Web Browser의 종류를 알아내는 방법입니다. Client Browser를 확인하기 위한 JavaScript code 제 블로그는 Chrome 전용입니다. IE를 이용하면 화면이 보란듯이 깨지게됩니다. 그래서 접속한 client의 browser를 알아내서 만약 chrome이 아니면 안내를</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Library, Framework, Architecture, Platform</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Library%2C+Framework%2C+Architecture%2C+Platform&amp;url=https://moon9342.github.io/architecture-platform-terminology"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/architecture-platform-terminology"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

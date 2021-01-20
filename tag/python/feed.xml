@@ -1,0 +1,2478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://localhost:4000/</title>
+   
+   <link>http://localhost:4000/</link>
+   <description>얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</description>
+   <language>en-uk</language>
+   
+   <title>
+   <![CDATA[ IT Technical Training ]]>
+   </title>
+   <description>
+   <![CDATA[ 얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융) ]]>
+   </description>
+   <link>http://localhost:4000/</link>
+   <image>
+   <url>http://localhost:4000/assets/built/images/favicon.jpg</url>
+   <title>IT Technical Training</title>
+   <link>http://localhost:4000/</link>
+   </image>
+   <generator>Jekyll 3.6.2</generator>
+   <lastBuildDate></lastBuildDate>
+   <atom:link href="http://localhost:4000/rss.xml" rel="self" type="application/rss+xml"/>
+   <ttl>60</ttl>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Python Django 웹 프레임워크(8) - Blog project 개발</title>
+	  <link>http://localhost:4000/python-lecture-python-django-blog-project</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-09T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-blog-project</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Blog project 개발</strong></p>
+
+<p>Poll Project의 내용을 기반으로 이번에는 ModelForm을 이용한 CRUD 구현 및 
+Django에 Bootstrap4를 적용해 보도록 하겠습니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">project 생성</strong></p>
+
+<p>새로운 project blog를 생성합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django&gt; django-admin startproject blog</strong></p>
+</blockquote>
+
+<p>project와 application을 모두 포함하는 폴더 이름을 MyBlog로 변경합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django&gt; move blog MyBlog</strong></p>
+</blockquote>
+
+<p>working directory를 MyBlog 폴더로 변경합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django&gt; cd MyBlog</strong></p>
+</blockquote>
+
+<p>posts application을 생성합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py startapp posts</strong></p>
+</blockquote>
+
+<p>이후부터는 PyCharm을 이용해 작업을 진행합니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">project 환경설정</strong></p>
+
+<p>환경설정을 위해 project 폴더의 <code class="highlighter-rouge">settings.py</code>파일을 수정합니다. 
+기본적인 <code class="highlighter-rouge">DEBUG=TRUE</code> 설정에 따른 <code class="highlighter-rouge">ALLOWED_HOSTS</code>에 대한 내용을
+다음과 같이 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">'localhost'</span><span class="p">,</span> <span class="s">'127.0.0.1'</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">INSTALLED_APPS</code> 부분에 <code class="highlighter-rouge">posts</code> application을 등록합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+    <span class="s">'posts.apps.PostsConfig'</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>blog project 폴더안에 <code class="highlighter-rouge">templates</code> 폴더를 생성한 후 
+<code class="highlighter-rouge">TEMPLATES</code> 부분을 수정하여 해당 <code class="highlighter-rouge">templates</code> 폴더를 
+기본 Template 경로로 설정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">'BACKEND'</span><span class="p">:</span> <span class="s">'django.template.backends.django.DjangoTemplates'</span><span class="p">,</span>
+        <span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'blog'</span><span class="p">,</span> <span class="s">'templates'</span><span class="p">)],</span>
+        <span class="s">'APP_DIRS'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">'OPTIONS'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'context_processors'</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">'django.template.context_processors.debug'</span><span class="p">,</span>
+                <span class="s">'django.template.context_processors.request'</span><span class="p">,</span>
+                <span class="s">'django.contrib.auth.context_processors.auth'</span><span class="p">,</span>
+                <span class="s">'django.contrib.messages.context_processors.messages'</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">TIME_ZONE</code> 부분은 세계표준시에서 한국시간으로 변경합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s">'Asia/Seoul'</span>
+
+</code></pre></div></div>
+
+<p>Static File(CSS, JavaScript, Image)을 사용하기 위해서 Static File 폴더를 지정하고 폴더를 
+<code class="highlighter-rouge">BASE_DIR</code> 하단에 생성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'static'</span><span class="p">)</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">기본 Table 생성</strong></p>
+
+<p>기본 테이블을 생성하기 위해 다음의 명령을 수행합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py migrate</strong></p>
+</blockquote>
+
+<p><strong class="subtitle2_fontAwesome">관리자 계정 생성</strong></p>
+
+<p>관리자 page에 접속하기 위한 계정을 생성합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py createsuperuser</strong></p>
+</blockquote>
+
+<p><strong class="subtitle2_fontAwesome">서버 기동</strong></p>
+
+<p>project가 정상적으로 생성되었는지 확인하기 위해 내장서버를 이용해 deploy합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py runserver</strong></p>
+</blockquote>
+
+<p><strong class="subtitle2_fontAwesome">Admin Page 접속 확인</strong></p>
+
+<p><code class="highlighter-rouge">http://localhost:8000/admin</code>으로 접속 후 관리자 계정으로 로그인</p>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">Model 생성</strong></p>
+
+<p>Model을 생성하기 위해 posts application 내의 <code class="highlighter-rouge">models.py</code> 파일에 다음과 같은 내용을
+입력합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">'작성자'</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">'글내용'</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contents</span>
+
+</code></pre></div></div>
+
+<p>Admin Page에 반영하기 위해서 posts application 내의 <code class="highlighter-rouge">admin.py</code>에 class를 등록합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Database 변경사항을 반영하기 위해서 migration 초안을 생성하고 설정된 Schema를 Database에 
+실제로 적용해야 합니다.</p>
+
+<p>마이그레이션 초안을 생성하기 위해서 다음과 같이 실행합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py makemigrations</strong></p>
+</blockquote>
+
+<p>설정된 Schema를 Database에 적용하기 위해서 다음과 같이 실행합니다.</p>
+<blockquote>
+  <p><strong>C:/python-Django/MyBlog&gt; python manage.py migrate</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">URL 경로 설정</strong></p>
+
+<p>blog project의 <code class="highlighter-rouge">urls.py</code>파일을 다음과 같이 수정하여 계층적으로 URL을 관리하기 위한 설정을
+합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># blog/urls.py </span>
+
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^$'</span><span class="p">,</span> <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">'index.html'</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">'home'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'posts/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'posts.urls'</span><span class="p">))</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">/posts/</code> 경로로 들어오는 모든 request를 처리하기 위해서 
+posts application의 <code class="highlighter-rouge">urls.py</code>파일을 다음과 같이 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># posts/urls.py </span>
+
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">'posts'</span>  
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'list/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'list'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>약간의 코드를 추가해 <code class="highlighter-rouge">http://localhost:8000</code>에 대한 Homepage설정을 추가했습니다. blog project
+폴더안에 <code class="highlighter-rouge">templates</code> 폴더 안에 <code class="highlighter-rouge">index.html</code>을 위치시킵니다. Bootstrap Example 중 하나를 이용해서
+처리했습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Blog Project<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- Bootstrap core CSS --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> 
+          <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"</span> 
+          <span class="na">integrity=</span><span class="s">"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"</span> 
+          <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Custom styles for this template --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/static/css/cover.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"masthead mb-auto"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inner"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"masthead-brand"</span><span class="nt">&gt;</span>My Blog<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/header&gt;</span>
+
+      <span class="nt">&lt;main</span> <span class="na">role=</span><span class="s">"main"</span> <span class="na">class=</span><span class="s">"inner cover"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"cover-heading"</span><span class="nt">&gt;</span>Blog Project<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"lead"</span><span class="nt">&gt;</span>Django Framework<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"lead"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/posts/list/"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-secondary"</span><span class="nt">&gt;</span>Enter BBS<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/main&gt;</span>
+
+      <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"mastfoot mt-auto"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inner"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>Copyright 2020<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">기본 Template 설정</strong></p>
+
+<p>하나의 html 파일을 생성해 모든 template 파일의 <code class="highlighter-rouge">base html</code>로 사용합니다.</p>
+
+<p>blog project folder 하단의 <code class="highlighter-rouge">templates</code> 폴더안에 기본적인 형태로 <code class="highlighter-rouge">base.html</code>을 생성합니다.</p>
+
+<p>Django에 Bootstrap4을 적용하기 위해서는 django-bootstrap4를 설치해야 합니다. 아래의 명령어로
+package를 설치합니다.</p>
+
+<blockquote>
+  <p><strong>pip install django-bootstrap4</strong></p>
+</blockquote>
+
+<p>설치가 완료된 다음에  blog project 폴더안의 <code class="highlighter-rouge">settings.py</code> 내 
+<code class="highlighter-rouge">INSTALLED_APPS</code>을 다음과 같이 수정하여 bootstrap application을 추가합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+    <span class="s">'posts.apps.PostsConfig'</span><span class="p">,</span>
+    <span class="s">'bootstrap4'</span><span class="p">,</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>이후에 기본적으로 생성된 <code class="highlighter-rouge">base.html</code>에 Bootstrap을 사용하기 위해서 CDN을 설정합니다. 
+해당 CDN은 Bootstrap 홈페이지에서 copy해서 사용합니다.</p>
+
+<p>아래와 같이 base.html을 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.5.1.slim.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    {% block container %}
+    {% endblock %}
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">Model Form 생성</strong></p>
+
+<p>Model Form을 이용해서 <code class="highlighter-rouge">model</code>과 <code class="highlighter-rouge">fields</code>를 지정하면 Model Form이 자동으로 폼 필드를 생성해주기 때문에
+Form 처리를 상당히 쉽게 처리할 수 있습니다.</p>
+
+<p>어떤 Model을 기반으로 폼을 작성할 것인지를 <code class="highlighter-rouge">Meta.model</code> 에 지정하고 
+<code class="highlighter-rouge">fields</code>는 Model class의 field 중 일부만 폼 클래스에서 사용하고자 할 때 지정하는 옵션입니다.</p>
+
+<p>posts application 폴더 내에 <code class="highlighter-rouge">forms.py</code> 파일을 생성한 후 아래의 코드와 같이 Model Form class를 생성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+
+<span class="k">class</span> <span class="nc">PostForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'author'</span><span class="p">,</span> <span class="s">'contents'</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">list 페이지 작성</strong></p>
+
+<p>posts application의 <code class="highlighter-rouge">views.py</code>의 내용을 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+
+<span class="k">def</span> <span class="nf">p_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">list.html</code> 파일을 Bootstrap을 이용해서 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+{% extends 'base.html' %}
+{% block container %}
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/static/js/posts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Bulletin Board System(BBS)<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span>
+    <span class="na">onclick=</span><span class="s">"new_post()"</span><span class="nt">&gt;</span>새글 작성<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"m-1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"thead-dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>글작성자<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>글내용<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>수정<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>삭제<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/thead&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        {% for post in posts %}
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>{{ post.id }}<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td&gt;</span>{{ post.author }}<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>{{ post.contents }}<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        {% endfor %}
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+{% endblock %}
+
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">create 페이지 작성</strong></p>
+
+<p><code class="highlighter-rouge">views.py</code> 내용을 수정합니다.</p>
+
+<p><code class="highlighter-rouge">POST</code>방식일때와 <code class="highlighter-rouge">GET</code>방식일때를 구분하여 ModelForm을 create.html로 전달합니다.</p>
+
+<p><code class="highlighter-rouge">POST</code>방식일 경우는 ModelForm객체에 데이터가 담겨서 저장되어야 하는 경우이며 <code class="highlighter-rouge">GET</code>방식인
+경우는 사용자에게 빈 양식을 보여주기 위해서 사용됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
+<span class="kn">from</span> <span class="nn">posts.forms</span> <span class="kn">import</span> <span class="n">PostForm</span>
+
+<span class="k">def</span> <span class="nf">p_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">p_create</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># POST 방식</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">post_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">post_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+    <span class="c"># GET 방식</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'create.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'post_form'</span><span class="p">:</span> <span class="n">post_form</span><span class="p">})</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">create.html</code> 파일을 Bootstrap을 이용해서 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block container %}
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>New Post<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        {% csrf_token %}
+         <span class="c">&lt;!-- {{ post_form }}--&gt;</span>
+        {% bootstrap_form post_form %}
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>등록<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+{% endblock %}
+
+
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">delete 기능 작성</strong></p>
+
+<p>이번에는 list 화면에서 삭제버튼을 붙여서 <code class="highlighter-rouge">delete</code> 기능을 구현해 보겠습니다.</p>
+
+<p><code class="highlighter-rouge">urls.py</code> 를 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">'posts'</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'list/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'list'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'create/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'create'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:post_id&gt;/delete/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_delete</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'delete'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">views.py</code>를 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
+<span class="kn">from</span> <span class="nn">posts.forms</span> <span class="kn">import</span> <span class="n">PostForm</span>
+
+
+<span class="k">def</span> <span class="nf">p_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">p_create</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># POST 방식</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">post_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">post_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+    <span class="c"># GET 방식</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'create.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'post_form'</span><span class="p">:</span> <span class="n">post_form</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">p_delete</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="n">post</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">list.html</code>을 수정해서 버튼을 붙입니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+{% extends 'base.html' %}
+{% block container %}
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/static/js/posts.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Bulletin Board System(BBS)<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span>
+    <span class="na">onclick=</span><span class="s">"new_post()"</span><span class="nt">&gt;</span>새글 작성<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"m-1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"thead-dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>글작성자<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>글내용<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>수정<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>삭제<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/thead&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        {% for post in posts %}
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>{{ post.id }}<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;td&gt;</span>{{ post.author }}<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>{{ post.contents }}<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{% url 'posts:delete' post.id %}"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>삭제<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        {% endfor %}
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+{% endblock %}
+
+
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">update 기능 작성</strong></p>
+
+<p>마지막으로 수정기능을 구현해보겠습니다.</p>
+
+<p><code class="highlighter-rouge">urls.py</code> 파일을 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">'posts'</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'list/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'list'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'create/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'create'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:post_id&gt;/delete/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_delete</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'delete'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:post_id&gt;/update/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">p_update</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'update'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">views.py</code> 파일을 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
+<span class="kn">from</span> <span class="nn">posts.forms</span> <span class="kn">import</span> <span class="n">PostForm</span>
+
+
+<span class="k">def</span> <span class="nf">p_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-id'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">p_create</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># POST 방식</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">post_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">post_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+    <span class="c"># GET 방식</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">post_form</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'create.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'post_form'</span><span class="p">:</span> <span class="n">post_form</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">p_delete</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="n">post</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">p_update</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+
+    <span class="n">post</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Post</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">postform</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">postform</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">postform</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'posts:list'</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">postform</span> <span class="o">=</span> <span class="n">PostForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'create.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'post_form'</span><span class="p">:</span> <span class="n">postform</span><span class="p">})</span>
+
+</code></pre></div></div>
+
+<p>마지막으로 <code class="highlighter-rouge">list.html</code> 파일을 수정하여 수정버튼을 붙이면 됩니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(7) - Django의 개발방식</title>
+	  <link>http://localhost:4000/python-lecture-python-django-mvt</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-08T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-mvt</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Django의 개발방식</strong></p>
+
+<p>간단한 웹 프로그램을 작성해봤으니 이제 우리가 작업한 내용을 간단하게 정리해 보도록 
+하겠습니다.</p>
+
+<p>한가지 기억해야 할 점은 다른 언어(예를 들면 Java Servlet)에서는 전체 프로그램을 
+<code class="highlighter-rouge">Web Application</code>이라고 부릅니다. 우리가 작업한 Poll Project를 Web Application이라고
+한다는 것이죠.</p>
+
+<p>하지만 Django에서는 약간 다르게 표현합니다. Django에서는 전체 프로그램을 <code class="highlighter-rouge">Project</code>라고
+표현합니다. 그리고 모듈화된 단위 프로그램들을 <code class="highlighter-rouge">application</code> 이라고 표현합니다. 즉, 
+application의 집합이 project가 되는 개념입니다.</p>
+
+<p>Django는 이런 application을 개발할 때 기본적으로 <code class="highlighter-rouge">MVT</code> pattern에 따라서 개발합니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">MVT Pattern</strong></p>
+
+<p>일반적으로 application을 개발할 때 흔히 사용하는 구조는 <code class="highlighter-rouge">MVC</code> pattern입니다. 
+MVC pattern은 프로그램의 구성 요소를 <code class="highlighter-rouge">Model-View-Controller</code>로 구분해 한 요소가 
+다른 요소에 미치는 영향을 최소화 하도록 설계하는 방식을 의미합니다.</p>
+
+<p>Django도 이런 MVC pattern 개념을 그대로 받아들여서 사용합니다. 단, MVC pattern에서의
+View를 <code class="highlighter-rouge">Template</code>으로 Controller를 <code class="highlighter-rouge">View</code>라고 표현하며 이를 <code class="highlighter-rouge">MVT</code> pattern이라고 합니다.</p>
+
+<p>장고의 MVT pattern을 그림을 묘사하면 아래와 같습니다.</p>
+
+<p><img src="../../assets/built/images/python-django-mvt.png" alt="python django MVT" /></p>
+
+<p>웹 클라이언트로부터 요청을 받고, Django에서 MVT pattern에 따라서 처리하는 과정을 살펴보면
+다음과 같습니다.</p>
+
+<ul>
+  <li>클라이언트로부터 요청을 받으면 <code class="highlighter-rouge">URLConf</code>를 이용하여 URL을 분석합니다.</li>
+  <li>URL 분석 결과를 통해 해당 URL에 대한 처리를 담당한 <code class="highlighter-rouge">View</code>를 결정합니다.</li>
+  <li>View는 자신의 로직을 실행하면서 데이터베이스 처리가 필요하면 <code class="highlighter-rouge">Model</code>을 통해 처리합니다.</li>
+  <li>View는 로직처리가 끝나면 <code class="highlighter-rouge">Template</code>을 사용하여 클라이언트에게 전송할 HTML 파일을 생성합니다.</li>
+  <li>View는 최종결과로 HTML 파일을 클라이언트에게 전송합니다.</li>
+</ul>
+
+<p><strong class="subtitle2_fontAwesome">Model</strong></p>
+
+<p>Model은 사용될 데이터에 대한 정의를 담고 있는 Django의 class입니다. Django는 <code class="highlighter-rouge">ORM</code> 기법을
+사용하여 데이터베이스를 class로 mapping해서 사용할 수 있습니다. 쉽게 말하면 하나의 Model class는
+하나의 Table에 mapping되고 Model class의 속성은 Table의 column에 mapping됩니다.</p>
+
+<p>장점은 무엇일까요?</p>
+
+<p>ORM을 이용하면 Database에 대한 처리를 SQL없이 class를 다루는 것처럼 할 수 있어서 편리합니다.
+또한 Database Engine을 바꾸어도 ORM을 통한 API는 변경할 필요가 없습니다.</p>
+
+<p>간단한 예로 아래의 Model class를 예로 들어보죠</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>위의 Model class의 정의는 내부적으로 다음의 SQL 명령을 사용하여 Database Table을
+생성하게 됩니다.</p>
+
+<pre><code class="language-SQL">
+CREATE TABLE myapp_person (
+    "id" serial NOT NULL PRIMARY KEY,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL
+);
+
+</code></pre>
+
+<ul>
+  <li>
+    <p>위에서 보듯이 Table명은 application명과 Model class명을 <code class="highlighter-rouge">_</code> 로 연결하고 모두 소문자로
+표현합니다. 다른 이름으로 직접 지정할 수 도 있습니다.</p>
+  </li>
+  <li>
+    <p>PRIMARY KEY는 Person class에서 지정하지 않아도 Django에서 자동으로 부여합니다. 이 부분
+역시 직접 지정할 수 도 있습니다.</p>
+  </li>
+</ul>
+
+<p><strong class="subtitle2_fontAwesome">URLConf</strong></p>
+
+<p>클라이언트로부터 요청을 받으면 Django는 가장 먼저 요청에 들어 있는 URL을 분석합니다. 즉,
+URL이 <code class="highlighter-rouge">urls.py</code> 파일에 정의된 URL pattern과 매칭되는지를 분석한다는 거죠.</p>
+
+<p>Python의 URL 정의 방식을 Elegant URL이라고 부릅니다. 기존 다른 언어의 URL 정의방식보다 
+쉽고 직관적이기 때문입니다.</p>
+
+<p>URL을 정의하기 위해서는 <code class="highlighter-rouge">urls.py</code> 파일에 URL과 View 함수를 매핑하는 코드를 작성해야 합니다.
+이를 <code class="highlighter-rouge">URLConf</code> 라고 합니다. 아래는 예제로 작성된 <code class="highlighter-rouge">urls.py</code>입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'articles/2003/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">special_case_2003</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'articles/&lt;int:year&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">year_archive</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'articles/&lt;int:year&gt;/&lt;int:month&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">month_archive</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">article_detail</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>웹 클라이언트가 웹 서버에 Request를 보낼 때, Django에서 URL을 분석하는 순서를 보면
+다음과 같습니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">settings.py</code> 파일의 <code class="highlighter-rouge">ROOT_URLCONF</code> 항목을 읽어서 최상위 URLConf 파일의 위치를 알아냅니다.</li>
+  <li>URLConf를 로딩하여 URL list를 검사합니다.</li>
+  <li>검사 순서는 위에서부터 순서대로 URL list를 검사하며 URL pattern이 매치되면 검사를 종료합니다.</li>
+  <li>매치된 View 함수를 호출합니다. 호출 시 HttpRequest객체와 URL에서 추출된 데이터를 View 함수에
+인자로 넘겨줍니다.</li>
+  <li>URL list 끝가지 검사했는데도 매칭에 실패하면 에러를 처리하는 View 함수를 호출합니다.</li>
+</ul>
+
+<p>여기서 주의해야 할 부분은 <code class="highlighter-rouge">&lt;int:month&gt;</code> 처럼 꺽쇠를 사용하는 부분입니다. 이는 URL 에서 일부
+데이터를 추출하기 위한 것으로 <code class="highlighter-rouge">&lt;type:name&gt;</code> 형태로 사용합니다. 만약 요청 URL이
+<code class="highlighter-rouge">/articles/2020/</code>이라면 호출되는 View 함수는 <code class="highlighter-rouge">view.year_archive(request,year=2020)</code> 처럼
+호출합니다.</p>
+
+<p>이런 꺽쇠 부분을 Django에서는 <code class="highlighter-rouge">Path Converter</code>라고 부릅니다. 여기에서 사용되는 타입은 
+<code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">slug</code>, <code class="highlighter-rouge">path</code> 등이 있습니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">str</code> : <code class="highlighter-rouge">/</code>를 제외한 모든 문자열과 매치됩니다. 타입이 지정되지 않으면 default로 str입니다.</li>
+  <li><code class="highlighter-rouge">int</code> : 0 또는 양의 정수와 매치됩니다.</li>
+  <li><code class="highlighter-rouge">slug</code> : slug형식의 문자열과 매치됩니다. (ASCII, 숫자, 하이픈, 밑줄)</li>
+  <li><code class="highlighter-rouge">path</code> : <code class="highlighter-rouge">/</code>를 포함한 모든 문자열과 매치됩니다. 이는 URL의 일부가 아니라 전체를 추출하고자
+할때 사용됩니다.</li>
+</ul>
+
+<p>또한 <code class="highlighter-rouge">Regular Expression</code>(정규 표현식)을 사용해서 URL을 좀 더 세밀하게 표현 할 수 도 있습니다.
+이 부분은 책이나 다른 문서를 참조하세요~</p>
+
+<p><strong class="subtitle2_fontAwesome">View</strong></p>
+
+<p>View는 일반적으로 Request를 받아서 Database 처리 등 로직에 맞는 처리를 하고, 그 결과
+데이터를 HTML로 변환하기 위해서 Template 처리를 한 후 최종 HTML로 된 응답 데이터를 웹 
+클라이언트에게 반환하는 역할을 수행합니다.</p>
+
+<p>일반적으로 <code class="highlighter-rouge">views.py</code> 파일에 작성되며 다른 파일에 작성해도 상관은 없습니다.</p>
+
+<p>간단한 예로 현재의 날짜와 시간을 HTML로 반환해주는 View 함수는 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="k">def</span> <span class="nf">current_datetime</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datatime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="s">"&lt;html&gt;&lt;body&gt;현재 시각은 : </span><span class="si">%</span><span class="s">s&lt;/body&gt;&lt;/html&gt;"</span> <span class="o">%</span> <span class="n">now</span>
+    <span class="k">return</span> <span class="n">httpResponse</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>만약 Error를 반환하고 싶다면 아래처럼 <code class="highlighter-rouge">HttpResponseNotFound</code>와 같은
+에러 응답 객체를 반환하면 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">return</span> <span class="n">HttpResponseNotFound</span><span class="p">(</span><span class="s">"&lt;h1&gt;페이지를 찾을 수 없습니다.&lt;/h1&gt;"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">Template</strong></p>
+
+<p>Django가 클라이언트에게 반환하는 최종 응답은 HTML text입니다. 개발자가
+응답에 사용할 html 파일을 작성하면, 장고는 이를 해석해서 데이터를 적용해
+최종 HTML text를 생성하고 이를 클라이언트에게 보내주게 됩니다.</p>
+
+<p>이런 과정에서 개발자가 작성하는 html 파일을 <code class="highlighter-rouge">Template</code> 파일이라고 부릅니다.</p>
+
+<p>Template file은 <code class="highlighter-rouge">.html</code> 확장자를 가지며 Django의 Template 시스템 문법에 맞게
+작성합니다. 조심해야 할 사항은 이 Template 파일을 적절한 디렉토리에 위치시켜야
+한다는 점 입니다.</p>
+
+<p>Django에서 Template 파일을 찾을 때 <code class="highlighter-rouge">TEMPLATE_DIRS</code> 와 <code class="highlighter-rouge">INSTALLED_APPS</code>에서 지정된
+application의 디렉토리를 검색합니다. 이 항목들은 <code class="highlighter-rouge">settings.py</code>에 지정되어 있습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(6) - Poll project 개발(5)</title>
+	  <link>http://localhost:4000/python-lecture-python-django-poll-project-5</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-07T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-poll-project-5</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">마지막 화면 작성</strong></p>
+
+<p>아래의 그림은 우리의 Poll Project의 전체 처리 흐름을 도식화 한 것이죠.</p>
+
+<p><img src="../../assets/built/images/python-django-polls-view-tempalte.png" alt="python django poll" /></p>
+
+<p>이전 절에서 첫화면에 있는 3개의 질문 중 하나를 선택했을 때, 질문에 대한 답변 항목을
+보여주고 투표하도록 하는 화면을 작성해 보았습니다.</p>
+
+<p>이번에는 답변항목을 선택한 후 <code class="highlighter-rouge">Vote</code> 버튼을 클릭했을 때 처리되는 부분에 과정과 최종
+화면을 작성해 보겠습니다.</p>
+
+<p>먼저 View 함수인 vote() 부터 알아봐야 할 듯 합니다.</p>
+
+<p>View 함수인 vote()의 호출과 연관된 URL은 detail.html안의 form tag의 action에서
+나타납니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"{% url 'polls:vote' question.id %}"</span>
+          <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+
+
+</code></pre></div></div>
+
+<p>이 부분은 결국 <code class="highlighter-rouge">polls/urls.py</code> 파일안에 다음과 같은 부분과 mapping되게 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">"polls"</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/vote/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'vote'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/results/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'results'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>그럼 vote() 함수를 작성해 보도록 하죠.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Choice</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span><span class="p">,</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+
+
+<span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="n">question_id</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">selected_choice</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s">'choice'</span><span class="p">])</span>
+    <span class="k">except</span> <span class="p">(</span><span class="nb">KeyError</span><span class="p">,</span> <span class="n">Choice</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/detail.html'</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s">'question'</span><span class="p">:</span> <span class="n">question</span><span class="p">,</span>
+            <span class="s">'error_message'</span><span class="p">:</span> <span class="s">"아무것도 선택하지 않았어요!!"</span>
+        <span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">selected_choice</span><span class="o">.</span><span class="n">votes</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">selected_choice</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s">'polls:results'</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">question</span><span class="o">.</span><span class="nb">id</span><span class="p">,)))</span>
+
+</code></pre></div></div>
+
+<p>이번에도 상당히 복잡할 듯 보이네요. 기억해야 하는 부분들을 하나씩 살펴보겠습니다.</p>
+
+<ul>
+  <li>
+    <p>이번에는 <code class="highlighter-rouge">redirect</code> 라는 기능이 필요합니다. 이를 위해 <code class="highlighter-rouge">HttpResponseRedirect</code>를
+import 합니다.</p>
+  </li>
+  <li>
+    <p>url 처리를 위해 <code class="highlighter-rouge">reverse()</code> 함수를 역시 import 처리 합니다.</p>
+  </li>
+  <li>
+    <p>vote() 함수의 request 객체는 필수 인자이고 detail() 처럼 question_id 인자를 더
+받습니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">get_object_or_404()</code> 단축함수를 사용하였고 이번에는 Choice Table을 검색하는
+용도로 사용되고 있습니다. 검색 조건은 <code class="highlighter-rouge">pk=request.POST['choice']</code>로 되어 있네요.
+<code class="highlighter-rouge">request.POST</code>는 form의 데이터를 담고 있는 객체입니다. <code class="highlighter-rouge">request.POST['choice']</code>는
+form의 데이터 중 key값이 choice에 해당하는 값인 choice.id를 의미하겠네요.</p>
+  </li>
+  <li>
+    <p>만약 <code class="highlighter-rouge">choice</code>라는 key가 <code class="highlighter-rouge">request.POST</code>에 존재하지 않으면 <code class="highlighter-rouge">KeyError</code> exception이
+발생합니다. 또한 검색 조건에 맞는 객체가 없으면 <code class="highlighter-rouge">Choice.DoesNotExist</code> exception이
+발생합니다.</p>
+  </li>
+  <li>
+    <p>만약 exception이 발생하면 render() 함수를 이용해 question과 error_message 변수를
+detail.html로 전달합니다. 사용자에게 질문 항목을 다시 보여주기 위함이죠.</p>
+  </li>
+  <li>
+    <p>exception이 발생하지 않으면 Choice 객체의 votes 속성의 값을 1증가시킵니다. 그리고
+변경사항을 Choice Table에 적용하게 됩니다.</p>
+  </li>
+  <li>
+    <p>주의해야 할 점은 이번에 vote()함수가 반환하는 객체가 HttpResponse가 아닌 
+<code class="highlighter-rouge">HttpResponseRedirect</code> 라는 것입니다. <code class="highlighter-rouge">HttpResponseRedirect</code> 객체는 redirect할 URL을
+인자로 가지며 reverse() 함수를 이용하여 생성합니다. 이 reverse() 함수는 URL pattern으로부터
+URL string을 구하기 위해서 사용합니다. 당연히 URLConf에 이미 정의된 URL pattern을 활용해서
+URL string을 추출하게 됩니다.</p>
+  </li>
+</ul>
+
+<p><strong class="subtitle2_fontAwesome">View 함수 results()와 Template 작성</strong></p>
+
+<p>View 함수인 vote() 함수의 redirect로 results() 함수가 호출되게 됩니다. 정확하게는
+서버로 부터 redirect 하라는 내용을 결과로 받은 클라이언트 웹 브라우져가 redirect URL로
+다시 요청을 보내는 것이죠.</p>
+
+<p>이번에는 먼저 <code class="highlighter-rouge">results()</code> 함수를 작성한 후 결과를 보여주는 <code class="highlighter-rouge">result.html</code> Template 파일을 작성하도록
+하겠습니다.</p>
+
+<p>아래와 같이 results() 함수를 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/results.html'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s">'question'</span><span class="p">:</span> <span class="n">question</span>
+    <span class="p">})</span>
+
+</code></pre></div></div>
+
+<p>앞에서 다 설명했던 부분들이니 바로 <code class="highlighter-rouge">results.html</code> 파일을 작성하도록 하겠습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ 
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>{{ question.question_text }}<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;ul&gt;</span>
+    {% for choice in question.choice_set.all %}
+        <span class="nt">&lt;li&gt;</span>{{ choice.choice_text }} - {{ choice.votes }} vote{{ choice.votes|pluralize }}<span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+    <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% url 'polls:detail' question.id %}"</span><span class="nt">&gt;</span>다시 투표<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<p>음.. 대부분의 내용은 이제 어느정도 이해가 갈 듯 합니다. 한가지 특이한 코드가 있는데
+<code class="highlighter-rouge">choice.votes|pluralize</code>입니다. <code class="highlighter-rouge">choice.votes</code>의 값에 따라서 복수 접미사(s)를
+붙여주는 역할을 합니다.</p>
+
+<p>이제 모든 작업을 완료했습니다. 서버를 기동하고 <code class="highlighter-rouge">/polls</code>로 접속해서 잘 동작하는지
+확인해보도록 하죠.</p>
+
+<p><img src="../../assets/built/images/python-django-third-page.png" alt="python django third page" /></p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(5) - Poll project 개발(4)</title>
+	  <link>http://localhost:4000/python-lecture-python-django-poll-project-4</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-06T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-poll-project-4</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">두번째 화면 작성</strong></p>
+
+<p>아래의 그림은 우리의 Poll Project의 전체 처리 흐름을 도식화 한 것이죠.</p>
+
+<p><img src="../../assets/built/images/python-django-polls-view-tempalte.png" alt="python django poll" /></p>
+
+<p>이전 절에서 <code class="highlighter-rouge">/polls/</code> URL로 접속했을 때 View 함수와 Template 파일을 작성해서 
+첫 화면을 browser에 출력해보았습니다.</p>
+
+<p>이번에는 첫화면에 있는 3개의 질문 중 하나를 선택했을 때, 질문에 대한 답변 항목을
+보여주고 투표하도록 하는 화면을 작성해 보도록 하겠습니다.</p>
+
+<p>먼저 Template 화면부터 생성하면서 어떠한 데이터가 View 함수로부터 넘어오면 되는지를
+생각해보면 될 듯 합니다.</p>
+
+<p>Template 파일의 이름은 <code class="highlighter-rouge">detail.html</code> 이고 아래와 같이 입력합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>{{ question.question_text }}<span class="nt">&lt;/h1&gt;</span>
+    {% if error_message %}
+    <span class="nt">&lt;p&gt;&lt;strong&gt;</span>{{ error_message }}<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+    {% endif %}
+
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"{% url 'polls:vote' question.id %}"</span>
+          <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"choice"</span>
+               <span class="na">id=</span><span class="s">"choice{{ forloop.counter }}"</span>
+               <span class="na">value=</span><span class="s">"{{ choice.id }}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"choice{{ forloop.counter }}"</span><span class="nt">&gt;</span>
+            {{ choice.choice_text }}
+        <span class="nt">&lt;/label&gt;&lt;br&gt;</span>
+    {% endfor %}
+        <span class="nt">&lt;br&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Vote"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<p>상당히 복잡하네요. 하나씩 알아보도록 하겠습니다.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">question.question_text</code> : 질문을 제목으로 사용하는 것입니다. 크게 표현하기 위해서
+<code class="highlighter-rouge">&lt;h1&gt;</code> tag를 이용하고 있습니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">error_message</code> : 만약 에러가 있으면 에러 메시지를 화면에 보여주기 위해서 if 처리를
+했습니다. 에러 체크는 View의 vote() 함수에 구현될 것입니다. 만약 vote() 함수에서 exception이 
+발생하면 error_message를 담아서 detail.html Template을 rendering하게 됩니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">form</code>에 입력된 데이터는 <code class="highlighter-rouge">POST</code> 방식으로 서버측에 전달됩니다. REST 환경이 아닐때는
+GET과 POST방식을 사용하는데 데이터를 읽어올때는 일반적으로 GET, 서버측의 데이터를 변경할때는
+POST 방식을 이용합니다. (반드시 그런것은 아닙니다.) 그러면 데이터를 어디로 보낼까요?
+<code class="highlighter-rouge">action</code> 속성에 해당 URL을 명시합니다. 여기서는 <code class="highlighter-rouge">url</code> template tag를 이용하여 받는 곳의
+URL을 <code class="highlighter-rouge">polls:vote</code>로 설정했습니다. polls:vote에서 polls는 namespace를 의미하고 vote는
+URL의 이름을 의미합니다. 이 부분은 <code class="highlighter-rouge">polls/urls.py</code>에 명시되어 있습니다. 결과적으로 받는곳의
+URL은 <code class="highlighter-rouge">/polls/1/vote/</code> 과 같은 형식이 될 것입니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">form</code>을 처리하는데 보안상의 issue를 해결하기 위해 <code class="highlighter-rouge">csrf_token</code> template tag를 사용했습니다.
+CSRF(Cross Site Request Forgery) 공격은 특정 웹사이트에서 이미 인증받은 사용자를 이용하여 웹
+사이트를 공격하는 방법입니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">for</code> 구문을 이용하여 Question 객체가 가지고 있는 데이터를 이용하여 radio button을 구현하고
+있습니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">forloop.counter</code> : for loop를 실행한 횟수를 담고 있는 template 변수 입니다. 여기서 label
+tag의 <code class="highlighter-rouge">for</code> 속성과 radio button의 <code class="highlighter-rouge">id</code> 속성 값이 같아야 서로 바인딩 된다는것도 추가로 기억해야 합니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Vote</code> 버튼을 누르면 사용자가 선택한 form data가 POST 방식으로 <code class="highlighter-rouge">polls:vote</code> URL로 전송됩니다.
+이렇게 전송된 데이터는 View 함수 vote()에서 access 할 수 있습니다.</p>
+  </li>
+  <li>
+    <p>마지막으로 Question 객체의 <code class="highlighter-rouge">choose_set</code> 속성에 대해서 알아보겠습니다. Question Table과 Choice 
+Table은 1:N 의 관계를 가지고 있고 Foreign Key로 연결되어 있습니다. 이렇게 1:N의 관계에서
+1 Table에 N Table의 항목이라는 의미로 <code class="highlighter-rouge">xxx_set</code> 속성을 default로 제공합니다. 즉, 
+question.choice_set.all()이라고 하면 Question Table의 question record에 연결된 Choice Table의
+모든 record를 의미하게 됩니다. 단, Template 문법상 method 호출을 표시하는 <code class="highlighter-rouge">()</code>는 사용하지 않기때문에
+Template 파일에서는 <code class="highlighter-rouge">question.choice_set.all</code> 이라고 사용된 것입니다.</p>
+  </li>
+</ul>
+
+<p>상당히 복잡했는데 몇번을 다시 보고 동영상을 통해서 이해하시면 좋을 듯 합니다.</p>
+
+<p>이제 이 Template을 사용하는 View 함수인 detail() 함수를 작성하고 실행해서 투표항목이 정상적으로
+출력이 되는지를 확인해 보도록 하겠습니다.</p>
+
+<p><code class="highlighter-rouge">views.py</code> 파일을 다시 열고 기존의 index() 함수 다음에 아래의 코드를 입력합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Question</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-pub_date'</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">'latest_question_list'</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/index.html'</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/detail.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'question'</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
+
+</code></pre></div></div>
+
+<p>View 함수를 정의했습니다. detail()이라는 함수를 정의했고 추가적으로 URL로 부터 추출한
+<code class="highlighter-rouge">question_id</code> 인자를 View 함수의 인자로 넘겨 받았습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>위의 부분에서 <code class="highlighter-rouge">&lt;int:question_id&gt;</code> 부분을 의미합니다.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">get_object_or_404()</code> : Django에서 제공되는 단축함수입니다. 이 함수의 첫번째 인자는
+Model class이고 두번째 인자부터는 검색 조건을 여러 개 사용할 수 있습니다. 우리예제에서는
+검색조건이 <code class="highlighter-rouge">pk=question_id</code> 이기 때문에 primary key가 question_id와 일치하는 객체를 
+조회하게 됩니다. 만약 조회된 객체가 없을 시 <code class="highlighter-rouge">Http404</code> exception이 발생하게 됩니다.</p>
+  </li>
+  <li>
+    <p>추가적으로 <code class="highlighter-rouge">get_list_or_404()</code> 단축함수도 있습니다. 이것은 대상객체의 집합을 list로
+가져올 때 사용합니다.</p>
+  </li>
+</ul>
+
+<p><strong class="subtitle2_fontAwesome">지금까지의 작업 확인</strong></p>
+
+<p>지금까지 작성한 내용으로 서버를 기동시켜서 <code class="highlighter-rouge">/polls/</code>로 접속한 후<br />
+3개의 질문 중 하나를 선택했을 때, 질문에 대한 답변 항목을 보여주고 
+투표하도록 하는 화면이 나오는지를 확인하도록 하겠습니다. 
+아직 미구현인 부분들은 주석처리 후 서버를 기동시켜서 접속을 해보도록 하죠</p>
+
+<p>특히 form tag <code class="highlighter-rouge">action</code> 속성부분은 일단 주석처리해야 할 듯 합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{% comment %}
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"{% url 'polls:vote' question.id %}"</span>
+          <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+{% endcomment %}
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span>
+          <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<p>그리고 데이터베이스에 각 질문에 대한 선택항목을 저장하지 않았기 때문에
+Admin site에 접속해서 질문에 대한 선택항목을 저장한 후 실행하면 다음과 같은 화면을
+보실 수 있습니다.</p>
+
+<p><img src="../../assets/built/images/python-django-second-page.png" alt="python django second page" /></p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(4) - Poll project 개발(3)</title>
+	  <link>http://localhost:4000/python-lecture-python-django-poll-project-3</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-05T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-poll-project-3</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">View와 Template</strong></p>
+
+<p>아래의 그림은 우리의 Poll Project의 전체 처리 흐름을 도식화 한 것입니다.
+다시한번 느끼지만 그림에는 정말 소질이 없군요.(글자도 잘 안보이고…)</p>
+
+<p><img src="../../assets/built/images/python-django-polls-view-tempalte.png" alt="python django poll" /></p>
+
+<p>기본적으로 4개의 URL을 사용하고 여기에 Admin site까지 포함하여 총 5개의 URL을 이용할
+것입니다. 그리고 각각의 URL은 View와 1:1로 mapping되어 있습니다. 일반적으로 URL은 View와
+1:1 mapping을 하지만 N:1의 관계도 가능합니다.</p>
+
+<p>각각의 View는 Template을 이용하여 결과 화면을 클라이언트에게 전송하게 됩니다.</p>
+
+<p>제일 먼저 처리해야 하는 내용은 URL과 View의 mapping처리 입니다. 이것을 <code class="highlighter-rouge">URLConf</code>라고 하며
+<code class="highlighter-rouge">urls.py</code> 파일에 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">polls</span> <span class="kn">import</span> <span class="n">views</span>
+
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'polls/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'polls/&lt;int:question_id&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'polls/&lt;int:question_id&gt;/vote/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'vote'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'polls/&lt;int:question_id&gt;/results/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'results'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>몇가지 기억해야 하는 사항이 있습니다.</p>
+
+<ul>
+  <li>
+    <p>URL pattern matching은 위에서 아래로 진행됩니다. 따라서 정의하는 순서에 유의해야 합니다.</p>
+  </li>
+  <li>
+    <p>Django의 Admin site에 대한 URLConf는 이미 정의 되어 있습니다. 항상 똑같이 사용하세요.</p>
+  </li>
+  <li>
+    <p>path() 함수를 이용하여 URL과 View를 mapping하고 있습니다.</p>
+  </li>
+</ul>
+
+<p>여기서 중요한 것은 <code class="highlighter-rouge">path()</code> 함수인데 path()함수는 2개의 필수인자를 가집니다. 
+우리예에서 보듯이 route와 view입니다. 또한 kwargs와 name 2개의 선택인자를 가질 수 있습니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">route</code> : URL pattern을 표현하는 문자열입니다. URL String이라고도 합니다.</li>
+  <li><code class="highlighter-rouge">view</code> : URL String이 matching되면 호출되는 View의 함수입니다. HttpRequest 객체와 URL String에서
+추출된 항목이 View 함수의 인자로 전달됩니다.</li>
+  <li><code class="highlighter-rouge">kwargs</code> : URL String에서 추출된 항목외에 추가적인 인자를 View 함수에 전달할 목적으로 dict 형태로
+사용됩니다.</li>
+  <li><code class="highlighter-rouge">name</code> : 각 URL pattern에 대한 논리적인 이름입니다. 이 이름은 Template에서 사용됩니다.</li>
+</ul>
+
+<p>두가지 예만 들어보겠습니다.</p>
+
+<p>만약 요청 URL이 <code class="highlighter-rouge">/polls/</code> 라면 <code class="highlighter-rouge">path('polls/', views.index, name='index')</code> 부분이 
+matching됩니다. 이 경우 URL String에서 추출되는 항목이 없기 때문에 <code class="highlighter-rouge">views.index(request)</code> 처럼
+View 함수가 호출됩니다. 그리고 이 URL pattern의 이름은 <code class="highlighter-rouge">index</code>로 정의했습니다.</p>
+
+<p>만약 요청 URL이 <code class="highlighter-rouge">/polls/5</code> 라면 URL String에서 추출되는 항목이 있기 때문에 
+<code class="highlighter-rouge">views.detail(request,question_id=3)</code>처럼 인자가 대입되서 View 함수가 호출되게 됩니다. 그리고
+이 URL pattern의 이름은 <code class="highlighter-rouge">detail</code>로 정했습니다.</p>
+
+<p>기억해야 할 점 또 하나는 <code class="highlighter-rouge">mysite/settings.py</code> 파일에 <code class="highlighter-rouge">ROOT_URLCONF</code> 항목이 정의되어 있는데
+Django는 URL 분석 시, 이 항목에 정의된 <code class="highlighter-rouge">urls.py</code>파일을 가장 먼저 분석하게 됩니다.</p>
+
+<p>여기서 조금 복잡한 사항이 하나 나옵니다. 지금 우리가 하는 것처럼 <code class="highlighter-rouge">mysite/urls.py</code> 파일에
+모든 URL과 View의 mapping을 기술 할 수도 있지만 이런 경우 재사용과 관리에 문제가 발생할 수 있습니다.</p>
+
+<p>그래서 일반적으로 urls.py를 applciation단위로 나누어서 작성합니다.</p>
+
+<p>즉, <code class="highlighter-rouge">mysite/urls.py</code>의 내용은 아래와 같이 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">polls</span> <span class="kn">import</span> <span class="n">views</span> 
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'polls/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'polls.urls'</span><span class="p">)),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>그리고 <code class="highlighter-rouge">MyFirstWebPoll/polls/urls.py</code> 파일은 아래와 같이 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">'polls'</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'detail'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/vote/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">vote</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'vote'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:question_id&gt;/results/'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'results'</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>이렇게 파일을 나누어서 URL과 View의 mapping을 관리할 수 있습니다. 당연히 파일을
+분리해서 관리하는 것이 훨씬 좋은 방법입니다. <code class="highlighter-rouge">app_name = 'polls'</code> 부분은 
+URL pattern이 충돌나는 것을 방지하기 위한 namespace 설정입니다.</p>
+
+<p>우리의 예제는 파일을 나누어서 URL과 View의 mapping관리를 하는 방법을 사용하도록
+하겠습니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Template 작성</strong></p>
+
+<p>위에서 URL과 View에 대한 mapping설정을 했으니 이제 View와 Template을 작성할 차례입니다.
+이 둘은 서로 서로에게 영향을 미치기 때문에 보통 같이 작업하는게 일반적이지만 UI화면을
+먼저 생각하면서 로직처리를 하는것이 쉬울 수 있기 때문에 View보다는 Template을 먼저 작성하면
+조금 더 쉬운 경향이 있습니다.</p>
+
+<p>자 그럼 Template 파일 index.html을 작성해보도록 하죠. 이 Template 파일 역시 관리상의
+이유로 하나의 폴더에서 모든 Template을 관리하는 것이 아니라 application별로 따로 관리합니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll/polls&gt; mkdir templates</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll/polls&gt; mkdir templates/polls</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll/polls&gt; cd templates/polls</strong></p>
+</blockquote>
+
+<p>이 폴더 내에서 <code class="highlighter-rouge">index.html</code>을 아래처럼 작성합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    {% if latest_question_list %}
+        <span class="nt">&lt;ul&gt;</span>
+        {% for question in latest_question_list %}
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/polls/{{ question.id }}/"</span><span class="nt">&gt;</span>{{ question.question_text }}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        {% endfor %}
+        <span class="nt">&lt;/ul&gt;</span>
+    {% else %}
+        <span class="nt">&lt;p&gt;</span>No Polls are available<span class="nt">&lt;/p&gt;</span>
+    {% endif %}
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<p>여기서 주의해서 보셔야 하는 건 <code class="highlighter-rouge">latest_question_list</code> 입니다. View 함수인 index()에서
+넘겨주는 인자입니다. 코드로 유추해 보건대 설문에 대한 번호와 질문내용을 가지고 있는 Question
+객체로 구성된 list 일 듯 합니다.</p>
+
+<p>사실 구현할 때는 역으로 생각하셔야 합니다. 즉, Template을 만들면서 어떤 데이터를 넘겨줘야
+Template이 잘 표현될지를 생각해서 이 데이터를 View 함수에서 <code class="highlighter-rouge">context</code> 변수로 정의한 후 
+Template으로 넘겨줘야 하기 때문입니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">View 작성</strong></p>
+
+<p><code class="highlighter-rouge">C:/python-Django/MyFirstWebPoll/polls</code> 폴더 하단에 있는 <code class="highlighter-rouge">view.py</code>을 다음과 같이 
+수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Question</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">latest_question_list</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-pub_date'</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s">'latest_question_list'</span><span class="p">:</span> <span class="n">latest_question_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'polls/index.html'</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>기억해야 할 사항은 다음과 같습니다.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">render()</code> : 단축함수 중 하나로 Template 코드를 로딩한 후 context 변수를 적용하고
+그 결과를 HttpResponse 객체에 담아 반환하는 작업을 수행합니다. 이런 복잡한 과정을 Django
+에서는 render() 내장함수로 제공하고 있습니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Question</code> : Question Table에 access하기 위해 polls.models.Question class를 사용합니다.</p>
+  </li>
+  <li>
+    <p>View 함수를 정의한 후 Template에게 넘겨줄 데이터를 생성합니다.</p>
+  </li>
+  <li>
+    <p>Template에게 넘겨줄 때는 dict 형태로 넘겨주며 context 객체를 생성해서 render()함수에
+전달합니다.</p>
+  </li>
+  <li>
+    <p>index() 함수는 최종적으로 클라이언트에게 응답할 데이터인 HttpResponse 객체를 반환합니다.</p>
+  </li>
+  <li>
+    <p>한가지 의문이 드는것은 render() 함수에서 Template 파일을 어떻게 찾느냐 하는 것입니다. 
+Django에서 Template 파일을 찾을 때 <code class="highlighter-rouge">settings.py</code> 파일에 정의된 <code class="highlighter-rouge">TEMPLATES</code> 그리고
+<code class="highlighter-rouge">INSTALLED_APPS</code>에서 지정된 디렉토리를 검색하게 됩니다.</p>
+  </li>
+</ul>
+
+<p><strong class="subtitle2_fontAwesome">지금까지의 작업 확인</strong></p>
+
+<p>지금까지 작성한 내용으로 서버를 기동시켜서 <code class="highlighter-rouge">/polls/</code>로 접속하려 합니다. 하지만 아직 작성하지
+않은 파일들이 존재하기 때문에 바로 동작되지는 않을테고 아직 미구현인 부분들은 주석처리 후
+서버를 기동시켜서 접속을 해보도록 하죠</p>
+
+<p>당연히 <code class="highlighter-rouge">No Polls are available</code>가 출력되게 됩니다. 아직 어떠한 질문도 등록하지 않았거든요.</p>
+
+<p>그럼 Admin site로 접속한 후 데이터를 입력하고 다시 접속해 보도록 하겠습니다. 
+질문은 3개만 등록하도록 하겠습니다.</p>
+
+<ul>
+  <li>취미가 무엇인가요?</li>
+  <li>가장 좋아하는 선수는 누구인가요?</li>
+  <li>어디에 살고 있나요?</li>
+</ul>
+
+<p>이제 화면이 정상적으로 보이나요?</p>
+
+<p><img src="../../assets/built/images/python-django-first-page.png" alt="python django first page" /></p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(3) - Poll project 개발(2)</title>
+	  <link>http://localhost:4000/python-lecture-python-django-poll-project-2</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-04T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-poll-project-2</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Model</strong></p>
+
+<p>Model 작업은 우리가 사용하는 Database에 Table을 생성하는 작업입니다.</p>
+
+<p>우리의 polls application은 Questions와 Choice 두 개의 테이블이 필요합니다.
+Table은 <code class="highlighter-rouge">models.py</code> 파일에 정의합니다.</p>
+
+<p><code class="highlighter-rouge">C:/python-Django/MyFirstWebPoll/polls</code> 폴더에 존재하는 <code class="highlighter-rouge">models.py</code> 파일의 내용을
+다음과 같이 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="s">'date published'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span>
+
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice_text</span>
+
+</code></pre></div></div>
+
+<p>Django에서는 Table을 하나의 class로 정의합니다. 또한 Table의 column은 class의
+속성으로 mapping합니다.</p>
+
+<p>위에서 표현이 안된 부분이 있는데 바로 Table의 <code class="highlighter-rouge">id</code> column입니다. Table의 id column은 
+Primary key로 지정되며 정수(integer)형태입니다. 또한 Django가 자동으로 생성해
+주기 때문에 class 정의에서는 표현되지 않았습니다.</p>
+
+<p>참고로 PK(primary key)는 <code class="highlighter-rouge">Not Null</code> 속성을 가지며 <code class="highlighter-rouge">Autoincrement</code>로 지정됩니다.</p>
+
+<p>조심해야 될 점은 Choice class의 FK로 지정되어 있는 question 입니다. FK이기 때문에
+어떤 reference할 class만 명시하면 되고 실제 Table이 생성될 때 <code class="highlighter-rouge">_id</code> 접미어가 붙어서
+column이 생성됩니다. 즉, column명이 <code class="highlighter-rouge">question</code> 이 아닌 <code class="highlighter-rouge">question_id</code> 가 되게 됩니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Admin site에 테이블 반영</strong></p>
+
+<p>이전에 살펴본 Admin site에는 Users와 Groups Table만 존재합니다. 방금 <code class="highlighter-rouge">models.py</code> 에서
+정의한 Table도 Admin site에서 보이도록 등록해야 할 듯 합니다.</p>
+
+<p><code class="highlighter-rouge">admin.py</code> 파일을 아래의 내용으로 수정합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Choice</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Choice</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">Database 변경 사항 반영</strong></p>
+
+<p>당연한 말이지만 Database에 변경사항이 있으면 이를 반영해 주어야 합니다. 아직까지는
+class로 Table만 정의한 단계이니 실제로 Database에 반영을 시켜줍니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py makemigrations</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py migrate</strong></p>
+</blockquote>
+
+<p><strong class="subtitle2_fontAwesome">Admin site에서 변경사항 확인</strong></p>
+
+<p>지금까지 작업한 내용이 잘 적용되었나를 Admin site에서 확인해보도록 하겠습니다.
+서버를 기동하고 Admin site에 접속합니다.</p>
+
+<p><img src="../../assets/built/images/python-django-admin-database.png" alt="python django admin database" /></p>
+
+<p>이번 절에서는 Model을 생성하는 방법에 대해서 알아보았습니다. 그럼 다음에는 View와 Template에
+대해서 알아보면서 우리의 간단한 Web Project를 완성해 보도록 하죠.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(2) - Poll project 개발(1)</title>
+	  <link>http://localhost:4000/python-lecture-python-django-poll-project-1</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-03T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-poll-project-1</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Project Setup</strong></p>
+
+<p>시작은 프로젝트의 뼈대를 만드는 일부터 시작합니다. 프로젝트에 필요한
+디렉토리 및 파일을 구성하고 설정 파일을 세팅하도록 하겠습니다.</p>
+
+<p>간단하게 <code class="highlighter-rouge">C:/python-Django</code> 폴더를 하나 생성한 후 command창을 열어서
+다음과 같이 입력해서 프로젝트를 시작합니다.</p>
+
+<blockquote>
+  <p><strong>C:/Users/moon9342&gt; cd C:/python-Django</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>C:/python-Django&gt; django-admin startproject mysite</strong></p>
+</blockquote>
+
+<p>생성된 폴더 구조를 보면 <code class="highlighter-rouge">C:/python-Django/mysite</code> 가 생성되고 그 아래에 다시
+<code class="highlighter-rouge">C:/python-Django/mysite/mysite</code> 폴더가 생성되게 됩니다.</p>
+
+<p>여기서 상위 폴더인 <code class="highlighter-rouge">C:/python-Django/mysite</code> 폴더는 단순히 프로젝트 관련파일과
+폴더를 모아놓은 폴더이기 때문에 다른 이름으로 변경할 것입니다. 하위 폴더인
+<code class="highlighter-rouge">C:/python-Django/mysite/mysite</code> 폴더가 우리의 프로젝트 디렉토리 입니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django&gt; move mysite MyFirstWebPoll</strong></p>
+</blockquote>
+
+<p>이름을 변경한 후 해당 폴더로 이동합니다. 그리고 그 안에 <code class="highlighter-rouge">polls</code>라는 application을
+생성하는 명령을 입력합니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django&gt; cd C:/python-Django/MyFirstWebPoll</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py startapp polls</strong></p>
+</blockquote>
+
+<p>이 과정을 거치면 <code class="highlighter-rouge">polls</code>라는 이름의 application 디렉토리와 그 하위에 필요한 파일들을
+자동으로 생성해 줍니다. 파일 이름은 Django가 알아서 설정하게 되는데 이렇게 개발에 반드시
+필요한 파일들은 Django가 알아서 생성해주고 개발자는 그 내용을 채워넣는 식으로 진행됩니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Project 설정파일 변경</strong></p>
+
+<p>프로젝트에 필요한 설정값은 <code class="highlighter-rouge">settings.py</code> 파일에 지정합니다.</p>
+
+<p>지금부터는 PyCharm을 이용하기로 하죠.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ALLOWED_HOSTS</code> : Django는 <code class="highlighter-rouge">DEBUG=True</code>이면 개발모드로 False이면 운영모드로
+인식합니다. 운영 모드인 경우 ALLOWED_HOSTS에는 반드시 서버의 IP나 Domain을 지정해야 합니다.
+개발모드인 경우에는 값을 지정하지 않으면 <code class="highlighter-rouge">['localhost','127.0.0.1']</code>로 간주됩니다.
+지금은 개발모드 이기 때문에 <code class="highlighter-rouge">['localhost','127.0.0.1']</code>로 설정합니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">'localhost'</span><span class="p">,</span> <span class="s">'127.0.0.1'</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">INSTALLED_APPS</code> : 프로젝트에 포함되는 application들은 모두 설정 파일에 등록되어야 합니다.
+따라서 우리가 개발하고 있는 <code class="highlighter-rouge">polls</code> application도 등록해야 되겠죠. 일반적으로 application의
+설정 클래스로 등록하게 됩니다.  <code class="highlighter-rouge">polls</code> application의 설정 클래스는 자동으로 생성된 <code class="highlighter-rouge">apps.py</code>
+파일안에 <code class="highlighter-rouge">PollsConfig</code>라고 정의되어 있습니다. 이 부분을 <code class="highlighter-rouge">INSTALLED_APPS</code>에 추가합니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.admin'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+    <span class="s">'polls.apps.PollsConfig'</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">DATABASES</code> : 프로젝트에 사용할 데이터베이스 엔진입니다. Django는 default로
+SQLite3 데이터 베이스 엔진을 사용하도록 설정되어 있습니다. 이번에는 SQLite3를 사용하고
+다음 예제에서는 MariaDB를 사용하도록 하겠습니다. 따라서 이번에는 설정을 변경하지 않겠습니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'default'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">'ENGINE'</span><span class="p">:</span> <span class="s">'django.db.backends.sqlite3'</span><span class="p">,</span>
+        <span class="s">'NAME'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'db.sqlite3'</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">TIME_ZONE</code> : 마지막은 타임존 지정입니다. <code class="highlighter-rouge">UTC</code>(세계표준시)로 되어 있는 부분을
+한국 시간으로 변경합니다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s">'Asia/Seoul'</span>
+
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">기본 테이블 생성</strong></p>
+
+<p>기본 테이블을 생성하기 위해서 다음의 명령을 실행합니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py migrate</strong></p>
+</blockquote>
+
+<p><code class="highlighter-rouge">migrate</code> 명령은 데이터베이스에 변경 사항이 있을 때 이를 반영해 주는 명령어 입니다.
+Django는 모든 웹 프로젝트 개발 시 반드시 사용자와 그룹 테이블 등이 필요하다는 가정하에
+설계되었습니다. 따라서 우리가 현 시점에서 Database를 전혀 사용하지 않는다 할지라도 
+사용자 및 그룹 테이블등을 만들어 주어야 합니다.</p>
+
+<p>정상적으로 실행되면 <code class="highlighter-rouge">db.slqite3</code> 파일이 생성되게 됩니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">서버 기동</strong></p>
+
+<p>기본적인 작업을 수행했으니 이제 제공된 테스트용 웹 서버를 이용해서 우리 프로젝트를
+<code class="highlighter-rouge">deploy</code>해 보겠습니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py runserver</strong></p>
+</blockquote>
+
+<p>만약 IP와 Port를 지정하지 않으면 default로 127.0.0.1:8000으로 실행됩니다. 
+IP와 Port를 지정하시려면 다음과 같이 수행하면 됩니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py runserver 0.0.0.0:8888</strong></p>
+</blockquote>
+
+<p>서버를 기동하고 웹 브라우져로 접속해보죠. 화면이 잘 나오나요??</p>
+
+<p><img src="../../assets/built/images/python-django-welcome.png" alt="python django welcome" /></p>
+
+<p><strong class="subtitle2_fontAwesome">Admin site 접속</strong></p>
+
+<p>Django에서 제공하는 기본적인 Admin site에 접속해서 Table이 생성된 것을 확인해 보도록
+하겠습니다. 사용할 url은 <code class="highlighter-rouge">http://127.0.0.1:8000/admin</code> 입니다.</p>
+
+<p>로그인을 하려면 Username, Password를 입력해야 하는데 아직 생성하지 않았습니다. Admin
+site에 로그인하기 위해 관리자계정을 하나 생성합니다.</p>
+
+<blockquote>
+  <p><strong>C:/python-Django/MyFirstWebPoll&gt; python manage.py createsuperuser</strong></p>
+</blockquote>
+
+<p><img src="../../assets/built/images/python-django-createsuperuser.png" alt="python django createsuperuser" /></p>
+
+<p>이렇게 생성된 Username, Password를 이용하여 admin site에 접속해서 현재 생성되어 있는
+<code class="highlighter-rouge">Groups</code>, <code class="highlighter-rouge">Users</code> 테이블을 확인합니다. 사실 이 테이블이 존재하는 이유는 <code class="highlighter-rouge">settings.py</code>에
+<code class="highlighter-rouge">django.contrib.auth</code> application이 등록되어 있기 때문입니다. Django에서 기본적으로 제공하는
+application에 Users와 Groups Table이 미리 정의되어 있었다는 얘기입니다.</p>
+
+<p>기본적인 프로젝트의 뼈대를 세우고 환경설정파일을 살짝 수정한 후 테스트 웹서버를 이용해서
+우리 웹 프로젝트를 deploy까지 진행해봤습니다. 이제 Poll Application을 하나씩 순차적으로 
+작성해 보도록 하겠습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python Django 웹 프레임워크(1) - introduction</title>
+	  <link>http://localhost:4000/python-lecture-python-django-introduction</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-05-02T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-django-introduction</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Django introduction</strong></p>
+
+<p><code class="highlighter-rouge">Django</code>는 Python으로 만들어진 무료 오픈소스 웹 애플리케이션 프레임워크(web application framework)입니다.</p>
+
+<p>우리는 Web Application을 개발할 때 굉장히 빈번하게 반복적인 문제를 해결해야 될 때가 많습니다. 
+사용자들의 회원가입, 로그인, 로그아웃 등의 사용자 인증 및 관리에 대한 구현 혹은 게시판과 같이 
+사용자들이 커뮤니케이션을 할 수 있는 공간과 파일 업로드, 다운로드를 할 수 있도록 하는 
+기능 구현등이 이에 해당합니다.</p>
+
+<p>우리가 아는 거의 모든 웹 페이지들은 이러한 기능들을 기본적으로 제공합니다. 
+이러한 기능들을 구현할 때 편리한 개발환경을 만들어 놓은 것이 바로 프레임워크 이라고 생각하시면 됩니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Django 특징</strong></p>
+
+<ul>
+  <li>MVC pattern 기반의 <code class="highlighter-rouge">MVT</code></li>
+  <li><code class="highlighter-rouge">ORM</code>(Object Relational Mapping - 객체관계매핑)</li>
+  <li>자동으로 구성되는 관리자 화면</li>
+  <li><code class="highlighter-rouge">Elegant URL</code></li>
+  <li>자체 Template 시스템</li>
+  <li>Cache 시스템</li>
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Django 설치</strong></p>
+
+<p>Windows 10을 기준으로 다음과 같이 <code class="highlighter-rouge">pip</code>(python install package)를 이용하여
+<code class="highlighter-rouge">PyPI</code>(Python Package Index)에 있는 SW package를 설치하면 됩니다.</p>
+
+<blockquote>
+  <p>pip install Django</p>
+</blockquote>
+
+<p>원래는 Django의 Application개발 방식에 대한 설명을 해야 합니다. MVT 방식에 대한 이해라던지
+URLConf 처리 순서, Model, View, Template의 동작원리와 동작순서같은 것들 말이죠. 하지만
+처음 Django를 접하거나 아예 웹 프로그래밍을 접해보지 않은 사람들에게는 너무 어려운 설명일 듯
+합니다.</p>
+
+<p>조금 쉽게 풀어가기 위해 간단한 Application을 하나 만들어 가면서 부가적으로 설명을 곁들이는
+방식으로 진행하겠습니다.</p>
+
+<p>우리의 첫번째 Project는 <code class="highlighter-rouge">파이썬 웹 프로그래밍(한빛미디어)</code> 책에서 소개된 Poll project입니다.</p>
+
+<p>그럼 다음 절에서 천천히 시작해 보도록 하죠.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python 기초강좌(14) - Python 연습문제(2)</title>
+	  <link>http://localhost:4000/python-lecture-python-oop-exercise</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-03-15T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-oop-exercise</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data 처리 연습문제</strong></p>
+
+<p>R에서 데이터 분석에 사용했던 mpg data set을 이용하여 python에서 데이터 분석 처리를
+순수 프로그램으로 작성해보겠습니다.</p>
+
+<p>먼저 R의 mpg data set을 txt 파일로 저장합니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## mpg data set 파일 저장</span><span class="w">
+
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+</span><span class="n">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w">
+          </span><span class="n">file</span><span class="o">=</span><span class="s2">"C:/Temp/mpg.txt"</span><span class="p">,</span><span class="w">
+          </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w">
+          </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w">
+          </span><span class="n">fileEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"UTF-8"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><a href="/assets/downloads/mpg.txt" target="_blank">여기</a>를 클릭하면 <code class="highlighter-rouge">mpg.txt</code>을 다운받을 수 있습니다.
+또한 <a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.1/topics/mpg" target="_blank">R Documents - mpg dataset</a>
+를 클릭하면 mpg data set에 대한 자세한 명세를 보실 수 있습니다.</p>
+
+<p>이렇게 얻은 데이터 파일을 이용하여 python으로 다음의 문제를 해결합니다.</p>
+
+<pre><code class="language-txt"># 1. displ(배기량)이 4 이하인 자동차와 5 이상인 자동차 중 
+# 어떤 자동차의 hwy(고속도로 연비)가 평균적으로 더 높은지 확인하세요.
+
+# 2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 한다. 
+# "audi"와 "toyota" 중 어느 manufacturer(제조회사)의 cty(도시 연비)가 
+# 평균적으로 더 높은지 확인하세요.
+
+# 3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 한다. 
+# 이 회사들의 데이터를 추출한 후 hwy(고속도로 연비) 평균을 구하세요.
+
+# 4. "audi"에서 생산한 자동차 중에 어떤 자동차 모델의 hwy(고속도로 연비)가 
+# 높은지 알아보려고 한다. "audi"에서 생산한 자동차 중 hwy가 1~5위에 해당하는 
+# 자동차의 데이터를 출력하세요.
+
+# 5. mpg 데이터는 연비를 나타내는 변수가 2개입니다. 
+# 두 변수를 각각 활용하는 대신 하나의 통합 연비 변수를 만들어 사용하려 합니다. 
+# 평균 연비 변수는 두 연비(고속도로와 도시)의 평균을 이용합니다. 
+# 회사별로 "suv" 자동차의 평균 연비를 구한후 내림차순으로 정렬한 후 1~5위까지 데이터를 출력하세요.
+
+# 6. mpg 데이터의 class는 "suv", "compact" 등 자동차의 특징에 따라 
+# 일곱 종류로 분류한 변수입니다. 어떤 차종의 도시 연비가 높은지 비교하려 합니다. 
+# class별 cty 평균을 구하고 cty 평균이 높은 순으로 정렬해 출력하세요.
+
+# 7. 어떤 회사 자동차의 hwy(고속도로 연비)가 가장 높은지 알아보려 합니다. 
+# hwy(고속도로 연비) 평균이 가장 높은 회사 세 곳을 출력하세요.
+
+# 8. 어떤 회사에서 "compact" 차종을 가장 많이 생산하는지 알아보려고 합니다. 
+# 각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
+</code></pre>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Python 기초강의(13) - Python Exception & File</title>
+	  <link>http://localhost:4000/python-lecture-python-exception</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2020-03-14T01:40:00+09:00</pubDate>
+	  <guid>http://localhost:4000/python-lecture-python-exception</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Exception</strong></p>
+
+<p>Python의 Exception처리는 <code class="highlighter-rouge">try ~ except</code> 구문을 사용합니다. <code class="highlighter-rouge">Java</code>언어의
+예외처리와 아주 흡사하게 동작하며 예제를 통해 다양한 처리를 살펴보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># Python Exception</span>
+<span class="s">"""
+try:
+    (예외 발생 가능) statements
+except Exception:
+    예외가 발생했을 때 실행되는 문장
+else:
+    예외가 발생하지 않았을 때 실행되는 문장
+finally:
+    예외 발생 유무에 상관없이 실행되는 문장
+"""</span>    
+
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">list_data</span><span class="p">):</span>
+
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="n">list_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">list_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">list_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">sum</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"User Define Exception"</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="nb">ZeroDivisionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"0으로 나눌수 없습니다."</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Exception 발생 : "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>         
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Exception이 없습니다."</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"무조건 수행됩니다."</span><span class="p">)</span>
+
+<span class="c"># my_list = [1,2,3,4]    </span>
+<span class="c"># my_func(my_list)       # Exception이 없습니다.</span>
+<span class="c">#                        # 무조건 수행됩니다.</span>
+
+<span class="c"># my_list = [1,2]    </span>
+<span class="c"># my_func(my_list)       # Exception 발생 : list index out of range</span>
+<span class="c">#                        # 무조건 수행됩니다.</span>
+
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>    
+<span class="n">my_func</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>       <span class="c"># Exception 발생 : User Define Exception</span>
+                       <span class="c"># 무조건 수행됩니다.</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python File 처리</strong></p>
+
+<p>Python의 기본 파일 처리과정에 대해서 알아보겠습니다. 조금 더 자세한 파일처리 과정은 pandas에서
+살펴보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"student_score.txt"</span><span class="p">,</span><span class="s">"r"</span><span class="p">)</span>
+<span class="n">file2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"backup.txt"</span><span class="p">,</span><span class="s">"w"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"읽어들인 라인 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="n">file2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="n">file1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">file2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">with 구문</strong></p>
+
+<p>일반적으로 file처리를 하거나 session처리를 할 때 기본적으로 다음과 같은 
+순서를 거치게 됩니다.</p>
+
+<blockquote>
+  <p>open() -&gt; CRUD -&gt; close()</p>
+</blockquote>
+
+<p>Python에서 <code class="highlighter-rouge">with</code> 구문을 이용하면 명시적으로 resouce를 close() 해 주지 않아도
+자동으로 close()를 해 줄 수 있습니다. with block을 벗어나는 순간 자동으로 close()처리가
+일어나게 됩니다.</p>
+
+<p>위에서 살펴본 파일 처리를 with 구문으로 바꾸어보면 다음과 같습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"student_score.txt"</span><span class="p">,</span><span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">"backup.txt"</span><span class="p">,</span><span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file2</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"읽어들인 라인 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="n">file2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

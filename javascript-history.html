@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>JavaScript History</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/javascript-history" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JavaScript History" />
+    <meta property="og:description" content="Introduction 아마도 JavaScript, ECMAScript, TypeScript라는 용어를 많이 들어봤을 텐데 정확하게 어떤 차이가 있는지 이번 포스트에서 간단하게 정리를 해 보겠습니다. JavaScript 과거부터 Web 작업을 해 오신 분들은 아시겠지만 JavaScript의 과거 인식은 “알면 좋고 몰라도 상관없는 딱 그 수준의 언어” 였습니다. 하지만 개발 방법론이 진화하면서 JavaScript기반의 Library나 Framework의 필요성이 증대되고 그에 따라" />
+    <meta property="og:url" content="http://localhost:4000/javascript-history" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/javascript-logo.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-01-15T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-01-15T00:00:00+09:00" />
+    <meta property="article:tag" content="Et-cetera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JavaScript History" />
+    <meta name="twitter:description" content="Introduction 아마도 JavaScript, ECMAScript, TypeScript라는 용어를 많이 들어봤을 텐데 정확하게 어떤 차이가 있는지 이번 포스트에서 간단하게 정리를 해 보겠습니다. JavaScript 과거부터 Web 작업을 해 오신 분들은 아시겠지만 JavaScript의 과거 인식은 “알면 좋고 몰라도 상관없는 딱 그 수준의 언어” 였습니다. 하지만 개발 방법론이 진화하면서 JavaScript기반의 Library나 Framework의 필요성이 증대되고 그에 따라" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/javascript-logo.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Et-cetera" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/javascript-history",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/javascript-logo.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/javascript-history"
+    },
+    "description": "Introduction 아마도 JavaScript, ECMAScript, TypeScript라는 용어를 많이 들어봤을 텐데 정확하게 어떤 차이가 있는지 이번 포스트에서 간단하게 정리를 해 보겠습니다. JavaScript 과거부터 Web 작업을 해 오신 분들은 아시겠지만 JavaScript의 과거 인식은 “알면 좋고 몰라도 상관없는 딱 그 수준의 언어” 였습니다. 하지만 개발 방법론이 진화하면서 JavaScript기반의 Library나 Framework의 필요성이 증대되고 그에 따라"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="JavaScript History" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="14 January 2018">14 January 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/et-cetera/'>ET-CETERA</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">JavaScript History</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/javascript-logo.jpg)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><strong class="post_introduction">Introduction</strong></p>
+
+<p>아마도 <code class="highlighter-rouge">JavaScript</code>, <code class="highlighter-rouge">ECMAScript</code>, <code class="highlighter-rouge">TypeScript</code>라는 용어를 많이 들어봤을 텐데 정확하게 어떤 차이가 있는지
+이번 포스트에서 간단하게 정리를 해 보겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> JavaScript</strong></p>
+
+<p>과거부터 Web 작업을 해 오신 분들은 아시겠지만 JavaScript의 과거 인식은 “알면 좋고 몰라도 상관없는 딱 그 수준의 언어” 
+였습니다. 하지만 개발 방법론이 진화하면서 JavaScript기반의 Library나 Framework의 필요성이 증대되고 그에 따라
+JavaScript라는 언어의 위상도 상당히 올라갔습니다. ( <code class="highlighter-rouge">HTML5</code>와 <code class="highlighter-rouge">Node.js</code>의 역할이 지대했지요. )</p>
+
+<p>JavaScript라는 언어의 전신은 1995년 Netscape사에서 Brendan Eich가 <code class="highlighter-rouge">Mocha</code>라는 이름으로 만들어낸 스크립트 
+언어입니다. 개발을 완료하고 후에 <code class="highlighter-rouge">LiveScript</code>라는 이름으로 세상에 공개되었습니다. 그런데 이 시점에 Netscape사가 Java를 
+개발한 Sun Microsystems사와 협업하면서 Java applet이 큰 인기를 끌게 되었는데 이를 상업적으로 이용하고자 
+이름을 LiveScript에서 <code class="highlighter-rouge">JavaScript</code>로 변경하게 된 것입니다.</p>
+
+<blockquote>
+  <p><strong>이름의 변경 순서가 <code class="highlighter-rouge">Mocha</code> <i class="fa fa-arrow-right"></i> <code class="highlighter-rouge">LiveScript</code> 
+<i class="fa fa-arrow-right"></i> <code class="highlighter-rouge">JavaScript</code> 가 되는군요.</strong></p>
+</blockquote>
+
+<p>MS(Microsoft)에서는 이에 대응하기 위해 <code class="highlighter-rouge">JScript</code>를 만들고 <code class="highlighter-rouge">IE 3</code>부터 JScript를 포함시켜서 제공했지요. 당연한 말이지만
+JavaScript와 JScript는 서로 비슷하지만 특징이 다릅니다. 그로인해 우리가 잘 알고있는 JavaScript의 고질적인 문제인 
+<code class="highlighter-rouge">Fragmentation</code>(파편화 현상)이 발생하게 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> ECMAScript</strong></p>
+
+<p>여하간 Netscape사는 이 JavaScript의 표준을 잡기 위해 <code class="highlighter-rouge">ECMA</code>(정보 통신기술 표준화 기구)에 표준화 작업을 요청합니다. 당연히
+JavaScript라는 이름을 사용하려고 했지만 Sun과의 라이선스 문제 때문에 <code class="highlighter-rouge">ECMAScript</code>라는 이름으로 표준화가 진행되게 됩니다.</p>
+
+<p>이렇게만 놓고 보면 JavaScript와 ECMAScript가 비슷한 의미로 사용되는 것처럼 보이는데 사실 작은 차이가 있습니다.</p>
+
+<p><strong>우리가 흔희 말하는 JavaScript는 1개의 Core와 2개의 Module로 구성되어 있습니다.</strong> <br />
+여기서 1개의 Core는 JavaScript를 구성하고 있는 <code class="highlighter-rouge">Script language(ECMAScript)</code>입니다. <br />
+2개의 Module은 <code class="highlighter-rouge">BOM(Browser Object Model)</code>, <code class="highlighter-rouge">DOM(Document Object Model)</code>을 지칭합니다.</p>
+
+<p>달리 말하자면 ECMAScript는 JavaScript를 구성하는 Core Script언어로 웹 환경에서만 사용되는 언어가 아닙니다. 웹 환경은 
+ECMAScript가 사용되는 환경 중 하나일 뿐입니다.</p>
+
+<blockquote>
+  <p><strong><code class="highlighter-rouge">JavaScript</code> = <code class="highlighter-rouge">ECMAScript</code> + <code class="highlighter-rouge">BOM</code> + <code class="highlighter-rouge">DOM</code></strong></p>
+</blockquote>
+
+<p>현재 ECMAScript version은 7까지 나와있습니다. (<code class="highlighter-rouge">ECMAScript 2016</code> = <code class="highlighter-rouge">ES7</code>)</p>
+
+<p>이렇듯 <code class="highlighter-rouge">JavaScript</code>와 <code class="highlighter-rouge">ECMAScript</code>는 정확한 의미의 차이는 분명히 있지만 그냥 저냥 대충 통용해서 사용합니다. 흔히 우리가
+JavaScript라고 표현하면 ECMAScript를 의미한다고 보시면 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript</strong></p>
+
+<p>그러면 TypeScript는 또 어떤걸까요? 왜 TypeScript가 대세로 떠오른 걸까요?</p>
+
+<p><code class="highlighter-rouge">TypeScript</code>는 Microsoft에서 개발하여 2012년에 발표한 오픈 소스 프로그래밍 언어입니다. 
+JavaScript로 대규모 application개발을 하기 위해 개발되었고 컴파일 과정을 거치면 JavaScript가 되는 언어입니다.
+CoffeeScript 처럼 compile하면 JavaScript가 생성되는 변환 언어의 한 종류라 볼 수 있습니다. 
+그냥 JavaScript로 개발하면 되지 굳이 이런 변환언어를 사용하는 이유는 무엇일까요? ( 이런 프로그래밍을 
+<a href="./what-is-metaprogramming.html" target="_blank">메타프로그래밍</a> 이라고 합니다. )</p>
+
+<p><strong>가장 큰 이유는 기능의 추가에 있습니다.</strong></p>
+
+<p>변환언어의 가장 큰 장점은 변환되는 언어에 기능을 쉽게 추가할 수 있다는 것인데 예를 들면, 추상 클래스, 인터페이스, 
+정적 데이터타입 사용, 엄격한 타입 체크등을 JavaScript에 추가하여 개발을 쉽게 끌고 갈 수 있습니다.</p>
+
+<p>즉, 전통적인 OOP방식으로 JavaScript개발을 진행할 수 있다는 것이죠.</p>
+
+<blockquote>
+  <p><strong>기존 객체지향 언어(Java, C++, C#)를 알고 있고 JavaScript를 알고 있으면 TypeScript를 아주 쉽게
+배울 수 있습니다.</strong></p>
+</blockquote>
+
+<p>TypeScript는 다른 변환언어와는 다르게 <strong>JavaScript의 superset</strong>입니다. 그렇기 때문에 이미 JavaScript를 알고 있으면
+쉽게 TypeScript를 사용할 수 있으며 <code class="highlighter-rouge">ES6</code>(ECMAScript 2015)나 <code class="highlighter-rouge">ES7</code>(ECMAScript 2016)에서 제공되는 기능 중 필요한 것만 
+골라서 이용할 수 있습니다. 
+아래의 그림은 TypeScript와 ECMAScript간의 포함관계를 보여줍니다.</p>
+
+<p><img src="assets/built/images/es5-es6-typescript-circle-diagram.png" alt="Image" /></p>
+<div class="img-reference">( 이미지 출처 : https://angular2buch.de )</div>
+
+<p>2017년 3월부로 TypeScript는 Google의 공식언어 중 하나로 채택되었습니다. MS에서 개발한 언어를 Google이
+표준언어로 채택하다니 놀랍습니다. 그만큼 TypeScript의 언어적 기능이 좋고 앞으로의 발전가능성이 많다는 의미겠지요.</p>
+
+<p>기존 Google의 사내 표준언어 (<code class="highlighter-rouge">Canonical Language</code>)는 C, C++, Java, JavaScript, Python, Go 정도였는데 
+Google은 이 중 JavaScript를 이용하여 AngularJS(1.x)를 개발했었습니다.</p>
+
+<p>하지만 AngualrJS(1.x)의 차기버전인 Angular(2.x)를 개발하면서 JavaScript의 기능상의 한계를 느끼게 되고
+결국 2014년에 Google에서 발표한 <code class="highlighter-rouge">AtScript</code>를 이용해 Angular(2.x)를 개발하게 됩니다.</p>
+
+<p>하지만 TypeScript가 Angular의 표준언어 중 하나로 채택이 되면서 기존의 AtScript로 작성했던 
+Angular 2를 몽땅 TypeScript로 전환했습니다. Google에서 말하기로는 변환이 아주 쉬웠다고 하더군요.</p>
+
+<p>이렇게 TypeScript의 위상이 올라가면서 기존 Google에서 JavaScript의 대체 언어로 밀고있었던 
+<code class="highlighter-rouge">Dart</code>의 위상 역시 살짝 하락한 상태입니다. (물론 Google은 아니라고 하지만요. )</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">Angular</code>는 공식적으로 3개의 언어를 지원합니다. (TypeScript, JavaScript, Dart)   <br />
+그런데 공식문서에서나 커뮤니티활동에서 가장 많이 사용되는것은 <code class="highlighter-rouge">TypeScript</code>입니다. 
+결국 Angular는 꼭 해야할 것 중 하나이니 TypeScript도 그냥 해야지요..머..</p>
+</blockquote>
+
+<p>End.</p>
+
+<hr />
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/et-cetera/">Et-cetera</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/arduino">Arduino</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/can">CAN Protocol</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/hadoop">Hadoop 설치와 활용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/et-cetera/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/kramdown-image-resize">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/github_pages_cover.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/kramdown-image-resize">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">GitHub Page에서 Image Resize 방법</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>**Introduction**{: class="post_introduction" } kramdown에서 image를 표현할 때 resize하는 방법입니다. --- 기본 `markdown`에서 이미지를 사용하는 방법은 다음과 같습니다. ~~~markdown ![이미지 텍스트](https://github.com/favicon.ico) ~~~ GitHub Page는 현재 markdown engine으로 `kramdown`을 사용할 수 있습니다. kramdown에서는 다음의 문법으로</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">JavaScript History</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=JavaScript+History&amp;url=https://moon9342.github.io/javascript-history"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/javascript-history"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

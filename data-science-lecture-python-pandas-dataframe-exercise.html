@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Python 데이터분석 라이브러리(10) - Pandas(Exercise)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/data-science-lecture-python-pandas-dataframe-exercise" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Python 데이터분석 라이브러리(10) - Pandas(Exercise)" />
+    <meta property="og:description" content="Data-Science 강의는 여러 절로 구성되어 있습니다. Python 데이터분석 라이브러리(1) - NumPy Python 데이터분석 라이브러리(2) - NumPy(Exercise) Python 데이터분석 라이브러리(3) - Pandas(Series) Python 데이터분석 라이브러리(4) - Pandas(DataFrame 생성) Python 데이터분석 라이브러리(5) - Pandas(DataFrame indexing) Python 데이터분석 라이브러리(6) - Pandas(DataFrame functions) Python 데이터분석 라이브러리(7) - Pandas(DataFrame merge) Python 데이터분석 라이브러리(8) - Pandas(DataFrame" />
+    <meta property="og:url" content="http://localhost:4000/data-science-lecture-python-pandas-dataframe-exercise" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/digital-marketing.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-04-12T01:40:00+09:00" />
+    <meta property="article:modified_time" content="2020-04-12T01:40:00+09:00" />
+    <meta property="article:tag" content="Data-science" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Python 데이터분석 라이브러리(10) - Pandas(Exercise)" />
+    <meta name="twitter:description" content="Data-Science 강의는 여러 절로 구성되어 있습니다. Python 데이터분석 라이브러리(1) - NumPy Python 데이터분석 라이브러리(2) - NumPy(Exercise) Python 데이터분석 라이브러리(3) - Pandas(Series) Python 데이터분석 라이브러리(4) - Pandas(DataFrame 생성) Python 데이터분석 라이브러리(5) - Pandas(DataFrame indexing) Python 데이터분석 라이브러리(6) - Pandas(DataFrame functions) Python 데이터분석 라이브러리(7) - Pandas(DataFrame merge) Python 데이터분석 라이브러리(8) - Pandas(DataFrame" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/digital-marketing.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Data-science" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/data-science-lecture-python-pandas-dataframe-exercise",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/digital-marketing.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/data-science-lecture-python-pandas-dataframe-exercise"
+    },
+    "description": "Data-Science 강의는 여러 절로 구성되어 있습니다. Python 데이터분석 라이브러리(1) - NumPy Python 데이터분석 라이브러리(2) - NumPy(Exercise) Python 데이터분석 라이브러리(3) - Pandas(Series) Python 데이터분석 라이브러리(4) - Pandas(DataFrame 생성) Python 데이터분석 라이브러리(5) - Pandas(DataFrame indexing) Python 데이터분석 라이브러리(6) - Pandas(DataFrame functions) Python 데이터분석 라이브러리(7) - Pandas(DataFrame merge) Python 데이터분석 라이브러리(8) - Pandas(DataFrame"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Python 데이터분석 라이브러리(10) - Pandas(Exercise)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="11 April 2020">11 April 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/data-science/'>DATA-SCIENCE</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Python 데이터분석 라이브러리(10) - Pandas(Exercise)</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/digital-marketing.jpg)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Data-Science 강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+
+    <li><a href="./data-science-lecture-python-numpy">Python 데이터분석 라이브러리(1) - NumPy</a></li>
+    <li><a href="./data-science-lecture-python-numpy-exercise">Python 데이터분석 라이브러리(2) - NumPy(Exercise)</a></li>
+
+    <li><a href="./data-science-lecture-python-pandas-series">Python 데이터분석 라이브러리(3) - Pandas(Series)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-basic">Python 데이터분석 라이브러리(4) - Pandas(DataFrame 생성)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-indexing">Python 데이터분석 라이브러리(5) - Pandas(DataFrame indexing)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-functions">Python 데이터분석 라이브러리(6) - Pandas(DataFrame functions)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-merge">Python 데이터분석 라이브러리(7) - Pandas(DataFrame merge)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-transform">Python 데이터분석 라이브러리(8) - Pandas(DataFrame 제어)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-group">Python 데이터분석 라이브러리(9) - Pandas(DataFrame Grouping)</a></li>
+    <li><a href="./data-science-lecture-python-pandas-dataframe-exercise">Python 데이터분석 라이브러리(10) - Pandas(Exercise)</a></li>
+
+<!--    <li><a href="./data-science-lecture-python-pandas-dataframe-manipulation">Python 데이터분석 라이브러리(6) - Pandas(DataFrame 조작)</a></li>    -->
+<!--    <li><a href="./data-science-lecture-python-pandas-dataframe-multi-index">Python 데이터분석 라이브러리(8) - Pandas(DataFrame multi index)</a></li>    -->
+</ul>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">Pandas Exercise - 1</strong></p>
+
+<p>Group Lens(미네소타 대학 컴퓨터과의 research lab)에서 수집한 영화 데이터를 이용해
+데이터 분석을 해 보자.</p>
+
+<p>영화의 선호 정보를 1~5사이의 점수로 표현 (5에 가까울수록 선호)</p>
+
+<p><a href="https://grouplens.org/datasets/movielens/" target="_blank">Group Lens 사이트</a></p>
+
+<p><a href="/assets/downloads/ml-latest-small.zip" target="_blank">사용할 데이터 파일</a></p>
+
+<blockquote>
+  <p><strong>pandas를 사용하여 다음의 문제를 해결합니다. 동률이 있을 경우 오름차순으로 정렬하여 출력합니다.</strong></p>
+</blockquote>
+
+<pre><code class="language-txt">
+1. 사용자가 평가한 모든 영화의 전체 평균 평점을 출력하세요.
+
+2. 각 사용자별 평균 평점을 구하세요. 출력시 정렬은 userId로 오름차순 정렬합니다.
+
+3. 각 영화별 평균 평점을 구하세요. 출력시 정렬은 movieId로 오름차순 정렬합니다. 
+
+4. 평균 평점이 가장 높은 영화의 제목을 출력하세요.
+   단, 동률이 있을 경우 모두 출력하고 title을 기준으로 오름차순 정렬하세요.
+
+5. Comedy영화 중 가장 평점이 낮은 영화의 제목을 출력하세요.
+   단, 동률이 있을 경우 모두 출력하고 title을 기준으로 오름차순 정렬하세요.
+
+6. 2015년도에 평가된 모든 Romance 영화의 평균 평점은?
+
+</code></pre>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+예상되는 정답.
+
+1. 사용자가 평가한 모든 영화의 전체 평균 평점을 출력하세요.
+   =&gt; 3.501556983616962
+
+
+
+2. 각 사용자별 평균 평점을 구하세요. 출력시 정렬은 userId로 오름차순 정렬합니다.
+   =&gt; userId
+      1      4.366379
+      2      3.948276
+      3      2.435897
+      4      3.555556
+      5      3.636364
+               ...   
+      606    3.657399
+      607    3.786096
+      608    3.134176
+      609    3.270270
+      610    3.688556
+      Name: rating, Length: 610, dtype: float64
+
+
+
+3. 각 영화별 평균 평점을 구하세요. 출력시 정렬은 movieId로 오름차순 정렬합니다.
+   =&gt; 	movieId	title	rating
+      0	1	Toy Story (1995)	3.920930
+      1	2	Jumanji (1995)	3.431818
+      2	3	Grumpier Old Men (1995)	3.259615
+      3	4	Waiting to Exhale (1995)	2.357143
+      4	5	Father of the Bride Part II (1995)	3.071429
+      ...	...	...	...
+      9737	193581	Black Butler: Book of the Atlantic (2017)	4.000000
+      9738	193583	No Game No Life: Zero (2017)	3.500000
+      9739	193585	Flint (2017)	3.500000
+      9740	193587	Bungo Stray Dogs: Dead Apple (2018)	3.500000
+      9741	193609	Andrew Dice Clay: Dice Rules (1991)	4.000000
+      9742 rows × 3 columns
+
+
+
+4. 평균 평점이 가장 높은 영화의 제목을 출력하세요.
+   단, 동률이 있을 경우 모두 출력하고 title을 기준으로 오름차순 정렬하세요.
+   =&gt; 	movieId	title	rating
+      5690	27751	'Salem's Lot (2004)	5.0
+      7332	77846	12 Angry Men (1997)	5.0
+      9046	141816	12 Chairs (1976)	5.0
+      3893	5468	20 Million Miles to Earth (1957)	5.0
+      5639	27373	61* (2001)	5.0
+      ...	...	...	...
+      9711	187717	Won't You Be My Neighbor? (2018)	5.0
+      8355	108795	Wonder Woman (2009)	5.0
+      9289	158398	World of Glory (1991)	5.0
+      9560	173351	Wow! A Talking Fish! (1983)	5.0
+      7521	84273	Zeitgeist: Moving Forward (2011)	5.0
+      296 rows × 3 columns
+
+
+
+5. Comedy영화 중 가장 평점이 낮은 영화의 제목을 출력하세요.
+   단, 동률이 있을 경우 모두 출력하고 title을 기준으로 오름차순 정렬하세요.
+   =&gt; 	movieId	title	genres
+      8893	134528	Aloha (2015)	Comedy|Drama|Romance
+      5777	31422	Are We There Yet? (2005)	Children|Comedy
+      7762	91414	Arthur Christmas (2011)	Animation|Children|Comedy|Drama
+      9419	165645	Bad Santa 2 (2016)	Comedy
+      4439	6557	Born to Be Wild (1995)	Adventure|Children|Comedy|Drama
+      5409	25782	Boudu Saved From Drowning (Boudu sauvé des eau...	Comedy
+      6554	54934	Brothers Solomon, The (2007)	Comedy
+      5453	26095	Carabineers, The (Carabiniers, Les) (1963)	Comedy|Drama|War
+      6545	54768	Daddy Day Camp (2007)	Children|Comedy
+      4881	7312	Follow Me, Boys! (1966)	Comedy|Drama
+      7553	85334	Hard Ticket to Hawaii (1987)	Action|Comedy
+      8417	110773	Haunted House 2, A (2014)	Comedy|Horror
+      5662	27595	Jesus Christ Vampire Hunter (2001)	Action|Comedy|Horror|Musical
+      8984	138798	Joe Dirt 2: Beautiful Loser (2015)	Comedy
+      7820	92681	Journey 2: The Mysterious Island (2012)	Action|Adventure|Comedy|Sci-Fi|IMAX
+      6160	44243	Leprechaun 4: In Space (1997)	Comedy|Fantasy|Horror|Sci-Fi
+      8248	104644	Maria Bamford: The Special Special Special! (2...	Comedy
+      7201	72696	Old Dogs (2009)	Comedy
+      9056	141994	Saving Christmas (2014)	Children|Comedy
+      5258	8632	Secret Society (2002)	Comedy
+      9590	175475	The Emoji Movie (2017)	Animation|Children|Comedy
+      8908	135216	The Star Wars Holiday Special (1978)	Adventure|Children|Comedy|Sci-Fi
+      8676	122246	Tooth Fairy 2 (2012)	Children|Comedy
+      5795	31692	Uncle Nino (2003)	Comedy
+      6784	60363	Zombie Strippers! (2008)	Comedy|Horror
+
+
+
+6. 2015년도에 평가된 모든 Romance 영화의 평균 평점은?
+   =&gt; 3.396375098502758
+
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">Pandas Exercise - 2</strong></p>
+
+<p>R에서 데이터 분석에 사용되는 mpg data set을 이용하여 pandas로 기술분석을
+진행합니다.</p>
+
+<p>mpg data set 파일은 아래 링크에서 다운로드 할 수 있습니다.</p>
+
+<p><a href="/assets/downloads/mpg.zip" target="_blank">사용할 mpg 데이터 파일</a></p>
+
+<p>만약 R이 설치되어 있다면 다음의 코드로 데이터파일을 생성할 수 있습니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## mpg data set 파일 저장</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+</span><span class="n">write.csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w">
+          </span><span class="n">file</span><span class="o">=</span><span class="s2">"C:/notebook_dir/mpg.txt"</span><span class="p">,</span><span class="w">
+          </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w">
+          </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w">
+          </span><span class="n">fileEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"UTF-8"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>기본적인 column에 대한 설명은 아래와 같고 더 자세한 설명은 아래에 링크된
+사이트로 이동하시면 상세한 설명을 보실 수 있습니다.</p>
+
+<p><a href="https://rpubs.com/shailesh/mpg-exploration" target="_blank">R mpg data set Documentation</a></p>
+
+<pre><code class="language-txt"># 주요컬럼 설명
+# manufacturer : 제조회사
+# displ : 배기량
+# cyl : 실린더 개수
+# drv : 구동 방식
+# hwy : 고속도로 연비
+# class : 자동차 종류
+# model : 자동차 모델명
+# year : 생산연도
+# trans : 변속기 종류
+# cty : 도시 연비
+# fl : 연료 종류
+</code></pre>
+
+<blockquote>
+  <p><strong>pandas를 사용하여 다음의 문제를 해결합니다.</strong></p>
+</blockquote>
+
+<pre><code class="language-txt">
+1. displ(배기량)이 4 이하인 자동차와 5 이상인 자동차 중 
+   어떤 자동차의 hwy(고속도로 연비)가 평균적으로 더 높은지 확인하세요.
+
+
+2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 한다. 
+   "audi"와 "toyota" 중 어느 manufacturer(제조회사)의 cty(도시 연비)가 
+   평균적으로 더 높은지 확인하세요.
+
+
+3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 한다. 
+   이 회사들의 데이터를 추출한 후 hwy(고속도로 연비) 평균을 구하세요.
+
+
+4. "audi"에서 생산한 자동차 중에 어떤 자동차 모델의 hwy(고속도로 연비)가 
+   높은지 알아보려고 한다. 
+   "audi"에서 생산한 자동차 중 hwy가 1~5위에 해당하는 자동차의 데이터를 출력하세요.
+
+
+5. mpg 데이터는 연비를 나타내는 변수가 2개입니다. 
+   두 변수를 각각 활용하는 대신 하나의 통합 연비 변수를 만들어 사용하려 합니다. 
+   평균 연비 변수는 두 연비(고속도로와 도시)의 평균을 이용합니다. 
+   회사별로 "suv" 자동차의 평균 연비를 구한후 내림차순으로 정렬한 후 1~5위까지 데이터를 출력하세요.
+
+
+6. mpg 데이터의 class는 "suv", "compact" 등 자동차의 특징에 따라 
+   일곱 종류로 분류한 변수입니다. 어떤 차종의 도시 연비가 높은지 비교하려 합니다. 
+   class별 cty 평균을 구하고 cty 평균이 높은 순으로 정렬해 출력하세요.
+
+
+7. 어떤 회사 자동차의 hwy(고속도로 연비)가 가장 높은지 알아보려 합니다. 
+   hwy(고속도로 연비) 평균이 가장 높은 회사 세 곳을 출력하세요.
+
+
+8. 어떤 회사에서 "compact" 차종을 가장 많이 생산하는지 알아보려고 합니다. 
+   각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
+
+</code></pre>
+
+<pre><code class="language-txt">
+예상되는 정답.
+
+1. displ(배기량)이 4 이하인 자동차와 5 이상인 자동차 중 
+   어떤 자동차의 hwy(고속도로 연비)가 평균적으로 더 높은지 확인하세요.
+   =&gt; 배기량 4이하인자동차 : 25.96319018404908
+      배기량 5이상인자동차 : 18.07894736842105
+
+2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 한다. 
+   "audi"와 "toyota" 중 어느 manufacturer(제조회사)의 cty(도시 연비)가 
+   평균적으로 더 높은지 확인하세요.
+    =&gt; audi의도시연비평균 : 17.61111111111111
+       toyota의도시연비평균 : 18.529411764705884
+ 
+3. "chevrolet", "ford", "honda" 자동차의 고속도로 연비 평균을 알아보려고 한다. 
+   이 회사들의 데이터를 추출한 후 hwy(고속도로 연비) 평균을 구하세요.
+    =&gt; hwy(고속도로 연비) 평균 : 22.50943396226415
+
+4. "audi"에서 생산한 자동차 중에 어떤 자동차 모델의 hwy(고속도로 연비)가 
+   높은지 알아보려고 한다. "audi"에서 생산한 자동차 중 hwy가 1~5위에 해당하는 
+   자동차의 데이터를 출력하세요.
+    =&gt; manufacturer	model	displ	year	cyl	trans	drv	cty	hwy	fl	class
+       2	audi	a4	2.0	2008	4	manual(m6)	f	20	31	p	compact
+       3	audi	a4	2.0	2008	4	auto(av)	f	21	30	p	compact
+       0	audi	a4	1.8	1999	4	auto(l5)	f	18	29	p	compact
+       1	audi	a4	1.8	1999	4	manual(m5)	f	21	29	p	compact
+       9	audi	a4 quattro	2.0	2008	4	manual(m6)	4	20	28	p	compact
+
+5. mpg 데이터는 연비를 나타내는 변수가 2개입니다. 
+   두 변수를 각각 활용하는 대신 하나의 통합 연비 변수를 만들어 사용하려 합니다. 
+   평균 연비 변수는 두 연비(고속도로와 도시)의 평균을 이용합니다. 
+   회사별로 "suv" 자동차의 평균 연비를 구한후 내림차순으로 정렬한 후 1~5위까지 데이터를 출력하세요.
+   =&gt; 	        avg_fuel_efficiency
+     manufacturer	
+     subaru	21.916667
+     toyota	16.312500
+     nissan	15.875000
+     mercury	15.625000
+     jeep	15.562500
+     ford	15.333333
+     chevrolet	14.888889
+     lincoln	14.166667
+     land rover	14.000000
+     dodge	13.928571 
+
+6. mpg 데이터의 class는 "suv", "compact" 등 자동차의 특징에 따라 
+   일곱 종류로 분류한 변수입니다. 어떤 차종의 도시 연비가 높은지 비교하려 합니다. 
+   class별 cty 평균을 구하고 cty 평균이 높은 순으로 정렬해 출력하세요.
+   =&gt; class
+     subcompact    20.371429
+     compact       20.127660
+     midsize       18.756098
+     minivan       15.818182
+     2seater       15.400000
+     suv           13.500000
+     pickup        13.000000
+     Name: cty, dtype: float64
+
+7. 어떤 회사 자동차의 hwy(고속도로 연비)가 가장 높은지 알아보려 합니다. 
+   hwy(고속도로 연비) 평균이 가장 높은 회사 세 곳을 출력하세요.
+   =&gt; manufacturer
+     honda         32.555556
+     volkswagen    29.222222
+     hyundai       26.857143
+     Name: hwy, dtype: float64
+
+8. 어떤 회사에서 "compact" 차종을 가장 많이 생산하는지 알아보려고 합니다. 
+   각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
+   =&gt; manufacturer
+     audi          15
+     volkswagen    14
+     toyota        12
+     subaru         4
+     nissan         2
+     Name: class, dtype: int64
+
+</code></pre>
+
+<hr />
+
+<p><strong class="subtitle2_fontAwesome">Pandas Exercise - 3</strong></p>
+
+<p>본격적으로 데이터 분석 연습문제를 풀어겠습니다.</p>
+
+<p>실습데이터는 <code class="highlighter-rouge">한국복지패널데이터</code>를 이용합니다. 이 데이터는 한국보건사회연구원에서
+전국 7000여 가구를 선정해 2006년부터 매년 추적 조사한 자료로, 경제활동, 생활실태,
+복지욕구등 천여 개 변수로 구성되어 있습니다.</p>
+
+<p>해당 데이터에는 우리나라의 다양한 삶에 대한 데이터가 들어있고 이를 분석하면 대한민국
+사람들이 어떻게 살아가고 있는가를 분석할 수 있습니다.</p>
+
+<p><a href="/assets/downloads/Koweps.zip" target="_blank">사용할 한국복지패널데이터 데이터 파일</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># 한국복지패널데이터를 이용한 데이터 분석 연습</span>
+
+<span class="c"># 데이터 준비</span>
+
+<span class="c"># 제공된 파일의 압축을 풀면 파일이 2개 있습니다. </span>
+<span class="c"># Koweps_hpc10_2015_beta1.sav : SPSS 데이터 파일 (128M)</span>
+<span class="c"># Koweps_Codebook.xlsx : 우리가 사용할 column에 대한 설명</span>
+<span class="c"># 총 7개의 column만을 이용합니다. </span>
+
+
+<span class="c"># 데이터 파일인 Koweps_hpc10_2015_beta1.sav 파일은 </span>
+<span class="c"># 상용 통계분석 소프트웨어인 SPSS 전용파일입니다. </span>
+
+<span class="c"># 해당 데이터 파일은 SPSS 전용파일이기 때문에 pandas에서 사용하기 </span>
+<span class="c"># 위해서 다음의 코드를 이용해서 DataFrame으로 변환해야 합니다.</span>
+
+
+<span class="c"># pip install savReaderWriter </span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">savReaderWriter</span>
+
+<span class="k">with</span> <span class="n">savReaderWriter</span><span class="o">.</span><span class="n">SavReader</span><span class="p">(</span><span class="s">'./data/Koweps_hpc10_2015_beta1.sav'</span><span class="p">,</span> <span class="n">ioUtf8</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="nb">all</span><span class="p">(),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">header</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>      <span class="c"># # (16664, 957)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'h10_g3'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c"># 성별</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'h10_g4'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c"># 태어난 연도</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>준비된 데이터를 이용하여 데이터 분석을 진행합니다.</strong></p>
+</blockquote>
+
+<pre><code class="language-txt">1. 성별에 따른 월급 차이
+   과거에 비해 여성의 사회 진출이 활발하지만 직장에서의
+   위상에서는 여전히 차별이 존재하고 있는것이 사실.
+   실제로 그러한지 월급의 차이를 이용하여 사실을 확인해보자
+
+
+2. 나이와 월급의 관계
+   평균적으로 몇 살 때 월급을 가장 많이 받을까? 또 그때의 평균 월급은 얼마인가?
+
+
+3. 연령대에 따른 월급 차이
+   30세 미만을 초년(young), 
+   30~59세 : 중년(middle), 
+   60세 이상 : 노년(old)
+   위의 범주로 연령대에 따른 월급의 차이를 알아보자
+
+
+4. 연령대 및 성별 월급 차이
+   성별 월급 차이는 연령대에 따라 다른 양상을 보일 수 있습니다.
+   성별 월급 차이가 연령대에 따라 다른지 분석해보자
+
+   기존에는 3그룹(초년,중년,노년)이었지만 이젠 6그룹으로
+   그룹핑을 해야 한다.(초년남성,초년여성,..)
+
+
+5. 직업별 월급 차이
+   어떤 직업이 월급을 가장 많이 받을까?
+   직업별 월급을 분석해 보자
+   직업코드는 제공된 Koweps_Codebook.xlsx을 이용하면 
+   편하게 코드값을 이용 할 수 있습니다.
+
+
+6. 성별 직업 빈도
+   성별로 어떤 직업이 가장 많을까?
+
+
+7. 종교 유무에 따른 이혼율
+   종교가 있는 사람들이 이혼을 덜 할까??
+   종교있는 사람과 종교가 없는 사람들의 총원이 다르기 때문에
+   각 파트의 이혼률을 구해서 비교하면 될 듯 합니다.
+    
+
+
+8. 지역별 연령대 비율
+   노년층이 많은 지역은 어디일까?
+   노년층의 수가 많은 지역이 어디인지를 알아내는 문제입니다. 각 지역마다 노년층의
+   인구수를 구해서 가장 많은 노년층 인구가 있는 지역을 출력하시면 됩니다.
+
+</code></pre>
+
+<pre><code class="language-txt">
+예상되는 정답.
+
+1. 성별에 따른 월급 차이
+   과거에 비해 여성의 사회 진출이 활발하지만 직장에서의
+   위상에서는 여전히 차별이 존재하고 있는것이 사실.
+   실제로 그러한지 월급의 차이를 이용하여 사실을 확인해보자
+    ==&gt; # 결과
+        # 남성 평균 월급 : 312.2932
+        # 여성 평균 월급 : 163.2471
+        # 남성이 여성보다 월급이 약 150만원 많다.
+
+2. 나이와 월급의 관계
+   평균적으로 몇 살 때 월급을 가장 많이 받을까? 또 그때의 평균 월급은 얼마인가?
+   ==&gt; 월급을 가장 많이 받는 나이는 : 53살, 월급 : 318.6777   
+
+
+3. 연령대에 따른 월급 차이
+   30세 미만을 초년(young), 
+   30~59세 : 중년(middle), 
+   60세 이상 : 노년(old)
+   위의 범주로 연령대에 따른 월급의 차이를 알아보자
+   ==&gt; # 초년(young) : 163.5953
+       # 중년(middle) : 281.8871
+       # 노년(old) : 125.3295
+
+
+4. 연령대 및 성별 월급 차이
+   성별 월급 차이는 연령대에 따라 다른 양상을 보일 수 있습니다.
+   성별 월급 차이가 연령대에 따라 다른지 분석해보자
+   기존에는 3그룹(초년,중년,노년)이었지만 이젠 6그룹으로
+   그룹핑을 해야 한다.(초년남성,초년여성,..)
+   ==&gt; # 초년 남성 : 170.81737
+       # 초년 여성 : 159.50518
+       # 중년 남성 : 353.07574
+       # 중년 여성 : 187.97552
+       # 노년 남성 : 173.85558
+       # 노년 여성 : 81.52917
+
+
+
+5. 직업별 월급 차이
+   어떤 직업이 월급을 가장 많이 받을까?
+   직업별 월급을 분석해 보자
+   직업코드는 제공된 Koweps_Codebook.xlsx을 이용하면 
+   편하게 코드값을 이용 할 수 있습니다.
+ 
+
+6. 성별 직업 빈도
+   성별로 어떤 직업이 가장 많을까?
+
+
+7. 종교 유무에 따른 이혼율
+   종교가 있는 사람들이 이혼을 덜 할까??
+
+
+8. 지역별 연령대 비율
+   노년층이 많은 지역은 어디일까?
+
+</code></pre>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Data-Science 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+
+<!--<ul class="lecture-reference">-->
+<!--    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>-->
+<!--    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>-->
+<!--    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>-->
+<!--    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>-->
+<!--    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>-->
+<!--</ul>-->
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/data-science/">Data-science</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/data-science-lecture-python-pandas-dataframe-group">Python 데이터분석 라이브러리(9) - Pandas(DataFrame Grouping)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/data-science-lecture-python-pandas-dataframe-transform">Python 데이터분석 라이브러리(8) - Pandas(DataFrame 제어)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/data-science-lecture-python-pandas-dataframe-merge">Python 데이터분석 라이브러리(7) - Pandas(DataFrame merge)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/data-science/">
+                                
+                                    See all 9 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-django-introduction">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-django-introduction">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python Django 웹 프레임워크(1) - introduction</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include python-lecture-table-of-contents.html %} --- **Django introduction**{: class="subtitle_fontAwesome" } `Django`는 Python으로 만들어진 무료 오픈소스 웹 애플리케이션 프레임워크(web application framework)입니다. 우리는 Web Application을 개발할 때 굉장히 빈번하게 반복적인 문제를 해결해야 될 때가 많습니다. 사용자들의</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/data-science-lecture-python-pandas-dataframe-group">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/digital-marketing.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/data-science-lecture-python-pandas-dataframe-group">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Data-science</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 데이터분석 라이브러리(9) - Pandas(DataFrame Grouping)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Data-Science 강의는 여러 절로 구성되어 있습니다. Python 데이터분석 라이브러리(1) - NumPy Python 데이터분석 라이브러리(2) - NumPy(Exercise) Python 데이터분석 라이브러리(3) - Pandas(Series) Python 데이터분석 라이브러리(4) - Pandas(DataFrame 생성) Python 데이터분석 라이브러리(5) - Pandas(DataFrame indexing)</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Python 데이터분석 라이브러리(10) - Pandas(Exercise)</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Python+%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%2810%29+-+Pandas%28Exercise%29&amp;url=https://moon9342.github.io/data-science-lecture-python-pandas-dataframe-exercise"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/data-science-lecture-python-pandas-dataframe-exercise"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

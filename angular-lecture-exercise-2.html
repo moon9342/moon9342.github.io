@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Angular 강좌(7) - 실습(2)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/angular-lecture-exercise-2" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Angular 강좌(7) - 실습(2)" />
+    <meta property="og:description" content="Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular" />
+    <meta property="og:url" content="http://localhost:4000/angular-lecture-exercise-2" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/angular-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-02-06T01:31:00+09:00" />
+    <meta property="article:modified_time" content="2018-02-06T01:31:00+09:00" />
+    <meta property="article:tag" content="Angular" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Angular 강좌(7) - 실습(2)" />
+    <meta name="twitter:description" content="Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/angular-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Angular" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/angular-lecture-exercise-2",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/angular-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/angular-lecture-exercise-2"
+    },
+    "description": "Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Angular 강좌(7) - 실습(2)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 February 2018"> 5 February 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/angular/'>ANGULAR</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Angular 강좌(7) - 실습(2)</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/angular-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Angular 강좌는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./angular-lecture-introduction">Angular 강좌(1) - Introduction</a></li>
+    <li><a href="./angular-lecture-development-environment">Angular 강좌(2) - 개발환경세팅</a></li>
+    <li><a href="./angular-lecture-component">Angular 강좌(3) - Component</a></li>
+    <li><a href="./angular-lecture-material">Angular 강좌(4) - Angular Material</a></li>
+    <li><a href="./angular-lecture-exercise-1">Angular 강좌(5) - 실습(1)</a></li>
+    <li><a href="./angular-lecture-databinding">Angular 강좌(6) - Data Binding</a></li>
+    <li><a href="./angular-lecture-exercise-2">Angular 강좌(7) - 실습(2)</a></li>
+    <li><a href="./angular-lecture-material-table">Angular 강좌(8) - Material Table</a></li>
+    <li><a href="./angular-lecture-data-share-1">Angular 강좌(9) - 데이터공유(@Input)</a></li>
+    <li><a href="./angular-lecture-data-share-2">Angular 강좌(10) - 데이터공유(@Output)</a></li>
+    <li><a href="./angular-lecture-data-share-3">Angular 강좌(11) - 데이터공유(@ViewChild)</a></li>
+    <li><a href="./angular-lecture-data-share-4">Angular 강좌(12) - 데이터공유(Content Projection)</a></li>
+    <li><a href="./angular-lecture-data-share-service">Angular 강좌(13) - Service</a></li>
+    <li><a href="./angular-lecture-data-share-service-mediator-pattern">Angular 강좌(14) - Service Mediator Pattern</a></li>
+    <li><a href="./angular-lecture-data-share-service-rxjs">Angular 강좌(15) - Service RxJS</a></li>
+    <li><a href="./angular-lecture-table-event">Angular 강좌(16) - Material Table Event</a></li>
+    <li><a href="./angular-lecture-inspection-1">Angular 강좌(17) - 중간 정리</a></li>
+    <li><a href="./angular-lecture-directive">Angular 강좌(18) - Directive</a></li>
+    <li><a href="./angular-lecture-pipe">Angular 강좌(19) - Pipe</a></li>
+    <li><a href="./angular-lecture-lifecycle">Angular 강좌(20) - Component Lifecycle</a></li>
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">list-box Component View</strong></p>
+
+<p>이번 포스트에서는 도서 정보를 리스트 형태로 출력하는 list-box Component를 구현해 보도록 하겠습니다.</p>
+
+<p>먼저 HTML Table Element를 이용하여 구현해보겠습니다. 사실 우리는 최종적으로 Angular Material Table Component를 이용할 것이기 
+때문에 HTML Table Element에 대한 CSS처리는 하지 않았습니다.</p>
+
+<p>여하간 만들어지는 list의 형태는 다음 그림과 같습니다.</p>
+
+<p><img src="assets/built/images/listbox-html-table-view.png" alt="listbox-html-table-view" /></p>
+
+<p>더 많은 책이 하단에 쭉 나열됩니다. 나중에는 book-search-main Component에서 
+만들어 놓은 Angular Material Select를 이용해 선택한 조건으로 책들에 대한 리스트가 출력되겠지만 
+지금은 그냥 조건없이 모든 책이 나열됩니다.</p>
+
+<p>기존에 작성했던 <code class="highlighter-rouge">book-search-main.component.html</code> 파일을 열어서 HTML Select Element를 이용한 부분을
+Material Select로 변경합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bookSearch-outer"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"assets/images/search-icon.png"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">width=</span><span class="s">"48"</span> <span class="na">height=</span><span class="s">"48"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"lh-100"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mb-0 text-white lh-100"</span><span class="nt">&gt;</span>Search Result<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"example-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mat-form-field&gt;</span>
+      <span class="nt">&lt;mat-select</span> <span class="na">placeholder=</span><span class="s">"도서종류"</span>  <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">selectedValue</span><span class="err">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;mat-option</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let category of bookCaterory"</span>
+                    <span class="err">[</span><span class="na">value</span><span class="err">]="</span><span class="na">category</span><span class="err">.</span><span class="na">value</span><span class="err">"</span><span class="nt">&gt;</span>
+          {{ category.viewValue }}
+        <span class="nt">&lt;/mat-option&gt;</span>
+      <span class="nt">&lt;/mat-select&gt;</span>
+    <span class="nt">&lt;/mat-form-field&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-search-box&gt;&lt;/app-search-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-detail-box&gt;&lt;/app-detail-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-list-box&gt;&lt;/app-list-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>일단 Angular Material의 MatSelectModule을 사용하기 때문에 <code class="highlighter-rouge">book-search.module.ts</code>에 다음과 같이 import작업부터 해야
+코드에러가 나지 않을 듯 보입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MatSelectModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/select'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">mat-select</code>가 Select box에 대한 Angular Material Component 입니다. 
+양방향 바인딩으로 <code class="highlighter-rouge">selectedValue</code>란 이름의 Component의 속성에
+바인딩 시켜놓은 상태입니다.</p>
+
+<p><code class="highlighter-rouge">mat-option</code>은 Select box안의 각각의 Option Component입니다. 
+여러개가 존재할 수 있기 때문에 <code class="highlighter-rouge">ngFor</code> directive를 이용하여 반복처리 했습니다.</p>
+
+<p>Angular는 구조적 지시자(Structural Directive)라는걸 제공합니다. DOM 요소를 추가하거나 삭제 혹은 반복처리를 함으로 화면의
+구조를 변경할 때 사용합니다. 대표적으로는 <code class="highlighter-rouge">ngIf</code>와 <code class="highlighter-rouge">ngFor</code>가 있습니다. 이름에서 의미하다시피 <code class="highlighter-rouge">ngIf</code>는 boolean값을 입력받아
+true일 경우 ngIf 가 선언된 Element를 DOM에 추가합니다. 만약 false일 경우에는 ngIf 가 선언된 Element는 DOM에서 
+제거됩니다. ngFor 는 반복가능한 데이터를 입력받아 DOM에 반복해서 Element를 표현할 때 사용합니다.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">Directive</code>에 대해서는 나중에 다른 포스트에서 다시 설명하겠습니다. 여기서는 구조적 지시자로 ngIf와 ngFor를 사용해서 DOM을
+제어하는 방식에 대해서만 알아두시면 됩니다.</p>
+</blockquote>
+
+<p>코드를 보고 유추하건대 <code class="highlighter-rouge">bookCaterory</code>는 배열형태의 데이터이고 배열의 각 원소는 객체이겠네요. 데이터 바인딩에서 학습했던 
+내용과 연계해서 생각해 보시면 됩니다.</p>
+
+<p>그럼 아마도 <code class="highlighter-rouge">book-search-main.component.ts</code>에 다음과 같은 내용이 포함되어야 할 것입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-book-search-main'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./book-search-main.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./book-search-main.component.css'</span><span class="p">,</span>
+  <span class="s1">'./offcanvas.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">BookSearchMainComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">selectedValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nx">bookCaterory</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="na">value</span><span class="p">:</span> <span class="s1">'all'</span><span class="p">,</span> <span class="na">viewValue</span><span class="p">:</span> <span class="s1">'국내외도서'</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">value</span><span class="p">:</span> <span class="s1">'country'</span><span class="p">,</span> <span class="na">viewValue</span><span class="p">:</span> <span class="s1">'국내도서'</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">value</span><span class="p">:</span> <span class="s1">'foreign'</span><span class="p">,</span> <span class="na">viewValue</span><span class="p">:</span> <span class="s1">'국외도서'</span><span class="p">}</span>
+  <span class="p">];</span>
+  
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그 다음은 실제 리스트가 출력되는 <code class="highlighter-rouge">list-box.component.css</code> 파일의 내용입니다.
+위쪽 margin을 주기 위한 style을 정의해 놓았습니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.example-container</span> <span class="p">{</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>다음은 <code class="highlighter-rouge">list-box.component.html</code> 파일의 내용입니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"example-container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+  <span class="nt">&lt;th&gt;</span>ISBN<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;th&gt;</span>Title<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;th&gt;</span>Author<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;th&gt;</span>Price<span class="nt">&lt;/th&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let book of books"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;td&gt;</span>{{book.bisbn}}<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>{{book.btitle}}<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>{{book.bauthor}}<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>{{book.bprice}}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+</code></pre></div></div>
+
+<p>코드를 수행시키기 위해 먼저 <code class="highlighter-rouge">book.json</code> 파일을 하나 준비합니다. <code class="highlighter-rouge">book.json</code> 파일의 내용은 다음과 같이 작성하시면 됩니다.</p>
+
+<p>단, <code class="highlighter-rouge">btranslator</code>는 번역자를 의미합니다. 이 값이 존재하면 외국서적이라는 말이겠죠. 만약 국내도서면 이 값이 <code class="highlighter-rouge">""</code>로 표현됩니다.
+다른 key값들에 대해서는 이름에서 그 의미를 충분히 유추할 수 있을 듯 합니다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"bauthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"카일 루든(Kyle Loudon)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bdate"</span><span class="p">:</span><span class="s2">"2000년 04월"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"btranslator"</span><span class="p">:</span><span class="s2">"허 욱"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bpublisher"</span><span class="p">:</span><span class="s2">"한빛미디어(주)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"btitle"</span><span class="p">:</span><span class="s2">"C로 구현한 알고리즘"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bprice"</span><span class="p">:</span><span class="mi">25000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bisbn"</span><span class="p">:</span><span class="s2">"89-7914-063-0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bimgurl"</span><span class="p">:</span><span class="s2">"http://image.hanbit.co.kr/cover/_m_1063m.gif"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"bauthor"</span><span class="p">:</span><span class="s2">"권기경, 박용우"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bdate"</span><span class="p">:</span><span class="s2">"2002년 09월"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"btranslator"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bpublisher"</span><span class="p">:</span><span class="s2">"한빛미디어(주)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"btitle"</span><span class="p">:</span><span class="s2">"IT EXPERT, 모바일 자바 프로그래밍"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bprice"</span><span class="p">:</span><span class="mi">23000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bisbn"</span><span class="p">:</span><span class="s2">"89-7914-206-4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bimgurl"</span><span class="p">:</span><span class="s2">"http://image.hanbit.co.kr/cover/_m_1206m.gif"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">   
+</span></code></pre></div></div>
+
+<p>작성한 데이터 파일을 <code class="highlighter-rouge">src/assets/data</code> 폴더 아래에 저장합니다. 이 JSON data를 불러오기 위해 <code class="highlighter-rouge">HttpClientModule</code>를 이용합니다.
+더 쉽게 파일로 import해서 쓸 수 있지만 여기서는 HttpClientModule로 처리했습니다.</p>
+
+<p><code class="highlighter-rouge">book-search.module.ts</code> 파일안에 HttpClientModule에 대한 import 구문을 작성합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">HttpClientModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@angular/common/http"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>아래는 <code class="highlighter-rouge">list-box.component.ts</code> 파일의 내용입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">HttpClient</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@angular/common/http"</span><span class="p">;</span>
+
+<span class="kr">interface</span> <span class="nx">IBook</span> <span class="p">{</span>
+  <span class="nl">bauthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">bdate</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">btranslator</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">bpublisher</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">bprice</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="nl">bisbn</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">bimgurl</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-list-box'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./list-box.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./list-box.component.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ListBoxComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nl">books</span><span class="p">:</span> <span class="nx">IBook</span><span class="p">[];</span>
+
+  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="nx">IBook</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">'assets/data/book.json'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">books</span> <span class="o">=</span> <span class="nx">res</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>약간 이상한 코드가 들어있는데 그 이유는 책의 정보를 가져오기 위해 HttpClient의 get() method를 호출하면서
+<code class="highlighter-rouge">Arrow Function</code>을 이용해 코드를 작성했기 때문입니다. 이 부분은 나중에 RxJS를 설명할 때 더 자세히 봐야 할 듯 하고
+지금은 <code class="highlighter-rouge">book.json</code>에 대한 HTTP연결로 JSON 데이터를 가져온다고 이해하시면 충분합니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">문제점</strong></p>
+
+<p>도서정보에 대한 JSON을 작성해서 실행해보시면 아시겠지만 출력은 잘 됩니다.</p>
+
+<p>하지만 몇가지 문제가 있습니다.</p>
+
+<ul>
+  <li>
+    <p>책이 100권이 있으면 밑으로 쭉 나열되게 됩니다. <code class="highlighter-rouge">Paging</code> 처리를 해야 하는데 이것또한 쉬운작업은 아닙니다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Event</code> 처리하기가 쉽지 않습니다. 각 행을 클릭하면 해당 책의 세부정보를 detail-box Component를 이용하여 
+View에 출력해야 합니다. 클릭이벤트를 처리하기가 쉽지 않네요.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">book-search-main.component.html</code>에서 만들어놓은 Select Box의 선택 정보를 알아와서 그에 맞추어 책들을
+필터링 해야 하는데 어떤 도서를 선택했는지 현재로서는 알 방법이 없습니다.</p>
+  </li>
+</ul>
+
+<p>이 외에도 Table Header를 클릭해서 리스트를 <code class="highlighter-rouge">Sorting</code>하는 것과 같은 일반적인 테이블이 가지는 기능을 
+우리가 추가로 구현해야되는 문제가 있습니다. 제대로 사용할려면 부가적인 작업이 훨씬 더 많이 들어가야 합니다.</p>
+
+<p>이와 같은 문제를 Material의 Table Component를 이용하면 쉽게 해결할 수 있습니다. 다음 포스트에서는 도서 리스트를 출력하는
+부분을 Material Table Component를 이용하여 다시 작성해 보겠습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Angular 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="https://angular.io/" target="_blank">Angular Official HomePage</a></li>
+    <li><a href="https://material.angular.io/" target="_blank">Angular Material Official HomePage</a></li>
+    <li><a href="https://scotch.io/tutorials/build-a-mobile-app-with-angular-2-and-ionic-2" target="_blank">Build a Mobile App with Angular 2 and Ionic 2</a></li>
+    <li>Angular 첫걸음 - 한빛미디어</li>
+    <li>제대로 배우는 Angular 4 - 비제이퍼블릭</li>
+</ul>
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/angular/">Angular</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-lifecycle">Angular 강좌(20) - Component LifeCycle</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-pipe">Angular 강좌(19) - Pipe</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-directive">Angular 강좌(18) - Directive</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/angular/">
+                                
+                                    See all 19 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/angular-lecture-material-table">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/angular-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/angular-lecture-material-table">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Angular</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Angular 강좌(8) - Material Table</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include angular-lecture-table-of-contents.html %} --- **Material Table Component**{: class="subtitle_fontAwesome" } 이번 포스트에서는 이전에 만들었던 list-box Component가 표현하는 부분을 Material Table을 이용해서 작성해 보겠습니다. 기본적인 테이블 구성과 함께 `Pagination` 까지 추가해서 간단하게 `Paging`까지 구현해보겠습니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/mysql-5.7-archive-setting">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/mysql-logo.gif)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/mysql-5.7-archive-setting">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">MySQL 5.7.2 Windows용 ZIP Archive 설치</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Introduction MySQL을 install하지 않고 ZIP Archive를 다운받고 압축 풀어서 사용하는 사용하는 방식에 대한 설명입니다. 기존 5.6버전은 JSON에 대한 지원이 되지 않기 때문에 5.7버전을 대상으로 진행합니다. MySQL 5.7.2 ZIP Archive Download MySQL을 다운로드 받기</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Angular 강좌(7) - 실습(2)</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Angular+%EA%B0%95%EC%A2%8C%287%29+-+%EC%8B%A4%EC%8A%B5%282%29&amp;url=https://moon9342.github.io/angular-lecture-exercise-2"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/angular-lecture-exercise-2"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Python 기초강의(6) - Python 객체지향</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/python-lecture-python-OOP" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Python 기초강의(6) - Python 객체지향" />
+    <meta property="og:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta property="og:url" content="http://localhost:4000/python-lecture-python-OOP" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-03-07T01:40:00+09:00" />
+    <meta property="article:modified_time" content="2020-03-07T01:40:00+09:00" />
+    <meta property="article:tag" content="Python" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Python 기초강의(6) - Python 객체지향" />
+    <meta name="twitter:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Python" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/python-lecture-python-OOP",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/python-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/python-lecture-python-OOP"
+    },
+    "description": "Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Python 기초강의(6) - Python 객체지향" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 6 March 2020"> 6 March 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/python/'>PYTHON</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Python 기초강의(6) - Python 객체지향</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/python-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">영상설명</strong></p>
+
+<p>이번 영상은 Python 언어의 <code class="highlighter-rouge">Object Oriented</code> 영상입니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Python 객체지향</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Why OOP?</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">class &amp; instance</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Inheritance</strong></p>
+
+<blockquote>
+  <p>Python 기초강의 - Python 객체지향</p>
+</blockquote>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/khvIL54uzIk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/ihAHtSOKUBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/4yG17i0EJoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python 객체지향</strong></p>
+
+<p>Programming paradigm의 변화에 대해서 그림으로 알아보겠습니다.</p>
+
+<p><img src="assets/built/images/program_paradigm.png" alt="Programming paradigm" /></p>
+
+<blockquote>
+  <p>구조적 프로그래밍</p>
+  <ul>
+    <li>프로그램 작성 시 기능으로 세분화 한 다음 각각의 기능을 모듈로 제작</li>
+    <li>프로그램을 모듈(함수)이라는 실행단위로 분할.</li>
+    <li>상위 모듈에서 하위 모듈을 호출하는 방식으로 프로그램을 구성</li>
+    <li>프로그램 구조를 이해하기 쉽고 프로그램을 빠르게 작성할 수 있다.</li>
+    <li>프로그램 규모가 커지게 되면 유지보수와 기존 코드의 재사용에 한계가 나타나게 된다.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>객체지향 프로그래밍</p>
+  <ul>
+    <li>현실세계의 해결해야 하는 문제를 그대로 프로그램으로 표현.</li>
+    <li>즉, 프로그램을 기능으로 세분화 하지 않고</li>
+    <li>프로그램을 구성하는 주체(객체)들을 파악하고 그 객체들간의 data 흐름에 초점을 맞추어서  프로그램 작성</li>
+    <li>프로그램의 설계, 작성이 상대적으로 어려움.</li>
+    <li>하지만 이렇게 작성된 객체지향 프로그램은 유지보수와 재사용성에 이점이 있다.</li>
+  </ul>
+</blockquote>
+
+<p>정리를 하자면,</p>
+
+<p>객체 지향 프로그래밍은 컴퓨터 프로그래밍의 패러다임의 하나입니다.
+객체 지향 프로그래밍은 컴퓨터 프로그램을 명령어의 목록으로 보는 시각에서 벗어나 여러 개의 독립된 단위, 
+즉 <code class="highlighter-rouge">객체</code>들의 모임으로 파악하고자 하는 것입니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Why OOP?</strong></p>
+
+<p>간단하게 학생데이터를 이용하여 왜 객체지향으로 프로그래밍을 하면 편리하고 좋은지를 알아보도록 하겠습니다.</p>
+
+<p>다음의 코드는 학생의 이름, 학과, 학번, 각 학년 평점을 저장하는 다양한 방법을 보여줍니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python OOP</span>
+
+<span class="c"># 학생의 이름, 학과, 학번, 각 학년 평점을 저장하는 다양한 방법</span>
+
+<span class="c"># 1명의 학생 정보를 저장</span>
+
+<span class="n">stu_name</span> <span class="o">=</span> <span class="s">"홍길동"</span>    <span class="c"># 이름</span>
+<span class="n">stu_dept</span> <span class="o">=</span> <span class="s">"컴퓨터"</span>    <span class="c"># 학과</span>
+<span class="n">stu_num</span> <span class="o">=</span> <span class="s">"202011003"</span>   <span class="c"># 학번</span>
+<span class="n">stu_grade</span> <span class="o">=</span> <span class="mf">3.5</span>         <span class="c"># 학점</span>
+
+<span class="c"># 만약 3명의 학생 정보를 저장하려면 어떻게 해야 할까요?</span>
+
+<span class="n">stu1_name</span> <span class="o">=</span> <span class="s">"강감찬"</span>    <span class="c"># 이름</span>
+<span class="n">stu1_dept</span> <span class="o">=</span> <span class="s">"철학"</span>    <span class="c"># 학과</span>
+<span class="n">stu1_num</span> <span class="o">=</span> <span class="s">"201998015"</span>   <span class="c"># 학번</span>
+<span class="n">stu1_grade</span> <span class="o">=</span> <span class="mf">4.5</span>         <span class="c"># 학점</span>
+
+<span class="n">stu2_name</span> <span class="o">=</span> <span class="s">"신사임당"</span>    <span class="c"># 이름</span>
+<span class="n">stu2_dept</span> <span class="o">=</span> <span class="s">"경영"</span>    <span class="c"># 학과</span>
+<span class="n">stu2_num</span> <span class="o">=</span> <span class="s">"201844028"</span>   <span class="c"># 학번</span>
+<span class="n">stu2_grade</span> <span class="o">=</span> <span class="mf">3.4</span>         <span class="c"># 학점</span>
+
+<span class="n">stu3_name</span> <span class="o">=</span> <span class="s">"이순신"</span>    <span class="c"># 이름</span>
+<span class="n">stu3_dept</span> <span class="o">=</span> <span class="s">"국어국문"</span>    <span class="c"># 학과</span>
+<span class="n">stu3_num</span> <span class="o">=</span> <span class="s">"202011040"</span>   <span class="c"># 학번</span>
+<span class="n">stu3_grade</span> <span class="o">=</span> <span class="mf">3.8</span>         <span class="c"># 학점</span>
+
+<span class="c"># 위의 코드는 중복된 코드가 너무 많다. 리스트를 이용해서 조금 더</span>
+<span class="c"># 나은 형태의 코드로 변경해보겠습니다.</span>
+
+<span class="n">stu_name</span> <span class="o">=</span> <span class="p">[</span><span class="s">"강감찬"</span><span class="p">,</span> <span class="s">"신사임당"</span><span class="p">,</span> <span class="s">"이순신"</span><span class="p">]</span>
+<span class="n">stu_dept</span> <span class="o">=</span> <span class="p">[</span><span class="s">"철학"</span><span class="p">,</span> <span class="s">"경영"</span><span class="p">,</span> <span class="s">"국어국문"</span><span class="p">]</span>
+<span class="n">stu_num</span> <span class="o">=</span> <span class="p">[</span><span class="s">"201998015"</span><span class="p">,</span> <span class="s">"201844028"</span><span class="p">,</span> <span class="s">"202011040"</span><span class="p">]</span>
+<span class="n">stu_grade</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"학생이름 : {}</span><span class="se">\n</span><span class="s">학생학과 : {}</span><span class="se">\n</span><span class="s">학번 : {}</span><span class="se">\n</span><span class="s">성적 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">stu_name</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stu_dept</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stu_num</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stu_grade</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c"># 첨자(index)가 같은 데이터는 한 사람의 데이터를 의미하게 처리했습니다.</span>
+<span class="c"># 조금 나은 형태이지만 이 역시 실수를 유발할 여지가 많고 첨자(index)처리에</span>
+<span class="c"># 혼동이 올 수 있기 때문에 추천되지 않습니다.</span>
+
+<span class="c"># 마지막으로 class를 이용해 한 사람의 데이터를 논리적인 하나의 단위(객체)로</span>
+<span class="c"># 묶어 사용하는 방법을 살펴보겠습니다.</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dept</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="n">dept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="n">grade</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="n">students</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Student</span><span class="p">(</span><span class="s">"강감찬"</span><span class="p">,</span> <span class="s">"철학"</span><span class="p">,</span> <span class="s">"201998015"</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Student</span><span class="p">(</span><span class="s">"신사임당"</span><span class="p">,</span> <span class="s">"경영"</span><span class="p">,</span> <span class="s">"201844028"</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">))</span>
+<span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Student</span><span class="p">(</span><span class="s">"이순신"</span><span class="p">,</span> <span class="s">"국어국문"</span><span class="p">,</span> <span class="s">"202011040"</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">students</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dept</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">class &amp; instance</strong></p>
+
+<blockquote>
+  <p>파이썬은 객체 지향적 프로그래밍 언어입니다. 파이썬의 모든 것은 <code class="highlighter-rouge">객체(object)</code>입니다. 문자열, 리스트, 함수, 심지어 모듈 또한 객체(object)입니다.</p>
+</blockquote>
+
+<p>일반적으로 파이썬 객체지향을 설명할 때 하는 말입니다. 사실 객체지향 언어의 대부분이 같은 특성을 가집니다. 그러면 객체는 무엇일까요?</p>
+
+<blockquote>
+  <p>객체란 속성과 같은 여러가지의 데이터와 함수(객체 안에서는 메소드라고 부릅니다.)를 포함한 하나의 데이터 구조를 말합니다</p>
+</blockquote>
+
+<p>파이썬에서 이 객체들은 변수에 할당될 수도 있고, 함수(혹은 메소드)의 인자로 전달될 수도 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 객체란 무엇인가?</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dept</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="n">dept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="n">grade</span>
+
+    <span class="k">def</span> <span class="nf">get_student_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"이름 : {}, 학과 : {}, 학번 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+
+
+<span class="c"># 객체 생성</span>
+<span class="n">stu1</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"컴퓨터"</span><span class="p">,</span> <span class="s">"202011003"</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
+
+<span class="c"># 메소드 호출</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">get_student_info</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Student</span><span class="o">.</span><span class="n">get_student_info</span><span class="p">(</span><span class="n">stu1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">dir() 함수</strong></p>
+
+<p>중요한 함수 중 하나는 <code class="highlighter-rouge">dir()</code> 입니다. 이 함수는 만약 인자로 객체가 들어오지 않으면 현재 module scope상의
+지역변수를 리턴하고 객체 인자가 있을 경우 객체의 모든 속성과 메소드의 목록을 리턴합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dir() 함수</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">stu1</span><span class="p">))</span>
+
+<span class="c"># 결과</span>
+<span class="p">[</span><span class="s">'__class__'</span><span class="p">,</span> <span class="s">'__delattr__'</span><span class="p">,</span> <span class="s">'__dict__'</span><span class="p">,</span> <span class="s">'__dir__'</span><span class="p">,</span> <span class="s">'__doc__'</span><span class="p">,</span> <span class="s">'__eq__'</span><span class="p">,</span> 
+<span class="s">'__format__'</span><span class="p">,</span> <span class="s">'__ge__'</span><span class="p">,</span> <span class="s">'__getattribute__'</span><span class="p">,</span> <span class="s">'__gt__'</span><span class="p">,</span> <span class="s">'__hash__'</span><span class="p">,</span> <span class="s">'__init__'</span><span class="p">,</span> 
+<span class="s">'__init_subclass__'</span><span class="p">,</span> <span class="s">'__le__'</span><span class="p">,</span> <span class="s">'__lt__'</span><span class="p">,</span> <span class="s">'__module__'</span><span class="p">,</span> <span class="s">'__ne__'</span><span class="p">,</span> <span class="s">'__new__'</span><span class="p">,</span> <span class="s">'__reduce__'</span><span class="p">,</span> 
+<span class="s">'__reduce_ex__'</span><span class="p">,</span> <span class="s">'__repr__'</span><span class="p">,</span> <span class="s">'__setattr__'</span><span class="p">,</span> <span class="s">'__sizeof__'</span><span class="p">,</span> <span class="s">'__str__'</span><span class="p">,</span> <span class="s">'__subclasshook__'</span><span class="p">,</span> 
+<span class="s">'__weakref__'</span><span class="p">,</span> <span class="s">'dept'</span><span class="p">,</span> <span class="s">'get_student_info'</span><span class="p">,</span> <span class="s">'grade'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'num'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">python은 함수 역시 객체</strong></p>
+
+<p>한가지 특이한 점은 python의 함수 역시 객체라는 것입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_func</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+
+<span class="c"># my_func의 속성과 메소드 확인</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"my_func의 dir() : "</span><span class="p">,</span> <span class="nb">dir</span><span class="p">(</span><span class="n">my_func</span><span class="p">))</span>
+
+<span class="n">my_func</span><span class="err">의</span> <span class="nb">dir</span><span class="p">()</span> <span class="p">:</span>  <span class="p">[</span><span class="s">'__annotations__'</span><span class="p">,</span> <span class="s">'__call__'</span><span class="p">,</span> <span class="s">'__class__'</span><span class="p">,</span> 
+<span class="s">'__closure__'</span><span class="p">,</span> <span class="s">'__code__'</span><span class="p">,</span> <span class="s">'__defaults__'</span><span class="p">,</span> <span class="s">'__delattr__'</span><span class="p">,</span> <span class="s">'__dict__'</span><span class="p">,</span> 
+<span class="s">'__dir__'</span><span class="p">,</span> <span class="s">'__doc__'</span><span class="p">,</span> <span class="s">'__eq__'</span><span class="p">,</span> <span class="s">'__format__'</span><span class="p">,</span> <span class="s">'__ge__'</span><span class="p">,</span> <span class="s">'__get__'</span><span class="p">,</span> 
+<span class="s">'__getattribute__'</span><span class="p">,</span> <span class="s">'__globals__'</span><span class="p">,</span> <span class="s">'__gt__'</span><span class="p">,</span> <span class="s">'__hash__'</span><span class="p">,</span> <span class="s">'__init__'</span><span class="p">,</span> 
+<span class="s">'__init_subclass__'</span><span class="p">,</span> <span class="s">'__kwdefaults__'</span><span class="p">,</span> <span class="s">'__le__'</span><span class="p">,</span> <span class="s">'__lt__'</span><span class="p">,</span> <span class="s">'__module__'</span><span class="p">,</span> 
+<span class="s">'__name__'</span><span class="p">,</span> <span class="s">'__ne__'</span><span class="p">,</span> <span class="s">'__new__'</span><span class="p">,</span> <span class="s">'__qualname__'</span><span class="p">,</span> <span class="s">'__reduce__'</span><span class="p">,</span> 
+<span class="s">'__reduce_ex__'</span><span class="p">,</span> <span class="s">'__repr__'</span><span class="p">,</span> <span class="s">'__setattr__'</span><span class="p">,</span> <span class="s">'__sizeof__'</span><span class="p">,</span> <span class="s">'__str__'</span><span class="p">,</span> <span class="s">'__subclasshook__'</span><span class="p">]</span>
+
+<span class="c"># my_func에 새로운 속성 추가(객체이기 때문에 가능)</span>
+<span class="n">my_func</span><span class="o">.</span><span class="n">myName</span> <span class="o">=</span> <span class="s">'강감찬'</span>
+
+<span class="c"># 추가된 속성 확인</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"my_func의 dir() : "</span><span class="p">,</span> <span class="nb">dir</span><span class="p">(</span><span class="n">my_func</span><span class="p">))</span>
+
+<span class="n">my_func</span><span class="err">의</span> <span class="nb">dir</span><span class="p">()</span> <span class="p">:</span>  <span class="p">[</span><span class="s">'__annotations__'</span><span class="p">,</span> <span class="s">'__call__'</span><span class="p">,</span> <span class="s">'__class__'</span><span class="p">,</span> 
+<span class="s">'__closure__'</span><span class="p">,</span> <span class="s">'__code__'</span><span class="p">,</span> <span class="s">'__defaults__'</span><span class="p">,</span> <span class="s">'__delattr__'</span><span class="p">,</span> <span class="s">'__dict__'</span><span class="p">,</span> 
+<span class="s">'__dir__'</span><span class="p">,</span> <span class="s">'__doc__'</span><span class="p">,</span> <span class="s">'__eq__'</span><span class="p">,</span> <span class="s">'__format__'</span><span class="p">,</span> <span class="s">'__ge__'</span><span class="p">,</span> <span class="s">'__get__'</span><span class="p">,</span> 
+<span class="s">'__getattribute__'</span><span class="p">,</span> <span class="s">'__globals__'</span><span class="p">,</span> <span class="s">'__gt__'</span><span class="p">,</span> <span class="s">'__hash__'</span><span class="p">,</span> <span class="s">'__init__'</span><span class="p">,</span> 
+<span class="s">'__init_subclass__'</span><span class="p">,</span> <span class="s">'__kwdefaults__'</span><span class="p">,</span> <span class="s">'__le__'</span><span class="p">,</span> <span class="s">'__lt__'</span><span class="p">,</span> <span class="s">'__module__'</span><span class="p">,</span> 
+<span class="s">'__name__'</span><span class="p">,</span> <span class="s">'__ne__'</span><span class="p">,</span> <span class="s">'__new__'</span><span class="p">,</span> <span class="s">'__qualname__'</span><span class="p">,</span> <span class="s">'__reduce__'</span><span class="p">,</span> 
+<span class="s">'__reduce_ex__'</span><span class="p">,</span> <span class="s">'__repr__'</span><span class="p">,</span> <span class="s">'__setattr__'</span><span class="p">,</span> <span class="s">'__sizeof__'</span><span class="p">,</span> <span class="s">'__str__'</span><span class="p">,</span> 
+<span class="s">'__subclasshook__'</span><span class="p">,</span> <span class="s">'myName'</span><span class="p">]</span>
+
+<span class="c"># 추가한 속성값 출력</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"my_func의 myName : "</span><span class="p">,</span> <span class="n">my_func</span><span class="o">.</span><span class="n">myName</span><span class="p">)</span>
+
+<span class="n">my_func</span><span class="err">의</span> <span class="n">myName</span> <span class="p">:</span>  <span class="err">강감찬</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">__init__ 메소드</strong></p>
+
+<p>class로 부터 객체를 생성할 때 중요한 메소드가 하나 있습니다. 바로 <code class="highlighter-rouge">__init__</code> 메소드입니다. 일반적으로
+다른 객체지향언어에서는 생성자(constructor)라고 불리는 것입니다. python에서는 <code class="highlighter-rouge">initializer</code>라고 부릅니다.</p>
+
+<p>이 메소드는 객체가 생성될 때 자동으로 호출되며 호출되는 순간 instance를 <code class="highlighter-rouge">self</code>라는 인자로 받아서 처리합니다.</p>
+
+<p>위의 코드에서</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">get_student_info</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>라는 부분이 있는데 이 코드가 실행되면 실제로는</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">Student</span><span class="o">.</span><span class="n">get_student_info</span><span class="p">(</span><span class="n">stu1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>이 코드가 실행되게 됩니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">인스턴스 변수, 인스턴스 메소드</strong></p>
+
+<p>위에서 <code class="highlighter-rouge">self</code>라는 키워드에 대해서 설명했는데 이 self를 이용하여 생성되는 속성을
+<code class="highlighter-rouge">인스턴스 변수</code>, self를 이용한 메소드를 <code class="highlighter-rouge">인스턴스 메소드</code>라고 합니다.</p>
+
+<p>당연히 이 인스턴스 변수는 각각의 instance가 개별적으로 가지고 있는 데이터 입니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">클래스 변수</strong></p>
+
+<p>이 인스턴스 변수와 살짝 다른 개념이 바로 <code class="highlighter-rouge">클래스 변수(class variable)</code>입니다. 이 변수는
+모든 인스턴스가 공유하는 변수라고 생각하시면 됩니다.</p>
+
+<p>즉, 인스턴스 차원이 아닌 클래스 차원의 변수라고 보시면 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># class variable 예제</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">scholarship_rate</span> <span class="o">=</span> <span class="mf">3.5</span>   <span class="c"># class variable</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dept</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="n">dept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="n">grade</span>
+
+    <span class="k">def</span> <span class="nf">get_student_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"이름 : {}, 학과 : {}, 학번 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_scholarship</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="n">Student</span><span class="o">.</span><span class="n">scholarship_rate</span><span class="p">:</span>   <span class="c"># class variable 사용</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="c"># 문제를 단순화 시키기 위해서 학점부분을 학년으로 구분하지 않고</span>
+<span class="c"># 전체평균평점으로 처리</span>
+<span class="n">stu1</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"컴퓨터"</span><span class="p">,</span> <span class="s">"202011003"</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>   <span class="c"># 객체 생성</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"장학금 여부 : "</span><span class="p">,</span> <span class="n">stu1</span><span class="o">.</span><span class="n">is_scholarship</span><span class="p">())</span>  
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">네임스페이스(namespace)</strong></p>
+
+<p>Python은 그림과 같은 모양의 네임스페이스라는 것을 가지고 있습니다. 
+이 네임스페이스는 객체들의 이름들을 나눠서 관리하는데, 
+이름을 찾을때 <code class="highlighter-rouge">인스턴스 네임스페이스</code> -&gt; <code class="highlighter-rouge">클래스 네임스페이스</code> -&gt; <code class="highlighter-rouge">수퍼 클래스 네임스페이스</code>의 순서로 찾아갑니다. 
+하지만 반대로는 찾지 않습니다. 즉, 자식이 부모의 네임스페이스는 참조 할 수 있는데, 
+부모가 자식의 네임스페이스를 참조할 수는 없습니다.</p>
+
+<p>따라서 class variable을 사용하는 위의 코드에서 다음과 같이 변경해서 사용할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">is_scholarship</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># class variable을 class명이 아닌 self로 사용가능.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scholarship_rate</span><span class="p">:</span>   
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>다른 객체지향 언어(예를들어 Java)같은 경우 instance가 생성된 후 속성을 동적으로 추가할 수 없습니다.
+하지만 python은 동적으로 속성을 추가할 수 있기 때문에 namespace와 관련된 다음과 같은 문제가 생길 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># namespace 주의해야 할 점</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">scholarship_rate</span> <span class="o">=</span> <span class="mf">3.5</span>   <span class="c"># class variable</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dept</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">grade</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dept</span> <span class="o">=</span> <span class="n">dept</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="n">grade</span>
+
+    <span class="k">def</span> <span class="nf">get_student_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"이름 : {}, 학과 : {}, 학번 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_scholarship</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scholarship_rate</span><span class="p">:</span>   <span class="c"># instance namespace 사용</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="c"># 문제를 단순화 시키기 위해서 학점부분을 학년으로 구분하지 않고</span>
+<span class="c"># 전체평균평점으로 처리</span>
+<span class="n">stu1</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"컴퓨터"</span><span class="p">,</span> <span class="s">"202011003"</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>   <span class="c"># 객체 생성</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"장학금 여부 : "</span><span class="p">,</span> <span class="n">stu1</span><span class="o">.</span><span class="n">is_scholarship</span><span class="p">())</span>   <span class="c"># True</span>
+
+<span class="n">stu1</span><span class="o">.</span><span class="n">scholarship_rate</span> <span class="o">=</span> <span class="mf">4.5</span>   <span class="c"># instance namespace 안에</span>
+                              <span class="c"># scholarship_rate 속성이 새로 생성</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"장학금 여부 : "</span><span class="p">,</span> <span class="n">stu1</span><span class="o">.</span><span class="n">is_scholarship</span><span class="p">())</span>   <span class="c"># False</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">class method</strong></p>
+
+<p>인스턴스 메소드는 <code class="highlighter-rouge">self</code>인 인스턴스를 인자로 받고 인스턴스 변수와 같이 
+하나의 인스턴스에만 한정된 데이터를 생성, 변경, 참조하기 위해서 사용됩니다.</p>
+
+<p>클래스 메소드는 <code class="highlighter-rouge">cls</code>인 클래스를 인자로 받고 모든 인스턴스가 공유하는 
+클래스 변수와 같은 데이터를 생성, 변경 또는 참조하기 위해서 사용됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># class method 예제</span>
+
+<span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">raise_rate</span> <span class="o">=</span> <span class="mf">1.1</span>  <span class="c"># 연봉 인상율 class variable</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_name</span><span class="p">,</span> <span class="n">u_pay</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_name</span> <span class="o">=</span> <span class="n">u_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">=</span> <span class="n">u_pay</span>
+
+    <span class="k">def</span> <span class="nf">apply_raise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_rate</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_pay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'현재 "{}"의 연봉은 "{}"입니다.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span><span class="p">)</span>
+
+    <span class="c"># 클래스 메소드 데코레이터를 사용하여 클래스 메소드 정의</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">change_raise_rate</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+        <span class="n">cls</span><span class="o">.</span><span class="n">raise_rate</span> <span class="o">=</span> <span class="n">rate</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'인상율 "{}"가 적용 되었습니다.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rate</span><span class="p">))</span>
+
+
+<span class="n">emp_1</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">emp_2</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="s">"강감찬"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+
+<span class="c"># 연봉 인상 전</span>
+<span class="k">print</span><span class="p">(</span><span class="n">emp_1</span><span class="o">.</span><span class="n">get_pay</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">emp_2</span><span class="o">.</span><span class="n">get_pay</span><span class="p">())</span>
+
+<span class="c"># 연봉 인상율 변경</span>
+<span class="n">Employee</span><span class="o">.</span><span class="n">change_raise_rate</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>   <span class="c"># class method 호출</span>
+
+<span class="c"># 연봉 인상</span>
+<span class="n">emp_1</span><span class="o">.</span><span class="n">apply_raise</span><span class="p">()</span>
+<span class="n">emp_2</span><span class="o">.</span><span class="n">apply_raise</span><span class="p">()</span>
+
+<span class="c"># 연봉 인상 후</span>
+<span class="k">print</span><span class="p">(</span><span class="n">emp_1</span><span class="o">.</span><span class="n">get_pay</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">emp_2</span><span class="o">.</span><span class="n">get_pay</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">static method</strong></p>
+
+<p>인스턴스 메소드는 인스턴스를 통해서 호출이 되고, 
+첫 번째 인자로 인스턴스 자신을 자동으로 전달합니다. 이 인수를 <code class="highlighter-rouge">self</code>라고 칭합니다.</p>
+
+<p>클래스 메소드는 클래스를 통해서 호출이 되고 <code class="highlighter-rouge">@classmethod</code>라는 데코레이터로 정의합니다. 
+첫 번째 인자로는 클래스 자신이 자동으로 전달되고 이 인수를 <code class="highlighter-rouge">cls</code>라고 칭합니다.</p>
+
+<p>스태틱 메소드는 앞서 설명한 두 메소드와는 틀리게 인스턴스나 클래스를 첫 번째 인자로 받지 않습니다. 
+스태틱 메소드는 클래스 안에서 정의되어 클래스 네임스페이스 안에는 있을뿐 일반 함수와 동일하게 동작합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># static method 예제</span>
+
+<span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_name</span><span class="p">,</span> <span class="n">u_pay</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_name</span> <span class="o">=</span> <span class="n">u_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">=</span> <span class="n">u_pay</span>
+
+    <span class="k">def</span> <span class="nf">apply_raise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_rate</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_pay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'현재 "{}"의 연봉은 "{}"입니다.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_pay</span><span class="p">)</span>
+
+    <span class="c"># 스태틱 메소드 데코레이터를 사용하여 클래스 메소드 정의</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">u_pay</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">u_pay</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"인상율은 음수가 될 수 없습니다."</span><span class="p">)</span>
+
+
+<span class="n">emp_1</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">Employee</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">public vs. private</strong></p>
+
+<p>Python은 기본적으로 instance variable과 class variable이 <code class="highlighter-rouge">public</code>으로 지정됩니다.
+즉, 객체 외부에서 자유롭게 해당 객체의 데이터를 살펴보고 변경할 수 있다는 말이죠.</p>
+
+<p>편하기는 하지만 객체지향적 관점에서는 지양해야 되는 부분입니다. 객체 외부에서 객체의 데이터를
+함부로 변경하게 되면 여러 문제를 야기할 수 있기 때문입니다. 
+객체지향에서는 <code class="highlighter-rouge">information hiding</code>(정보은닉) 개념이 있어서 이런 부분을 지양하도록 강력 권장합니다.</p>
+
+<p>그러면 우리의 public으로 기본 설정된 instance variable을 어떻게 하면 <code class="highlighter-rouge">private</code>으로 변경할 수 
+있을까요? <code class="highlighter-rouge">__</code>를 instance variable 앞에 붙이면 됩니다.</p>
+
+<p>다음의 예제를 이용해서 살펴보도록 하죠</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># public vs. private</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dept</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>     <span class="c"># public</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dept</span> <span class="o">=</span> <span class="n">dept</span>   <span class="c"># private</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+
+    <span class="k">def</span> <span class="nf">get_student_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"이름 : {}, 학과 : {}, 학번 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">__dept</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getDept</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dept</span>
+
+    <span class="k">def</span> <span class="nf">__getInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"__로 시작했기 때문에 private method 입니다."</span>    
+
+<span class="n">stu1</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"컴퓨터"</span><span class="p">,</span> <span class="s">"202011003"</span><span class="p">)</span>   <span class="c"># 객체 생성</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"학생 이름은 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>    <span class="c">#  홍길동</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"학생 이름은 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">num</span><span class="p">))</span>     <span class="c">#  202011003</span>
+<span class="c"># print("학생 이름은 : {}".format(stu1.__dept))  #  Error</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">get_student_info</span><span class="p">())</span>   <span class="c"># access 가능</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stu1</span><span class="o">.</span><span class="n">getDept</span><span class="p">())</span>            <span class="c"># getter</span>
+<span class="c"># print(stu1.__getInfo())          # Error</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">외부 함수와 내부 method 구별</strong></p>
+
+<p>외부함수의 이름과 class의 method 이름이 같다면 어떻게 사용해야 하는가에 대한 설명입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 외부 함수와 내부 method 구별</span>
+
+<span class="k">def</span> <span class="nf">print_name</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"이것은 소리없는 아우성!!"</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>     
+
+    <span class="k">def</span> <span class="nf">print_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"이름 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">print_name</span><span class="p">())</span>       <span class="c"># 외부함수 호출</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">print_name</span><span class="p">())</span>  <span class="c"># instance method 호출</span>
+
+
+<span class="n">stu1</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">"홍길동"</span><span class="p">)</span>   <span class="c"># 객체 생성</span>
+
+<span class="n">stu1</span><span class="o">.</span><span class="n">call_method</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Inheritance</strong></p>
+
+<p>상속은 한 번 정의한 데이터 타입(class)을 필요에 따라 재활용해서 반복되는 코드를 줄이고자 하는 
+목적을 가지고 있습니다.</p>
+
+<p>여기서는 Unit, Marine을 대상으로 상속에 대한 내용을 알아보도록 하겠습니다.</p>
+
+<p>가장 먼저 Unit class를 정의합니다. 이 class는 모든 유닛이 가지고 있어야 할 속성을 가지고 
+있는 베이스 class가 될 것입니다. 
+그리고 이 Unit class를 상속받는 Marine sub class를 정의하도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Inheritance 예제</span>
+
+<span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'직업: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utype</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'생명력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="p">))</span>
+        
+
+<span class="k">class</span> <span class="nc">Marine</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">marine_1</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="s">'100'</span><span class="p">,</span> <span class="s">'100'</span><span class="p">)</span>
+
+<span class="n">marine_1</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+
+<span class="c"># Student class가 어떠한 구조를 가지고 있나를 확인</span>
+<span class="k">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">Marine</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>인스턴스 생성시에 무조건 호출되어야 하는 <code class="highlighter-rouge">__init__()</code> method도 자신의 네임스페이스에서 
+찾지 못 하면 
+부모 클래스에서 참조하는 것을 알 수 있습니다.</p>
+
+<p>이제 코드를 약간 수정해서 Marine class에 Marine만이 가지고 있는 속성을 추가해 보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># method overriding</span>
+
+<span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'직업: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utype</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'생명력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="p">))</span>
+        
+
+<span class="k">class</span> <span class="nc">Marine</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">,</span> <span class="n">offense_upgrade</span><span class="p">,</span> <span class="n">defense_upgrade</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span> <span class="o">=</span> <span class="n">offense_upgrade</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span> <span class="o">=</span> <span class="n">defense_upgrade</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'직업: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utype</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'생명력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'방어력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span><span class="p">))</span>
+        
+    
+<span class="n">marine_1</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="s">'100'</span><span class="p">,</span> <span class="s">'100'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">marine_1</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>상위 class의 method를 하위 class에서 재정의 하는 것을 <code class="highlighter-rouge">method overriding</code>이라고 합니다. 
+같은 이름의 method를 사용해야 하지만 class가 다르기 때문에 실제 수행되는 코드가 
+변경되어야 할 때 이 개념을 이용합니다.</p>
+
+<p>method overriding을 이용했지만 위의 코드는 중복되는 코드가 너무 많아서 
+상속의 장점을 살리지 못하고
+있습니다. 이 코드를 <code class="highlighter-rouge">super()</code>를 이용하여 수정해 보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># method overriding using super()</span>
+
+<span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'직업: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utype</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'생명력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="p">))</span>
+        
+
+<span class="k">class</span> <span class="nc">Marine</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">,</span> <span class="n">offense_upgrade</span><span class="p">,</span> <span class="n">defense_upgrade</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Marine</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span> <span class="o">=</span> <span class="n">offense_upgrade</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span> <span class="o">=</span> <span class="n">defense_upgrade</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Marine</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'방어력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span><span class="p">))</span>
+
+
+<span class="n">marine_1</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="s">'100'</span><span class="p">,</span> <span class="s">'100'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">marine_1</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>기본적인 내용에 대해서는 알아봤으니 이번에는 간단한 시나리오를 가지고 클래스를 디자인해보도록 
+하겠습니다.</p>
+
+<p>Marine, Medic, DropShip 3 종류의 Unit을 사용할 것이고 4명의 Marine을 생성하고 2명의 Medic, 
+1개의 DropShip을 생성한 후 DropShip에 6명을 태워서 특정 지점에 공격하러 가는 내용으로
+class를 정의하고 실행해보도록 하겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 간단한 예제</span>
+
+<span class="k">class</span> <span class="nc">Unit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'직업: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utype</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'생명력: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">life</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>        
+        
+
+<span class="k">class</span> <span class="nc">Marine</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">,</span> <span class="n">offense_upgrade</span><span class="p">,</span> <span class="n">defense_upgrade</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Marine</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span> <span class="o">=</span> <span class="n">offense_upgrade</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span> <span class="o">=</span> <span class="n">defense_upgrade</span>
+        
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Marine</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공격력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offense_upgrade</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'방어력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'마린이 공격합니다. 땅땅!!'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">stimpack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">*</span> <span class="mf">1.5</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">-</span> <span class="mi">10</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'마린이 Stimpack을 사용합니다. 칙!!'</span><span class="p">)</span>    
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'체력이 낮아 Stimpack을 사용할 수 없습니다.'</span><span class="p">)</span>    
+
+
+<span class="k">class</span> <span class="nc">Medic</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">,</span> <span class="n">defense_upgrade</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Medic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span> <span class="o">=</span> <span class="n">defense_upgrade</span>
+
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Medic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'방어력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'메딕이 치료합니다. 힐힐!!'</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DropShip</span><span class="p">(</span><span class="n">Unit</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">,</span> <span class="n">defense_upgrade</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DropShip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">damage</span><span class="p">,</span> <span class="n">life</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span> <span class="o">=</span> <span class="n">defense_upgrade</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit_arr</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">show_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DropShip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">show_status</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'방어력 업그레이드: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defense_upgrade</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'목표지점으로 이동합니다. 쓩!!'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">unit_arr</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit_arr</span> <span class="o">=</span> <span class="n">unit_arr</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'부대를 태웠습니다.'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">drop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'모든 Unit이 DropShip에서 내립니다.'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_arr</span>
+    
+
+<span class="c"># Marine 생성</span>
+
+<span class="n">marine_1</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">marine_2</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">marine_3</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">marine_4</span> <span class="o">=</span> <span class="n">Marine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># Medic 생성</span>
+<span class="n">medic_1</span> <span class="o">=</span> <span class="n">Medic</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">medic_2</span> <span class="o">=</span> <span class="n">Medic</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># 병력을 list안에 모은다.</span>
+<span class="n">troop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marine_1</span><span class="p">)</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marine_2</span><span class="p">)</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marine_3</span><span class="p">)</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marine_4</span><span class="p">)</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">medic_1</span><span class="p">)</span>
+<span class="n">troop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">medic_2</span><span class="p">)</span>
+
+
+<span class="c"># DropShip 생성</span>
+<span class="n">dropship</span> <span class="o">=</span> <span class="n">DropShip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># DropShip에 부대원을 태운다.</span>
+<span class="n">dropship</span><span class="o">.</span><span class="n">board</span><span class="p">(</span><span class="n">troop</span><span class="p">)</span>
+
+<span class="c"># 공격지점으로 이동</span>
+<span class="n">dropship</span><span class="o">.</span><span class="n">attack</span><span class="p">()</span>
+
+<span class="c"># 공격지점에서 부대원들 내리기</span>
+<span class="n">troop</span> <span class="o">=</span> <span class="n">dropship</span><span class="o">.</span><span class="n">drop</span><span class="p">()</span>
+
+<span class="c"># 부대원들 공격</span>
+<span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">troop</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">Marine</span><span class="p">):</span>
+        <span class="n">unit</span><span class="o">.</span><span class="n">stimpack</span><span class="p">()</span>
+    <span class="n">unit</span><span class="o">.</span><span class="n">attack</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/python/">Python</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/python/">
+                                
+                                    See all 21 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-magic-function">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-magic-function">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강의(7) - Python Magic Function</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include python-lecture-table-of-contents.html %} --- **Magic Method**{: class="subtitle_fontAwesome" } * method 이름 앞뒤에 더블 언더스코어(`__`)가 붙어 있습니다. (대표적인 magic method : `__init__`) * class안에 정의할 수 있는 특수한 형태의 method입니다. * 일반적으로 연산자(+,</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-program-exercise-1">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-program-exercise-1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강좌(5) - Python 연습문제(1)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) -</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Python 기초강의(6) - Python 객체지향</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Python+%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98%286%29+-+Python+%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5&amp;url=https://moon9342.github.io/python-lecture-python-OOP"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/python-lecture-python-OOP"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

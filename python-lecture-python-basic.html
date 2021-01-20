@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Python 기초강의(2) - Python 기본</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/python-lecture-python-basic" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Python 기초강의(2) - Python 기본" />
+    <meta property="og:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta property="og:url" content="http://localhost:4000/python-lecture-python-basic" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-03-03T01:40:00+09:00" />
+    <meta property="article:modified_time" content="2020-03-03T01:40:00+09:00" />
+    <meta property="article:tag" content="Python" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Python 기초강의(2) - Python 기본" />
+    <meta name="twitter:description" content="Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/python-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Python" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/python-lecture-python-basic",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/python-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/python-lecture-python-basic"
+    },
+    "description": "Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) - Python 객체지향 Python 기초강의(7) - Python Magic Function Python 기초강의(8) - Python First Class Python 기초강의(9) -"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Python 기초강의(2) - Python 기본" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 2 March 2020"> 2 March 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/python/'>PYTHON</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Python 기초강의(2) - Python 기본</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/python-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Python 기초강의는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./python-lecture-python-introduction">Python 기초강의(1) - Introduction</a></li>
+    <li><a href="./python-lecture-python-basic">Python 기초강의(2) - Python 기본</a></li>
+    <li><a href="./python-lecture-python-control-statement">Python 기초강의(3) - Python 제어문</a></li>
+    <li><a href="./python-lecture-python-function">Python 기초강의(4) - Python function</a></li>
+    <li><a href="./python-lecture-python-program-exercise-1">Python 기초강의(5) - Python 연습문제(1)</a></li>
+    <li><a href="./python-lecture-python-OOP">Python 기초강의(6) - Python 객체지향</a></li>
+    <li><a href="./python-lecture-python-magic-function">Python 기초강의(7) - Python Magic Function</a></li>
+    <li><a href="./python-lecture-python-first-class">Python 기초강의(8) - Python First Class</a></li>
+    <li><a href="./python-lecture-python-closure">Python 기초강의(9) - Python Closure</a></li>
+    <li><a href="./python-lecture-python-decorator">Python 기초강의(10) - Python Decorator</a></li>
+    <li><a href="./python-lecture-python-generator">Python 기초강의(11) - Python Generator</a></li>
+    <li><a href="./python-lecture-python-module">Python 기초강의(12) - Python Module</a></li>
+    <li><a href="./python-lecture-python-exception">Python 기초강의(13) - Python Exception &amp; File</a></li>
+    <li><a href="./python-lecture-python-oop-exercise">Python 기초강의(14) - Python 연습문제(2)</a></li>
+    <li><a href="./python-lecture-python-django-introduction">Python Django 웹 프레임워크(1) - introduction</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-1">Python Django 웹 프레임워크(2) - Poll project 개발(1)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-2">Python Django 웹 프레임워크(3) - Poll project 개발(2)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-3">Python Django 웹 프레임워크(4) - Poll project 개발(3)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-4">Python Django 웹 프레임워크(5) - Poll project 개발(4)</a></li>
+    <li><a href="./python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+    <li><a href="./python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+    <li><a href="./python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+    <!--
+    <li><a href="./python-lecture-python-django-shoppingmall-project">Python Django 웹 프레임워크(9) - Shopping Mall project 개발</a></li>
+    -->
+
+
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">영상설명</strong></p>
+
+<p>이번 영상은 Python 언어의 <code class="highlighter-rouge">Built-in Types</code>에 대한 영상입니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Numeric)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Sequence)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Text Sequence Type)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Mapping Type)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Set Type)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(Bool Type)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">Python Data Type(date, timedelta)</strong></p>
+
+<blockquote>
+  <p>Python 기초강의 - Python built-in types</p>
+</blockquote>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/t2XsPg1LTLg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/EGGPeQJUg1o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/imIJdF2GPfc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/N9R-YyT0cZA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/c8Q23XQCc_M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">jupyter notebook 단축키</strong></p>
+
+<p>jupyter notebook을 PyCharm이 아닌 Web Application으로 사용할 때 마우스로 메뉴를 이용해도 되지만 단축키를 이용하는게
+훨씬 편합니다. 아래내용은 기억해두면 사용하기 편한 단축키에 대한 설명입니다.</p>
+
+<pre><code class="language-txt">Shift-Enter : run cell, select below
+Ctrl-Enter : run cell
+Alt-Enter : run cell, insert below
+A : insert cell above
+B : insert cell below
+X : cut selected cell
+C : copy selected cell
+V : paste cell below
+Shift-V : paste cell above
+D, D : delete selected cell
+Z : undo last cell deletion
+L : toggle line number
+O : toggle output
+</code></pre>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python 주석, keyword, 변수생성</strong></p>
+
+<ul>
+  <li>한줄 주석은 <code class="highlighter-rouge">#</code> 으로 처리합니다. 여러줄 주석은 <code class="highlighter-rouge">"""   """</code> 를 이용합니다.(혹은 <code class="highlighter-rouge">'''  '''</code>)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Python 주석</span>
+
+<span class="c"># 한줄 주석은 # 으로 처리</span>
+
+<span class="c"># 여러줄 주석은 """ """ 이용( 혹은 ''' ''' )</span>
+
+<span class="s">"""
+이부분은 주석처리됩니다.!!
+여러줄 주석처리할 경우 사용되며 따옴표(single quotation mark)를
+사용해도 됩니다.
+"""</span>
+
+<span class="c"># keyword module loading</span>
+
+<span class="kn">import</span> <span class="nn">keyword</span>
+<span class="k">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+
+
+<span class="c"># 변수의 생성과 삭제</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"생성된 a의 값은 : "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">a</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"삭제된 a의 값은 : "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="s">'False'</span><span class="p">,</span> <span class="s">'None'</span><span class="p">,</span> <span class="s">'True'</span><span class="p">,</span> <span class="s">'and'</span><span class="p">,</span> <span class="s">'as'</span><span class="p">,</span> <span class="s">'assert'</span><span class="p">,</span> <span class="s">'break'</span><span class="p">,</span> <span class="s">'class'</span><span class="p">,</span> 
+ <span class="s">'continue'</span><span class="p">,</span> <span class="s">'def'</span><span class="p">,</span> <span class="s">'del'</span><span class="p">,</span> <span class="s">'elif'</span><span class="p">,</span> <span class="s">'else'</span><span class="p">,</span> <span class="s">'except'</span><span class="p">,</span> <span class="s">'finally'</span><span class="p">,</span> <span class="s">'for'</span><span class="p">,</span> 
+ <span class="s">'from'</span><span class="p">,</span> <span class="s">'global'</span><span class="p">,</span> <span class="s">'if'</span><span class="p">,</span> <span class="s">'import'</span><span class="p">,</span> <span class="s">'in'</span><span class="p">,</span> <span class="s">'is'</span><span class="p">,</span> <span class="s">'lambda'</span><span class="p">,</span> <span class="s">'nonlocal'</span><span class="p">,</span> 
+ <span class="s">'not'</span><span class="p">,</span> <span class="s">'or'</span><span class="p">,</span> <span class="s">'pass'</span><span class="p">,</span> <span class="s">'raise'</span><span class="p">,</span> <span class="s">'return'</span><span class="p">,</span> <span class="s">'try'</span><span class="p">,</span> <span class="s">'while'</span><span class="p">,</span> <span class="s">'with'</span><span class="p">,</span> <span class="s">'yield'</span><span class="p">]</span>
+<span class="err">생성된</span> <span class="n">a</span><span class="err">의</span> <span class="err">값은</span> <span class="p">:</span>  <span class="mi">100</span>
+<span class="o">---------------------------------------------------------------------------</span>
+<span class="nb">NameError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">9</span><span class="n">ac0e81add16</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+     <span class="mi">25</span> <span class="k">print</span><span class="p">(</span><span class="s">"생성된 a의 값은 : "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+     <span class="mi">26</span> <span class="k">del</span> <span class="n">a</span>
+<span class="o">---&gt;</span> <span class="mi">27</span> <span class="k">print</span><span class="p">(</span><span class="s">"삭제된 a의 값은 : "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'a'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Built-in Types)</strong></p>
+
+<p>Python의 data type은 다음과 같습니다.</p>
+
+<blockquote>
+  <p>Python Built-in Types</p>
+  <ul>
+    <li>Numeric</li>
+    <li>Sequence</li>
+    <li>Text Sequence</li>
+    <li>Mapping</li>
+    <li>Set</li>
+    <li>Bool</li>
+  </ul>
+</blockquote>
+
+<p>각각의 데이터 타입에 대해서 하나하나 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Numeric)</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python numeric type</span>
+
+<span class="c"># Numeric Type (숫자형)</span>
+<span class="c"># int (정수)</span>
+<span class="c"># float (실수)</span>
+<span class="c"># complex (복소수)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">123</span>           <span class="c"># 정수</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.141592</span>      <span class="c"># 실수 </span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3.14E10</span>       <span class="c"># 실수 (지수형태)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span>        <span class="c"># 복소수</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o34</span>          <span class="c"># 8진수</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mh">0xAB</span>          <span class="c"># 16진수</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>    <span class="c"># &lt;class 'int'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>    <span class="c"># &lt;class 'float'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>    <span class="c"># &lt;class 'float'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>    <span class="c"># &lt;class 'complex'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>    <span class="c"># &lt;class 'int'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>    <span class="c"># &lt;class 'int'&gt;</span>
+
+<span class="n">div</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span>       <span class="c"># 나누셈의 결과는?</span>
+<span class="k">print</span><span class="p">(</span><span class="n">div</span><span class="p">)</span>        <span class="c"># 0.75</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">3</span>   <span class="c"># 지수표현</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>     <span class="c"># 27</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span>   <span class="c"># 나머지 연산</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>     <span class="c"># 1</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c"># 나눗셈 몫</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>     <span class="c"># 3</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Sequence)</strong></p>
+
+<p><strong class="subtitle2_fontAwesome">list</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Sequence Type - list</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python sequence type - list</span>
+
+<span class="c"># list</span>
+<span class="c"># 임의의 객체를 순서대로 저장하는 집합 자료형</span>
+<span class="c"># Java의 ArrayList와 유사 ( index 부여 및 값 변경 가능 )</span>
+<span class="c"># 대괄호 ( [ ] )를 이용하여 표시</span>
+<span class="c"># range()를 이용하여 리스트 생성 가능</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">"Hello"</span><span class="p">,</span><span class="mf">3.14</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,[</span><span class="s">"Show"</span><span class="p">,</span><span class="s">"me"</span><span class="p">,</span> <span class="s">"the"</span><span class="p">,</span> <span class="s">"money!!"</span><span class="p">],</span><span class="mf">3.14</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>          <span class="c"># [1, 2, ['Show', 'me', 'the', 'money!!'], 3.14]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>      <span class="c"># 1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      <span class="c"># 3.14</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>    <span class="c"># Show</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>     <span class="c"># [1, 2]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">:])</span>   <span class="c"># ['the', 'money!!']</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>      <span class="c"># [1, 2, 3, 4, 5, 6] </span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span> <span class="p">)</span>    <span class="c"># [1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s">"Hello"</span><span class="p">)</span> <span class="c"># a[0] + "Hello" =&gt; Error</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>          <span class="c"># [5, 2, 3]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>  <span class="c"># [7, 8, 9, 2, 3]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">]</span>  <span class="c"># [7, ['Hello', 'World'], 9, 2, 3]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c"># [7, 2, 3]</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>      <span class="c"># [2, 3]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c"># [1, 2, 3, 4]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>    <span class="c"># [1, 2, 3, 4, [5, 6, 7]]</span>
+
+<span class="c">#a = [7,3,1,8,2]</span>
+<span class="c">#a = ["Hello","World","kaka","hoho"]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">"홍길동"</span><span class="p">,</span><span class="s">"최길동"</span><span class="p">,</span><span class="s">"이순신"</span><span class="p">,</span><span class="s">"강감찬"</span><span class="p">,</span><span class="s">"박효신"</span><span class="p">,</span><span class="s">"아이유"</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>   
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>       <span class="c"># None</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c"># ['강감찬', '박효신', '아이유', '이순신', '최길동', '홍길동'] </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>  
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>       <span class="c"># None</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c"># ['홍길동', '최길동', '이순신', '아이유', '박효신', '강감찬']</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>   <span class="c"># 1의 위치 반환 (2)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c"># [-1, 1, 2, 3]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c"># 첫번째로 나오는 3 제거 =&gt; [1, 2, 1, 2, 1, 2, 3]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>   <span class="c"># 마지막 index위치의 값을 pop</span>
+                 <span class="c"># 4</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>         <span class="c"># [1, 2, 3]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c"># index위치의 값을 pop</span>
+                 <span class="c"># 2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>         <span class="c"># [1, 3, 4]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>    <span class="c"># 1의 개수 counting =&gt; 3</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c"># [1, 2, 3, 4, 5, 6]</span>
+
+<span class="c">############################################</span>
+<span class="c"># is 연산자와 == 연산자</span>
+<span class="c"># is 연산자는 reference를 비교하는 연산자이고</span>
+<span class="c"># == 연산자는 value를 비교하는 연산자</span>
+<span class="c"># 변수의 reference(메모리 주소에 대한 int값)를 얻기위한</span>
+<span class="c"># 함수 =&gt; id()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>      
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>    <span class="c"># 1759493440</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>    <span class="c"># 1759493440</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">256</span>         
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>    <span class="c"># 1759498432</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>    <span class="c"># 1759498432</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="mi">257</span>         <span class="c"># 257 이상이면 다른 주소에 할당</span>
+                <span class="c"># console에서는 정상실행</span>
+                <span class="c"># pyCharm에서는 같은 주소가 할당(왜?)</span>
+                
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>    <span class="c"># 1134539404368</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">257</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>    <span class="c"># 1134539405008</span>
+
+
+<span class="c"># 다른 데이터 타입은 매번 실행 시 다른 메모리 할당</span>
+<span class="n">list_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">list_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">list_1</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">list_2</span><span class="p">))</span>    <span class="c"># 1134539686024 1134540817352</span>
+
+<span class="c"># 두 개의 list 비교</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="c"># True</span>
+              <span class="c"># a와 b가 같은 객체 reference</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>      <span class="c"># 리스트 전체 복사의 의미</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="c"># False</span>
+              <span class="c"># a와 b가 서로 다른 객체 reference</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c"># 리스트 복사</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>  <span class="c"># False</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">tuple</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Sequence Type - tuple</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python sequence type - tuple</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>     <span class="c"># 요소가 1개인 Tuple 표현</span>
+             <span class="c"># type(b) =&gt; &lt;class 'tuple'&gt;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c"># type(c) =&gt; &lt;class 'int'&gt;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># 일반적인 형태</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>    <span class="c"># () 생략가능</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span> <span class="c"># tuple의 각 값을 변수에 대입</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="mi">5</span><span class="p">,(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c"># indexing</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>  <span class="c"># slicing =&gt; (2, (3, 4))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>   <span class="c"># (1, 2, 3, 4, 5, 6)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>   <span class="c"># (1, 2, 3, 1, 2, 3, 1, 2, 3)</span>
+
+<span class="c"># tuple과 list의 변환</span>
+
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">my_tuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>   <span class="c"># (1, 2, 3)</span>
+
+<span class="n">my_tuple</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>   <span class="c"># [10, 20, 30]</span>
+</code></pre></div></div>
+
+<p><strong class="subtitle2_fontAwesome">range</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Sequence Type - range</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python sequence type - range</span>
+
+<span class="c"># range는 숫자 sequence로 주로 for문에서 사용</span>
+<span class="c"># range의 장점은 표현하는 범위에 무관하게 항상</span>
+<span class="c"># 같은(작은)양의 메모리를 사용</span>
+
+<span class="n">range_1</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">range_1</span><span class="p">)</span>    <span class="c"># range(0, 10)</span>
+
+<span class="n">range_2</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">range_2</span><span class="p">)</span>    <span class="c"># range(1, 11, 2)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="mi">7</span> <span class="ow">in</span> <span class="n">range_2</span><span class="p">)</span>    <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="ow">in</span> <span class="n">range_2</span><span class="p">)</span>   <span class="c"># False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">range_2</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="c"># 7이 처음나오는 index  =&gt; 3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">range_2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>       <span class="c"># 5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">range_2</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>      <span class="c"># range(5, 11, 2)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">range_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      <span class="c"># 9</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Text Sequence Type)</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Text Sequence Type - str</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python text sequence type - str</span>
+
+<span class="c"># 문자열 생성방법 (4가지)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"Hello"</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="s">'python'</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="s">"""this is a
+multiline
+sample text"""</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="s">'''이것은
+소리없는
+아우성'''</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="c"># 문자열 연산 , Indexing, Slicing</span>
+
+<span class="n">first</span> <span class="o">=</span> <span class="s">"this is a"</span>
+<span class="n">middle</span> <span class="o">=</span> <span class="s">' sample'</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s">""" text"""</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">last</span><span class="p">)</span>  <span class="c"># this is a sample text</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"Python"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">text</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  <span class="c"># PythonPythonPython</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"Talk is cheap. Show me the code"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>  <span class="c"># k</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c"># e</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]);</span>  <span class="c"># Talk</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>  <span class="c"># Talk is cheap. Show</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">:]);</span>  <span class="c"># is cheap. Show me the code</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:])</span>  <span class="c"># Talk is cheap. Show me the code</span>
+
+<span class="c"># in, not in 연산</span>
+
+<span class="n">myStr</span> <span class="o">=</span> <span class="s">"This is a sample Text"</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"sample"</span> <span class="ow">in</span> <span class="n">myStr</span><span class="p">)</span>  <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"text"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">myStr</span><span class="p">)</span>  <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"this"</span> <span class="ow">in</span> <span class="n">myStr</span><span class="p">)</span>  <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"this"</span> <span class="ow">in</span> <span class="n">myStr</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>  <span class="c"># True</span>
+
+<span class="c"># 문자열 formatting</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%</span><span class="s">d apples."</span> <span class="o">%</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%</span><span class="s">s apples."</span> <span class="o">%</span> <span class="s">"five"</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%</span><span class="s">d apples."</span> <span class="o">%</span> <span class="n">num</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%</span><span class="s">d apples and </span><span class="si">%</span><span class="s">s bananas"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"three"</span><span class="p">)</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="s">"Error Rate is </span><span class="si">%</span><span class="s">d</span><span class="si">%%</span><span class="s">."</span> <span class="o">%</span> <span class="mi">80</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%10</span><span class="s">s apples."</span> <span class="o">%</span> <span class="s">"five"</span>
+<span class="n">g</span> <span class="o">=</span> <span class="s">"I have </span><span class="si">%-10</span><span class="s">s apples."</span> <span class="o">%</span> <span class="s">"five"</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="s">"</span><span class="si">%0.4</span><span class="s">f"</span> <span class="o">%</span> <span class="mf">3.141592</span>
+<span class="n">i</span> <span class="o">=</span> <span class="s">"</span><span class="si">%10.4</span><span class="s">f"</span> <span class="o">%</span> <span class="mf">3.141592</span>  <span class="c"># 전체 자리수 10자리,</span>
+<span class="c"># 오른쪽 정렬,</span>
+<span class="c"># 소수점 이하 4자리(반올림)</span>
+
+<span class="c"># 문자열 함수</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"cocacola"</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c"># 문자열 길이 =&gt; 8</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">"c"</span><span class="p">)</span>  <span class="c"># 문자 개수 count =&gt; 3</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"o"</span><span class="p">)</span>  <span class="c"># 문자가 처음나온 위치, 없으면 -1 =&gt; 1</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>  <span class="c"># 문자가 처음나온 위치, 없으면 Error =&gt; 3</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"::"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">"abcd"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c"># a::b::c::d</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">" hoBBy "</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"Show me the Code"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"Code"</span><span class="p">,</span> <span class="s">"Money"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>        <span class="c"># Show me the Money</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"Show me the Code"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c"># ['Show', 'me', 'the', 'Code']</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"a:b:c:d:e"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">":"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c"># ['a', 'b', 'c', 'd', 'e']</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"I have {0} apples"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"I have {0} apples and {1} bananas"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"three"</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"I have {num1} apples and {num2} bananas"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num1</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num2</span><span class="o">=</span><span class="s">"two"</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"{0:0.4f}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.141592</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c"># 3.1416</span>
+
+<span class="c"># 천 단위 comma 출력</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1234567899</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:,}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+
+<span class="c"># 백분율 출력 ( 반올림 처리 )</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mf">0.87657</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:.0</span><span class="si">%</span><span class="s">}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0:.2</span><span class="si">%</span><span class="s">}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>                        
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Mapping Type)</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Mapping Type - dict</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python mapping type - dict</span>
+
+<span class="c"># dictionary는 key와 value의 대응관계 type</span>
+<span class="c"># Associative array 혹은 Hash와 유사한 구조</span>
+<span class="c"># {} 기호로 표현</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"name"</span> <span class="p">:</span> <span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"age"</span> <span class="p">:</span> <span class="mi">30</span> <span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>   <span class="c"># &lt;class 'dict'&gt;</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"KK"</span>
+<span class="n">a</span><span class="p">[</span><span class="s">"Hobby"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Game"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>   <span class="c"># {'name': '홍길동', 'age': 30, 10: 'KK', 'Hobby': 'Game'}</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>  <span class="c"># key값이 10인 쌍을 삭제</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>   <span class="c"># {'name': '홍길동', 'age': 30, 'Hobby': 'Game'}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s">"name"</span><span class="p">])</span>   <span class="c"># 홍길동</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"name"</span> <span class="p">:</span> <span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"age"</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">"age"</span> <span class="p">:</span> <span class="mi">40</span> <span class="p">}</span>
+<span class="c"># key가 중복되면 1개를 제외한 나머지 무시.</span>
+<span class="c"># key에 list는 올 수 없지만 tuple은 올 수 있다.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"name"</span> <span class="p">:</span> <span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"age"</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="s">"address"</span><span class="p">,)</span> <span class="p">:</span> <span class="s">"서울"</span> <span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[(</span><span class="s">'address'</span><span class="p">,)])</span>     <span class="c"># 서울</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s">"name"</span> <span class="p">:</span> <span class="s">"홍길동"</span><span class="p">,</span> <span class="s">"age"</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">"address"</span> <span class="p">:</span> <span class="s">"서울"</span> <span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>   <span class="c"># a.keys() =&gt; dict_keys 객체 리턴</span>
+                  <span class="c"># dict_keys(['name', 'age', 'address'])</span>
+                  <span class="c"># list와 유사하지만 list 함수 사용 불가</span>
+                  <span class="c"># list로 변환 =&gt; list(a.keys()) </span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>   <span class="c"># a.values() =&gt; dict_values 객체 리턴</span>
+                    <span class="c"># dict_values(['홍길동', 30, '서울'])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>    <span class="c"># key와 value의 쌍을 tuple로 묶은 </span>
+                    <span class="c"># dict_items 객체 리턴</span>
+                    <span class="c"># dict_items([('name', '홍길동'), ('age', 30), ('address', '서울')])</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="c">#print(key + ", " + a[key]) =&gt; Type Error</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"{0}, {1}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"address"</span><span class="p">))</span>          <span class="c"># 만약 찾지 못하면 None 리턴</span>
+                                 <span class="c"># 서울</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"address!!"</span><span class="p">,</span><span class="s">"지역"</span><span class="p">))</span> <span class="c"># 만약 찾지 못하면 default 리턴</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"name"</span> <span class="ow">in</span> <span class="n">a</span><span class="p">)</span>  <span class="c"># key가 딕셔너리에 있는지 조사</span>
+                    <span class="c"># True</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>               <span class="c"># Key:Value쌍 모두 삭제</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                <span class="c"># {}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Set Type)</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Set Type - set</code>에 대해서 코드로 알아보겠습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python Set Type - set</span>
+
+<span class="c"># Set 특징</span>
+<span class="c"># 중복이 없고, 순서가 없다.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>              <span class="c"># set 생성</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>   <span class="c"># set 생성 =&gt; {1, 2, 3}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>           <span class="c"># &lt;class 'set'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                 <span class="c"># {1, 2, 3}</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>           <span class="c"># {'o', 'e', 'l', 'H'}</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">&amp;</span> <span class="n">s2</span><span class="p">)</span>             <span class="c"># intersection</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="c"># {3, 4, 5}</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">|</span> <span class="n">s2</span><span class="p">)</span>             <span class="c"># union</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span>        <span class="c"># {1, 2, 3, 4, 5, 6, 7} </span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>             <span class="c"># difference</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span>   <span class="c"># {1, 2}</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>                  <span class="c"># set에 요소 추가</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>                  <span class="c"># {1, 2, 3, 4, 5, 7}</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>     <span class="c"># set에 값 여러개 추가(list이용)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>                  <span class="c"># {1, 2, 3, 4, 5, 6, 7, 8, 9}</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">})</span>      <span class="c"># set에 값 여러개 추가(set이용)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>                  <span class="c"># {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>               <span class="c"># set에서 특정값 삭제</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>                  <span class="c"># {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(Bool Type)</strong></p>
+
+<p>Python의 <code class="highlighter-rouge">Bool Type - bool</code>은 다음과 같은 특징을 가집니다.</p>
+
+<ul>
+  <li>True , False</li>
+  <li><code class="highlighter-rouge">not</code>, <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code> 연산자 사용</li>
+  <li>python에서 <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code> ,<code class="highlighter-rouge">not</code>은 논리 연산(True,False 연산)</li>
+  <li>python에서 <code class="highlighter-rouge">&amp;</code>, <code class="highlighter-rouge">|</code>, <code class="highlighter-rouge">~</code>은 비교 연산(bitwise 연산)</li>
+</ul>
+
+<blockquote>
+  <p>다음의 경우 False로 간주</p>
+  <ul>
+    <li>빈 문자열 (<code class="highlighter-rouge">""</code>)</li>
+    <li>빈 리스트 ( <code class="highlighter-rouge">[]</code> )</li>
+    <li>빈 튜플 ( <code class="highlighter-rouge">()</code> )</li>
+    <li>빈 딕셔너리 ( <code class="highlighter-rouge">{}</code> )</li>
+    <li>숫자 <code class="highlighter-rouge">0</code> ( 0 이외의 다른 숫자는 True )</li>
+    <li><code class="highlighter-rouge">None</code></li>
+  </ul>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python Bool Type - bool</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>       <span class="c"># bitwise 연산 0101 &amp; 0000 =&gt; 0000  =&gt; 0</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">))</span> <span class="c"># 0은 bool로 전환시 False           =&gt; False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>       <span class="c"># bitwise 연산 0101 | 0000 =&gt; 0101  =&gt; 5</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">))</span> <span class="c"># 0이외의 숫자는 bool로 전환시 True  =&gt; True</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">b</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>    <span class="c"># True는 정수 전환시 1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>    <span class="c"># False는 정수 전환시 0</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>     <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>     <span class="c"># True</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">)</span>   <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">)</span>    <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="p">)</span>     <span class="c"># False</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Data Type(date, timedelta)</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python date type</span>
+
+<span class="c"># 날짜</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>      <span class="c"># &lt;class 'datetime.date'&gt;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"연도 : {0}, 월 : {1}, 일 : {2}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">today</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
+
+<span class="c"># 날짜 및 시간</span>
+<span class="n">my_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_datetime</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"현재 시 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_datetime</span><span class="o">.</span><span class="n">hour</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"현재 분 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_datetime</span><span class="o">.</span><span class="n">minute</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"현재 초 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_datetime</span><span class="o">.</span><span class="n">second</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"현재 마이크로초 : {0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_datetime</span><span class="o">.</span><span class="n">microsecond</span><span class="p">))</span>
+
+
+<span class="c"># pip install python-dateutil</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>   <span class="c"># 일을 기준으로 하루 전</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"하루 전 날짜 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span> <span class="o">+</span> <span class="n">days</span><span class="p">))</span>
+<span class="c"># weeks, days, hours, minutes, seconds 사용가능</span>
+<span class="c"># years와 months는 timedelta로 사용할 수 없다.</span>
+<span class="c"># days = timedelta(years=-2)   # 월을 기준으로 2개월 전 ( error )</span>
+
+<span class="c"># years와 months는 relativedelta 사용 ( 2019-03-31의 1달전은 2019-02-28 )</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"두달 전 날짜 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span> <span class="o">+</span> <span class="n">days</span><span class="p">))</span>
+
+<span class="c">## 특정 날짜 객체를 생성</span>
+<span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
+<span class="n">myDay</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s">"2019-01-01"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"parse()로 얻어온 날짜 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myDay</span><span class="p">))</span>
+<span class="n">myDay</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"datetime()로 얻어온 날짜 : {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">myDay</span><span class="p">))</span>
+
+
+<span class="c"># 날짜 출력 형식</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+
+<span class="c"># strftime( 날짜를 문자열형태로 포맷 지정 )</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">y"</span><span class="p">)))</span> <span class="c"># year : 19</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"{0}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">Y"</span><span class="p">)))</span> <span class="c"># year : 2019</span>
+
+<span class="c"># 문자열을 날짜 형식으로 변환 ( strptime )</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="s">"2019,01,03-13:30:29"</span>
+<span class="n">my_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s">"</span><span class="si">%</span><span class="s">Y,</span><span class="si">%</span><span class="s">m,</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">my_date</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_date</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python Console 입출력</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python console IO</span>
+
+<span class="c"># console입력을 받기 위해서는 input()을 이용</span>
+
+<span class="n">input_val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"숫자를 입력하세요!!"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">input_val</span><span class="p">))</span>  <span class="c"># input으로 입력받은 값은 str</span>
+
+<span class="c"># eval() : 입력받은 문자열을 숫자연산처리</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="s">"1+3*5"</span><span class="p">))</span>   <span class="c"># 16</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">input_val</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Python print() 함수</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># python print function</span>
+
+<span class="c"># print() 함수</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello"</span> <span class="o">+</span> <span class="s">"World"</span><span class="p">)</span> <span class="c"># + 연산자는 문자열 연결</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello"</span> <span class="s">"World"</span><span class="p">)</span>   <span class="c"># + 연산자가 없어도 문자열 연결</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span><span class="s">"World"</span><span class="p">)</span>   <span class="c"># , 를 이용하면 공백추가하여 문자열 연결</span>
+
+<span class="c"># 기본적으로 print()는 한줄 출력한 후 line feed (줄바꿈)</span>
+<span class="c"># end="" 를 이용하여 출력 후 처리를 지정할 수 있다.</span>
+
+<span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>  <span class="c"># 개행 =&gt; 공백으로 변환</span>
+</code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Python 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.python.org/" target="_blank">Python Official HomePage</a></li>
+    <li>점프 투 파이썬 - 이지스 퍼블리싱</li>
+    <li>전문가를 위한 파이썬(Fluent Python) - 한빛미디어</li>
+    <li>파이썬 웹 프로그래밍 - 한빛미디어</li>
+    <li>이미지 출처 : <a href="http://www.freepik.com" target="_blank">Designed by rawpixel.com / Freepik</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/python/">Python</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-blog-project">Python Django 웹 프레임워크(8) - Blog project 개발</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-mvt">Python Django 웹 프레임워크(7) - Django의 개발방식</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/python-lecture-python-django-poll-project-5">Python Django 웹 프레임워크(6) - Poll project 개발(5)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/python/">
+                                
+                                    See all 21 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-control-statement">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-control-statement">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강의(3) - Python 제어문</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include python-lecture-table-of-contents.html %} --- **영상설명**{: class="subtitle_fontAwesome" } 이번 영상은 Python 언어의 `control statement` 영상입니다. **Python Control Statement - if**{: class="subtitle2_fontAwesome" } **Python Control Statement – for**{: class="subtitle2_fontAwesome" } **Python Control Statement -</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-introduction">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-introduction">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강의(1) - Introduction</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Python 기초강의는 여러 절로 구성되어 있습니다. Python 기초강의(1) - Introduction Python 기초강의(2) - Python 기본 Python 기초강의(3) - Python 제어문 Python 기초강의(4) - Python function Python 기초강의(5) - Python 연습문제(1) Python 기초강의(6) -</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Python 기초강의(2) - Python 기본</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Python+%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98%282%29+-+Python+%EA%B8%B0%EB%B3%B8&amp;url=https://moon9342.github.io/python-lecture-python-basic"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/python-lecture-python-basic"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

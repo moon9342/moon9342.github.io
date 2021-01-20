@@ -1,0 +1,2281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://localhost:4000/</title>
+   
+   <link>http://localhost:4000/</link>
+   <description>얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</description>
+   <language>en-uk</language>
+   
+   <title>
+   <![CDATA[ IT Technical Training ]]>
+   </title>
+   <description>
+   <![CDATA[ 얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융) ]]>
+   </description>
+   <link>http://localhost:4000/</link>
+   <image>
+   <url>http://localhost:4000/assets/built/images/favicon.jpg</url>
+   <title>IT Technical Training</title>
+   <link>http://localhost:4000/</link>
+   </image>
+   <generator>Jekyll 3.6.2</generator>
+   <lastBuildDate></lastBuildDate>
+   <atom:link href="http://localhost:4000/rss.xml" rel="self" type="application/rss+xml"/>
+   <ttl>60</ttl>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>TypeScript 강좌(7) - Class</title>
+	  <link>http://localhost:4000/typescript-class</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-31T03:04:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-class</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Class</strong></p>
+
+<p>기존의 <code class="highlighter-rouge">JavaScript</code>는 재사용 가능한 component를 만들기 위해 함수와 prototype에 기반한 상속을 이용했습니다. 하지만
+기존 객체지향에 익숙해 있는 개발자들에게는 상당히 생소한 개념이었죠. 그래서 ECMAScript 2015( <code class="highlighter-rouge">ES6</code> )에서는 
+개발자들이 좀 더 쉽게 JavaScript Application을 구현할 수 있도록 전통적인 class 기반의 객체지향 개념을 도입했습니다.</p>
+
+<p><code class="highlighter-rouge">TypeScript</code> 역시 이 class기반의 객체지향 기법을 이용해 Application을 개발할 수 있습니다.</p>
+
+<p>일단 ECMAScript 2015( <code class="highlighter-rouge">ES6</code> )의 class는 다음과 같이 정의하고 사용할 수 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">,</span><span class="nx">bauthor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span> <span class="o">=</span> <span class="nx">bauthor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">printInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">,</span><span class="s1">'괴테'</span><span class="p">);</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위의 코드는 data type의 정보를 포함하고 있지 않기 때문에 <code class="highlighter-rouge">TypeScript</code>로 변형하면 오류가 발생합니다.
+적절히 타입 정보를 포함해 코드를 수정하면 다음과 같습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="nl">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bauthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span> <span class="o">=</span> <span class="nx">bauthor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">,</span><span class="s1">'괴테'</span><span class="p">);</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위의 코드는 <code class="highlighter-rouge">Java</code>에서 우리가 익히 보아왔던 class의 형태입니다. 생성자를 표현하는 부분이 좀 생소하지만 쉽게
+이해할 수 있을 듯 합니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Inheritance</strong></p>
+
+<p>일반적인 객체지향언어의 <code class="highlighter-rouge">Inheritance</code> 개념 역시 TypeScript에도 사용할 수 있습니다. 다음의 코드를 보죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="nl">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bauthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="c1">// 상위 클래스의 생성자</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span> <span class="o">=</span> <span class="nx">bauthor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 상위 클래스의 method</span>
+    <span class="c1">// 입력 인자가 있으면 사용하고 없으면 default 사용</span>
+    <span class="nx">printInfo</span><span class="p">(</span><span class="nx">input</span><span class="p">:</span><span class="nx">string</span> <span class="o">=</span> <span class="s1">'Initial'</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// class의 상속</span>
+<span class="kd">class</span> <span class="nx">EBook</span> <span class="kd">extends</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="na">btype</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="na">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">btype</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 상위 class 생성자 호출</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">btitle</span><span class="p">,</span> <span class="nx">bauthor</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btype</span> <span class="o">=</span> <span class="nx">btype</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// method overriding</span>
+    <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="c1">// 상위 class의 method 호출</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 
+                     저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span><span class="p">}</span><span class="s2">,
+                     타입: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btype</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// IS-A relationship에 의한 상위 class type 사용</span>
+<span class="kd">let</span> <span class="na">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EBook</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">,</span><span class="s1">'괴테'</span><span class="p">,</span>
+    <span class="s1">'PDF'</span><span class="p">);</span>
+
+<span class="c1">// dynamic binding에 의한 overriding method 호출.</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>기존 class를 확장하여 새로운 class를 정의하는 방법입니다. <code class="highlighter-rouge">IS-A Relationship</code> 역시 성립합니다. 그로 인한
+상위 타입으로 객체를 사용할 수 있습니다. 또한 위의 예에서 처럼 <code class="highlighter-rouge">method overriding</code>의 개념 역시 존재하고 
+<code class="highlighter-rouge">dynamic binding</code> 개념 역시 존재합니다. 물론 <code class="highlighter-rouge">TypeScript</code>에서는 공식적으로 저 용어를 사용하지는 않습니다.
+다만 우리가 <code class="highlighter-rouge">Java</code>언어에서 알고 있던 객체지향 개념이 그대로 TypeScript에도 일부 적용된다고 보시면 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Access Modifier</strong></p>
+
+<p><code class="highlighter-rouge">TypeScript</code>는 3가지 종류의 접근제어 연산자를 제공합니다. 우리에게 익숙한 <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">protected</code>, <code class="highlighter-rouge">private</code> 
+키워드로 제공되며 <strong>default값은 <code class="highlighter-rouge">public</code></strong>입니다. 즉, Access Modifier를 명시하지 않으면 모두 <code class="highlighter-rouge">public</code>으로 간주됩니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">public</code> : 접근제한이 없습니다. class외부에서 자유롭게 접근이 가능합니다.</li>
+  <li><code class="highlighter-rouge">protected</code> : class 외부에서 접근할 수 없습니다. 단, 상속받은 하위 class에서는 접근이 가능합니다.</li>
+  <li><code class="highlighter-rouge">privatre</code> : class 외부에서 접근할 수 없습니다. 상속받은 하위 class에서도 접근이 불가능합니다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kr">protected</span> <span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kr">public</span> <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">_bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">_bauthor</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// private property인 _bauthor의 getter</span>
+    <span class="kd">get</span> <span class="nx">bauthor</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_bauthor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// private property인 _bauthor의 setter</span>
+    <span class="kd">set</span> <span class="nx">bauthor</span><span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_bauthor</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">EBook</span> <span class="kd">extends</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kr">private</span> <span class="na">btype</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kr">public</span> <span class="kd">constructor</span><span class="p">(</span><span class="na">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">btype</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">btitle</span><span class="p">,</span> <span class="nx">bauthor</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btype</span> <span class="o">=</span> <span class="nx">btype</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`제목: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">}</span><span class="s2">, 
+                     저자: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">bauthor</span><span class="p">}</span><span class="s2">,
+                     타입: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">btype</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EBook</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">,</span><span class="s1">'괴테'</span><span class="p">,</span>
+    <span class="s1">'PDF'</span><span class="p">);</span>
+
+<span class="nx">book</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위의 예제에서는 다음의 코드를 주의해서 보아야 합니다. 
+생성자의 인자로 <code class="highlighter-rouge">private _bauthor:string</code>라고 선언된 부분이 보입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kr">protected</span> <span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kr">public</span> <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">_bauthor</span><span class="p">:</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>생성자에 인자를 명시할 때 access modifier를 같이 명시하면 위의 예처럼 명시적으로
+해당 property가 선언되어 사용할 수 있게 됩니다.</p>
+
+<p>일반적으로 <code class="highlighter-rouge">private property</code>의 이름은 앞에 <code class="highlighter-rouge">_</code>를 관용적으로 써주게 됩니다. 이렇게 사용하는 이유는
+관용적 coding convention 때문에 그렇습니다. ECMAScript에서는 개발자들이 private의 의미로 사용되는
+property에 일반적으로 <code class="highlighter-rouge">_</code>를 붙여서 사용했었습니다.</p>
+
+<p>또 다른 이유는 <code class="highlighter-rouge">setter</code>와 <code class="highlighter-rouge">getter</code>의 이름때문에 그렇습니다. 다음의 코드에서 보듯이 <code class="highlighter-rouge">TypeScript</code>에서 
+getter와 setter의 표현은 우리가 알고 있는 다른 언어의 getter, setter와 다릅니다. 그리고 이렇게
+선언된 getter와 setter가 어떻게 사용되는지도 유의해서 보시기 바랍니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// private property인 _bauthor의 getter</span>
+    <span class="kd">get</span> <span class="nx">bauthor</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_bauthor</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// private property인 _bauthor의 setter</span>
+    <span class="kd">set</span> <span class="nx">bauthor</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_bauthor</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Readonly Property</strong></p>
+
+<p>class의 property를 <code class="highlighter-rouge">readonly</code>로 지정할 수 있습니다. readonly로 지정되면 property가 선언될 때 혹은 생성자안에서
+반드시 초기화를 진행해야 합니다. 다음의 예제를 참고하시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kr">public</span> <span class="nx">readonly</span> <span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">);</span>
+
+<span class="nx">book</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="s1">'파우스트'</span><span class="p">;</span>   <span class="c1">// 코드 에러</span>
+</code></pre></div></div>
+
+<p>다음의 예제처럼 생성자의 parameter를 readonly로 선언하면 따로 class의 property로 선언할 필요가 없습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">readonly</span> <span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">btitle</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Static Property</strong></p>
+
+<p><code class="highlighter-rouge">static</code> 키워드 역시 사용할 수 있습니다. ECMAScript 2015에서는 static을 method에만 적용할 수 있었지만
+TypeScript는 property에도 적용할 수 있습니다. static property는 class의 이름으로 직접 access를 할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kr">public</span> <span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">;</span>
+    <span class="kr">static</span> <span class="nx">count</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+        <span class="nx">Book</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">book1</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">book2</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="s1">'파우스트'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Book</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Abstract Class</strong></p>
+
+<p><code class="highlighter-rouge">abstract class</code>는 하나이상의 <code class="highlighter-rouge">abstract method</code>를 가지고 있는 class를 의미합니다. method의 선언만을 가지고 있기
+때문에 직접적인 객체생성을 할 수 없고 상속을 이용해 하위 클래스에서 abstract method를 overriding해서 사용하게 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">abstract</span> <span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="kr">public</span> <span class="nx">btitle</span><span class="p">:</span><span class="nx">string</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">btitle</span> <span class="o">=</span> <span class="nx">btitle</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kr">abstract</span> <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">EBook</span> <span class="kd">extends</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="nx">printInfo</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">btitle</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">book</span><span class="p">:</span><span class="nx">Book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EBook</span><span class="p">(</span><span class="s1">'젊은 베르테르의 슬픔'</span><span class="p">);</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> interface의 의미로 class사용</strong></p>
+
+<p>이 부분은 기존의 다른 언어와 다릅니다. <strong>class를 확장해서 interface를 정의</strong>할 수 있습니다. 다음의 코드를 참조하세요</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="nl">btitle</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">EBook</span> <span class="kd">extends</span> <span class="nx">Book</span> <span class="p">{</span>
+
+    <span class="nl">bauthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">book</span><span class="p">:</span><span class="nx">EBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">btitle</span><span class="p">:</span> <span class="s1">'파우스트'</span><span class="p">,</span>
+    <span class="na">bauthor</span><span class="p">:</span> <span class="s1">'괴테'</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>이번 포스트에서는 <code class="highlighter-rouge">TypeScript</code>의 class에 대해서 살펴보았습니다. 객체지향 언어의 class와 상당히 유사하면서도
+약간의 차이점이 있었습니다. 차이점 위주로 기억하시면 될 듯 합니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(6) - Interface</title>
+	  <link>http://localhost:4000/typescript-interface</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-24T18:51:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-interface</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Interface</strong></p>
+
+<p><code class="highlighter-rouge">interface</code>는 우리가 알고 있는 <code class="highlighter-rouge">Java</code>의 interface와 문법적으로 유사합니다. 하지만 객체지향에서 말하는 interface와는
+의미적으로 좀 차이가 있습니다. 그 부분은 예제 중간중간에 살펴보기로 하고 지금은 TypeScript의 interface 
+에 대해서만 살펴보도록 하겠습니다.</p>
+
+<p>TypeScript에서 interface는 새로운 데이터 타입을 만드는 추상 데이터 타입(<code class="highlighter-rouge">abstract data type</code>)으로 사용이 되며
+일반 변수, 함수, 클래스의 type check를 위해 사용됩니다. interface 이용하여 타입을 선언하면 
+interface안에 명시된 property의 선언과 method의 구현이 강제되기 때문에 프로그래밍의 일관성을 확보할 수 있습니다.</p>
+
+<p>참고로 ES6는 interface를 지원하지 않습니다. TypeScript만 지원합니다. 
+그렇기 때문에 interface를 컴파일 한 결과물을 보면 interface의 내용은 나타나지 않게됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Basic Exam</strong></p>
+
+<p>그럼 간단한 예를 통해 알아보도록 하겠습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IBook</span> <span class="p">{</span>
+    <span class="nl">bookName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bookAuthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myBook</span><span class="p">:</span> <span class="nx">IBook</span><span class="p">;</span>
+
+<span class="nx">myBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">bookName</span><span class="p">:</span> <span class="s2">"젊은 베르테르의 슬픔"</span><span class="p">,</span>
+    <span class="na">bookAuthor</span><span class="p">:</span> <span class="s2">"괴테"</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+</code></pre></div></div>
+<p>해당 <code class="highlighter-rouge">.ts</code> 파일을 컴파일 한 결과 <code class="highlighter-rouge">.js</code> 파일을 살펴보면 다음과 같습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">myBook</span><span class="p">;</span>
+<span class="nx">myBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">bookName</span><span class="p">:</span> <span class="s2">"젊은 베르테르의 슬픔"</span><span class="p">,</span>
+    <span class="na">bookAuthor</span><span class="p">:</span> <span class="s2">"괴테"</span>
+<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위에서 언급한 대로 interface에 대한 내용은 포함되어 있지 않습니다. TypeScript의 interface는 type check를 위한
+용도로 사용되게 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Parameter Type Check</strong></p>
+
+<p>비슷한 용도로 함수의 인자를 넘길 때 인자의 type으로 interface를 이용할 수 있습니다. 
+아래의 예를 한번 살펴보죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IBook</span> <span class="p">{</span>
+    <span class="nl">bookName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bookAuthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">:</span> <span class="nx">IBook</span><span class="p">)</span> <span class="p">:</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">.</span><span class="nx">bookName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">myBook</span><span class="p">:</span> <span class="nx">IBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">bookName</span><span class="p">:</span> <span class="s2">"젊은 베르테르의 슬픔"</span><span class="p">,</span>
+    <span class="na">bookAuthor</span><span class="p">:</span> <span class="s2">"괴테"</span>
+<span class="p">};</span>
+
+<span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>굳이 설명할 것도 없는거 같습니다. <code class="highlighter-rouge">printBookInfo()</code>의 인자로 interface type의 객체가 전달되어
+사용된 것이죠.</p>
+
+<p>여기까지는 별 문제 없이 이해할 수 있습니다. 이제 그 다음이 살짝 이상합니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Duck Typing</strong></p>
+
+<p>아래의 코드에서 문법 오류가 일어날까요?</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IBook</span> <span class="p">{</span>
+    <span class="nl">bookName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bookAuthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">:</span> <span class="nx">IBook</span><span class="p">)</span> <span class="p">:</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">.</span><span class="nx">bookName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">bookName</span><span class="p">:</span> <span class="s2">"젊은 베르테르의 슬픔"</span><span class="p">,</span>
+    <span class="na">bookAuthor</span><span class="p">:</span> <span class="s2">"괴테"</span><span class="p">,</span>
+    <span class="na">bookPrice</span><span class="p">:</span> <span class="mi">3000</span>
+<span class="p">};</span>
+
+<span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>원래 예상대로라면 이 코드는 문제가 있는 것이 맞습니다. <code class="highlighter-rouge">myBook</code>이라는 객체는 <code class="highlighter-rouge">IBook</code> interface type으로 지정되지 
+않고 parameter로 전달이 되었거든요. 하지만 이 코드는 에러없이 컴파일이 진행됩니다.</p>
+
+<p>왜 이런 현상이 발생할까요?</p>
+
+<p><strong>TypeScript의 중요한 원칙 중 하나는 가지고 있는 값들의 형태를 가지고 type-checking을 수행한다는 것입니다.</strong> 말이 좀 
+어렵네요. 풀어서 설명하자면 TypeScript에서 type-checking은 선언된 타입만을 비교하는것이 아니라 
+실제 이용될 수 있는 형태의 값들을 가지고 있느냐 그렇지 않느냐를 가지고 한다는 의미입니다.</p>
+
+<p>위의 예제에서 <code class="highlighter-rouge">myBook</code> 객체는 비록 IBook interface type은 아니지만 IBook interface type을 <strong>모두 커버할 수 있는 값들의 형태</strong>를
+가지고 있습니다. 이런 경우 <strong><code class="highlighter-rouge">myBook</code> 객체는 IBook interface 타입으로 간주</strong>한다는 말이지요.</p>
+
+<p>이런걸 동적 typing의 한 종류인 <code class="highlighter-rouge">duck typing</code>이라고 합니다. TypeScript는 duck typing을 지원하는 언어입니다. 일반적으로
+말하자면 class의 상속이나 interface의 구현으로 타입을 구분하는 것이 아니라 객체가 특정 타입에 걸맞는 property와 method를 
+가지고 있으면 해당 type으로 간주한다는 의미로 받아들이시면 됩니다.</p>
+
+<p>해서 저 위의 코드는 에러없이 사용할 수 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Optional Properties</strong></p>
+
+<p>TypeScript interface의 모든 property와 method는 구현하는 클래스 혹은 구현 객체에서 기본적으로 모두 재정의되어야 합니다. 
+하지만 <code class="highlighter-rouge">Optional Property</code>( property 중 <code class="highlighter-rouge">?</code> 가 붙어있는 property를 의미합니다. )를 이용하면 해당 property는 
+재정의하지 않아도 상관없습니다. 즉, 선택적으로 구현여부를 결정할 수 있는 property가 optional property입니다.</p>
+
+<p>아래의 예를 가지고 살펴보겠습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IBook</span> <span class="p">{</span>
+    <span class="nl">bookName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">bookAuthor</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">bookISBN</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>   <span class="c1">// Optional Property</span>
+
+    <span class="nx">getName</span><span class="p">():</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">:</span> <span class="nx">IBook</span><span class="p">)</span> <span class="p">:</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">.</span><span class="nx">bookName</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">paramBook</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="na">myBook</span><span class="p">:</span> <span class="nx">IBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">bookName</span><span class="p">:</span> <span class="s2">"젊은 베르테르의 슬픔"</span><span class="p">,</span>
+    <span class="na">bookAuthor</span><span class="p">:</span> <span class="s2">"괴테"</span><span class="p">,</span>
+
+    <span class="na">getName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">bookName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">myBook</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Readonly Properties</strong></p>
+
+<p><code class="highlighter-rouge">readonly</code> keyword를 이용해 객체가 처음 생성되는 시점에만 property들을 수정가능하도록 설정할 수 있습니다.<br />
+한번 값이 세팅되면 그 후에는 수정할 수 없게됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Point</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="nx">x</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">y</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">p1</span><span class="p">:</span> <span class="nx">Point</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">20</span> <span class="p">};</span>
+<span class="nx">p1</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>    <span class="c1">// 오류 발생</span>
+</code></pre></div></div>
+
+<p>TypeScript는 또 <code class="highlighter-rouge">ReadonlyArray&lt;T&gt;</code> 형태의 Array를 지원합니다. 이름에서 의미하는 것처럼 생성된 후에는
+Array를 변경할 수 없습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">roArray</span><span class="p">:</span> <span class="nx">ReadonlyArray</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">;</span>
+
+<span class="nx">roArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>   <span class="c1">// 코드 에러</span>
+<span class="nx">roArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>  <span class="c1">// 코드 에러</span>
+
+<span class="nx">arr</span> <span class="o">=</span> <span class="nx">roArray</span><span class="p">;</span>             <span class="c1">// 코드 에러</span>
+<span class="nx">arr</span> <span class="o">=</span> <span class="nx">roArray</span> <span class="k">as</span> <span class="nx">number</span><span class="p">[];</span> <span class="c1">// 가능</span>
+</code></pre></div></div>
+
+<p>위의 코드도 쉽게 이해할 수 있습니다. 마지막 코드 정도만 주의하면 될 듯 합니다.</p>
+
+<p>이렇게 <code class="highlighter-rouge">readonly</code> property는 <code class="highlighter-rouge">const</code>와 비슷한 역할을 하게됩니다. 단 const는 변수의 선언에
+사용되며 readonly는 property 지정에 사용된다는 점만 기억하시면 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Function Types</strong></p>
+
+<p>interface는 function의 type을 지정하는데 사용할 수 있습니다. 이 경우 parameter의 리스트와
+리턴타입만을 가지고 있는 함수의 선언과 비슷한 형태를 가지게 됩니다. 아래의 예를 보죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">myInterface</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myFunc</span><span class="p">:</span> <span class="nx">myInterface</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myName</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">:</span><span class="nx">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`이름 : </span><span class="p">${</span><span class="nx">myName</span><span class="p">}</span><span class="s2">, 나이 : </span><span class="p">${</span><span class="nx">myAge</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">myFunc</span><span class="p">(</span><span class="s2">"홍길동"</span><span class="p">,</span><span class="mi">30</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Indexable Types</strong></p>
+
+<p>JavaScript의 객체를 사용하기 위해서는 일반적으로 <code class="highlighter-rouge">"."</code> operator를 이용합니다. 일반적인 객체지향언어에서
+객체를 사용하는 방식이죠. JavaScript는 추가적으로 객체를 사용하는 방법으로 배열방식을 이용할 수 있습니다.
+다음과 같이 사용합니다.</p>
+
+<p>아래의 코드는 <code class="highlighter-rouge">JavaScript</code> 코드입니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s1">'홍길동'</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s1">'서울'</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">myName</span><span class="p">);</span>           <span class="c1">// "." operator 이용</span>
+
+<span class="kd">let</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>       <span class="c1">// 객체의 key값들에 대한 배열 획득</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]]);</span>     <span class="c1">// 배열형식을 이용</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위의 코드는 문법에러가 발생하지 않고 결과도 잘 출력이 됩니다. <code class="highlighter-rouge">obj</code> 객체에 접근할 때
+<code class="highlighter-rouge">[ ]</code> 형태를 이용해서 key값에 접근해서 value값을 출력하는 간단한 예제입니다.</p>
+
+<p>하지만 이 코드를 <code class="highlighter-rouge">TypeScript</code>로 작성하면 코드에러가 발생합니다. 해당 파일에 대한 확장자만
+<code class="highlighter-rouge">.js</code>에서 <code class="highlighter-rouge">.ts</code>로 변경해보면 <code class="highlighter-rouge">obj[keys[i]</code>에서 다음과 같은 에러가 발생하는 것을 볼 수 있습니다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Element implicitly has an 'any' type because type 
+'{ myName: string; myAddress: string; }' has no index signature.
+</code></pre></div></div>
+
+<p>쉽게 말하면 index signature를 이용하지 않았기 때문에 property에 접근할 때 어떤 타입인지를 확인할 수 
+없어서 묵시적으로 <code class="highlighter-rouge">any</code> 타입을 이용하게 된다는 의미입니다. 하지만 우리는 TypeScript
+compiler 옵션 중 <code class="highlighter-rouge">noImplicitAny</code> 속성을 true로 해 놓았기 때문에 문제가 발생하는 것입니다.
+(<code class="highlighter-rouge">noImplicitAny: true</code>가 default로 설정됩니다.)</p>
+
+<p>해결하기 위해서는 컴파일러 옵션을 수정하던지 아니면 interface를 이용하여 index signature를 설정해 type을
+명시적으로 알려주면 됩니다.</p>
+
+<p>컴파일러 옵션을 수정하는 방법은 <code class="highlighter-rouge">tsconfig.json</code> 설정에서 <code class="highlighter-rouge">"noImplicitAny": false</code> 옵션을 추가하시면 됩니다. 
+하지만 좋지 않습니다. <code class="highlighter-rouge">any</code> 타입은 특별한 이유가 있지 않는 한 가능한 사용하지 않는게 좋고 
+명시적으로 타입을 지정해서 사용하셔야 합니다.</p>
+
+<p>좀 더 좋은 해결책은 interface로 index signature를 설정해서 사용하는 것입니다. 이걸 <code class="highlighter-rouge">Indexable Type</code>이라고 합니다.
+아래의 코드처럼 interface를 이용해 index signature를 설정합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IObj</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">idx</span><span class="p">:</span> <span class="nx">string</span><span class="p">]:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">obj</span><span class="p">:</span> <span class="nx">IObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s1">'홍길동'</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s1">'서울'</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">myName</span><span class="p">);</span>           <span class="c1">// "." operator 이용</span>
+
+<span class="kd">let</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>       <span class="c1">// 객체의 key값들에 대한 배열 획득</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]]);</span>     <span class="c1">// 배열형식을 이용</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>추가적으로 <code class="highlighter-rouge">union type</code>을 이용한 다음의 코드도 살펴보시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IObj</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">idx</span><span class="p">:</span> <span class="nx">string</span><span class="p">]:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="p">[</span><span class="nx">index</span><span class="p">:</span> <span class="nx">number</span><span class="p">]:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAddress</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAge</span><span class="p">:</span> <span class="nx">number</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">obj</span><span class="p">:</span> <span class="nx">IObj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s1">'홍길동'</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s1">'서울'</span><span class="p">,</span>
+    <span class="na">myAge</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">myName</span><span class="p">);</span>           <span class="c1">// "." operator 이용</span>
+
+<span class="kd">let</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>       <span class="c1">// 객체의 key값들에 대한 배열 획득</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]]);</span>     <span class="c1">// 배열형식을 이용</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>마지막으로 앞에서 나온 readonly property를 이용하면 <code class="highlighter-rouge">ReadonlyArray</code>처럼 사용할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">ReadonlyStringArray</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="p">[</span><span class="nx">index</span><span class="p">:</span> <span class="nx">number</span><span class="p">]:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">ReadonlyStringArray</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"홍길동"</span><span class="p">,</span> <span class="s2">"강감찬"</span><span class="p">];</span>
+<span class="nx">myArr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"이순신"</span><span class="p">;</span> <span class="c1">// 코드 오류( readonly )</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Class Types</strong></p>
+
+<p>interface의 가장 일반적인 사용법은 <code class="highlighter-rouge">Java</code>나 <code class="highlighter-rouge">C#</code>언어처럼 class의 구현을 명시적으로 강제하는 것입니다.
+아직 class에 대해서는 배우지 않았지만 <code class="highlighter-rouge">Java</code>같은 객체지향 언어를 해 보신 분이라면 쉽게 이해하실거라 생각됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">idx</span><span class="p">:</span> <span class="nx">string</span><span class="p">]:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span> <span class="o">|</span> <span class="nb">Function</span><span class="p">;</span>
+    <span class="nl">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAddress</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAge</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="nx">printInfo</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span><span class="nx">IPerson</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Person</span> <span class="kr">implements</span> <span class="nx">IPerson</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">index</span><span class="p">:</span> <span class="nx">string</span><span class="p">]:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span> <span class="o">|</span> <span class="nb">Function</span><span class="p">;</span>
+    <span class="nl">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAddress</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAge</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myAddress</span> <span class="o">=</span> <span class="nx">address</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">printInfo</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">IPerson</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">t</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">t</span><span class="p">]));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"홍길동"</span><span class="p">,</span> <span class="s2">"서울"</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위와 같은 일반적인 경우가 사실은 대부분입니다. ^^; 여기에 추가적인 몇가지만 살펴보겠습니다. 
+<a href="./typescript-variable.html" target="_blank">이전 강좌</a>에서 일급함수(<code class="highlighter-rouge">first class function</code>)개념에 대해서 언급했었는데
+기억하시나요? 한마디로 요약하자면 <strong>“JavaScript는 함수를 값으로 취급한다”</strong> 입니다. 그래서 함수를
+변수에 저장하거나 함수를 다른 함수의 인자로 넘기거나 함수의 리턴값으로 함수를 활용할 수 있는 것이지요.</p>
+
+<p>그래서 다음의 <code class="highlighter-rouge">JavaScript</code>코드는 정상적으로 동작합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PersonFactory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">getInstance</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">construct</span><span class="p">,</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">construct</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">printInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"이름:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">+</span> <span class="s2">", 나이:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">PersonFactory</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="nx">Person</span><span class="p">,</span> <span class="s2">"홍길동"</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 <code class="highlighter-rouge">Person</code> 생성자를 <code class="highlighter-rouge">PersonFactory.getInstance</code> 함수의 인자로 넘겨서
+사용했습니다. <code class="highlighter-rouge">JavaScript</code>에서는 문제없이 잘 동작합니다. 하지만 이 코드를 그대로
+<code class="highlighter-rouge">TypeScript</code>에서 작성하면 코드에러가 발생합니다.</p>
+
+<p>일단 타입지정부터 엉망이니 좀 수정해서 보면 <code class="highlighter-rouge">TypeScript</code>코드는 다음과 같게 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PersonFactory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">getInstance</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="na">construct</span><span class="p">:</span><span class="nx">any</span><span class="p">,</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span><span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">construct</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAge</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">printInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"이름:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">+</span> <span class="s2">", 나이:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">PersonFactory</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="nx">Person</span><span class="p">,</span> <span class="s2">"홍길동"</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>데이터 타입을 적절하게 지정해서 일단 코드 오류는 제거했습니다. 그런데 문제가 하나 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PersonFactory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">getInstance</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="na">construct</span><span class="p">:</span><span class="nx">any</span><span class="p">,</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span><span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">construct</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p>위의 코드에서 생성자를 인자로 받아올 때 타입을 어떻게 지정해야 할지 몰라 일단 모든 타입에 대응되는
+<code class="highlighter-rouge">any</code>로 설정했습니다. <code class="highlighter-rouge">any</code>로 설정하면 문제없지만 우리는 <code class="highlighter-rouge">any</code>를 사용하지 않습니다. 좀 심하게 표현하자면 <code class="highlighter-rouge">any</code>를
+사용할꺼면 굳이 TypeScript를 할 필요가 없습니다. 여하간 이 <code class="highlighter-rouge">any</code>를 없애고 정확한 타입을 명시하려 합니다. 
+그런데 어떤 타입을 써야하나요? <code class="highlighter-rouge">any</code>대신 만만한 <code class="highlighter-rouge">Function</code>을 이용해 보면 다음과 같은 오류를 보실 수 있습니다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cannot use 'new' with an expression whose type lacks a call or construct signature
+</code></pre></div></div>
+
+<p>construct signature 없이 <code class="highlighter-rouge">new</code>를 사용할 수 없답니다. 그럼 이 construct signature를 어떻게 만들어야 할까요?
+저 위에서는 index signature라는 걸 interface를 이용해서 선언하고 사용했습니다. 기억하시죠? 이와 비슷합니다.
+interface를 이용해 생성자의 signature를 지정해 줄 수 있습니다. 다음과 같이 사용합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPersonConstructor</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="p">(</span><span class="nx">n</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">a</span><span class="p">:</span><span class="nx">number</span><span class="p">):</span> <span class="nx">Person</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">PersonFactory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">getInstance</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="na">construct</span><span class="p">:</span><span class="nx">IPersonConstructor</span><span class="p">,</span>
+                          <span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span>
+                          <span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">construct</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">myAge</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">printInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"이름:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myName</span> <span class="o">+</span> <span class="s2">", 나이:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">myAge</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">PersonFactory</span><span class="p">.</span><span class="nx">getInstance</span><span class="p">(</span><span class="nx">Person</span><span class="p">,</span> <span class="s2">"홍길동"</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">printInfo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>이렇게 사용하는 interface를 <code class="highlighter-rouge">constructor interface</code> 라고 표현하기도 합니다. 중요한 것은
+interface로 constructor의 타입을 지정해 줄 수 있다는 것이고 construct signature라는 표현으로
+interface내에 정의해서 사용합니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> interface의 확장</strong></p>
+
+<p>하나의 interface는 다른 interface로 부터 상속받아서 확장될 수 있습니다. <code class="highlighter-rouge">Java</code>와 유사합니다. 다음의 코드로
+이해하시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">Shape</span> <span class="p">{</span>
+    <span class="nl">sideLength</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">square</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Square</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="nx">square</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">;</span>
+<span class="nx">square</span><span class="p">.</span><span class="nx">sideLength</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">let square = &lt;Square&gt;{};</code> 에서 <code class="highlighter-rouge">&lt;Square&gt;</code> 부분이 어떤것인지 기억하시나요? 그렇습니다. <code class="highlighter-rouge">Type assertions</code>이죠.
+위의 코드는 크게 어렵지 않을 듯 보입니다. 하지만 <code class="highlighter-rouge">Java</code>와 다른점이 있습니다. 동시에 여러 interface로 부터 상속을
+받을 수 있다는 것이죠. 하지만 여기서 상속이라는 표현은 맞지 않습니다. 상속은 객체지향 언어에서 나오는 특성입니다.
+여기서는 단지 interface의 확장일 뿐입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">PenStroke</span> <span class="p">{</span>
+    <span class="nl">penWidth</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">Shape</span><span class="p">,</span> <span class="nx">PenStroke</span> <span class="p">{</span>
+    <span class="nl">sideLength</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">square</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Square</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="nx">square</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">"blue"</span><span class="p">;</span>
+<span class="nx">square</span><span class="p">.</span><span class="nx">sideLength</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">square</span><span class="p">.</span><span class="nx">penWidth</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>interface는 type check를 위해 사용되기 때문에 interface로는 객체를 생성할 수 없습니다.</strong></p>
+
+<p>일단 이 정도만 알아두어도 될 듯 보입니다. 
+내용이 생각보다 많은데 생각보다 많이 어렵지는 않습니다. 단지 헷갈릴 뿐이죠 ^^
+여러번 정독하면서 쓰임새를 알아두고 실제 코드에서 활용하면서 익히셔야 합니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(5) - Destructuring</title>
+	  <link>http://localhost:4000/typescript-destructuring</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-24T02:00:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-destructuring</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Destructuring</strong></p>
+
+<p>이번 포스트의 내용은 <code class="highlighter-rouge">Destructuring</code> 입니다. 
+Destructuring은 ECMAScript 2015 문법인데 TypeScript에서도 지원합니다.</p>
+
+<blockquote>
+  <p>아래의 예제를 정상적으로 실행해보실려면 <code class="highlighter-rouge">tsconfig.json</code>에서 <code class="highlighter-rouge">compilerOptions</code>의 <code class="highlighter-rouge">target</code> 속성을
+<code class="highlighter-rouge">es6</code>로 해 주셔야 합니다.</p>
+</blockquote>
+
+<p>일반적으로 <code class="highlighter-rouge">Destructuring Assignment</code>(비구조할당)라고 하는데 쉽게 말하자면 배열의 요소나 객체의 속성을 
+배열 literal 혹은 객체 literal과 유사한 형태의 문법을 이용하여
+변수에 할당하는 기법입니다. 잘 알아두면 코드를 좀 더 쉽게 작성할 수 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Array Destructuring</strong></p>
+
+<p>다음과 같이 배열이 있을 경우 각 배열의 원소값을 가지는 변수를 만들려고 합니다. 
+아마도 코드는 다음처럼 써야 할 듯 보입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">,</span> <span class="s2">"Moon"</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">first</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">second</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">third</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>     <span class="c1">// "Hello" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>    <span class="c1">// "World" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">third</span><span class="p">);</span>     <span class="c1">// "Moon" 출력</span>
+</code></pre></div></div>
+
+<p>이 코드를 Destructuring Assignment(비구조할당)를 이용하면 다음과 같이 표현할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">,</span> <span class="s2">"Moon"</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">third</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>     <span class="c1">// "Hello" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>    <span class="c1">// "World" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">third</span><span class="p">);</span>     <span class="c1">// "Moon" 출력</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 <code class="highlighter-rouge">[first, second, third]</code> 형태를 <code class="highlighter-rouge">Destructuring Array</code>(비구조배열)이라고 합니다.
+즉, <code class="highlighter-rouge">let [first, second, third]</code> 구문은 변수 선언과 동시에 Destructuring Array(비구조배열)을 생성한 것입니다.</p>
+
+<p>만약 Destructuring Array(비구조배열)에 data type을 지정하고 싶은경우는 다음과 같이 하시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">,</span> <span class="s2">"Moon"</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">third</span><span class="p">]:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>간단한 응용을 보도록 하죠. 두개의 변수에 대한 swap처리입니다. 기본적으로는 임시변수가 있어야 두 변수의 값을 swap처리
+할 수 있지만 Destructuring Assignment를 이용하면 보다 간단하게 할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>     <span class="c1">// "Hello" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>    <span class="c1">// "World" 출력</span>
+
+<span class="p">[</span><span class="nx">second</span><span class="p">,</span> <span class="nx">first</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">];</span>   <span class="c1">// swap 처리</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>     <span class="c1">// "World" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>    <span class="c1">// "Hello" 출력</span>
+</code></pre></div></div>
+
+<p>이런 방식은 함수에 parameter를 전달할 때도 사용할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">([</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]:</span> <span class="p">[</span><span class="nx">number</span><span class="p">,</span> <span class="nx">number</span><span class="p">]):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`x의 값은 </span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`y의 값은 </span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">myFunc</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p>나머지 몇몇 응용에 대해서 알아보겟습니다. <code class="highlighter-rouge">...</code>을 이용하면 다음과 같은 형태로 서브배열을
+생성할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">others</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>    <span class="c1">// 1 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">others</span><span class="p">);</span>   <span class="c1">// [2, 3, 4] 출력 ( 서브배열 )</span>
+</code></pre></div></div>
+
+<p>다음과 같은 형태로 Destructuring Array를 이용할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="p">[,</span><span class="nx">second</span><span class="p">,</span> <span class="p">,</span><span class="nx">fourth</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArr</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>     <span class="c1">// 1 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>    <span class="c1">// 2 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fourth</span><span class="p">);</span>    <span class="c1">// 4 출력</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Object Destructuring</strong></p>
+
+<p>이번에는 객체를 비구조할당을 통해 이용해 보도록 하겠습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">key1</span> <span class="p">:</span> <span class="s2">"Hello World"</span><span class="p">,</span>
+    <span class="na">key2</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="na">key3</span> <span class="p">:</span> <span class="s2">"TypeScript"</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="p">{</span> <span class="na">key1</span><span class="p">:</span><span class="nx">a</span><span class="p">,</span> <span class="na">key2</span><span class="p">:</span><span class="nx">b</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>    <span class="c1">// Hello World 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>    <span class="c1">// 100 출력</span>
+</code></pre></div></div>
+<p>새로운 변수 a와 b가 생성되고 <code class="highlighter-rouge">obj.key1</code>의 값의 <code class="highlighter-rouge">key1:a</code>에 의해서 a 변수에 대입됩니다.
+마찬가지로 <code class="highlighter-rouge">obj.key2</code>의 값이 <code class="highlighter-rouge">key2:b</code>에 매칭되서 b 변수에 값이 할당되는 것이구요. <code class="highlighter-rouge">obj.key3</code>는 당연히 무시됩니다.
+변수를 선언할 때 <code class="highlighter-rouge">[ ]</code>가 아닌 <code class="highlighter-rouge">{ }</code>를 이용한다는 것에 주의하셔야 합니다.</p>
+
+<p>만약 객체의 Key( 위의 예제에서는 <code class="highlighter-rouge">key1</code>, <code class="highlighter-rouge">key2</code>, <code class="highlighter-rouge">key3</code> )가 비구조 객체에 쓰이는 변수의 이름과 동일하다면
+간소화된 형태로 이용할 수 있습니다. 아래의 예처럼 말이죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">key1</span> <span class="p">:</span> <span class="s2">"Hello World"</span><span class="p">,</span>
+    <span class="na">key2</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="na">key3</span> <span class="p">:</span> <span class="s2">"TypeScript"</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="p">{</span> <span class="nx">key1</span><span class="p">,</span> <span class="nx">key2</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key1</span><span class="p">);</span>    <span class="c1">// Hello World 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key2</span><span class="p">);</span>    <span class="c1">// 100 출력</span>
+</code></pre></div></div>
+
+<p>그러면 다음과 같이 표현할 수 도 있겠네요.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="s2">"Hello World"</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>    <span class="c1">// Hello World 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>    <span class="c1">// 100 출력</span>
+</code></pre></div></div>
+
+<p>조금 헷갈리긴 하지만 익숙해지면 할 만 합니다. ^^;</p>
+
+<p>아까 위에서 나왔던 <code class="highlighter-rouge">...</code>을 기억하시나요? 배열의 나머지를 가지고 서브배열을 생성할 때 사용했었습니다. 
+Object Destructuring에서도 <code class="highlighter-rouge">...</code>을 이용할 수 있습니다. 아래의 코드를 살펴보도록 하죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s2">"홍길동"</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s2">"서울"</span><span class="p">,</span>
+    <span class="na">myAge</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="p">{</span> <span class="nx">myName</span><span class="p">,</span> <span class="p">...</span><span class="nx">otherInfo</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`이름은 : </span><span class="p">${</span><span class="nx">myName</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`나이는 : </span><span class="p">${</span><span class="nx">otherInfo</span><span class="p">.</span><span class="nx">myAge</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>객체의 property의 이름을 다른 것으로 바꿀 수 있습니다. 아래의 코드를 보시죠</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span> <span class="s2">"홍길동"</span><span class="p">,</span>
+    <span class="na">b</span><span class="p">:</span> <span class="s2">"서울"</span><span class="p">,</span>
+    <span class="na">c</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span><span class="nx">myName</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="nx">myAddress</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`이름은 : </span><span class="p">${</span><span class="nx">myName</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>     <span class="c1">// 홍길동 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`주소는 : </span><span class="p">${</span><span class="nx">myAddress</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>  <span class="c1">// 서울 출력</span>
+</code></pre></div></div>
+
+<p>위의 코드에서 주의해야 할 점은 <code class="highlighter-rouge">a:myName, b:myAddress</code>에서 <code class="highlighter-rouge">:</code>의 의미가 data type을 지정하는 것으로 
+사용된 것이 아니라는 것입니다. 만약 데이터 타입을 지정해서 사용하려면 다음과 같이 사용하셔야 합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span> <span class="s2">"홍길동"</span><span class="p">,</span>
+    <span class="na">b</span><span class="p">:</span> <span class="s2">"서울"</span><span class="p">,</span>
+    <span class="na">c</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span><span class="nx">myName</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="nx">myAddress</span> <span class="p">}:</span> <span class="p">{</span><span class="nl">a</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span><span class="nx">string</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`이름은 : </span><span class="p">${</span><span class="nx">myName</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>     <span class="c1">// 홍길동 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`주소는 : </span><span class="p">${</span><span class="nx">myAddress</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>  <span class="c1">// 서울 출력</span>
+</code></pre></div></div>
+
+<p>점점 복잡해 지는군요. 한가지 주의해야 할 점은 ECMAScript 2015(ES6)에서의 Destructuring과 TypeScript의
+Destructuring이 완벽하게 똑같지는 않다는 것입니다.</p>
+
+<p>이번에 살펴볼 것은 <code class="highlighter-rouge">default</code> 값입니다. Destructuring하려는 속성이 존재하지 않을 때를 대비해서 default값을
+지정할 수 있습니다. 아래의 예를 보시죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span><span class="p">:</span> <span class="p">{</span><span class="nl">myName</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">?:</span><span class="nx">number</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span> <span class="p">:</span> <span class="s2">"홍길동"</span><span class="p">,</span>
+<span class="p">};</span>
+
+
+<span class="kd">let</span> <span class="p">{</span> <span class="na">myName</span><span class="p">:</span><span class="nx">uNmae</span><span class="p">,</span> <span class="na">myAge</span><span class="p">:</span><span class="nx">uAge</span> <span class="o">=</span> <span class="mi">30</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uNmae</span><span class="p">);</span>  <span class="c1">// 홍길동</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uAge</span><span class="p">);</span>   <span class="c1">// 30</span>
+</code></pre></div></div>
+
+<p>위의 예에서 <code class="highlighter-rouge">myAge?:number</code> 부분의 <code class="highlighter-rouge">?</code>의 의미는 해당 property가 있을 수도 있고 없을 수도 있다는것을 의미합니다.
+<code class="highlighter-rouge">myAge:uAge = 30</code> 부분이 default value를 사용한 부분입니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 어디에 쓰면 좋을까요?</strong></p>
+
+<p>간단하게 Destructuring이 무엇인지를 살펴보았는데 그럼 도데체 이걸 어디에 써 먹어야 할까요?
+이런식의 응용이 가능하구나 하는 정도로 가볍게 보시면 될 듯 합니다.</p>
+
+<p>첫번째로 생각할 수 있는 응용은 ECMAScript 2015에서 제공되는 <code class="highlighter-rouge">Iteration Protocol</code>과의 연계사용입니다.
+아주 쉽게 생각하면 <strong><code class="highlighter-rouge">Map</code>사용에 응용할 수 있다</strong> 정도로 보시면 됩니다. Map 자료구조는 key와 value의 쌍으로
+데이터를 저장하는 구조이고 다음과 같은 형태로 Destructuring과 함께 이용할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s2">"myName"</span><span class="p">,</span><span class="s2">"홍길동"</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s2">"myAddress"</span><span class="p">,</span><span class="s2">"서울"</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s2">"myAge"</span><span class="p">,</span><span class="mi">30</span><span class="p">);</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">map</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2"> 의 값은 </span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2"> 입니다.`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">of</span> <span class="nx">map</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 모든 key 값만을 출력할 수 있습니다.</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="p">[,</span><span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">map</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 모든 value 값만을 출력할 수 있습니다.</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>두번째는 함수의 리턴값에 응용하는 것입니다. 리턴값이 두개 이상 필요할 때 우리는 배열형태나 객체형태로 
+리턴을 받게 되는데 Destructuring을 이용하면 편합니다.</p>
+
+<p>다음은 배열을 리턴받는 경우입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">():</span> <span class="nx">string</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">arr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="c1">// 로직처리 ...</span>
+    <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"첫번째 결과값"</span><span class="p">;</span>
+    <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"두번째 결과값"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">result1</span><span class="p">,</span> <span class="nx">result2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myFunc</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result1</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>다음은 객체를 리턴받는 경우입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">():</span> <span class="p">{</span><span class="nl">result1</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">result2</span><span class="p">?:</span><span class="nx">number</span><span class="p">}</span> <span class="p">{</span>
+
+    <span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">result1</span> <span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="na">result2</span> <span class="p">:</span> <span class="mi">0</span>
+    <span class="p">};</span>
+    <span class="c1">// 로직처리 ...</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">result1</span> <span class="o">=</span> <span class="s2">"첫번째 결과값"</span><span class="p">;</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">result2</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="p">{</span><span class="na">result1</span><span class="p">:</span><span class="nx">first</span><span class="p">,</span> <span class="na">result2</span><span class="p">:</span><span class="nx">second</span><span class="p">}</span> <span class="o">=</span> <span class="nx">myFunc</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>꼭 사용해야 할 필요는 없지만 알아두면 편하고 좋은 <code class="highlighter-rouge">Destructuring</code>에 대해서 알아보았습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(4) - 변수 선언</title>
+	  <link>http://localhost:4000/typescript-variable</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-23T04:14:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-variable</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Variable Declarations</strong></p>
+
+<p>이번 포스트에서는 <code class="highlighter-rouge">var</code>, <code class="highlighter-rouge">let</code>, <code class="highlighter-rouge">const</code>에 대해서 알아보겠습니다. let은 var과 유사하지만 var이
+가지고 있는 우리에게 익숙치 않은 몇가지 사항들을 피하도록 도와줍니다. const는 이름에서 의미하다시피 변수에
+재할당을 금지하는 목적으로 사용하는 것이구요.</p>
+
+<p><strong>결론을 미리 말하자면 <code class="highlighter-rouge">TypeScript</code>는 <code class="highlighter-rouge">let</code>과 <code class="highlighter-rouge">const</code>를 이용합니다.</strong></p>
+
+<p>먼저 <code class="highlighter-rouge">var</code>에 대해서 알아보고 그 다음에 <code class="highlighter-rouge">let</code>, <code class="highlighter-rouge">const</code>에 대해서 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> var</strong></p>
+
+<p>코드로 설명하자면 다음과 같이 변수를 선언할 수 있습니다.</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>당연한 말이지만 함수내에서도 선언할 수 있습니다.</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">"Hello World"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">message</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>JavaScript는 함수안에 다른 함수를 선언할 수 있습니다. 그러한 경우 내부 함수가 외부 함수가 가지고 있는
+변수를 참조할 수 있습니다. 또한 JavaScript는 1급 함수(<code class="highlighter-rouge">first-class function</code>)를 지원합니다. 쉽게 말하면
+JavaScript의 함수는 <strong>값의 의미</strong>로 사용될 수 있다는 것입니다. 함수가 값의 역할을 하다보니 다음과 같은 형태의
+코드가 가능합니다.</p>
+
+<ul>
+  <li>함수를 변수에 저장.</li>
+  <li>함수를 다른 함수의 인자로 전달.</li>
+  <li>함수를 다른 함수의 리턴값으로 사용.</li>
+</ul>
+
+<p>위와 같은 형태의 함수를 이용할 때는 함수의 이름이 특별히 필요하지 않기 때문에 
+이런 함수는 특별히 이름을 명시하지 않고 사용합니다.
+이런 함수를 우리는 익명함수( <code class="highlighter-rouge">Anonymous function</code> )라고 하죠. 다른 표현으로는 람다( <code class="highlighter-rouge">Lambda</code> )라고도 합니다.
+( 사실 Lambda에 대한 내용은 조금 더 파고 들어야 합니다. 나중에 다른 포스트에서 정리해볼께요 )</p>
+
+<p>위의 내용으로 간단한 예를 들자면 아래와 같습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">outerFunc</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">myFunc</span> <span class="o">=</span> <span class="nx">outerFunc</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">());</span>    <span class="c1">// 200 출력</span>
+</code></pre></div></div>
+
+<p>사실 위의 예제는 좀 이상합니다. 아니 많이 이상하죠.</p>
+
+<p>다음과 같은</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myFunc</span> <span class="o">=</span> <span class="nx">outerFunc</span><span class="p">();</span>
+</code></pre></div></div>
+<p>코드에서 <code class="highlighter-rouge">outerFunc()</code>함수는 수행이 종료되었기
+때문에 그 안에 선언된 변수 <code class="highlighter-rouge">a</code>는 사실 사용할 수 없어야 합니다. 
+우리가 익히 알고 있는 다른 프로그래밍 언어의 변수 scope 개념으로 본다면 말이죠.</p>
+
+<p>하지만 JavaScript의 <code class="highlighter-rouge">var</code> 변수 scope는 좀 다릅니다. <strong><code class="highlighter-rouge">outerFunc()</code> 함수의 호출이 끝났음에도 불구하고 
+<code class="highlighter-rouge">a</code> 변수값이 유지됩니다.</strong> 즉, outerFunc()에 대한 참조가 남아있는 한 메모리에 계속 유지하게 되는 구조입니다.
+( outerFunc() 함수가 실행중인 상태로 간주한다는 의미이기도 합니다. ) 
+그렇기 때문에 위에서 <code class="highlighter-rouge">myFunc()</code>를 호출했을 때 <code class="highlighter-rouge">a</code> 변수를 이용할 수 있는 것입니다.</p>
+
+<p>조금 다른 예제를 살펴보겠습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">init</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">init</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>  <span class="c1">// 10 출력</span>
+</code></pre></div></div>
+
+<p><strong>위의 코드는 JavaScript 코드입니다.</strong> <code class="highlighter-rouge">var</code> 변수는 if block 안에서 선언되었음에도 불구하고 
+block 외부에서도 사용이 가능합니다. 위에서 언급했듯이 JavaScript의 var 변수 scope가 좀 독특해서 그렇습니다. 
+var로 선언된 변수는 block에 상관없이 function 내에서 사용이 가능합니다.</p>
+
+<blockquote>
+  <p>이런 특성을 <strong>var은 <code class="highlighter-rouge">function-scoping</code>을 가진다</strong> 라고 표현합니다.</p>
+</blockquote>
+
+<p>var에 대해서 마지막 하나만 더 살펴보고 정리하겠습니다.</p>
+
+<p>다음과 같은 <code class="highlighter-rouge">setTimeout</code>을 이용한 코드가 있을 때 실행결과가 어떻게 출력될까요?</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span>
+        <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="p">},</span>
+        <span class="mi">1000</span>
+    <span class="p">);</span>
+<span class="p">}</span>   
+</code></pre></div></div>
+
+<p>결과는 다음과 같이 출력됩니다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+</code></pre></div></div>
+
+<p>JavaScript를 알고 있는 사람들에게는 꽤나 익숙한 코드형태이자 결과일겁니다. <code class="highlighter-rouge">setTimeout</code>은 두번째 인자로 들어가는
+시간을 delay로 첫번째 인자의 함수를 호출해 주는 역할을 하는 함수입니다. (내부 Thread로 동작하겠죠)</p>
+
+<p>for문은 순식간에 수행될 것이고 1초뒤에 다음 코드가</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>10번 호출되게 됩니다. 이 때 <code class="highlighter-rouge">i</code>변수는
+상위 for문의 scope를 참조하게 되므로 실제 <code class="highlighter-rouge">console.log(i)</code>가 수행될 때 <code class="highlighter-rouge">i</code>값을 참조하면 10이라는 값을 가지고 있을테니
+화면에 10이 10번 출력되게 됩니다.</p>
+
+<p>그러면 0부터 9까지 순차적으로 출력하려면 어떻게 해야 할까요? 이 작업을 수행하기 위해 <code class="highlighter-rouge">IIFE</code>을 이용합니다.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">IIFE</code>는 <strong>Immediately Invoked Function Expression</strong>을 의미합니다.</p>
+</blockquote>
+
+<p>코드를 아래와 같이 수정합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">tmp</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span>
+            <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span> <span class="p">},</span>
+            <span class="mi">1000</span>
+        <span class="p">);</span>
+    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>즉시 실행되는 함수 표현법(IIFE)를 이용하여 새로운 function scope를 생성해서 
+<code class="highlighter-rouge">i</code>값을 capture하는 방식으로 처리하면 될 듯 합니다.</p>
+
+<p>이 부분을 정확히 이해하기 위해서는 <code class="highlighter-rouge">free variable</code>, <code class="highlighter-rouge">scope chain</code>, <code class="highlighter-rouge">Closure</code>에 대한 이해가 있어야 합니다. 너무 이야기가
+산으로 가니 이 부분은 JavaScript 관련 포스트에서 따로 정리해 보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> let</strong></p>
+
+<p>위에서 언급한 var의 모호성을 <code class="highlighter-rouge">let</code>을 이용해 해결할 수 있습니다. 변수를 선언할 때 단순히 var대신 let을 이용하면
+됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"Hello World!!"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">let</code>은 우리에게 친숙한 <code class="highlighter-rouge">block-scoping</code>을 가집니다. ( <code class="highlighter-rouge">lexical-scoping</code> 이라고도 합니다. )</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">input</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">// a에 접근이 가능합니다.</span>
+        <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>            <span class="c1">// 코드 에러( b에 접근할 수 없습니다. )</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>let의 또 다른 특징은 변수의 중복 선언이 안된다는 것입니다. 사실 프로그래밍 언어에서는 거의 당연시 여겨지는 것이지만
+var는 중복선언이 가능합니다. 다음과 같이 말이죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+    
+    <span class="kd">var</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">x</span><span class="p">;</span>          <span class="c1">// JavaScript의 var은 같은 변수를 중복선언할 수 있습니다. </span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>자 그럼 아까 var로 선언했을 때 이상하게 동작했던 setTimeout을 이번에는 let을 이용해서
+처리하면 어떻게 될까요?</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span>
+        <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="p">},</span>
+        <span class="mi">1000</span>
+    <span class="p">);</span>
+<span class="p">}</span>  
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">var</code>로 선언했을 때와 다른 결과를 볼 수 있습니다.</p>
+
+<blockquote>
+  <p>결론적으로 <code class="highlighter-rouge">let</code>은 우리가 익히 알던 (다른 언어의) 변수 특징을 가지는 <br />
+변수를 선언하기 위한 keyword라고 생각하시면 됩니다.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> const</strong></p>
+
+<p>변수를 선언하기 위한 또 다른 방법은 <code class="highlighter-rouge">const</code>를 이용하는 것입니다. 하지만 const로 선언된 변수에는
+재 할당(re-assign)이 불가능 합니다. 아래의 예처럼 말이죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myName</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"홍길동"</span><span class="p">;</span>
+
+<span class="nx">myName</span> <span class="o">=</span> <span class="s2">"강감찬"</span><span class="p">;</span>   <span class="c1">// 코드 에러</span>
+</code></pre></div></div>
+
+<p>const를 사용할 때 한가지만 주의하시면 됩니다. 만약 const 변수가 객체를 지칭하게 되면 다른 객체로 reference를
+바꾸지는 못하지만 현재 reference하고 있는 객체의 속성에 대해서는 값을 변경할 수 있습니다.
+아래의 예처럼 말이죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">count</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">myProfile</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s2">"홍길동"</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s2">"서울"</span><span class="p">,</span>
+    <span class="na">myCount</span><span class="p">:</span> <span class="nx">count</span>
+<span class="p">};</span>
+
+<span class="nx">myProfile</span> <span class="o">=</span> <span class="p">{</span>                  <span class="c1">// 코드 에러 ( re-assign 안됨 )</span>
+    <span class="na">myName</span><span class="p">:</span> <span class="s2">"강감찬"</span><span class="p">,</span>
+    <span class="na">myAddress</span><span class="p">:</span> <span class="s2">"인천"</span><span class="p">,</span>
+<span class="p">};</span>                   
+
+<span class="nx">myProfile</span><span class="p">.</span><span class="nx">myName</span> <span class="o">=</span> <span class="s2">"강감찬"</span><span class="p">;</span>   <span class="c1">// 가능</span>
+<span class="nx">myProfile</span><span class="p">.</span><span class="nx">myAddress</span> <span class="o">=</span> <span class="s2">"인천"</span><span class="p">;</span>
+<span class="nx">myProfile</span><span class="p">.</span><span class="nx">myCount</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>변수 선언에 대한 keyword에 대해서는 이정도 알아두시면 될 듯 보입니다. 다음 주제는 <code class="highlighter-rouge">Destructuring</code>(디스트럭쳐링)입니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(3) - Data Type(Part 2)</title>
+	  <link>http://localhost:4000/typescript-datatype-2</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-23T01:44:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-datatype-2</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Data Type</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">any</code></li>
+  <li><code class="highlighter-rouge">void</code></li>
+  <li><code class="highlighter-rouge">null &amp; undefined</code></li>
+  <li><code class="highlighter-rouge">never</code></li>
+  <li><code class="highlighter-rouge">type assertions</code></li>
+</ul>
+
+<p>이전 포스트에서 기본적인 data type을 알아보았으니 이번에는 조금 더 색다른 data type을 살펴보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> any</strong></p>
+
+<p>Application을 작성하는 시점을 기준으로 할 때 <strong>어떤 변수의 data type을 결정할 수 없는 경우</strong>가 아주 간혹 있습니다.</p>
+
+<p>가장 쉬운 예로 3rd party library를 이용해 dynamic content를 로딩해 저장하는 변수를 생각하시면 됩니다.
+즉, 동적으로 로딩되는 데이터의 타입이 runtime에 결정되므로 컴파일 타임에 data type을 지정할 수 없는 경우입니다.<br />
+(하지만 사실 우리는 대부분 데이터 타입을 정해놓고 구현을 진행하긴 합니다. ^^)</p>
+
+<p>이런 경우 <strong>“어떠한 data type도 될 수 있다”</strong>라는 의미로 <code class="highlighter-rouge">any</code> data type을 이용할 수 있습니다.
+data type에 구애받지 않고 쉽게 코드를 작성할 수 있도록 만들어주지만 위에서 언급한 특정 목적을 제외하고는
+<strong>당연히 사용하지 않는것이 좋습니다.</strong></p>
+
+<p>아래의 코드를 살펴보죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="nx">myVar</span> <span class="o">=</span> <span class="s2">"Hello World!!"</span><span class="p">;</span> <span class="c1">// 가능</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>            <span class="c1">// 가능 </span>
+</code></pre></div></div>
+
+<p>배열의 data type으로 <code class="highlighter-rouge">any</code>를 이용하여 서로 다른 data type으로 배열을 이용하는게 가능해집니다.
+아래의 코드처럼 말이죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">any</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="s2">"Hello"</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> void</strong></p>
+
+<p>어디서 많이 본 것입니다. 일반적으로 <code class="highlighter-rouge">void</code>는 함수가 리턴값이 없을 때 함수의 리턴 type으로 이용합니다. 
+아래의 코드를 보시죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">:</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">!!`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">myFunc</span><span class="p">(</span><span class="s2">"Moon"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>일반 변수를 만약 void로 선언하면 어떻게 될까요? 변수를 void type으로 선언하면 해당 변수에는 
+<code class="highlighter-rouge">null</code> 혹은 <code class="highlighter-rouge">undefined</code>만 assign이 가능합니다. 이렇게 사용할 일이 과연 있을까 싶네요.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>       <span class="c1">// 불가능(코드 에러)</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="s2">"Hello"</span><span class="p">;</span>   <span class="c1">// 불가능(코드 에러)</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>      <span class="c1">// 가능</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// 가능</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>여기서 주의해야 할 점은 <code class="highlighter-rouge">tsconfig.json</code>파일안에 <code class="highlighter-rouge">compilerOptions</code> 부분에 <code class="highlighter-rouge">"strictNullChecks": false</code> option을
+설정해야 한다는 것입니다.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> null &amp; undefined</strong></p>
+
+<p>TypeScript에서 <code class="highlighter-rouge">null</code>과 <code class="highlighter-rouge">undefined</code>는 값이자 하나의 data type입니다. 그렇기 때문에 다음과 같이 사용해야 합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myNull</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">myUndefined</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>하지만 null과 undefined는 <strong>다른 모든 type의 subtype</strong>입니다. 
+쉽게 말하면 다른 모든 type에 null과 undefined 값을 assign할 수 있다는 말입니다.</p>
+
+<p>여기서 주의해야 할 점은 만약 <code class="highlighter-rouge">--strictNullChecks</code> flag를 이용해 <code class="highlighter-rouge">.ts</code>파일을 컴파일 할 경우 null과 undefined는 void 혹은
+자신의 data type에만 assign될 수 있게됩니다.
+(<code class="highlighter-rouge">tsconfig.json</code>파일안에서 <code class="highlighter-rouge">"strictNullChecks": true</code>로 설정한 경우를 의미 )</p>
+
+<blockquote>
+  <p>tsconfig.json파일안에 compilerOptions 부분에 <code class="highlighter-rouge">"strictNullChecks": false</code> option 적용한 경우</p>
+</blockquote>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myName</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"홍길동"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myVoid</span><span class="p">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myNull</span><span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myUndefined</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="nx">myName</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 가능</span>
+<span class="nx">myName</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 가능</span>
+
+<span class="nx">myVoid</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 가능</span>
+<span class="nx">myVoid</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 가능</span>
+
+<span class="nx">myNull</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 가능</span>
+<span class="nx">myNull</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 가능</span>
+
+<span class="nx">myUndefined</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>       <span class="c1">// 가능</span>
+<span class="nx">myUndefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>  <span class="c1">// 가능</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>tsconfig.json파일안에 compilerOptions 부분에 <code class="highlighter-rouge">"strictNullChecks": true</code> option 적용한 경우</p>
+</blockquote>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myName</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"홍길동"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myVoid</span><span class="p">:</span> <span class="k">void</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myNull</span><span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myUndefined</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="nx">myName</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 불가능</span>
+<span class="nx">myName</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 불가능</span>
+
+<span class="nx">myVoid</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 불가능</span>
+<span class="nx">myVoid</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 가능</span>
+
+<span class="nx">myNull</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 가능</span>
+<span class="nx">myNull</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// 불가능</span>
+
+<span class="nx">myUndefined</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>       <span class="c1">// 불가능</span>
+<span class="nx">myUndefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>  <span class="c1">// 가능</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> never</strong></p>
+
+<p><code class="highlighter-rouge">never</code> type은 일반적으로 함수의 리턴 타입으로 사용됩니다. 만약 함수의 리턴 type으로 never가 사용되면 해당
+함수는 항상 exception을 발생시키던가 혹은 절대 return되지 않는다는 것을 의미합니다. 절대 return되지 않는다는
+것은 무한 loop에 빠지는 것등을 의미합니다.</p>
+
+<p>코드상으로 이해하자면 다음과 같은 경우입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">error</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">never</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">error</span><span class="p">(</span><span class="s2">"Something Wrong!!"</span><span class="p">);</span>
+
+
+
+<span class="kd">function</span> <span class="nx">infiniteLoop</span><span class="p">():</span> <span class="nx">never</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Type assertions</strong></p>
+
+<p><code class="highlighter-rouge">Type assertions</code>는 컴파일러에게 <strong>“이 타입 사용이 맞아!!”</strong>라는 의미를 전달하는 것입니다. Type assertions
+은 type casting과 같은 의미로 사용되지만 실제 특별한 체크작업이나 데이터 재구조화 작업이 발생하지 않습니다.
+TypeScript는 프로그래머가 특정한 type check를 진행했다고 가정한 후 컴파일을 진행합니다.
+( TypeScript가 따로 검증하지 않는다는 거죠. )</p>
+
+<p>Type assertions을 하는 방법은 2가지가 있습니다. angle-bracket syntax(<code class="highlighter-rouge">&lt;&gt;</code>)를 이용하는 방법과 <code class="highlighter-rouge">as</code> syntax를
+이용하는 방법입니다. 아래의 코드를 보죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="s2">"Hello World"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">myVarCount</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="p">(</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="nx">myVar</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="nx">myVarCount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">myVar</span> <span class="k">as</span> <span class="nx">string</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="nx">myVar</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">());</span>  <span class="c1">// runtime error</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">any</code> data type과 함께 사용되는 경우가 많으며 데이터 타입을 한정지어서 사용할 수 있도록 도와주는 역할을 합니다.</p>
+
+<p>여기까지가 TypeScript의 기본 data type입니다. 다음 포스트는 변수를 선언하기 위한 키워드인 
+<code class="highlighter-rouge">var</code>, <code class="highlighter-rouge">let</code>, <code class="highlighter-rouge">const</code>에 대해서 알아보도록 하겠습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(2) - Data Type(Part 1)</title>
+	  <link>http://localhost:4000/typescript-datatype-1</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-22T22:07:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-datatype-1</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript Data Type</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">boolean</code></li>
+  <li><code class="highlighter-rouge">number</code></li>
+  <li><code class="highlighter-rouge">string</code></li>
+  <li><code class="highlighter-rouge">Array</code></li>
+  <li><code class="highlighter-rouge">Tuple</code></li>
+  <li><code class="highlighter-rouge">enum</code></li>
+</ul>
+
+<p>프로그래밍 언어를 배울 때 가장 먼저 학습하는 부분이 바로 <code class="highlighter-rouge">Data Type</code>입니다. 이전에도 언급했듯이
+TypeScript는 JavaScript의 superset이기 때문에 JavaScript의 data type을 그대로 이용합니다. 거기에
+추가적인 데이터 타입이 더 존재합니다.</p>
+
+<p>그럼 하나하나 예를 들면서 보도록 하죠.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> boolean</strong></p>
+
+<p>우리가 알고있는 <code class="highlighter-rouge">boolean</code> type입니다. <code class="highlighter-rouge">true</code>와 <code class="highlighter-rouge">false</code> keyword를 사용할 수 있습니다.</p>
+
+<p>TypeScript에서는 변수선언시 <code class="highlighter-rouge">var</code>을 사용하지 않습니다. 
+var는 전통적으로 javascript의 변수를 선언하기 위한 keyword로 사용되고 있지만
+몇가지 우리를 힘들게 하는 특징이 있습니다. 이부분은 나중에 다시 포스팅하기로 하겠습니다.</p>
+
+<p>여하간 TypeScript에서는 var대신 <code class="highlighter-rouge">const</code>와 <code class="highlighter-rouge">let</code>을 이용합니다. 다음과 같이 boolean type의 변수를 선언할
+수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>WebStorm에서는 다음그림처럼 확인하시면 편합니다. 왼쪽창에는 <code class="highlighter-rouge">.ts</code>파일, 오른쪽 창에는 변환된 <code class="highlighter-rouge">.js</code>파일을
+열어서 .ts가 어떻게 .js로 변환되는지를 확인해보세요.</p>
+
+<p><img src="assets/built/images/webstorm-project-datatype-boolean.png" alt="코드비교" /></p>
+
+<p>JavaScript에는 <strong>생성자 함수</strong>라는게 있습니다. <br />
+원래 JavaScript는 객체지향언어가 아닙니다. <code class="highlighter-rouge">Prototype</code>기반의 함수형 언어입니다.
+그래서 JavaScript 초기버전에는 <code class="highlighter-rouge">class</code>가 도입되지 않았습니다. class는 ECMAScript 2015(ES6)에 도입되었습니다. 
+class가 도입되기 이전에는 함수를 이용해서 객체를 생성하는 <strong>생성자 함수</strong>라는걸 사용했습니다. 
+지금도 역시 사용하고 있구요. 우리가 알고있는 <code class="highlighter-rouge">new Date();</code> 이런게 다 생성자 함수를 이용한 객체의 생성입니다.</p>
+
+<p>그 중 특수한 생성자 함수들이 있습니다. <strong>바로 primitive type에 대한 생성자 함수들 입니다.</strong> 
+이런것들을 우리는 흔히 <code class="highlighter-rouge">Wrapper</code>라고 부릅니다. JavaScript에도 Wrapper Object가 존재합니다. 
+<code class="highlighter-rouge">Boolean</code>과 같은 생성자 함수를 이용해서 object를 만들면 우리는 그걸 primitive wrapper object라고 하는거지요.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myBooleanVar</span><span class="p">:</span> <span class="nb">Boolean</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>   
+</code></pre></div></div>
+
+<p>이제 아래의 코드를 살펴보죠.</p>
+
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myBooleanVar</span><span class="p">:</span> <span class="nb">Boolean</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myBooleanVar</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">());</span></code></pre></figure>
+
+<p>위와 같은 코드는 좀 이상합니다. <code class="highlighter-rouge">myVar</code>는 primitive type임에도 불구하고 method를 호출했습니다.
+그럼에도 이상없이 실행이 잘 됩니다. 그 이유는 자동형변환이 일어나기 때문입니다. <code class="highlighter-rouge">autoboxing</code>이라고 하죠.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>    <span class="c1">// 코드 에러</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">());</span>
+</code></pre></div></div>
+<p>위의 코드는 에러입니다. boolean type의 변수에 Boolean wrapper object를 assign할 수 없다는 오류가 발생합니다.</p>
+
+<p>혼용해서 사용하는건 좋지 않습니다. JavaScript할 때야 그냥 막(?) 했지만 TypeScript는 data type을 정확히 명시하는
+습관을 들이셔야 합니다.</p>
+
+<blockquote>
+  <p>결론적으로 <code class="highlighter-rouge">booelan</code> / <code class="highlighter-rouge">Boolean</code> 이 존재하는군요. 하나는 primitive data type이고 다른 하나는 primitive wrapper object를
+만들기 위한 생성자 함수입니다. <strong>data type 용도로 사용할 경우는 <code class="highlighter-rouge">boolean</code>을 이용하셔야 합니다.(나머지 data type에 대해서도
+동일합니다. - 권장사항)</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> number</strong></p>
+
+<p>TypeScript는 정수와 실수를 구분하지 않습니다. 모두 다 실수( floating point values )입니다. data type으로는
+<code class="highlighter-rouge">number</code>를 사용합니다. 대응되는 wrapper 생성자 함수는 <code class="highlighter-rouge">Number</code>가 되겠네요.
+기본적인 10진수, 16진수에 더해 ECMAScript 2015에서 2진수, 8진수의 사용도 추가되었습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">decimal</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>     
+<span class="kd">let</span> <span class="nx">hex</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mh">0xf00d</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">binary</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mb">0b1010</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">octal</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mo">0o744</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">octal</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">());</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> string</strong></p>
+
+<p>문자열을 지칭합니다. 기본적으로 double quotes (<code class="highlighter-rouge">"</code>) 와 single quotes (<code class="highlighter-rouge">'</code>) 둘 다 이용할 수 있습니다. 일반적으로는
+single quotes (<code class="highlighter-rouge">'</code>)를 이용합니다. 대응되는 wrapper 생성자 함수는 <code class="highlighter-rouge">String</code> 입니다.</p>
+
+<p>한가지 더 기억해야 할 것이 있는데 <code class="highlighter-rouge">template string</code>이라는 걸 사용할 수 있습니다. backquote ( ` ) 를 이용하여
+여러줄에 걸쳐 문자열을 입력할 수 있고 <code class="highlighter-rouge">${ expr }</code> 형태로 embedded expression을 사용할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myStr</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"Hello"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myNumber</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">myTemplateString</span> <span class="o">=</span> <span class="s2">`this is
+a
+sample
+Text =&gt; </span><span class="p">${</span> <span class="nx">myNumber</span> <span class="o">+</span> <span class="mi">100</span> <span class="p">}</span><span class="s2">
+myStr : </span><span class="p">${</span> <span class="nx">myStr</span> <span class="p">}</span><span class="s2">
+`</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTemplateString</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>실행결과는 다음과 같습니다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this is
+a
+sample
+Text =&gt; 200
+myStr : Hello
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Array</strong></p>
+
+<p>TypeScript는 JavaScript와 마찬가지로 <code class="highlighter-rouge">Array</code>를 지원합니다. 배열은 primitive data type이 아닌 객체입니다.
+배열은 두가지 방식으로 사용할 수 있습니다. 일반적인 방식은 다음과 같습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myArr</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"Hi"</span><span class="p">,</span> <span class="s2">"안녕하세요"</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myArr</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>또 다른 방식은 <code class="highlighter-rouge">Array Interface</code>와 <code class="highlighter-rouge">generic</code>을 이용하는 방법입니다. 
+자세한 설명은 다른 포스트에서 진행합니다. 여기서는 어떻게 배열을 선언하고 
+사용하는지만 보시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myNumArr</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myNumArr</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Tuple</strong></p>
+
+<p><code class="highlighter-rouge">Tuple</code>은 배열입니다. 특수한 형태의 배열로 인식하시면 됩니다. 
+배열의 각 원소에 대해 각기 다른 data type을 허용합니다.
+다음과 같은 코드를 가지고 이해해보죠</p>
+
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">let</span> <span class="nx">myTuple</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">number</span><span class="p">];</span>
+
+<span class="nx">myTuple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span> <span class="c1">// 가능</span>
+
+<span class="nx">myTuple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">];</span> <span class="c1">// 에러</span></code></pre></figure>
+
+<p>위의 코드의 제일 마지막 문장인</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myTuple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="s2">"World"</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>코드는 Tuple의 type선언에 맞지 않기때문에 Error가 발생합니다.</p>
+
+<p>다음의 코드를 살펴보죠</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myTuple</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">number</span><span class="p">];</span>
+
+<span class="nx">myTuple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span> <span class="c1">// 가능</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>  <span class="c1">// "Hello" 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>  <span class="c1">// 100 출력</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>  <span class="c1">// undefined 출력</span>
+</code></pre></div></div>
+
+<p>위에서 언급했듯이 배열로 사용합니다. 2칸짜리 배열을 만들고 첫번째 칸에는 string, 두번째 칸에는 number를 data type으로
+가지는 배열입니다.</p>
+
+<p>JavaScript의 배열은 크기를 동적으로 늘릴 수 있습니다. 3번째 칸( <code class="highlighter-rouge">myTuple[2]</code> )에 데이터를 입력해 보겠습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myTuple</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">number</span><span class="p">];</span>
+
+<span class="nx">myTuple</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="mi">100</span><span class="p">];</span> <span class="c1">// 가능</span>
+
+<span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"World"</span><span class="p">;</span> <span class="c1">// 가능</span>
+<span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>     <span class="c1">// 가능</span>
+<span class="nx">myTuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>    <span class="c1">// 불가능( 코드 에러 )</span>
+</code></pre></div></div>
+
+<p>3번째 칸에 string과 number는 assign이 되는것을 확인할 수 있습니다. 하지만 boolean은 들어가지 않는군요.</p>
+
+<p>정리하자면 현재 사용할 수 있는 index를 넘어가는 곳에 데이터를 입력할 때는 Tuple선언에서 사용한 data type의
+<code class="highlighter-rouge">union type</code>을 이용합니다. 쉽게 말하면 string 혹은 number가 되어야 한다는 말입니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> enum</strong></p>
+
+<p><code class="highlighter-rouge">enum</code>을 이용할 수 있습니다. C#의 enum과 동일합니다. 
+<strong>숫자 대신 친숙한 이름으로 설정</strong>하기 위해서 이용합니다.
+다음의 코드를 이용해서 살펴보죠</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span> <span class="nx">Red</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span> <span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myColor</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Red</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myColor</span><span class="p">);</span>   <span class="c1">// 0 출력</span>
+</code></pre></div></div>
+
+<p>별다른 설명이 필요없습니다. 이번에는 다음의 코드를 보죠</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span> <span class="nx">Red</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myColor</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myColor</span><span class="p">);</span>   <span class="c1">// 2 출력</span>
+
+<span class="nx">myColor</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Blue</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myColor</span><span class="p">);</span>   <span class="c1">// 4 출력</span>
+</code></pre></div></div>
+<p><code class="highlighter-rouge">Color.Red</code>의 값을 1로 설정하면 그 다음 원소들은 당연히 1부터 1씩 증가합니다. <code class="highlighter-rouge">Color.Blue</code>는 4로 명시적으로 지정했네요.</p>
+
+<p>아래의 예제는 좀 특이합니다. string 변수에 <code class="highlighter-rouge">enum</code>을 대입한 후 결과를 출력합니다.</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span> <span class="nx">Red</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span> <span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">myColorStr</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>  <span class="c1">// 코드 에러( 문자열에 숫자대입 안됨 )</span>
+
+<span class="kd">let</span> <span class="nx">myColor</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>        <span class="c1">// 가능( 배열로 처리 - index에 주의 )</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myColor</span><span class="p">);</span>                  <span class="c1">// "Blue" 출력</span>
+</code></pre></div></div>
+
+<p>위의 코드에서</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myColorStr</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>코드는 에러가 발생합니다. 문자열 type에 숫자를 넣으려 했기 때문이죠.
+또한 enum은 배열형태로 사용이 가능한 데 이런 경우 해당 문자열을 바로 이용할 수 있습니다.</p>
+
+<p>여기까지는 아마 우리가 알고있던 JavaScript와 거의 동일하니 이해하는데 어려움은 없을 듯 보입니다.
+나머지 data type은 다음 포스트에서 이어가도록 하죠.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 사이트를 참조했습니다. 조금 더 자세한 사항을 알고 싶으시면
+    해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="http://www.typescriptlang.org" target="_blank">TypeScript Official HomePage</a></li>
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>TypeScript 강좌(1) - Introduction</title>
+	  <link>http://localhost:4000/typescript-introduction</link>
+		
+				
+						<author>moon9342</author>
+				
+		
+	  <pubDate>2018-01-22T02:42:00+09:00</pubDate>
+	  <guid>http://localhost:4000/typescript-introduction</guid>
+	  <description><![CDATA[
+	     <p><span class="table-of-contents-list">TypeScript 강좌는 여러 절로 구성되어 있습니다.</span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./typescript-introduction">TypeScript 강좌(1) - Introduction</a></li>
+    <li><a href="./typescript-datatype-1">TypeScript 강좌(2) - Data Type(Part 1)</a></li>
+    <li><a href="./typescript-datatype-2">TypeScript 강좌(3) - Data Type(Part 2)</a></li>
+    <li><a href="./typescript-variable">TypeScript 강좌(4) - 변수 선언</a></li>
+    <li><a href="./typescript-destructuring">TypeScript 강좌(5) - Destructuring</a></li>
+    <li><a href="./typescript-interface">TypeScript 강좌(6) - Interface</a></li>
+    <li><a href="./typescript-class">TypeScript 강좌(7) - Class</a></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript 개요 및 WebStorm 개발환경 설정</strong></p>
+
+<p><code class="highlighter-rouge">TypeScript</code>는 Microsoft에서 개발하여 2012년에 발표한 오픈 소스 프로그래밍 언어입니다. 
+대규모 JavaScript application 개발을 목적으로 만들어졌습니다.</p>
+
+<p>TypeScript의 특징은 다음과 같습니다.</p>
+
+<ul>
+  <li><strong>TypeScript는 JavaScript의 Superset입니다.</strong> TypeScript는 JavaScript의 모든 기능을 포함하고 
+그 외 추가적인 기능들을 가지고 있습니다.</li>
+  <li>TypeScript는 컴파일 언어이지만 컴파일 결과가 machine code가 아닌 JavaScript 코드가 나옵니다.
+( 이런 프로그래밍을 <a href="./what-is-metaprogramming.html" target="_blank">메타프로그래밍</a> 이라고 하죠. ) 
+그렇기 때문에 compile 대신에 transpile 이라고도 합니다.</li>
+  <li>TypeScript는 compile 시점에 type checking이 일어나는 <strong>정적 타입 언어</strong>입니다.</li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> TypeScript 개발환경 설정</strong></p>
+
+<p>여기서는 <code class="highlighter-rouge">Node.js</code>를 이용하여 <code class="highlighter-rouge">npm</code>(Node Package Manager)을 설치하고 이 npm을 이용해 TypeScript를 설치하고 
+사용하는 방법에 대해서 알아보겠습니다.</p>
+
+<p>먼저 <a href="https://nodejs.org/" target="_blank">Node.js</a>사이트에 접속해 LTS 버전이나 최신버전 둘 중 하나를 선택해
+다운로드 합니다. (어떤것을 설치해도 상관없습니다.)
+<img src="assets/built/images/nodejs-download.jpg" alt="nodejs download" /></p>
+
+<p>저는 LTS 버전으로 다운로드 했습니다. 다운로드가 끝나면 기본 형태로 설치를 진행합니다. 설치가 끝나면
+<code class="highlighter-rouge">C:/Program Files/nodejs</code> 폴더가 만들어지게 됩니다.</p>
+
+<p>이제 command 창을 열어서 다음과 같이 명령어를 실행해봅니다.</p>
+
+<blockquote>
+  <p><strong>npm</strong></p>
+</blockquote>
+
+<p><img src="assets/built/images/nodejs-npm.png" alt="nodejs_npm" /></p>
+
+<p><code class="highlighter-rouge">npm</code>(Node Package Manager)이 정상적으로 동작하면 이제 npm을 이용해 typescript를 설치할 수 있습니다.
+설치는 local mode와 global mode로 설치가 가능합니다. 여기서는 편의상 global mode로 설치합니다.
+(일반적으로는 local mode를 선호합니다.)</p>
+
+<p>command 창에서 다음과 같이 명령어를 이용해 typescript를 <code class="highlighter-rouge">global</code>로 설치합니다.</p>
+
+<blockquote>
+  <p><strong>npm install -g typescript</strong></p>
+</blockquote>
+
+<p><img src="assets/built/images/nodejs-npm-typescript.png" alt="nodejs_npm_typescript" /></p>
+
+<p><code class="highlighter-rouge">typescript 2.6.2</code>가 설치되었습니다.</p>
+
+<blockquote>
+  <p>global mode로 설치하면 windows 시스템을 기준으로 <code class="highlighter-rouge">$USER_HOME/AppData/Roaming/npm/node_modules</code>에 
+설치됩니다.</p>
+</blockquote>
+
+<p>이제 사용할 <code class="highlighter-rouge">IDE</code>(Integrated Development Environment)를 설치합니다. 여기서는 <code class="highlighter-rouge">WebStorm</code>(유료)을 이용합니다.
+<code class="highlighter-rouge">Visual Studio Code</code>(무료)를 사용하셔도 됩니다. WebStorm은 유료이지만 30일 trial을 사용할 수 있고 Student license로
+1년간 무료로 사용할 수 도 있습니다.</p>
+
+<p><a href="https://www.jetbrains.com/" target="_blank">JetBrains</a>사이트로 접속한 후 
+<a href="https://www.jetbrains.com/webstorm" target="_blank">WebStorm</a>을 다운로드 받습니다.</p>
+
+<p>다운로드가 완료되면 기본형태로 설치합니다. 설치가 끝나면 프로젝트를 생성할 수 있는 화면이 나오게 되는데 
+폴더 하나를 생성해서 프로젝트를 생성합니다. (폴더명이 프로젝트명이됩니다.) 저는 <code class="highlighter-rouge">D:/TypeScriptTestApp</code> 폴더를 
+생성하면서 프로젝트를 하나 만들었습니다.</p>
+
+<p><img src="assets/built/images/webstorm-project-create.png" alt="webstorm-project-create" /></p>
+
+<p>이제 WebStorm 설정을 해야 합니다.</p>
+
+<blockquote>
+  <p><strong>Files - Settings - Languages &amp; Frameworks - TypeScript</strong> 를 선택하면 아래와 같은 화면을 볼 수 있습니다.</p>
+</blockquote>
+
+<p>사실 WebStorm에 TypeScript가 bundle되어 들어있기 때문에 TypeScript를 따로 설치 안해도 됩니다. 
+하지만 어떻게 설치하는지는 알아둘 필요는 있으니 한번 설치해 본거죠. 그리고 아래의 그림처럼 Compiler 옵션부분을
+check합니다.</p>
+
+<p><img src="assets/built/images/webstorm-project-configure.png" alt="webstorm-project-configure" /></p>
+
+<p>컴파일을 할 때 <code class="highlighter-rouge">tsconfig.json</code>을 참조해 compile option을 설정한다고 해 놓았습니다. 우리는 아직 tsconfig.json
+이 없으니 하나 생성해 줍니다. WebStorm의 하단에 있는 Terminal을 클릭해서 Terminal창을 열고 다음을 입력합니다.</p>
+
+<blockquote>
+  <p><strong>tsc --init</strong></p>
+</blockquote>
+
+<p><img src="assets/built/images/webstorm-project-tsconfig.png" alt="webstorm-project-tsconfig" /></p>
+
+<p>프로젝트를 살펴보면 <code class="highlighter-rouge">tsconfig.json</code>이 생성되어 있는것을 볼 수 있고 안에 무언가가 많이 들어있는것을 확인할 수 있습니다.
+compiler option에 대해서는 다른 포스트에서 알아보기로 하고 이제 간단한 ts 파일(typescript file)을 하나 생성합니다.
+이름을 <code class="highlighter-rouge">hello.ts</code>라고 하죠.</p>
+
+<p><img src="assets/built/images/webstorm-project-file-create.png" alt="webstorm-project-file-create" /></p>
+
+<p>다음과 같은 코드를 입력합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Greeting</span> <span class="p">{</span>
+    <span class="nl">greeting</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Hello "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Greeting</span><span class="p">(</span><span class="s2">"World!!"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>내가 알고있던 javascript가 아니라서 당황스럽지요? 별로 어렵지 않습니다. 객체지향 언어를 알고 있으면
+더욱 더 쉽게 접근할 수 있습니다. 여하간 이렇게 코딩을 하고 저장하면 자동적으로 컴파일을 진행하고 그 결과
+파일(.js)을 생성해 줍니다.</p>
+
+<p><img src="assets/built/images/webstorm-project-generate-js.png" alt="webstorm-project-generate-js" /></p>
+
+<p>마지막으로 coding convention을 지정할 수 있는 <code class="highlighter-rouge">tslint</code>를 설치하도록 하겠습니다. 반드시 설치해야하는건 아니지만
+발생할 수 있는 오류를 미리 감지하고 coding convention을 맞추기 위해서 사용하는 것이 일반적입니다.</p>
+
+<p>WebStorm에서 다시 터미널을 열고 다음과 같이 입력하여 tslint를 설치합니다. 역시 global mode로 설치합니다.</p>
+
+<blockquote>
+  <p><strong>npm install -g tslint</strong></p>
+</blockquote>
+
+<p><img src="assets/built/images/webstorm-project-tslint.png" alt="webstorm-project-tslint" /></p>
+
+<p>그리고 다시 설정으로 들어갑니다.</p>
+
+<blockquote>
+  <p><strong>Files - Settings - Languages &amp; Frameworks - TypeScript - TSLint</strong> 를 선택하면 아래와 같은 화면을 볼 수 있습니다.</p>
+</blockquote>
+
+<p>Enable를 check합니다. <code class="highlighter-rouge">tslint.json</code>을 찾아서 Cofiguration file로 이용한다는 군요.</p>
+
+<p><img src="assets/built/images/webstorm-project-tslint-configure.png" alt="webstorm-project-tslint-configure" /></p>
+
+<p><code class="highlighter-rouge">tslint.json</code> 파일이 있어야 하니 Terminal을 열어서 다음과 같이 입력해서 tslint.json도 생성해 줍니다.</p>
+
+<blockquote>
+  <p><strong>tslint --init</strong></p>
+</blockquote>
+
+<p><img src="assets/built/images/webstorm-project-tslint-json.png" alt="webstorm-project-tslint-json" /></p>
+
+<p>이제 우리가 작성한 <code class="highlighter-rouge">hello.ts</code> 파일을 다시 열어보면 여러가지 알수없는(?) 빨간색들이 산재해 있는것을 보실 수 있습니다.
+에러는 아니지만 <code class="highlighter-rouge">tslint</code>에 의해서 coding convention에 위배되는 것들입니다.</p>
+
+<p>적절하게 수정해야 합니다. 설정해야 하는 것이들 많이 있지만 연습삼아 한가지만 설정하겠습니다. 
+console에 대한 tslint 오류를 없애보도록 하죠.</p>
+
+<p>수정한 <code class="highlighter-rouge">tslint.json</code>파일은 다음과 같습니다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"defaultSeverity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"extends"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"tslint:recommended"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"jsRules"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"no-console"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"rulesDirectory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>오류를 수정한 최종 <code class="highlighter-rouge">hello.ts</code>파일은 다음과 같습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Greeting</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">greeting</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kr">public</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Hello "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">greeting</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Greeting</span><span class="p">(</span><span class="s2">"World!!"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>여기까지해서 TypeScript를 학습하기 위한 기본적인 환경설정을 잡으시면 됩니다.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">tslint</code>는 실 개발시에는 필요하지만 처음 TypeScript를 공부할 때는 끄고 하시는게 정신건강에 이로울 수 있습니다.
+사실 쓸데없는 <code class="highlighter-rouge">coding convention</code>도 많거든요.</p>
+</blockquote>
+
+<p>End.</p>
+
+<hr />
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Front-End 발전 역사와 개발 생태계</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/front-end-ecosystem" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Front-End 발전 역사와 개발 생태계" />
+    <meta property="og:description" content="Introduction 이번 포스트는 과거 JavaScript 탄생부터 시작해서 어떻게 발전해왔는지에 대한 내용과 현재 Front End 개발에 있어서 무엇을 알아야 하는 지에 대한 전반적인 기술 상황에 대해서 알아보겠습니다. JavaScript 탄생 JavaScript라는 언어의 역사는 저의 다른 포스트에서도 볼 수 있지만 여기서도 간단하게 언급하고 넘어가겠습니다. JavaScript언어의 역사는 1995년 Netscape사의 Brendan Eich(브랜든 아이크)에 의해 개발된" />
+    <meta property="og:url" content="http://localhost:4000/front-end-ecosystem" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/ecosystem-logo.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-01-29T22:31:00+09:00" />
+    <meta property="article:modified_time" content="2018-01-29T22:31:00+09:00" />
+    <meta property="article:tag" content="Et-cetera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Front-End 발전 역사와 개발 생태계" />
+    <meta name="twitter:description" content="Introduction 이번 포스트는 과거 JavaScript 탄생부터 시작해서 어떻게 발전해왔는지에 대한 내용과 현재 Front End 개발에 있어서 무엇을 알아야 하는 지에 대한 전반적인 기술 상황에 대해서 알아보겠습니다. JavaScript 탄생 JavaScript라는 언어의 역사는 저의 다른 포스트에서도 볼 수 있지만 여기서도 간단하게 언급하고 넘어가겠습니다. JavaScript언어의 역사는 1995년 Netscape사의 Brendan Eich(브랜든 아이크)에 의해 개발된" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ecosystem-logo.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Et-cetera" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/front-end-ecosystem",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/ecosystem-logo.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/front-end-ecosystem"
+    },
+    "description": "Introduction 이번 포스트는 과거 JavaScript 탄생부터 시작해서 어떻게 발전해왔는지에 대한 내용과 현재 Front End 개발에 있어서 무엇을 알아야 하는 지에 대한 전반적인 기술 상황에 대해서 알아보겠습니다. JavaScript 탄생 JavaScript라는 언어의 역사는 저의 다른 포스트에서도 볼 수 있지만 여기서도 간단하게 언급하고 넘어가겠습니다. JavaScript언어의 역사는 1995년 Netscape사의 Brendan Eich(브랜든 아이크)에 의해 개발된"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Front-End 발전 역사와 개발 생태계" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="29 January 2018">29 January 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/et-cetera/'>ET-CETERA</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Front-End 발전 역사와 개발 생태계</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/ecosystem-logo.jpg)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><strong class="post_introduction">Introduction</strong></p>
+
+<p>이번 포스트는 과거 JavaScript 탄생부터 시작해서 어떻게 발전해왔는지에 대한 내용과 <br />
+현재 Front End 개발에 있어서 무엇을 알아야 하는 지에 대한 전반적인 기술 상황에 대해서 알아보겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> JavaScript 탄생</strong></p>
+
+<p>JavaScript라는 언어의 역사는 저의 <a href="./javascript-history.html" target="_blank">다른 포스트</a>에서도 볼 수 있지만 
+여기서도 간단하게 언급하고 넘어가겠습니다.</p>
+
+<p><code class="highlighter-rouge">JavaScript</code>언어의 역사는 1995년 Netscape사의 Brendan Eich(브랜든 아이크)에 의해 개발된 <code class="highlighter-rouge">Mocha</code>라는 언어부터 시작됩니다.
+이 Mocha라는 언어는 <strong>“Prototype의 개념과 Functional Language(함수형 언어)의 특성을 가지고 Web에 동적으로 활용할 수 있는 
+언어를 만들어보자”</strong> 라는 취지로 2주일 이라는 굉장히 짧은 기간안에 만들어졌습니다.</p>
+
+<p>추후에 <strong>Mocha -&gt; LiveScript -&gt; JavaScript</strong>로 개명되었고 ECMA에 <code class="highlighter-rouge">ECMA-262</code> 기술규격으로 <code class="highlighter-rouge">ECMAScript</code>라는 이름으로 표준화를
+진행하게 됩니다. 이에 대응해 1996년 MicroSoft 측에서는 <code class="highlighter-rouge">JScript</code>라는 걸 만들어내서 자사의 IE 3안에 포함시켜 제공하기 시작했습니다.</p>
+
+<p>이런 JavaScript는 여러가지 문제점을 내포하고 있었는데 가장 큰 문제를 꼽자면</p>
+
+<ul>
+  <li>구현의 어려움</li>
+  <li>언어의 모호성</li>
+  <li>Cross Browsing의 한계</li>
+</ul>
+
+<p>정도를 들 수 있습니다. 즉, 사용자 입력값을 검사하는 용도, 사용자의 이벤트를 감지해서 처리하는 용도로는 사용할 수 있지만 
+언어 자체가 가지고 있는 근본적인 문제때문에 사용이 힘들었습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 구세주의 등장 - jQuery</strong></p>
+
+<p>이 때 구세주가 등장합니다. 우리가 잘 알고 있는 <code class="highlighter-rouge">jQuery</code> library입니다.</p>
+
+<p>jQuery는 open source javascript library로 순수 javascript가 가지고 있었던 DOM처리의 어려움과 Cross Browsing에 대한 issue를
+해결하면서 <strong>JavaScript의 대표적 library</strong>로 사용되게 되었습니다. jQuery로 인해 JavaScript가 조금은 쓸만한 언어로 여기지면서
+사용되기 시작했습니다.</p>
+
+<p>그러면서 그냥 그냥 아주 소소하게 client web browser안에서 JavaScript 코드와 jQuery 코드가 이용되었던 거지요. 특별히 중요하지도 않은
+단위코드 위주로 사용이 되는 그런 수준이었습니다. 그러면서 우리 기억에도 “알면 좋고 몰라도 상관없는 언어”로 인식되었습니다.</p>
+
+<p>그렇게시간은 흘러갑니다.!!</p>
+
+<p>1997년 <code class="highlighter-rouge">ECMAScript</code>의 초판이 나오게 됩니다. <code class="highlighter-rouge">ES1</code>이라고 합니다. 그 후 1999년에 <code class="highlighter-rouge">ES3</code>가 나오게 됩니다. 여기까지 하고 한동안
+ECMAScript 표준은 쿨쿨 잠을 자게 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 다시 JavaScript에 날개를 달아보자 - HTML5</strong></p>
+
+<p>1999년 12월 <code class="highlighter-rouge">W3C</code>(World Wide Web Consortium)에서 하나의 발표를 합니다. 아시다시피 W3C는 <code class="highlighter-rouge">HTML</code>과 <code class="highlighter-rouge">CSS</code>의 표준을 
+관장하는 기구입니다. 이때까지 우리가 사용하는 HTML의 버전은 4.01버전이었습니다. W3C는 이 버전을 마지막으로 더 이상 
+HTML의 버전업은 없을 것이라고 공표하게 됩니다. 그때까지 잘 사용해왔던 HTML을 왜 버전업하지 하지 않겠다고 했을까요?</p>
+
+<p>여러가지 이유가 있지만 프로그래밍 언어의 측면에서 바라보면 HTML이란 언어는 다음과 같은 한계점이 있습니다.</p>
+
+<ul>
+  <li><strong>정형성 : HTML언어는 정형성이 없기때문에 유지보수에 적합하지 않다.</strong></li>
+  <li><strong>확장성 : 정해진 Tag만 이용하기 때문에 언어자체에 대한 기능적 확장이 어렵다.</strong></li>
+</ul>
+
+<p>W3C는 저 두가지 이유를 들어 HTML언어를 이대로 끌고 가기 보다는 좀 더 다른 수단을 강구해야 겠다고 판단합니다. W3C의 선택은
+바로 <code class="highlighter-rouge">XML</code>의 도입이었습니다. 즉, HTML이 가지는 두가지 문제점을 해결할 수 있는 XML을 도입해서 새로운 Web언어의 표준을
+끌고 나갈 생각이었습니다. 그 결과 2000년 들어오면서 HTML과 XML이 결합된 새로운 표준인 <code class="highlighter-rouge">XHTML 1.0</code>이 발표되게 됩니다.</p>
+
+<p>W3C의 이런 의도와는 다르게 몇몇개의 회사들이 모여서 조금 다른 접근을 모색합니다. XML을 도입하지 말고 순수하게 HTML을 기능을
+버전업시킬 수 있는 방법을 찾기 시작한 것이죠. 그래서 <code class="highlighter-rouge">WHATWG</code>(Web Hypertext Application Technology Working Group)이라는 
+Working Group이 만들어지고 이 안에서 기존의 HTML을 발전시킬 방법을 연구하게 됩니다. 
+( 사실 여기서 할 말이 많기 한데 자꾸 산으로 가는 느낌이라 적당히 짜르겠습니다. ) 
+이 WG에서 나온것이 바로 현재의 표준인 <code class="highlighter-rouge">HTML5</code>입니다. HTML을 이용해서 Web Application을 만들자는 취지입니다. 
+이 HTML5안에 Client Web Application을 작성할 수 있는 API가 포함되어 있는데 이게 <code class="highlighter-rouge">JavaScript</code>로
+되어 있습니다. 결국 HTML5가 issue화 되면서 JavaScript의 위상도 조금씩 더 올라가게 됩니다.</p>
+
+<p>그래서인지 쿨쿨 잠을자던 ECMAScript 개정판(<code class="highlighter-rouge">ES5</code>)이 2009년에 등장합니다. 참고로 4판(<code class="highlighter-rouge">ES4</code>)은 버려졌습니다. 이제 슬슬
+JavaScript에 대한 발전이 시작됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> JavaScript의 획기적 전환점 - Node.js</strong></p>
+
+<p>2013년 <code class="highlighter-rouge">Node.js</code>가 출시됩니다. 아무리 HTML5라고 해도 이때까지의 JavaScript는 Browser안에서 동작하는 언어였습니다.
+우리가 알고 있는 <code class="highlighter-rouge">Java</code>, <code class="highlighter-rouge">C#</code>과 같은 언어가 될 수 없는 태생적 한계가 있는거죠. 이런 browser에 갇힌 JavaScript를
+browser 외부로 탈출하게끔 만들어준 일등공신이 바로 Node.js입니다. 결국 JavaScript로 다른 언어처럼 OS위에서 동작하는
+일반 application을 작성할 수 있는 길이 열린것이고 그에 따라 언어의 위상이 완전히 변했습니다.</p>
+
+<p>그에 발맞춰 ECMAScript도 빠르게 변화하기 시작했습니다. 2015년에 ECMAScript 2015(<code class="highlighter-rouge">ES6</code>)가 등장하면서 JavaScript 언어자체에
+아주 큰 변화들이 많이 생겼습니다. 현재 ECMAScript 2016(<code class="highlighter-rouge">ES7</code>)까지 나온 상태입니다. 조금 지나면 <code class="highlighter-rouge">ES8</code>이 표준화되어서 나오겠네요.
+거의 1년마다 새로운 배포판이 나올정도로 빠르게 변화하면서 언어적 측면에서 가지고 있던 많은 문제점들을 극복하려고 노력하고 있습니다.</p>
+
+<p>현재(2018년 1월) 대부분의 browser들은 <code class="highlighter-rouge">ES6</code>를 지원하고 있습니다. 
+<a href="https://kangax.github.io/compat-table/es6/" target="_blank">여기</a>에 접속해 보시면 특정 browser에 대해 
+각 ECMAScript의 버전 호환성을 보실 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>이제 IE는 고만쓰도록 해요. 제발….</strong></p>
+</blockquote>
+
+<p>아직 완벽하게 Cross Browsing이 안되는데 어떻게 하느냐에 대한 문제는 <code class="highlighter-rouge">Babel</code>, <code class="highlighter-rouge">TypeScript</code>와 같은 
+transpiler를 이용해서 해결할 수 있습니다. 
+Babel, TypeScript는 ES6(ES7) 문법으로 쓰여있는 JavaScript code를 ES5 형태의 JavaScript로 변환시켜주기 때문에 
+IE에서 ES6지원이 안됨에도 불구하고 ES5로 변환해서 사용할 수 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 변화의 속도가 너무 빠름</strong></p>
+
+<p>그런데 문제는 기술의 발전 속도가 너무 빠르다는데 있습니다. 또한 알아야 할게 한두 가지가 아니구요. 
+과거 Back End에서 사용했던 프로그래밍 기술과 여러가지 개발 툴의 개념들이 다 Front End로 넘어왔기 때문입니다.
+너무 많은기술들이 빠르게 생기고 빠르게 사라지고 있습니다.</p>
+
+<p>사실 2-3년전에 자주 사용했던 JavaScript Library와 Framework들 중 많은 것들이 이미 다른 것으로 대체되었습니다. 
+그렇다고 손 놓고 있을 순 없으니 현재 상태에서 우리가 Front End 개발을 하기 위해 필수적으로 알아야 하는 것 몇가지만
+살펴보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 이것정도는 알고 가자</strong></p>
+
+<ul>
+  <li><strong>Package Manager</strong> : <code class="highlighter-rouge">NPM</code>, Yarn</li>
+</ul>
+
+<p><img src="assets/built/images/npm-vs-yarn.png" alt="npm vs yarn" /></p>
+
+<p>외부 라이브러리를 사용할 경우 해당 라이브러리를 설치, 삭제, 의존성 관리등을 해야 하는데 이를 위한 도구가 
+몇몇 존재합니다. 그중 하나만 하자면 당연 <code class="highlighter-rouge">npm</code>입니다. Node Package Manager의 약자이고 Node.js를 살짝 맛보시면
+npm이 어떻게 동작하는지 아실 수 있습니다. 굳이 Node.js에 대해서 학습할 필요는 없습니다. 당연히 알면 좋지만요.</p>
+
+<ul>
+  <li><strong>Transpiler</strong> : Babel, <code class="highlighter-rouge">TypeScript</code></li>
+</ul>
+
+<p><img src="assets/built/images/typescript-vs-babel.jpg" alt="babel vs typescript" /></p>
+<div class="img-reference">( 이미지 출처 : http://news.softpedia.com/news )</div>
+
+<p>Cross Browsing을 위한 Transpiler입니다. 비교 대상은 아닙니다. 둘 다 알아둘 필요는 있지만 
+저는 <code class="highlighter-rouge">TypeScript</code>는 반드시 해야 한다고 생각합니다. 앞으로 TypeScript는 더 발전할 듯 보이거든요. 
+하지만 배우기 쉽지 않습니다. 언어적 측면을 파고 들면 내용이 꽤나 많습니다.
+다행히 TypeScript는 ECMAScript의 superset이니 ECMAScript 공부한다고 생각하시면 속 편합니다.</p>
+
+<p>또한 제 개인적인 생각과는 반대로 TypeScript언어의 단점도 분명히 존재합니다. 엄격한 type checking덕분에
+JavaScript가 가지는 프로그래밍의 유연함이 많이 떨어진다는 것이죠.</p>
+
+<ul>
+  <li><strong>자동화 도구</strong> : Grunt, <code class="highlighter-rouge">Gulp</code></li>
+</ul>
+
+<p><img src="assets/built/images/grunt-vs-gulp.jpg" alt="Grunt vs Gulp" /></p>
+
+<p>빌드, 테스트, 배포등을 위한 자동화 도구입니다. 과거에는 Grunt를 많이 사용했지만 현재는 Gulp인듯 합니다. 
+시간 좀 지나면 Gulp도 Grunt와 마찬가지로 역사속으로 사라지게 되겠지만 지금은 Gulp가 대세입니다.</p>
+
+<ul>
+  <li><strong>module bundler</strong> : <code class="highlighter-rouge">webpack</code>, rollup</li>
+</ul>
+
+<p><img src="assets/built/images/webpack-vs-rollup.png" alt="webpack vs rollup" /></p>
+
+<p>코드 재사용을 위한 모듈화 도구들과 bundler 역시 여러가지 있는데 요즘 많이 사용하는 건 <code class="highlighter-rouge">webpack</code>입니다.
+ES6 들어오면서 언어적 차원에서 Module을 지원하기 시작했고 이런 Module들을 하나로 모아 Packaing하는 작업이
+필요하게 되었습니다. 이를 위한 도구 역시 발전을 하고 있구요. 과거에는 Common.js, Require.js를 이용하여
+처리했다면 최근에는 webpack, rollup을 이용하여 처리합니다.</p>
+
+<ul>
+  <li>Framework &amp; Library : <code class="highlighter-rouge">Angular</code>, <code class="highlighter-rouge">React</code>, <code class="highlighter-rouge">Vue.js</code></li>
+</ul>
+
+<p>우리의 목적은 사실 저 위의 3가지를 배우는 것입니다. 각기 나름대로의 장점과 특징들을 가지고 있습니다. 개인적으로는 
+블로그내에 저 세가지의 강좌를 개설하는게 2018년 상반기의 블로그 목표입니다. 대세는 Angular이지만 React의 성장세
+역시 가히 폭발적입니다. 아직까지(2018년 1월기준) Vue.js는 Angular와 React 만큼의 성장세는 보이지 않고 있지만 이 역시 어떻게 될지는
+모를일이죠</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 정리</strong></p>
+
+<p>위에서 <strong>“이것정도는 알고가자”</strong>라고 했지만 그 내용을 전부 다 알고 있으면 상당한 경험과 실력을 가진
+Front End 개발자일 것입니다. 또 위에 포함을 안했지만  <code class="highlighter-rouge">Git</code>같은 것은 기본적으로 숙지해야 할 것이구요. 할게 너무 많네요
+천천히 하나씩 해보도록 하죠 머…</p>
+
+<p>그리고 <strong>“이것정도는 알고가자”</strong>에서 제가 강조한 것들은 제가 현재 사용하는 것들입니다.
+그것들이 더 좋다는 보장은 어디에도 없습니다. 자기 손에 익숙한게 최고입니다. ^^</p>
+
+<p>End.</p>
+
+<hr />
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/et-cetera/">Et-cetera</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/arduino">Arduino</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/can">CAN Protocol</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/hadoop">Hadoop 설치와 활용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/et-cetera/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/typescript-class">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/typescript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/typescript-class">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Typescript</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">TypeScript 강좌(7) - Class</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include typescript-lecture-table-of-contents.html %} --- **{% include subtitle-fontawesome.html %} TypeScript Class** 기존의 `JavaScript`는 재사용 가능한 component를 만들기 위해 함수와 prototype에 기반한 상속을 이용했습니다. 하지만 기존 객체지향에 익숙해 있는 개발자들에게는 상당히 생소한 개념이었죠. 그래서</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/continuous-integration">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/continuous-integration-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/continuous-integration">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">What is Continuous Integration?</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Introduction CI는 Continuous Integration의 약자로 우리나라 말로 굳이 번역하자면 “지속적인 통합” 정도가 되겠네요. 여기서는 간단하게 Continuous Integration이 어떤 개념인지 살펴보도록 하겠습니다. CI(Continuous Integration)란 무엇인가? 소프트웨에 개발은 다음과 같은 라이프 사이클을 가지고 있습니다. 계획</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Front-End 발전 역사와 개발 생태계</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Front-End+%EB%B0%9C%EC%A0%84+%EC%97%AD%EC%82%AC%EC%99%80+%EA%B0%9C%EB%B0%9C+%EC%83%9D%ED%83%9C%EA%B3%84&amp;url=https://moon9342.github.io/front-end-ecosystem"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/front-end-ecosystem"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

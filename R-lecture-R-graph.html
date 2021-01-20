@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>R 기초강의(18) - R Graph</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/R-lecture-R-graph" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="R 기초강의(18) - R Graph" />
+    <meta property="og:description" content="R 강좌는 여러 절로 구성되어 있습니다. R 기초강의(1) - R 개요 R 기초강의(2) - R Operator R 기초강의(3) - R Data Type R 기초강의(4) - R 패키지와 함수 R 기초강의(5) - R 자료구조(vector) R 기초강의(6) - R 자료구조(matrix) R 기초강의(7) - R 자료구조(factor, list) R 기초강의(8) - R 자료구조(data frame)" />
+    <meta property="og:url" content="http://localhost:4000/R-lecture-R-graph" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/da-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-09-18T01:40:00+09:00" />
+    <meta property="article:modified_time" content="2019-09-18T01:40:00+09:00" />
+    <meta property="article:tag" content="R" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="R 기초강의(18) - R Graph" />
+    <meta name="twitter:description" content="R 강좌는 여러 절로 구성되어 있습니다. R 기초강의(1) - R 개요 R 기초강의(2) - R Operator R 기초강의(3) - R Data Type R 기초강의(4) - R 패키지와 함수 R 기초강의(5) - R 자료구조(vector) R 기초강의(6) - R 자료구조(matrix) R 기초강의(7) - R 자료구조(factor, list) R 기초강의(8) - R 자료구조(data frame)" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/da-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="R" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/R-lecture-R-graph",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/da-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/R-lecture-R-graph"
+    },
+    "description": "R 강좌는 여러 절로 구성되어 있습니다. R 기초강의(1) - R 개요 R 기초강의(2) - R Operator R 기초강의(3) - R Data Type R 기초강의(4) - R 패키지와 함수 R 기초강의(5) - R 자료구조(vector) R 기초강의(6) - R 자료구조(matrix) R 기초강의(7) - R 자료구조(factor, list) R 기초강의(8) - R 자료구조(data frame)"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="R 기초강의(18) - R Graph" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="17 September 2019">17 September 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/r/'>R</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">R 기초강의(18) - R Graph</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/da-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">R 강좌는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./R-lecture-R-environment">R 기초강의(1) - R 개요</a></li>
+    <li><a href="./R-lecture-R-operator">R 기초강의(2) - R Operator</a></li>
+    <li><a href="./R-lecture-R-datatype">R 기초강의(3) - R Data Type</a></li>
+    <li><a href="./R-lecture-R-function_package">R 기초강의(4) - R 패키지와 함수</a></li>
+    <li><a href="./R-lecture-R-vector">R 기초강의(5) - R 자료구조(vector)</a></li>
+    <li><a href="./R-lecture-R-matrix">R 기초강의(6) - R 자료구조(matrix)</a></li>
+    <li><a href="./R-lecture-R-factor_list">R 기초강의(7) - R 자료구조(factor, list)</a></li>
+    <li><a href="./R-lecture-R-dataframe">R 기초강의(8) - R 자료구조(data frame)</a></li>
+    <li><a href="./R-lecture-R-stringr_package">R 기초강의(9) - R 문자열 처리</a></li>
+    <li><a href="./R-lecture-R-data_io">R 기초강의(10) - R 데이터 입출력</a></li>
+    <li><a href="./R-lecture-R-control_function">R 기초강의(11) - R 제어문 및 함수</a></li>
+    <li><a href="./R-lecture-R-basic-exercise">R 기초강의(12) - R 기초 Exercise</a></li>
+    <li><a href="./R-lecture-R-crawling">R 기초강의(13) - R Crawling</a></li>
+    <li><a href="./R-lecture-R-dplyr">R 기초강의(14) - R 데이터 조작</a></li>
+    <li><a href="./R-lecture-R-dplyr-exercise">R 기초강의(15) - R 데이터 조작 실습</a></li>
+    <li><a href="./R-lecture-R-data-preprocessing">R 기초강의(16) - R 데이터 정제</a></li>
+    <li><a href="./R-lecture-R-descriptive-statistics">R 기초강의(17) - R 기초 통계 함수</a></li>
+    <li><a href="./R-lecture-R-graph">R 기초강의(18) - R Graph</a></li>
+    <li><a href="./R-lecture-R-KoNLP">R 기초강의(19) - R KoNLP</a></li>
+    <li><a href="./R-lecture-R-exercise">R 기초강의(20) - R 연습문제</a></li>
+    <li><a href="./R-lecture-R-ggmap">R 기초강의(21) - R ggmap</a></li>
+    <li><a href="./R-lecture-R-database">R 기초강의(22) - R 정형데이터 처리</a></li>
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">R Graph</strong></p>
+
+<p>데이터를 보기 쉽게 그림으로 표현하는 것을 <code class="highlighter-rouge">Graph</code>라고 합니다. 숫자나 문자로 구성된 데이터는
+의미를 파악하기 어렵지만 Graph로 표현하면 추세와 경향성이 드러나기 때문에 데이터의 특징을 쉽게
+이해할 수 있습니다.</p>
+
+<p>R을 선호하는 이유 중 하나가 바로 Graph기능입니다. R에는 기본 2차원 Graph부터 3차원 Graph, 지도,
+네트워크, interactive graph등 다양한 Graph package가 존재합니다.</p>
+
+<p><code class="highlighter-rouge">ggplot2</code>는 reshape2 package와 dplyr package를 만든 해들리 위컴이 만든 R 시각화 1순위 package입니다. 
+그래프를 만들 때 가장 많이 사용하는 package로 기본적으로 산점도, 막대그래프,
+선 그래프, 상자 그림을 포함해서 다양한 그래프를 만들 수 있습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">산점도 - 변수간의 관계 표현</strong></p>
+
+<p>데이터를 x축과 y축에 점으로 표현한 그래프를 <code class="highlighter-rouge">산점도</code>(scatter plot) 라고 합니다. 산점도는
+나이와 소득처럼 연속 값으로 된 두 변수의 관계를 표현할 때 사용됩니다.</p>
+
+<p>잠깐 변수의 종류에 대해서 간단히 알아보도록 하겠습니다.</p>
+
+<p>변수는 크게 수량적 특성에 의한 분류와 자료의 특성에 따른 분류로 나누어집니다. 
+수량적 특성에 의한 분류에 따르면 변수는 크게 정성적 변수와 정량적 변수로 구분됩니다.</p>
+
+<p><code class="highlighter-rouge">정성적 변수</code> : 질적변수, Qualitative Variable, Categorical Variable 이라고도 합니다. 
+정성적 변수는 <code class="highlighter-rouge">비서열 질적 변수</code>(unordered qualitative variable)와 
+<code class="highlighter-rouge">서열 질적 변수</code>(ordered qualitative variable)로 다시 나누어 집니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">정성적 변수의 분류</strong></p>
+
+<ul>
+  <li>비서열 질적 변수`의 예 : 성별, 인종, 직업, 전공</li>
+  <li>서열 질적 변수`의 예 : 학력, 군대의 계급, 회사의 직급</li>
+</ul>
+
+<p><code class="highlighter-rouge">정량적 변수</code> : 양적변수, Quantitative Variable, Numerical Variable 이라고도 합니다.
+정량적 변수는 <code class="highlighter-rouge">연속 변수</code>(continuous variable)와 <code class="highlighter-rouge">비연속 변수</code>(discrete variable)로 
+다시 나누어 집니다.</p>
+
+<p><strong class="subtitle2_fontAwesome">정량적 변수의 종류</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">연속 변수</code> : 주어진 범위에서 어떠한 값도 가질 수 있는 변수(키, 몸무게, 나이)</li>
+  <li><code class="highlighter-rouge">비연속 변수</code> :  대상에 대해 측정하면 정수로 표현되는 변수. 즉, 셀수 있으며 정해지 몇 개의 값만을
+가지는 변수(아파트 층수, 퀴즈를 맞춘 개수)</li>
+</ul>
+
+<p>자료의 특성에 따른 분류에 따르면 변수는 <code class="highlighter-rouge">이산형 변</code>수와 <code class="highlighter-rouge">연속형 변수</code>로 구분됩니다. 여기서 
+이산형 변수는 다시 명목척도 변수, 순서 척도 변수로 구분되고 연속형 변수는 구간 척도 변수와 비율철도 변수로
+구분됩니다.</p>
+
+<p><code class="highlighter-rouge">ggplot2</code> 문법은 layer 구조로 되어 있습니다.</p>
+
+<p>1단계 : 배경을 설정합니다. 즉, x축과 y축에 대한 설정을 합니다.</p>
+
+<p>2단계 : 그래프를 추가합니다. (점, 막대, 선등)</p>
+
+<p>3단계 : 축 범위, 색, 표식등의 설정 추가</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mpg data set을 이용하여 그래프를 생성합니다</span><span class="w">
+</span><span class="c1"># ggplot2를 이용한 그래프 생성</span><span class="w">
+
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 1. 배경 설정</span><span class="w">
+</span><span class="c1"># data 속성 : 그래프를 그리는데 사용할 데이터 </span><span class="w">
+</span><span class="c1"># aes 속성 : x축과 ㅛ축에 사용할 변수를 지정</span><span class="w">
+
+</span><span class="c1"># mpg data set의 displ(배기량)을 x축에 hwy(고속도로 연비)를 </span><span class="w">
+</span><span class="c1"># y축으로 지정</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w">    </span><span class="c1"># 배경 생성</span><span class="w">
+
+</span><span class="c1"># 2. 그래프 추가</span><span class="w">
+</span><span class="c1"># 배경을 생성했으니 그 위에 그래프를 그린다</span><span class="w">
+</span><span class="c1"># + 기호를 이용하여 그래프 유형을 지정하는 함수를 추가</span><span class="w">
+</span><span class="c1"># 산점도를 그리는 함수는 geom_point()</span><span class="w">
+</span><span class="c1"># dplyr에서 연결기호는 %&gt;%, ggplot2의 연결기호는 +</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_point</span><span class="p">()</span><span class="w">      </span><span class="c1"># 산점도 추가</span><span class="w">
+
+</span><span class="c1"># 그래프를 보면 배기량이 클수록 연비가 떨어지는 것을 확인할 수 있다.</span><span class="w">
+
+</span><span class="c1"># 3. 설정 추가</span><span class="w">
+</span><span class="c1"># 축 범위를 조절하는 설정을 추가할 수 있다</span><span class="w">
+</span><span class="c1"># 기본적으로 축은 최소값에서 최대값을 표현할 수 있도록 기본 설정</span><span class="w">
+</span><span class="c1"># 일부 데이터만 표현하고 싶을 때 축 범위 조절</span><span class="w">
+
+</span><span class="c1"># 축 범위 조절 함수 : xlim(), ylim()</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlim</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">30</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># plots 창의 export menu를 이용하면 해당 그래프를 이미지나 PDF로</span><span class="w">
+</span><span class="c1"># 저장할 수 있다.</span><span class="w">
+
+</span><span class="c1"># 그래프를 그릴때 그래프의 option을 줄 수 있습니다.</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">      </span><span class="c1"># 산점도 추가</span><span class="w">
+
+
+</span><span class="n">plot.new</span><span class="p">()</span><span class="w">   </span><span class="c1"># 작성한 그래프를 지울 때 사용</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">막대 그래프 - 집단간의 차이 표현</strong></p>
+
+<p>막대 그래프는 데이터의 크기를 막대의 길이로 표현한 그래프입니다. 성별 소득차이처럼
+집단 간 차이를 표현할 때 주로 사용됩니다.</p>
+
+<p>mpg data set을 이용하여 <code class="highlighter-rouge">drv</code>(구동방식)별 평균 <code class="highlighter-rouge">hwy</code>(고속도록 연비) 막대 그래프를
+그려보겠습니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mpg data set을 이용한 drv별 평균 hwy 막대 그래프 그리기</span><span class="w">
+
+</span><span class="c1"># 1. 집단별 평균표로 구성된 data frame 생성</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w">
+
+</span><span class="n">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+
+</span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">drv</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_hwy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">hwy</span><span class="p">))</span><span class="w">
+
+</span><span class="n">result</span><span class="w">     </span><span class="c1"># 구동방식별 고속도로 평균 연비</span><span class="w">
+
+
+</span><span class="c1"># 2. 그래프 생성</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">result</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">drv</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">mean_hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_col</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 3. 크기순으로 정렬</span><span class="w">
+</span><span class="c1"># 기본적으로 알파벳 오름차순으로 범주가 정렬</span><span class="w">
+</span><span class="c1"># reorder를 이용하면 막대를 값의 크기순으로 정렬할 수 있다</span><span class="w">
+</span><span class="c1"># reorder()의 기본 정렬은 오름차순, - 기호를 이용하면 내림차순</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">result</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">reorder</span><span class="p">(</span><span class="n">drv</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">mean_hwy</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">mean_hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_col</span><span class="p">()</span><span class="w">
+
+</span><span class="c1">################################</span><span class="w">
+
+</span><span class="c1"># 빈도 막대 그래프 - geom_col() 대신 geom_bar()를 이용</span><span class="w">
+</span><span class="c1"># 빈도 막대 그래프는 별도의 data frame을 만들지 않고 </span><span class="w">
+</span><span class="c1"># raw data frame을 이용하여 바로 생성</span><span class="w">
+
+</span><span class="c1"># drv 항목의 빈도 그래프를 그려보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">drv</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 빈도 막대 그래프에 추가해서 누적 막대 그래프를 표현해보자</span><span class="w">
+</span><span class="c1"># 이전 그래프는 구동방식(drv)에 따른 빈도는 알 수 있으나</span><span class="w">
+</span><span class="c1"># 각 구동방식내에서 cyl(실린더의 개수)의 빈도까지 파악 할 수는</span><span class="w">
+</span><span class="c1"># 없습니다.</span><span class="w">
+</span><span class="c1"># geom_bar() 함수내에 aes()를 이용하여 누적할 열을 지정합니다.</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">drv</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)),</span><span class="n">width</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 도수분포를 막대 모양 그래프(히스토그램)로 표현할 수 있습니다.</span><span class="w">
+
+</span><span class="c1"># 아래의 예시는 오류입니다. 연속형 변수를 이용해야 하는데 drv는</span><span class="w">
+</span><span class="c1"># 범주로 구분되는 discret변수를 사용해서 그렇습니다.</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">drv</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_histogram</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># 연속형 변수를 이용해서 히스토그램을 그려보겠습니다.</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_histogram</span><span class="p">()</span><span class="w">
+</span><span class="c1"># 히스토그램의 bin의 값을 설정하지 않아서 30으로 설정</span><span class="w">
+</span><span class="c1"># 만약 bin값을 다시 설정하려면 다음과 같이 설정(비율지정)</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">binwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">선 그래프 - 시간에 따라 달라지는 데이터 표현</strong></p>
+
+<p>데이터를 선으로 표현한 그래프를 <code class="highlighter-rouge">선 그래프</code>(Line Chart)라고 합니다. 일반적으로 시간에 따라
+달라지는 데이터(환율, 주가등 경제지표등)를 표현할 때 많이 사용합니다.</p>
+
+<p>일정 시간 간격을 두고 나열된 데이터를 <code class="highlighter-rouge">시계열 데이터</code>(Time Series Data)라고 하고, 
+시계열 데이터를 선으로 표현한 그래프를 <code class="highlighter-rouge">시계열 그래프</code>(Time Series Chart)라고 합니다.</p>
+
+<p>mpg data set은 시계열 데이터가 없기 때문에 다른 data set을 이용해야 합니다.</p>
+
+<p>ggplot2 package안에는 economics data set은 미국의 경제 지표들을 월별로 나타낸 data set입니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 시계열 데이터를 이용하여 선 그래프를 그려보자!</span><span class="w">
+
+</span><span class="c1"># 사용 data set</span><span class="w">
+</span><span class="n">economics</span><span class="w">
+</span><span class="n">economics_long</span><span class="w">
+
+</span><span class="c1"># 컬럼설명</span><span class="w">
+</span><span class="c1"># date : 날짜(년도별 월)</span><span class="w">
+</span><span class="c1"># psavert : personal savings rate(개인 저축률)</span><span class="w">
+</span><span class="c1"># pce : personal consumption expenditures(개인소비지출)</span><span class="w">
+</span><span class="c1">#       경기선행지수로 사용된다. in billions of dollars(십억달러)</span><span class="w">
+</span><span class="c1"># unemploy : number of unemployed in thousands( 실업자 수 - 천단위)</span><span class="w">
+</span><span class="c1"># uempmed : median duration of unemployment, in weeks</span><span class="w">
+</span><span class="c1">#           비고용기간의 중앙값 (주단위)</span><span class="w">
+</span><span class="c1"># pop : total population, in thousands (전체인구 - 천단위)</span><span class="w">
+
+</span><span class="n">help</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 시간에 따른 실업자수 추이를 생성해보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">economics</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">unemploy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># 5년을 주기로 등락을 거듭하고 있다.</span><span class="w">
+</span><span class="c1"># 2008년 리먼 브라더스 사태로 실업률 대량 증가</span><span class="w">
+
+</span><span class="c1"># scatter를 이용한 산점도를 그린 후 그 위에 선 그래프를</span><span class="w">
+</span><span class="c1"># 추가해서 그래프에 그래프를 추가해 보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">economics</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">unemploy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">상자 그래프 - 집단간의 분포 차이 표현</strong></p>
+
+<p><code class="highlighter-rouge">상자 그림</code>(boxplot)은 데이터의 분포를 직사각형 상자 모양으로 표현한 그래프 입니다. 데이터의
+분포를 파악할 수 있기 때문에 평균만을 볼 때 보다 데이터 특징을 더 잘 이해할 수 있습니다.</p>
+
+<p>다시 mpg data set으로 돌아와서 drv(구동방식)별 hwy(고속도로 연비)를 상자 그림으로 표현해
+보겠습니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mpg data set을 이용하여 drv(구동방식)별 hwy(고속도로 연비)를 </span><span class="w">
+</span><span class="c1"># 상자 그림으로 표현</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">drv</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_boxplot</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># 그래프를 보고 파악할 수 있는 점</span><span class="w">
+
+</span><span class="c1"># 4륜 구동은 hwy가 약 17~22사이에 자동차가 모여있다.</span><span class="w">
+</span><span class="c1"># 전륜 구동은 연비가 극단적인 형태의 자동차가 많다.</span><span class="w">
+</span><span class="c1"># 후륜 구동은 대부분의 자동차가 사분위 범위에 해당한다.</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong class="subtitle_fontAwesome">그래프에 객체 추가</strong></p>
+
+<p>ggplot2에는 그래프를 그리는 함수와 도형이나 텍스트 같은 다양한 객체를 그리는 함수도
+포함되어 있습니다. 그래프에 선이나 도형을 포함시키면 그래프의 가독성이 높아지기 때문에
+많이 이용되는 기능입니다.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ggplot2 그래프에 객체 추가</span><span class="w">
+
+</span><span class="c1"># 사용할 data set은 ecomonics</span><span class="w">
+
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 날짜별 개인 저축률에 대한 선 그래프를 그려보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># 직선을 추가해보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="m">12.1</span><span class="p">,</span><span class="w"> </span><span class="n">slope</span><span class="o">=</span><span class="m">-0.0003444</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 여기서 잠깐!!</span><span class="w">
+</span><span class="c1"># 만약 데이터를 가장 잘 표현하는 직선을 우리가 찾을 수</span><span class="w">
+</span><span class="c1"># 있다면 해당 그래프를 이용해서 미래의 값을 예측할 수 있다.</span><span class="w">
+</span><span class="c1"># 이 직선을 얻기 위해서는 기울기와 절편의 값을 구해야 하는데</span><span class="w">
+</span><span class="c1"># 이 값은 회귀분석을 통해서 얻을 수 있다.</span><span class="w">
+
+</span><span class="c1"># 평행선을 추가해보자</span><span class="w">
+
+</span><span class="c1"># geom_hline()을 이용해서 평행선을 그릴 수 있다.</span><span class="w">
+</span><span class="c1"># 기존 시간에 따른 개인저축률 그래프에 개인 저축률의 </span><span class="w">
+</span><span class="c1"># 평균값을 이용하여 평행선을 그려보자</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">psavert</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># geom_vline()을 이용하여 수직선을 그릴 수 있다.</span><span class="w">
+</span><span class="c1"># 개인 저축률이 가장 낮은 시기를 바로 알 수 있도록 수직선을</span><span class="w">
+</span><span class="c1"># 그려보자</span><span class="w">
+</span><span class="c1"># 먼저 개인 저축률이 가장 낮은 날짜를 알아야 한다.</span><span class="w">
+
+</span><span class="n">tmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> 
+  </span><span class="n">df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">psavert</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">select</span><span class="p">(</span><span class="n">date</span><span class="p">)</span><span class="w">
+
+</span><span class="n">tmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">$</span><span class="n">date</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">## 만약 날짜를 직접입력하려면??</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2009-10-01"</span><span class="p">))</span><span class="w">
+
+
+</span><span class="c1"># 그래프에 텍스트를 추가하려면??</span><span class="w">
+
+</span><span class="c1"># geom_text()를 이용하면 그래프에 텍스트를 입력할 수 있습니다.</span><span class="w">
+</span><span class="c1"># 그래프의 범례나 제목과는 다르게 그래프 위에 직접 표현</span><span class="w">
+
+</span><span class="c1"># geom_text(aes(label="라벨명", vjust=세로위치, hjust=가로위치))</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlim</span><span class="p">(</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1990-01-01"</span><span class="p">),</span><span class="w">
+       </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1992-12-01"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">psavert</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="o">=</span><span class="m">-0.5</span><span class="p">))</span><span class="w">
+ </span><span class="c1">#geom_text(aes(label=psavert, vjust=0, hjust=0))</span><span class="w">
+ </span><span class="c1"># 숫자의 의미 : + 아래, 왼쪽 , - 위 , 오른쪽을 의미  </span><span class="w">
+
+
+</span><span class="c1"># 도형 및 화살표를 추가하는 annotate() 함수</span><span class="w">
+
+</span><span class="c1"># annotate()함수는 그래프 위에 사각형이나 화살표 등으로</span><span class="w">
+</span><span class="c1"># 특정 영역을 강조할 때 많이 사용됩니다.</span><span class="w">
+
+</span><span class="c1"># annotate("모양",</span><span class="w">
+</span><span class="c1">#          xmin=x축시작,</span><span class="w">
+</span><span class="c1">#          xmax=x축 끝,</span><span class="w">
+</span><span class="c1">#          ymin=y축 시작,</span><span class="w">
+</span><span class="c1">#          ymax=y축 끝)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlim</span><span class="p">(</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1990-01-01"</span><span class="p">),</span><span class="w">
+       </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1992-12-01"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span><span class="w">
+           </span><span class="n">xmin</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-01-01"</span><span class="p">),</span><span class="w">
+           </span><span class="n">xmax</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-12-31"</span><span class="p">),</span><span class="w">
+           </span><span class="n">ymin</span><span class="o">=</span><span class="m">8</span><span class="p">,</span><span class="w">
+           </span><span class="n">ymax</span><span class="o">=</span><span class="m">9</span><span class="p">,</span><span class="w">
+           </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w">
+           </span><span class="n">fill</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 여기에 추가적으로 화살표를 표시할 수 있습니다.</span><span class="w">
+</span><span class="c1"># 화살표 역시 annotate()를 이용하여 표현합니다.</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlim</span><span class="p">(</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1990-01-01"</span><span class="p">),</span><span class="w">
+       </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1992-12-01"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span><span class="w">
+           </span><span class="n">xmin</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-01-01"</span><span class="p">),</span><span class="w">
+           </span><span class="n">xmax</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-12-31"</span><span class="p">),</span><span class="w">
+           </span><span class="n">ymin</span><span class="o">=</span><span class="m">8</span><span class="p">,</span><span class="w">
+           </span><span class="n">ymax</span><span class="o">=</span><span class="m">9</span><span class="p">,</span><span class="w">
+           </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w">
+           </span><span class="n">fill</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"segment"</span><span class="p">,</span><span class="w">
+           </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1990-05-01"</span><span class="p">),</span><span class="w">
+           </span><span class="n">xend</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-05-01"</span><span class="p">),</span><span class="w">
+           </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">7.5</span><span class="p">,</span><span class="w">
+           </span><span class="n">yend</span><span class="o">=</span><span class="m">8.5</span><span class="p">,</span><span class="w">
+           </span><span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
+           </span><span class="n">arrow</span><span class="o">=</span><span class="n">arrow</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">annotate</span><span class="p">(</span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+           </span><span class="n">x</span><span class="o">=</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1991-05-01"</span><span class="p">),</span><span class="w">
+           </span><span class="n">y</span><span class="o">=</span><span class="m">8.5</span><span class="p">,</span><span class="w">
+           </span><span class="n">label</span><span class="o">=</span><span class="s2">"글자도 쓸수 있어요!!"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># 마지막으로 그래프의 제목과 각 축의 이름, 배경색등을 설정해보자</span><span class="w">
+</span><span class="c1"># 테마는 총 8가지를 기본으로 제공하며 기본 테마는 theme_gray()</span><span class="w">
+
+</span><span class="c1"># labs(x=x축 이름, y=y축 이름, title=그래프 제목)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w">
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">psavert</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlim</span><span class="p">(</span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1990-01-01"</span><span class="p">),</span><span class="w">
+       </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1992-12-01"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"연도"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="s2">"개인저축률"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="o">=</span><span class="s2">"날짜별 개인 저축률"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme_classic</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">이 포스트의 내용은 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 책을 참조하거나 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="https://github.com/youngwoos/Doit_R/#start_r" target="_blank">Do It! 쉽게 배우는 R 데이터 분석 저자 GitHub</a></li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/r/">R</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/R-lecture-R-database">R 기초강의(22) - R 정형데이터 처리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/R-lecture-R-ggmap">R 기초강의(21) - R ggmap</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/R-lecture-R-exercise">R 기초강의(20) - R 연습문제</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/r/">
+                                
+                                    See all 21 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/R-lecture-R-KoNLP">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/da-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/R-lecture-R-KoNLP">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">R</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">R 기초강의(19) - R KoNLP</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include r-lecture-table-of-contents.html %} --- **R 한글 형태소 분석**{: class="subtitle_fontAwesome" } R의 `KoNLP` package는 Korean Natural Language Process의 약자로 package안에 포함된 사전을 통해 문서에 포함된 품사를 분석해 주는 기능을 합니다. R언어에서 유일하게 한글</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/R-lecture-R-descriptive-statistics">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/da-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/R-lecture-R-descriptive-statistics">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">R</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">R 기초강의(17) - R 기초 통계 함수</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>R 강좌는 여러 절로 구성되어 있습니다. R 기초강의(1) - R 개요 R 기초강의(2) - R Operator R 기초강의(3) - R Data Type R 기초강의(4) - R 패키지와 함수 R 기초강의(5) - R 자료구조(vector)</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">R 기초강의(18) - R Graph</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=R+%EA%B8%B0%EC%B4%88%EA%B0%95%EC%9D%98%2818%29+-+R+Graph&amp;url=https://moon9342.github.io/R-lecture-R-graph"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/R-lecture-R-graph"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

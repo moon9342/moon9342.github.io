@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Arduino</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/arduino" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Arduino" />
+    <meta property="og:description" content="Arduino 개요 아두이노(Arduino)는 이탈리아에서 개발한 오픈소스 보드로 이탈리아어로 강한 친구라는 뜻을 가지고 있습니다. 아두이노는 우리가 흔히 얘기하는 컴퓨터가 아닙니다. 라즈베리파이와는 다르게 아두이노는 우리가 사용하는 컴퓨터처럼 OS를 설치하고 응용프로그램을 설치하는 등의 일을 할 수 없습니다. 참고로 라즈베리파이는 OS설치와 여러 응용프로그램 설치가 가능한 싱글보드 컴퓨터입니다. 우리과정에서는 라즈베리파이대신에 라떼판다(Latte panda)를 이용할 예정입니다. 라떼판다는" />
+    <meta property="og:url" content="http://localhost:4000/arduino" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/iot-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-02-17T18:00:00+09:00" />
+    <meta property="article:modified_time" content="2020-02-17T18:00:00+09:00" />
+    <meta property="article:tag" content="Et-cetera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arduino" />
+    <meta name="twitter:description" content="Arduino 개요 아두이노(Arduino)는 이탈리아에서 개발한 오픈소스 보드로 이탈리아어로 강한 친구라는 뜻을 가지고 있습니다. 아두이노는 우리가 흔히 얘기하는 컴퓨터가 아닙니다. 라즈베리파이와는 다르게 아두이노는 우리가 사용하는 컴퓨터처럼 OS를 설치하고 응용프로그램을 설치하는 등의 일을 할 수 없습니다. 참고로 라즈베리파이는 OS설치와 여러 응용프로그램 설치가 가능한 싱글보드 컴퓨터입니다. 우리과정에서는 라즈베리파이대신에 라떼판다(Latte panda)를 이용할 예정입니다. 라떼판다는" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/iot-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Et-cetera" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/arduino",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/iot-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/arduino"
+    },
+    "description": "Arduino 개요 아두이노(Arduino)는 이탈리아에서 개발한 오픈소스 보드로 이탈리아어로 강한 친구라는 뜻을 가지고 있습니다. 아두이노는 우리가 흔히 얘기하는 컴퓨터가 아닙니다. 라즈베리파이와는 다르게 아두이노는 우리가 사용하는 컴퓨터처럼 OS를 설치하고 응용프로그램을 설치하는 등의 일을 할 수 없습니다. 참고로 라즈베리파이는 OS설치와 여러 응용프로그램 설치가 가능한 싱글보드 컴퓨터입니다. 우리과정에서는 라즈베리파이대신에 라떼판다(Latte panda)를 이용할 예정입니다. 라떼판다는"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Arduino" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="17 February 2020">17 February 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/et-cetera/'>ET-CETERA</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Arduino</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/iot-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Arduino 개요</strong></p>
+
+<p><code class="highlighter-rouge">아두이노(Arduino)</code>는 이탈리아에서 개발한 오픈소스 보드로 이탈리아어로 
+<code class="highlighter-rouge">강한 친구</code>라는 뜻을 가지고 있습니다.</p>
+
+<blockquote>
+  <p>아두이노는 우리가 흔히 얘기하는 컴퓨터가 아닙니다. <code class="highlighter-rouge">라즈베리파이</code>와는 다르게 아두이노는 
+우리가 사용하는 컴퓨터처럼 OS를 설치하고 응용프로그램을 설치하는 등의 일을 할 수 없습니다. 
+참고로 라즈베리파이는 OS설치와 여러 응용프로그램 설치가 가능한 싱글보드 컴퓨터입니다. 우리과정에서는
+라즈베리파이대신에 <code class="highlighter-rouge">라떼판다(Latte panda)</code>를 이용할 예정입니다. 라떼판다는 아두이노 <code class="highlighter-rouge">레오나르도</code> 
+칩이 코프로세서로 설치되어 있습니다.</p>
+</blockquote>
+
+<p>아두이노는 <code class="highlighter-rouge">Micro-Controller</code> 입니다. 즉, 코드를 돌리는 단순한 기계입니다.</p>
+
+<p>아마도 아두이노란 용어는 많이 들어봤을텐데 이런 아두이노가 왜 이렇게 각광을 받고 있을까요? 
+그 이유는 <code class="highlighter-rouge">사물인터넷(IoT, Internet of things)</code>과 맞물려 있기 때문입니다.</p>
+
+<p>사물인터넷(IoT)은 일반적인 물건처럼 보이지만 1)통신장비를 결합하고 
+2)고도화된 통신기술을 이용하여 3)특별한 작업을 수행하는 장비를 지칭합니다.</p>
+
+<p>간단한 예를 들자면 사용자의 음성을 인식하는 스피커라든지, 거울에 그날의 날씨나 뉴스와 같은 
+내용을 띄워주는 스마트 미러와 같은 것이 있습니다.</p>
+
+<p>이러한 사물인터넷을 구현하기 위해 그 안에 들어가는 Controller는 다음과 같은 특징을 가져야 합니다.</p>
+
+<ul>
+  <li>가격이 저렴해야 한다.</li>
+  <li>프로그램 실행코드를 기판에 주입(upload)하는 과정이 간편해야 한다.</li>
+  <li>센서의 사용이 간편해야 한다.</li>
+</ul>
+
+<p>Arduino는 이러한 특징을 가지고 있는 Micro Controller입니다.</p>
+
+<p>아두이노는 제품의 이름이 아니라 <code class="highlighter-rouge">브랜드명</code>입니다. 
+아두이노라는 브랜드 안에 여러개의 모델이 존재하고 있습니다. 마치 갤럭시라는 브랜드안에 S9,S10,S20와
+같은 모델이 있는것처럼 말이죠. 아두이노의 가장 대표적인 모델(가장 기본적인 모델)은 <code class="highlighter-rouge">Uno</code> 입니다.</p>
+
+<p>굉장히 많은 아두이노 모델(버전)들이 있고 각 버전들은 나름대로의 특징을 가지고 있습니다. 
+아주 작은 크기로 소형화된 버전, 크기가 크지만 상대적으로 고사양인 버전, wifi기능에 특화된 버전같은
+여러 버전들이 있습니다.</p>
+
+<p>일반적으로 많이 사용하는 버전은 다음과 같은 3가지라고 볼 수 있습니다.</p>
+
+<ul>
+  <li><strong>Arduino Uno</strong> : 가장 일반적인 모델</li>
+  <li><strong>Arduino Mega ADK</strong> : 크기가 크지만 꽤나 복잡한 연산을 수행.</li>
+  <li><strong>Arduino Pro Mini</strong> : 크기가 작아 저전력으로 사용가능.</li>
+</ul>
+
+<p>아두이노에 대해서 또 알아두어야 할 점은 <code class="highlighter-rouge">오픈소스 하드웨어</code>란 점입니다.
+즉, 설계와 활용법이 모두 대중적으로 공개되어 있습니다. 따라서 아두이노 호환보드라고 불리는
+유사제품들이 굉장히 많이 존재합니다. 하지만 정품제품과 이런 호환제품간에 성능이나 기타 
+능력면에서 차이는 거의 없다고 보면 됩니다. (가격차이는 좀 있습니다.)</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 전류,전압,저항</strong></p>
+
+<p>아두이노를 사용하기 위해서는 기본적인 전기에 대한 지식이 필요합니다.</p>
+
+<p>전기는 <code class="highlighter-rouge">전압</code>과 <code class="highlighter-rouge">전류</code>로 설명할 수 있는데 전압은 물의 수압과 같은 개념으로 
+두 점 사이의 전기적인 전위 차이를 의미합니다.
+이 전위차에 의해서 전압이 높은 곳에서 낮으곳으로 전자가 흐르게 됩니다.
+건전지의 경우 <code class="highlighter-rouge">플러스(+)</code>가 높은 전압, <code class="highlighter-rouge">마이너스(-)</code>가 낮은 전압입니다.</p>
+
+<p>아두이노 보드 부분에 <code class="highlighter-rouge">POWER</code>라고 적힌 부분 밑에 <code class="highlighter-rouge">3V3</code>, <code class="highlighter-rouge">5V</code>라고 적힌 전원 헤더소켓이 
+있습니다. 각각 전압이 3.3V, 5V라는 것을 의미하고 이렇게 전압이 표시된 곳이 
+건전지의 <code class="highlighter-rouge">+</code>부분과 같고 전기가 흘러나오는 곳이라고 생각하면 됩니다.</p>
+
+<p><code class="highlighter-rouge">헤더소켓</code>은 핀을 꼽을 수 있는 소켓을 의미하며 점퍼와이어를 연결할 수 있습니다.
+<code class="highlighter-rouge">점퍼와이어</code>의 수컷은 핀으로 암컷은 구멍으로 되어 있습니다.</p>
+
+<p><img src="../../assets/built/images/iot-arduino-power.png" alt="아두이노 보드 POWER" /></p>
+
+<p>전원 헤더 소켓의 오른쪽에 <code class="highlighter-rouge">GND</code>라고 적힌 헤더 소켓이 2개 있습니다. 
+그리고 <code class="highlighter-rouge">DIGITAL</code>이라고 적힌 곳에도 <code class="highlighter-rouge">GND</code> 헤더 소켓이 존재합니다.</p>
+
+<p>이 <code class="highlighter-rouge">GND</code>는 그라운드라는 의미로 전압이 0V인 곳을 의미합니다. 즉, 건전지의
+<code class="highlighter-rouge">마이너스(-)</code>부분과 같고 전기가 빠져나가는 배수로 개념이라고 생각하면 됩니다.</p>
+
+<p>전자부품을 연결할 때 전자제품의 플러스 부분을 3V3, 5V 헤더소켓에 연결하고 
+마이너스 부분을 GND 헤더 소켓에 연결하면 됩니다. 아두이노는 일반적으로 <code class="highlighter-rouge">5V</code>를 이용합니다.</p>
+
+<p><code class="highlighter-rouge">전류</code>는 전위가 높은 곳에서 낮은곳으로 전하가 연속적으로 이동하는 형상을 의미합니다. 
+물로 비유하면 수압이 높은곳에서 낮은곳으로 물이 흐르며 이 물의 흐름에 의해서 
+물레방아가 돌아가게 됩니다. 전자의 흐름을 전류라고 하고 이 전류에 의해서 
+전자기기가 동작하게 됩니다.</p>
+
+<p><code class="highlighter-rouge">저항</code>은 물체가 전류의 흐름을 제어하는 것을 의미하며 저항이 높은 물체일수록 전류가 
+적게 흐르고 저항이 낮은 물체일수록 전류가 많이 흐르게됩니다. 수도꼭지를 생각하시면 됩니다.</p>
+
+<p>물리학의 기본법칙 중 하나로 <code class="highlighter-rouge">옴의 법칙</code>이라는 것이 있습니다. 
+전압, 전류, 저항사이의 관계를 나타내는 법칙으로 전류의 세기는
+전압에 비례하고 저항에 반비례한다는 공식입니다. 기본공식이기 때문에 잘 알아두어야 합니다.</p>
+
+<ul>
+  <li>전압은 기호로는 <code class="highlighter-rouge">V(Voltage)</code>를 이용하고 단위는 <code class="highlighter-rouge">V(볼트)</code>를 이용한다.</li>
+  <li>전류는 기호로는 <code class="highlighter-rouge">I(Intensity)</code>를 이용하고 단위는 <code class="highlighter-rouge">A(암페어)</code>를 이용한다.</li>
+  <li>저항은 기호로는 <code class="highlighter-rouge">R(Resistance)</code>을 이용하고 단위는 <code class="highlighter-rouge">옴</code>을 이용한다.</li>
+</ul>
+
+<p>전류(I) = 전압(V) / 저항(R)</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Sensor(센서), Actuator(액추에이터), 기타</strong></p>
+
+<p>아두이노는 센서를 이용하여 주위환경에 대한 정보를 수집할 수 있습니다. 밝기 센서, 거리 센서등
+여러 종류의 센서를 이용하여 아두이노는 데이터를 수집할 수 있습니다. 또한 아두이노가
+어떤 활동을 할 수 있도록 만들어주는 전자부품이 있을 수 있는데 이를 <code class="highlighter-rouge">액추에이터</code>라고 합니다. 
+모터, LED 같은 것들이 대표적인 액추에이터입니다.</p>
+
+<p><code class="highlighter-rouge">저항</code>은 전기를 열로 바꾸어주는 전자부품입니다. 저항에는 4개 혹은 그 이상의 띠가 표시되어 있는데
+이 띠의 색이 저항값을 의미합니다. 당연히 저항이 높을 수록 더 많은 전기를 열로 바꾸게 됩니다. 
+각 저항이 가지는 값은 저항에 둘려져있는 띠의 색상으로 알 수 있습니다. 
+교재를 이용해서 각 저항의 값을 알아내는 방법을 알아둘 필요도 있어보입니다.
+또는 저항 제품들마다 해당 저항은 몇 옴인지를 표시해 놓고 있는 경우도 있습니다.</p>
+
+<p><code class="highlighter-rouge">다이오드</code>는 전류가 한 방향으로만 흐를 수 있도록 해주는 전자부품입니다. 즉, 전류의 역류를 방지하는
+반도체 소자입니다. 
+띠가 있는 부분이 <code class="highlighter-rouge">-</code>를 의미하고 띠가 없는 부분이 <code class="highlighter-rouge">+</code>를 의미하는데 전기는 띠가 없는 부분에서 있는
+부분으로만 흘러갈 수 있습니다. 즉, 양극(+)에서 음극(-)의 방향으로 전류를 흐르게 합니다.
+우리가 회로도를 구성한다고 가정했을 때 그 안에 저항도 넣고, 센서도 넣고, 모터도 넣어서 구성할 수 
+있습니다. 이렇게 회로를 다 구성한 후 회로에 전원을 반대로 연결하면 어떻게 될까요?</p>
+
+<p>센서는 고장날테고, 모터는 반대로 돌게되며 스파크나 화재까지 발생할 수 있습니다. 
+즉, 안전을 위해 다이오드를 사용해야 합니다. 
+모터와 같은 전자부품을 사용하는 경우 다이오드가 필수적으로 들어가야 합니다. 모터가 회전하고 
+있는 동안에 모터안의 코일에 에너지가 축적됩니다. 그러다가 모터가 OFF된다면 전원은 끊기지만
+코일에 에너지가 남아있는 상태가 되며 모터는 에너지를 방출하려 합니다. 이때 높은 전압을 가진
+역방향의 기전력이 발생하게 되고 아두이노 보드나 센서등이 파괴될 수 있습니다. 이를 막기위해서
+다이오드를 이용하여 역방향으로 오는 기전력을 차단하여 다른 제품을 안전하게 보호해야 합니다.
+다이오드는 안전을 위해서 꼭 사용해 주어야 하며 특히 모터와 같은 코일을 사용하는 회로에서는
+반드시 사용해야 하는 부품입니다.</p>
+
+<p><code class="highlighter-rouge">브레드보드</code>(일명 빵판)은 전자부품을 쉽게 연결할 수 있도록 도와줍니다. 
+브레드보드안에 가로와 세로방향에 따라 철심이 박혀있기 때문에 전자부품을 연결할 수 있습니다. 
+아래의 브레드보드에서 가로로 파진 홈(notch)인 중앙선의 위아래에 위치한 수직방향의 
+단자띠(terminal strip)와 수평방향의 버스띠(bus strip)로 구성됩니다. 
+단자띠는 부품들간의 연결을 위한것이고 버스띠는 전원공급을
+위한 것입니다.(적색선이 +이고, 청색선이 -입니다.)</p>
+
+<p><img src="../../assets/built/images/iot-breadboard-1.png" alt="브레드보드 형식" /></p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 디지털과 아날로그</strong></p>
+
+<p>아두이노를 제어하는 방법은 크게 <code class="highlighter-rouge">디지털</code>과 <code class="highlighter-rouge">아날로그</code> 두가지가 있습니다.
+아두이노 보드에서 점퍼 와이어 핀을 꼽을 수 있는 부분을 헤더소켓 이라고 하는데 그냥 짧게 <code class="highlighter-rouge">핀(pin)</code>이라고
+부르기도 합니다. 아두이노에서 디지털 신호를 제어할 수 있는 핀을 디지털 핀이라고 부릅니다.</p>
+
+<p>아두이노 UNO의 경우 <code class="highlighter-rouge">DIGITAL</code>이라고 표시된 곳에 숫자 0부터 13까지 적혀있는 핀들을 볼 수 있습니다.
+이 핀들이 바로 디지털 핀입니다. 그리고 이 디지털 핀을 통해서 디지털 신호를 제어할 수 있습니다.
+즉, 디지털 핀에 전기를 연결하거나 끊어줄 수 있다는 말입니다. 이렇게 전기를 연결하거나 끊는 
+방식이 디지털 출력입니다. 반면 디지털 입력은 디지털 핀으로부터 전기가 들어오는지 들어오지 
+않는지를 체크하는 것입니다. 디지털 핀의 0과 1번은 컴퓨터와 통신을 담당하는 부분이기 때문에
+일반적으로 사용하지 않고 나머지 번호의 핀을 이용합니다.</p>
+
+<p><img src="../../assets/built/images/iot-arduino-power.png" alt="아두이노 보드 POWER" /></p>
+
+<p>디지털 핀을 이용할때는 디지털 핀을 입력 용도로 쓸 것인지 출력 용도로 쓸 것인지를 설정해야 합니다.
+이때 사용하는 함수 pinMode() 함수로 사용방법은 다음과 같습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 13번 핀을 입력으로 설정합니다.</span>
+<span class="c1">// INPUT은 0을 가지는 상수값입니다.</span>
+
+<span class="nx">pinMode</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">INPUT</span><span class="p">);</span>
+
+<span class="c1">// 13번 핀을 출력으로 설정합니다.</span>
+<span class="c1">// OUTPUT은 1을 가지는 상수값입니다.</span>
+
+<span class="nx">pinMode</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">OUTPUT</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>디지털 핀을 설정한 후 디지털 신호를 출력할 수 있습니다. 
+디지털 신호를 출력하는 함수는 digitalWrite() 함수로 다음과 같이 사용한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 13번 핀에 디지털 신호를 내보내지 않는다.</span>
+<span class="c1">// LOW : 0</span>
+
+<span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">LOW</span><span class="p">);</span>
+
+<span class="c1">// 13번 핀에 디지털 신호를 내보낸다.</span>
+<span class="c1">// HIGH : 1</span>
+<span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>HIGH로 설정하면 전압이 5V가 되면서 전기가 흘러가게 됩니다.</p>
+
+<p>아날로그의 제어 역시 디지털 제어처럼 간단합니다.</p>
+
+<p>디지털핀은 하나의 핀에서 입력과 출력을 둘 다 제어할 수 있지만 아날로그 핀은 입력용과
+출력용이 따로 분리되어 있습니다. 아두이노 UNO의 경우 ANALOG IN이라고 표시된 곳에 A0부터
+A5까지 적혀있는 핀이 있는데 이 핀들이 바로 아날로그 입력 핀 입니다.</p>
+
+<p>디지털에서의 입력은 LOW,HIGH와 같이 단순히 전기가 끊겼는지 연결됐는지를 확인하는거에 비해
+아날로그 입력은 전압이 0V와 5V사이에서 어떤 크기로 들어오는지 확인합니다.</p>
+
+<p>아두이노 UNO의 디지털 핀들이 있는 곳에 보면 틸트(~) 표시가 붙은 핀들을 볼 수 있는데
+이 핀들이 바로 아날로그 출력 핀입니다. 당연히 이 핀들은 전압을 0V에서 5V사이에서 원하는
+크기로 설정하는 것입니다.</p>
+
+<p><img src="../../assets/built/images/iot-arduino-power.png" alt="아두이노 보드 POWER" /></p>
+
+<p>아날로그 신호를 출력할 때 사용하는 함수는 analogWrite()인데 신호를 출력할 핀번호와 
+설정할 전압의 값을 인자로 사용합니다. 아날로그 신호 출력의 경우 0V부터 5V사이를 256개로
+쪼개서 원하는 값을 사용할 수 있습니다. 즉, 0V는 0의 값을 가지며 5V는 255의 값을 가집니다.</p>
+
+<p>LED를 이용하게 되면 당연히 전압의 크기에 따라서 LED의 밝기가 달라지게 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Arduino IDE 설치</strong></p>
+
+<p>Arduino는 코드를 돌리는 기계이기 때문에 아두이노에게 우리가 작성한 code를 <code class="highlighter-rouge">upload</code>해 주어야 합니다.
+우리가 코드를 작성한 후 Arduino에게 code를 이식하는 작업을 도와주는 것이 <code class="highlighter-rouge">Arduino IDE</code>입니다.</p>
+
+<p>Arduino 홈페이지를 방문한 후 자신에게 맞는 (windows installer 버전) 버전을 선택하여 다운로드 후
+설치를 진행합니다.</p>
+
+<p>Arduino IDE를 실행하면 아두이노 개발환경에서 작성한 코드를 볼 수 있는데 이를 <code class="highlighter-rouge">Sketch(스케치)</code>라고
+부릅니다. 그리고 이 스케치를 아두이노 보드에 이식하는 것을 <code class="highlighter-rouge">Upload</code>라고 합니다.</p>
+
+<p>Arduino는 USB Type-A 단자를 이용하여 컴퓨터와 연결합니다. IDE에서 보드종류를 선택하고
+포트를 선택한 후 업로드 버튼을 누르면 Arduino에 코드가 이식되고 수행되게 됩니다.</p>
+
+<p>아두이노 보드에 기본으로 부착된 LED를 이용하여 블링크 예제를 실습해보도록 하겠습니다.</p>
+
+<p>기본 LED는 별도의 하드웨어 연결없이 제어할 수 있습니다. DIGITAL 13번 핀을 이용하고 다음의 코드로
+실행합니다.
+프로그램을 아두이노에 Upload하게 되면 초기에 setup()함수가 한번 실행되게 됩니다. 일반적으로
+초기설정과 관련된 코드가 setup()함수에 나오게 됩니다.</p>
+
+<p>setup()함수가 호출되고 난 후 loop()함수가 자동으로 반복실행되게 됩니다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">pinMode</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>
+    <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>    <span class="c1">// 1초간 아두이노 보드를 멈추는 함수</span>
+    <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">LOW</span><span class="p">);</span>
+    <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>analog입력을 이용하여 LED 밝기를 조절하도록 코드를 작성할 수 있습니다. 
+아래와 같이 아두이노 회로를 구현합니다. (analog입력은 9번을 사용합니다.)</p>
+
+<iframe width="560" height="420" src="https://www.youtube.com/embed/M309tyLV-GA"></iframe>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">256</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">analogWrite</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="nx">i</span><span class="p">);</span>
+        <span class="nx">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">255</span><span class="p">;</span> <span class="nx">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">analogWrite</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="nx">i</span><span class="p">);</span>
+        <span class="nx">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="p">}</span>      
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> PC와의 통신</strong></p>
+
+<p>아두이노 보드는 PC와 Serial 모니터를 이용해서 통신할 수 있습니다. 이 Serial 모니터는
+아두이노 보드의 센서값을 확인하거나 아두이노 보드로 명령을 보낼 때 주로 사용합니다.</p>
+
+<p>아래의 코드를 컴파일 한 후 upload하고 Serial 모니터를 이용하여 확인</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Serial</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+    <span class="c1">// 보드레이트 설정 : 시리얼 통신할 때의 통신속도를 의미. PC쪽에서 보드레이터를 동일하게</span>
+    <span class="c1">// 설정해야 통신이 가능. 다른 보드레이트를 이용할 경우 데이터가 잘못 전송될 수 있음.</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Serial</span><span class="p">.</span><span class="nx">println</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">);</span>   <span class="c1">// Serial 모니터로 데이터 전송</span>
+    <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>반대로 PC에서 아두이노 보드로 메시지를 전송할 수 있습니다. Serial 모니터의 상단에서
+글자를 입력하고 전송버튼을 누르면 아두이노 보드로 메시지가 전송됩니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Serial</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">Serial</span><span class="p">.</span><span class="nx">available</span><span class="p">())</span> <span class="p">{</span>     <span class="c1">// Serial통신으로 받은 데이터가 있는지를 확인</span>
+        <span class="kr">char</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">Serial</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>  <span class="c1">// Serial통신으로 들어온 데이터 중 1바이트를 잘라내어 읽는다.</span>
+                                 <span class="c1">// 만약 문자열형태로 읽고 싶다면 readString()이용</span>
+        <span class="nx">Serial</span><span class="p">.</span><span class="nx">print</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> LED 사용</strong></p>
+
+<p>LED는 전류가 흐르면 빛이 나는 액추에이터입니다. LED는 LED 렌즈의 지름이 5mm인 것을 많이 사용합니다.
+LED는 플러스와 마이너스로 극성이 나누어져있는데 LED의 다리 길이가 긴쪽이 플러스, 짧은 쪽이 마이너스
+극성을 가집니다.</p>
+
+<p>LED가 버틸 수 있는 전류보다 많은 전류가 연결되면 당연히 LED가 탈 수 있습니다. 반대로 너무 작은
+전류가 흐를경우 LED의 빛이 거의 나지 않게됩니다. 따라서 전류의 양을 조절하기 위해 저항을 LED의
+앞이나 뒤에 연결해 주어야 합니다. 그러면 얼마만큼의 전류가 적당한지를 알아야 하는데 이는 전자부품의
+데이터시트를 보고 확인해야 합니다.</p>
+
+<p>일반적으로 5mm LED의 필요 전류는 15mA이고 강하전압이 2V정도 된다고
+알려져 있습니다. 그렇다면 아두이노 보드에서 전류가 15mA 정도 흐르게 하기 위해서는 
+저항을 어떤값을 이용해야 할까요?</p>
+
+<p>전압 = 전류 * 저항</p>
+
+<p>아두이노의 전압은 5V이고 LED의 강하전압은 2V이기때문에 5-2=3 즉, 3V로 계산하면 됩니다.
+LED에서 필요한 전류는 15mA이기 때문에 0.015A입니다. 따라서</p>
+
+<p>3 = 0.015 * 저항</p>
+
+<p>저항을 구해보면 200이라는 값을 구할 수 있고 우리는 200옴짜리 저항을 이용해서 사용해야 LED가 타지
+않고 사용할 수 있게될 것입니다. 
+좀 더 안전하게 사용하기 위해서는 220옴과 같은 약간 더 큰 옴값을 이용하는 것이 좋습니다.</p>
+
+<p><img src="../../assets/built/images/iot-blink.png" alt="아두이노 Blink" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">int</span> <span class="nx">ledPin</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">pinMode</span><span class="p">(</span><span class="nx">ledPin</span><span class="p">,</span><span class="nx">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">digitalWrite</span><span class="p">(</span><span class="nx">ledPin</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>
+  <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="nx">digitalWrite</span><span class="p">(</span><span class="nx">ledPin</span><span class="p">,</span><span class="nx">LOW</span><span class="p">);</span>
+  <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 버튼 사용</strong></p>
+
+<p>버튼을 누르면 LED가 켜지고 버튼을 떼면 LED가 꺼지게끔 만들어보겠습니다.</p>
+
+<p>부품을 여러개 사용하다보면 전원과 그라운드가 모자르게 되는경우가 있는데 이때
+브레드보드를 이용하면 이 문제를 해결할 수 있습니다.</p>
+
+<ol>
+  <li>
+    <p>아두이노의 그라운드 핀에 점퍼와이어를 연결한 후 브레드보드의 긴 파란색 부분에 연결합니다.
+일반적으로 그라운드는 검은색 점퍼와이어를 이용하는게 좋습니다. (구별을 위해서)</p>
+  </li>
+  <li>
+    <p>LED를 디지털 핀 13번에 연결합니다. 저항(220옴)도 같이 연결해서 기존에 LED 켜기할 때 사용했던
+구조로 연결합니다.</p>
+  </li>
+  <li>
+    <p>버튼을 중앙선을 기준으로 놓습니다. 버튼을 눌러야 전류가 통하도록 연결합니다. 저항은
+10k옴을 이용합니다. 그리고 디지털 핀 8번을 입력으로 사용합니다. 
+(버튼을 누르면 전류가 흐르고 디지털 핀 8번에서 digitalRead()하면 HIGH값이 리턴됩니다.)</p>
+  </li>
+  <li>
+    <p>아래의 코드를 이용하여 버튼을 누르면 전원이 연결되고 디지털 핀 8번으로부터 입력이 HIGH가
+됩니다. 이를 조건문으로 활용하여 디지털 핀 13번에 연결한 LED에 불이 들어오게끔 코드를 작성합니다.</p>
+  </li>
+</ol>
+
+<p><img src="../../assets/built/images/iot-button-blink.png" alt="아두이노 Button Blink" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">pinMode</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">OUTPUT</span><span class="p">);</span>
+  <span class="nx">pinMode</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="nx">INPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">int</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">digitalRead</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="o">==</span><span class="nx">HIGH</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 자바프로그램과의 연동(Event기반)</strong></p>
+
+<p>통신에서의 시리얼 통신이란 패러럴 통신(병렬 통신)에 반대되는 말로써 
+한번의 통신의 한 비트의 데이터를 보내는 방식을 말합니다.</p>
+
+<p>이런 Serial통신을 이용하여 Java와 아두이노간의 데이터 통신을 할 수 있습니다.</p>
+
+<p>간단하게 아두이노에서 버튼을 누르면 자바프로그램(javaFX)에서 
+“아두이노에서 버튼부품 클릭해서 LED 켜기”이라는 메시지를 javaFX의 TextArea에 출력하고 
+javaFX의 “LED 켜기” 버튼을 누르면 아두이노의
+LED를 켜고 “LED 끄기” 버튼을 누르면 아두이노의 LED를 끄게 구현하겠습니다.</p>
+
+<ul>
+  <li>아두이노 회로 구현(위에서 설명한 버튼과 LED구현을 그대로 이용)</li>
+</ul>
+
+<p><img src="../../assets/built/images/iot-javaFX-blink.png" alt="아두이노 JavaFX Blink" /></p>
+
+<ul>
+  <li>아두이노 스케치 프로그램 작성 및 업로드</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">int</span> <span class="nx">btnInputPin</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your setup code here, to run once:</span>
+  <span class="nx">pinMode</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">OUTPUT</span><span class="p">);</span>
+  <span class="nx">pinMode</span><span class="p">(</span><span class="nx">btnInputPin</span><span class="p">,</span><span class="nx">INPUT</span><span class="p">);</span>
+  <span class="nx">Serial</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your main code here, to run repeatedly:</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">Serial</span><span class="p">.</span><span class="nx">available</span><span class="p">())</span> <span class="p">{</span>   <span class="c1">// Serial통신을 사용할 때 데이터 수신시 사용</span>
+                             <span class="c1">// 리턴값 : 시리얼 통신으로 수신한 데이터의 길이(bytes)</span>
+                             <span class="c1">// Serial 통신으로 아두이노에 데이터가 들어오면 이 데이터는</span>
+                             <span class="c1">// 일단 Serial Buffer라고 불리는 작은 메모리에 저장되고</span>
+                             <span class="c1">// Serial.read() 계열의 함수를 통해서 버퍼의 데이터를 읽어옵니다.</span>
+    <span class="nb">String</span> <span class="nx">inString</span> <span class="o">=</span> <span class="nx">Serial</span><span class="p">.</span><span class="nx">readString</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">inString</span> <span class="o">==</span> <span class="s2">"LED_ON"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>  
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">inString</span> <span class="o">==</span> <span class="s2">"LED_OFF"</span><span class="p">){</span>
+      <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kr">int</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">digitalRead</span><span class="p">(</span><span class="nx">btnInputPin</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="nx">HIGH</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">digitalWrite</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="nx">HIGH</span><span class="p">);</span>
+    <span class="nx">Serial</span><span class="p">.</span><span class="nx">print</span><span class="p">(</span><span class="s2">"O"</span><span class="p">);</span> 
+    <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>   <span class="c1">// 1초간 정지(메시지가 계속 전달되는것을 피하기 위해)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자바프로그램 작성 및 실행</li>
+</ul>
+
+<p><img src="../../assets/built/images/iot-javaFX-window.png" alt="아두이노 JavaFX Window" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Exam03_ArduinoSerialListener</span> <span class="kd">implements</span> <span class="n">SerialPortEventListener</span> <span class="o">{</span>
+
+	<span class="n">InputStream</span> <span class="n">in</span><span class="o">;</span>
+	<span class="n">Exam03_ArduinoJavaFXSerial</span> <span class="n">window</span><span class="o">;</span>
+
+	<span class="n">Exam03_ArduinoSerialListener</span><span class="o">(</span><span class="n">InputStream</span> <span class="n">in</span><span class="o">,</span><span class="n">Exam03_ArduinoJavaFXSerial</span> <span class="n">window</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">in</span> <span class="o">=</span> <span class="n">in</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">window</span> <span class="o">=</span> <span class="n">window</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">serialEvent</span><span class="o">(</span><span class="n">SerialPortEvent</span> <span class="n">oEvent</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">oEvent</span><span class="o">.</span><span class="na">getEventType</span><span class="o">()</span> <span class="o">==</span> <span class="n">SerialPortEvent</span><span class="o">.</span><span class="na">DATA_AVAILABLE</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">try</span> <span class="o">{</span>
+
+				<span class="kt">int</span> <span class="n">available</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">available</span><span class="o">();</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"받은 바이트수 : "</span> <span class="o">+</span> <span class="n">available</span><span class="o">);</span>
+				<span class="kt">byte</span> <span class="n">chunk</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">available</span><span class="o">];</span>
+				<span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">chunk</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">available</span><span class="o">);</span>
+
+				<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">chunk</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"아두이노에서 받은 메시지 : "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+
+				<span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span>
+					<span class="n">window</span><span class="o">.</span><span class="na">printMessage</span><span class="o">(</span><span class="s">"아두이노에서 버튼부품 클릭해서 LED 켜기"</span><span class="o">);</span>	
+				<span class="o">}</span>
+
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+			<span class="o">}</span>
+		<span class="o">}</span>		
+
+	<span class="o">}</span>	
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Exam03_ArduinoJavaFXSerial</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+
+	<span class="n">TextArea</span> <span class="n">textarea</span><span class="o">;</span>
+	<span class="n">Button</span> <span class="n">ledOnBtn</span><span class="o">,</span> <span class="n">ledOffBtn</span><span class="o">;</span>
+	<span class="n">InputStream</span> <span class="n">in</span><span class="o">;</span>
+	<span class="n">BufferedWriter</span> <span class="n">bw</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">printMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Platform</span><span class="o">.</span><span class="na">runLater</span><span class="o">(()-&gt;{</span>
+			<span class="n">textarea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+		<span class="o">});</span>
+	<span class="o">}</span>
+
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">connectSerial</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+		<span class="n">CommPortIdentifier</span> <span class="n">portIdentifier</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>		
+		<span class="n">portIdentifier</span> <span class="o">=</span> 
+				<span class="n">CommPortIdentifier</span><span class="o">.</span><span class="na">getPortIdentifier</span><span class="o">(</span><span class="s">"COM14"</span><span class="o">);</span>
+
+		<span class="k">if</span> <span class="o">(</span> <span class="n">portIdentifier</span><span class="o">.</span><span class="na">isCurrentlyOwned</span><span class="o">()</span> <span class="o">)</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"현재 포트가 사용되고 있습니다."</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+
+			<span class="n">CommPort</span> <span class="n">commPort</span> <span class="o">=</span> 
+					<span class="n">portIdentifier</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"PORT_OPEN"</span><span class="o">,</span><span class="mi">2000</span><span class="o">);</span>
+
+			<span class="k">if</span> <span class="o">(</span> <span class="n">commPort</span> <span class="k">instanceof</span> <span class="n">SerialPort</span> <span class="o">)</span> <span class="o">{</span>
+				<span class="c1">//포트 설정(통신속도 설정. 기본 9600으로 사용)</span>
+				<span class="n">SerialPort</span> <span class="n">serialPort</span> <span class="o">=</span> <span class="o">(</span><span class="n">SerialPort</span><span class="o">)</span> <span class="n">commPort</span><span class="o">;</span>
+				<span class="n">serialPort</span><span class="o">.</span><span class="na">setSerialPortParams</span><span class="o">(</span><span class="mi">9600</span><span class="o">,</span>
+						<span class="n">SerialPort</span><span class="o">.</span><span class="na">DATABITS_8</span><span class="o">,</span>
+						<span class="n">SerialPort</span><span class="o">.</span><span class="na">STOPBITS_1</span><span class="o">,</span>
+						<span class="n">SerialPort</span><span class="o">.</span><span class="na">PARITY_NONE</span><span class="o">);</span>
+
+				<span class="c1">//Input,OutputStream 버퍼 생성 후 오픈</span>
+				<span class="n">in</span> <span class="o">=</span> <span class="n">serialPort</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>					
+				<span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="o">(</span>
+						<span class="k">new</span> <span class="nf">OutputStreamWriter</span><span class="o">(</span>
+								<span class="n">serialPort</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">()));</span>
+
+				<span class="n">serialPort</span><span class="o">.</span><span class="na">addEventListener</span><span class="o">(</span>
+						<span class="k">new</span> <span class="nf">Exam03_ArduinoSerialListener</span><span class="o">(</span><span class="n">in</span><span class="o">,</span><span class="k">this</span><span class="o">));</span>
+				<span class="n">serialPort</span><span class="o">.</span><span class="na">notifyOnDataAvailable</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Serial 포트만 사용가능합니다."</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>     
+
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="n">Stage</span> <span class="n">primaryStage</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+		<span class="n">BorderPane</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BorderPane</span><span class="o">();</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">setPrefSize</span><span class="o">(</span><span class="mi">700</span><span class="o">,</span> <span class="mi">500</span><span class="o">);</span>
+
+		<span class="n">textarea</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextArea</span><span class="o">();</span>
+		<span class="n">root</span><span class="o">.</span><span class="na">setCenter</span><span class="o">(</span><span class="n">textarea</span><span class="o">);</span>
+
+		<span class="n">ledOnBtn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">"LED 켜기"</span><span class="o">);</span>
+		<span class="n">ledOnBtn</span><span class="o">.</span><span class="na">setPrefSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+		<span class="n">ledOnBtn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">((</span><span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+			<span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="s">"LED_ON"</span><span class="o">;</span>
+			<span class="n">printMessage</span><span class="o">(</span><span class="s">"LED 켜기버튼 클릭!!"</span><span class="o">);</span>
+			<span class="k">try</span> <span class="o">{</span>
+				<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">line</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">line</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+				<span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>				
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+				<span class="c1">// TODO Auto-generated catch block</span>
+				<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="o">}</span>
+		<span class="o">});</span>
+
+		<span class="n">ledOffBtn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">"LED 끄기"</span><span class="o">);</span>
+		<span class="n">ledOffBtn</span><span class="o">.</span><span class="na">setPrefSize</span><span class="o">(</span><span class="mi">250</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+		<span class="n">ledOffBtn</span><span class="o">.</span><span class="na">setOnAction</span><span class="o">((</span><span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+			<span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="s">"LED_OFF"</span><span class="o">;</span>
+			<span class="n">printMessage</span><span class="o">(</span><span class="s">"LED 끄기버튼 클릭!!"</span><span class="o">);</span>
+			<span class="k">try</span> <span class="o">{</span>
+				<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">line</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">line</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+				<span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>				
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+				<span class="c1">// TODO Auto-generated catch block</span>
+				<span class="n">e1</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="o">}</span>			
+		<span class="o">});</span>
+
+		<span class="n">FlowPane</span> <span class="n">flowpane</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FlowPane</span><span class="o">();</span>
+		<span class="n">flowpane</span><span class="o">.</span><span class="na">setPrefSize</span><span class="o">(</span><span class="mi">700</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+		<span class="n">flowpane</span><span class="o">.</span><span class="na">setHgap</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+		<span class="n">flowpane</span><span class="o">.</span><span class="na">getChildren</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">ledOnBtn</span><span class="o">);</span>
+		<span class="n">flowpane</span><span class="o">.</span><span class="na">getChildren</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">ledOffBtn</span><span class="o">);</span>
+
+		<span class="n">root</span><span class="o">.</span><span class="na">setBottom</span><span class="o">(</span><span class="n">flowpane</span><span class="o">);</span>
+
+		<span class="n">Scene</span> <span class="n">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scene</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+		<span class="n">primaryStage</span><span class="o">.</span><span class="na">setScene</span><span class="o">(</span><span class="n">scene</span><span class="o">);</span>
+		<span class="n">primaryStage</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">"javaFX Arduino Serial 통신"</span><span class="o">);</span>
+		<span class="n">primaryStage</span><span class="o">.</span><span class="na">setOnCloseRequest</span><span class="o">(</span><span class="n">e</span><span class="o">-&gt;{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="o">});</span>
+		<span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">connectSerial</span><span class="o">();</span>	
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+		<span class="o">}</span>
+
+
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">launch</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 안드로이드와 아두이노 연동 예제</strong></p>
+
+<p>안드로이드의 SeekBar를 이용하여 Mobile Device에서 LED의 불빛을 제어하는
+예제를 작성합니다.</p>
+
+<p>Android - Java Network Server - Arduino 형태로 다음의 영상처럼 동작하도록 구현합니다.</p>
+
+<iframe width="560" height="420" src="https://www.youtube.com/embed/MF13OmgOX1c"></iframe>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 피에조 스피커 활용</strong></p>
+
+<p>피에조 스피커는 전기적 신호를 이용해서 소리를 내는 전자부품입니다. 동작하는
+전압에 따라 크기가 다양합니다. 여기서는 5V용 피에조 스피커를 활용합니다.</p>
+
+<p>피에조 스피커를 이용한 소리출력 예제를 작성해보도록 하겠습니다.</p>
+
+<ul>
+  <li>아두이노 회로 구현</li>
+</ul>
+
+<p><img src="../../assets/built/images/iot-piezo-speaker.png" alt="아두이노 피에조 스피커" /></p>
+
+<ul>
+  <li>아두이노 스케치 프로그램 작성 및 업로드</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">int</span> <span class="nx">melody</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">523</span> <span class="p">};</span>
+
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tone</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="nx">melody</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="mi">250</span><span class="p">);</span>
+    <span class="nx">delay</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+    <span class="nx">noTone</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> LCD 활용</strong></p>
+
+<p>LCD는 액정 화면에 글자나 숫자를 표시하는 전자부품입니다. 아두이노와 연결해 사용하는 것은
+주로 2줄이 있고 한 줄당 16글자를 표시할 수 있는 1602 LCD를 많이 이용합니다. (총 32자 표시)</p>
+
+<p>LCD를 확인해보면 핀이 아주 많은 것을 확인할 수 있습니다.</p>
+
+<p><img src="../../assets/built/images/iot-LCD-pin.png" alt="아두이노 LCD" /></p>
+
+<p>각 핀들의 의미는 다음과 같습니다.</p>
+
+<ul>
+  <li>
+    <p><strong>배경관련</strong> LCD의 가장 오른쪽의 <code class="highlighter-rouge">K</code>와 <code class="highlighter-rouge">A</code>는 배경의 밝기와 관련이 있습니다. K는 배경밝기를
+제어하기 위해서 GND에 연결하고 A는 전원에 연결합니다. 만약 배경조명이 없거나 배경 밝기가 필요없다면
+이 2개의 핀들을 사용하지 않습니다.</p>
+  </li>
+  <li>
+    <p><strong>데이터관련</strong> 오른쪽 3번째부터 10번째까지 핀들은 LCD에 값을 보내거나 LCD로부터 값을
+받을 때 사용하는 핀입니다. 각 핀들의 이름은 D7 ~ D0입니다.</p>
+  </li>
+  <li>
+    <p><strong>설정관련</strong> <code class="highlighter-rouge">E</code>핀은 LCD에 값을 쓸 수 있도록 할지 말지를 설정합니다. <code class="highlighter-rouge">RW</code>핀은 LCD의 값을
+읽을지 쓸지 선택할 때 사용합니다.</p>
+  </li>
+  <li>
+    <p><strong>기타</strong> <code class="highlighter-rouge">VSS</code>핀은 LCD가 동작하기 위해서 GND에 연결하는 핀이고, VDD핀은 전원에 연결합니다. 
+V0핀은 글자 색을 진하게 할지 흐리게 할지 설정할 때 사용합니다.</p>
+  </li>
+</ul>
+
+<p>이렇게 LCD는 핀들이 굉장히 많고 용도도 각기 다릅니다. 상당히 복잡하지만 사실 우리가 LCD를
+이용할때는 라이브러리를 이용해서 사용합니다. LCD는 <code class="highlighter-rouge">LiquidCrystal</code>이라는 라이브러리를 이용해서
+제어합니다.</p>
+
+<p>먼저 아두이노 회로도를 만들어야 합니다. 글로 표현하기에는 너무 복잡하기 때문에 교재를 이용해서
+회로도를 완성합니다. (아두이노, 상상을 현실로 만드는 프로젝트-입문편. 영진닷컴)</p>
+
+<p><img src="../../assets/built/images/iot-LCD-helloworld.png" alt="아두이노 LCD 회로도" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="nx">include</span> <span class="o">&lt;</span><span class="nx">LiquidCrystal</span><span class="p">.</span><span class="nx">h</span><span class="o">&gt;</span>
+
+<span class="nx">LiquidCrystal</span> <span class="nx">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">// LiquidCrystal(RS,E,D4,D5,D6,D7); 핀 연결번호</span>
+
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">print</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">);</span>
+  <span class="nx">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>LiquidCrystal 라이브러리에서 사용할 수 있는 함수는 다음과 같습니다.</p>
+
+<ul>
+  <li>LiquidCrystal() : LCD 클래스 생성에 사용. LCD 인터페이스 설정</li>
+  <li>begin() : LCD 화면 초기화(column과 row설정)</li>
+  <li>clear() : LCD 화면을 지우고 커서를 좌상으로 이동</li>
+  <li>home() : 커서를 좌상으로 이동</li>
+  <li>setCursor() : 커서를 특정위치로 이동</li>
+  <li>write() : 현재 커서에 한 문자를 출력</li>
+  <li>print() : 현재 커서부터 출력(Serial.print()와 유사)</li>
+  <li>cursor(), nocursor() : 커서 표시 on/off</li>
+  <li>display(), noDisplay() : LCD 화면에 정보 표시 on/off</li>
+  <li>scrollDisplayLeft(), scrollDisplayRight() : LCD 내용과 커서를 좌/우로 한칸 스크롤</li>
+  <li>autoscroll(), noautoscroll() : 문자 출력 시 이전 내용을 스크롤할 지를 결정</li>
+  <li>leftToright(), rightToLeft() : 문자 출력 후 커서의 이동위치 결정</li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> LCD와 조도센서의 활용</strong></p>
+
+<p>조도센서(Ambient Light Sensor)를 이용하여 측정한 조도를 LCD에 표현하는 예제를 
+구현합니다.</p>
+
+<iframe width="560" height="420" src="https://www.youtube.com/embed/xnAy1cTAsyY"></iframe>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="nx">include</span> <span class="o">&lt;</span><span class="nx">LiquidCrystal</span><span class="p">.</span><span class="nx">h</span><span class="o">&gt;</span>
+
+<span class="nx">LiquidCrystal</span> <span class="nx">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">// LiquidCrystal(RS,E,D4,D5,D6,D7); 핀 연결번호</span>
+<span class="kr">int</span> <span class="nx">cds</span> <span class="o">=</span> <span class="nx">A0</span><span class="p">;</span>  
+
+<span class="k">void</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kr">int</span> <span class="nx">val</span><span class="o">=</span> <span class="nx">analogRead</span><span class="p">(</span><span class="nx">cds</span><span class="p">);</span> 
+  <span class="c1">// analogRead()로 측정되는 범위(0~1023)</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+  <span class="nx">lcd</span><span class="p">.</span><span class="nx">print</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+  <span class="nx">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>End.</p>
+
+<hr />
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/et-cetera/">Et-cetera</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/can">CAN Protocol</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/hadoop">Hadoop 설치와 활용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/gulp-css-compile">Gulp CSS Compile 문제 해결</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/et-cetera/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/python-lecture-python-introduction">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/python-lecture-python-introduction">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Python</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Python 기초강의(1) - Introduction</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include python-lecture-table-of-contents.html %} --- **영상설명**{: class="subtitle_fontAwesome" } 이번 영상은 `Python` 언어의 개요 및 개발환경설정에 대한 영상입니다. **Python 개요**{: class="subtitle2_fontAwesome" } **Python 개발환경 설정(일반적인 Python 개발환경)**{: class="subtitle2_fontAwesome" } **Python 개발환경 설정(Anaconda를 이용한 Jupyter</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/can">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/iot-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/can">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">CAN Protocol</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>CAN 개요 CAN은 Controller Area Network의 약자로 1986년에 독일의 메르세데스 벤츠사의 요구 (자동차내의 3개의 서로다른 ECU간의 데이터 통신)로 자동차 부품회사인 로베르트 보쉬사가 개발해 자동차기술자 협회에서 제안한 네트워크 시스템입니다. ECU는 Electoric Control Unit의 약자로</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Arduino</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Arduino&amp;url=https://moon9342.github.io/arduino"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/arduino"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

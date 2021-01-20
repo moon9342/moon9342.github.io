@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Angular 강좌(5) - 실습(1)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/angular-lecture-exercise-1" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Angular 강좌(5) - 실습(1)" />
+    <meta property="og:description" content="Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular" />
+    <meta property="og:url" content="http://localhost:4000/angular-lecture-exercise-1" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/angular-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-02-02T01:42:00+09:00" />
+    <meta property="article:modified_time" content="2018-02-02T01:42:00+09:00" />
+    <meta property="article:tag" content="Angular" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Angular 강좌(5) - 실습(1)" />
+    <meta name="twitter:description" content="Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/angular-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Angular" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/angular-lecture-exercise-1",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/angular-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/angular-lecture-exercise-1"
+    },
+    "description": "Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular 강좌(7) - 실습(2) Angular 강좌(8) - Material Table Angular 강좌(9) - 데이터공유(@Input) Angular 강좌(10) - 데이터공유(@Output) Angular"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Angular 강좌(5) - 실습(1)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 1 February 2018"> 1 February 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/angular/'>ANGULAR</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Angular 강좌(5) - 실습(1)</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/angular-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><span class="table-of-contents-list">Angular 강좌는 여러 절로 구성되어 있습니다. </span></p>
+<ul class="table-of-contents-list">
+    <li><a href="./angular-lecture-introduction">Angular 강좌(1) - Introduction</a></li>
+    <li><a href="./angular-lecture-development-environment">Angular 강좌(2) - 개발환경세팅</a></li>
+    <li><a href="./angular-lecture-component">Angular 강좌(3) - Component</a></li>
+    <li><a href="./angular-lecture-material">Angular 강좌(4) - Angular Material</a></li>
+    <li><a href="./angular-lecture-exercise-1">Angular 강좌(5) - 실습(1)</a></li>
+    <li><a href="./angular-lecture-databinding">Angular 강좌(6) - Data Binding</a></li>
+    <li><a href="./angular-lecture-exercise-2">Angular 강좌(7) - 실습(2)</a></li>
+    <li><a href="./angular-lecture-material-table">Angular 강좌(8) - Material Table</a></li>
+    <li><a href="./angular-lecture-data-share-1">Angular 강좌(9) - 데이터공유(@Input)</a></li>
+    <li><a href="./angular-lecture-data-share-2">Angular 강좌(10) - 데이터공유(@Output)</a></li>
+    <li><a href="./angular-lecture-data-share-3">Angular 강좌(11) - 데이터공유(@ViewChild)</a></li>
+    <li><a href="./angular-lecture-data-share-4">Angular 강좌(12) - 데이터공유(Content Projection)</a></li>
+    <li><a href="./angular-lecture-data-share-service">Angular 강좌(13) - Service</a></li>
+    <li><a href="./angular-lecture-data-share-service-mediator-pattern">Angular 강좌(14) - Service Mediator Pattern</a></li>
+    <li><a href="./angular-lecture-data-share-service-rxjs">Angular 강좌(15) - Service RxJS</a></li>
+    <li><a href="./angular-lecture-table-event">Angular 강좌(16) - Material Table Event</a></li>
+    <li><a href="./angular-lecture-inspection-1">Angular 강좌(17) - 중간 정리</a></li>
+    <li><a href="./angular-lecture-directive">Angular 강좌(18) - Directive</a></li>
+    <li><a href="./angular-lecture-pipe">Angular 강좌(19) - Pipe</a></li>
+    <li><a href="./angular-lecture-lifecycle">Angular 강좌(20) - Component Lifecycle</a></li>
+</ul>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">SPA( Single Page Application )</strong></p>
+
+<p>요즘 만들어지는 거의 대부분의 Front End Web Application은 <code class="highlighter-rouge">SPA</code> 형태입니다. Web Application이 하나의 Web Page로
+구성되는 것이죠. 이와 대비되는 개념이 기존에 우리가 많이 했었던 JSP, ASP, PHP같은 것들입니다.
+이 기술들은 모두 SSR(Server Side Rendering)기반의 Round Trip 방식의 Web Application을 개발하는데 사용됩니다.</p>
+
+<p>기존의 Web Application은 Client가 새로운 Web Page를 요청할 때 마다 서버쪽에서 Web Page를 동적으로 만들어서 
+Client Browser에게 전송하는 방식을 취했습니다. 이 방식의 장,단점을 잠깐 살펴봐야 합니다. 장점은 서버쪽에서 모든 작업이
+이루어지기 때문에 개발하기가 용이하다는 점입니다. 이미 개발방식도 정형화되어 있고 <code class="highlighter-rouge">jQuery</code> 정도만 익혀서 결과 Web
+Page에 적용하는 식으로 Client쪽 처리도 쉽게 할 수 있습니다.</p>
+
+<p>기존 Desktop 환경에서는 이 방식이 크게 문제가 되지 않았습니다. 하지만 Web Application의 사용환경이 <strong>Desktop환경에서 
+Mobile환경으로 넘어가면서</strong> 다음과 같은 문제가 발생하기 시작합니다.</p>
+
+<ul>
+  <li>
+    <p>클라이언트가 새로운 페이지를 요청하고 받을 때 마다 web browser 화면 전체가 결과 Page로 <code class="highlighter-rouge">Refresh</code>됩니다. 필요한 데이터만
+받아서 필요한 부분만 갱신하면 되지 전체 페이지를 다 받아서 새로 고침하는 것은 네트워크 사용량을 생각해봐도 비효율적입니다.</p>
+  </li>
+  <li>
+    <p>Mobile환경에서 Client는 이미 Native App을 사용하는 방식으로 <code class="highlighter-rouge">UX</code>가 확고하게 굳어져 있습니다. 따라서 우리의
+Web Application도 마치 Native App처럼 동작하도록 만들어 제공해야 한다는 것이죠.</p>
+  </li>
+</ul>
+
+<p>결국 위와 같은 <strong>문제를 해결하기 위해 나온 모던 웹 패러다임이 바로 SPA</strong>입니다. Network traffic의 감소 및 사용성 관점에서 상당히 
+가치있는 Front End 개발방식이라고 볼 수 있습니다. 하지만 SPA도 단점이 없는 것은 아닙니다. 일반적으로 두가지의 단점을 많이
+이야기 합니다.</p>
+
+<ul>
+  <li>초기 로딩 속도 문제</li>
+  <li>검색엔진최적화(<code class="highlighter-rouge">SEO</code>, Search Engine Optimization) 문제</li>
+</ul>
+
+<p>실습인데 설명이 너무 길어지는군요. 이 문제는 여기서 따로 언급하지는 않겠습니다. 여하간 SEO 문제를 해결하기 위해
+Angular Router를 이용하여 <code class="highlighter-rouge">PathLocationStrategy</code>라는 Location 정책을 이용해 우리의 Angular Application을 
+작성하겠습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Module 생성</strong></p>
+
+<p>우리는 이미 <code class="highlighter-rouge">AppModule</code>이라고 불리는 Root Module을 가지고 있습니다. 
+여기에 추가적으로 다른 Module을 만들어서 개발할 수 있습니다.
+먼저 Module에 대해 간단히 알아보고 우리 프로그램에 맞게 Module을 구성해 보도록 하겠습니다.</p>
+
+<p>Angular의 Module은</p>
+
+<blockquote>
+  <p><strong>연관성이 있는 Angular의 구성요소들을 하나의 단위로 묶은 것</strong></p>
+</blockquote>
+
+<p>을 지칭합니다. 또한 Angular Application은 크게 본다면 이런 Module의 집합이라고 할 수 있습니다. JavaScript에서
+말하는 Module과는 다른 개념입니다.</p>
+
+<p>아주 간단한 application인 경우 Root Module 하나로 구성할 수 있지만 일반적으로 여러개의 Module을 이용해서 구성하게 됩니다.
+일반적으로 다음과 같은 형태의 Module을 이용합니다.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">Feature Module</code></p>
+
+    <p>특정 화면을 구성하는 구성요소를 묶어서 Module로 관리할 수 있습니다. 우리예제에서 Home은 단일 View로 구성되어 있습니다. 
+따로 Module을 만들어서 Home에 대한 구성요소를 관리해도 됩니다. 하지만 우리 예제에서는 Home에 대한 Component를 Root Module에서
+관리하도록 하겠습니다. 
+<br /><br />
+하지만 도서 검색이나 영화 검색같은 경우 여러 요소들이 필요할 테고 각각을 Module로 따로 관리하는게 좋습니다.
+Application안에 여러 화면이 존재할 경우 각 화면별로 Module화를 시키지 않으면 추후에 구성요소의 관리가 어려워짐은 당연합니다.<br />
+<br />
+또 Application 전역에서 사용하는 구성요소들을 따로 묶어서 Module로 만들 수도 있습니다. 
+이런 기능들은 Root Module에 import가 될 필요가 있는 것들로 간단한 예를 들자면
+Authentification Module이나 Routing Module등이 있습니다.</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Shared Module</code></p>
+
+    <p>Feature Module에 의해서 공통적으로 사용되는 구성요소들을 묶어서 Module로 관리할 수 있습니다. 
+주로 Feature Module에서 공통적으로 사용되는 Directive나 Pipe같은 것들이 포함됩니다.</p>
+  </li>
+</ul>
+
+<p>먼저 Routing Module을 생성하고 그 안에서 <code class="highlighter-rouge">Router</code>를 구성하고 등록해보겠습니다.<br />
+그 후 Routing Module을 Root Module에서 가져다 사용하는 식으로 작성을 해 보죠.</p>
+
+<p>command 창을 열고 다음의 명령을 이용하여 새로운 Module을 하나 생성합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate module app-routing</strong></p>
+</blockquote>
+
+<p>정상적으로 실행되면 <code class="highlighter-rouge">src/app/app-routing</code> 폴더가 생성되고 그 안에 <code class="highlighter-rouge">app-routing.module.ts</code> 파일이 생성됩니다.</p>
+
+<p>조금뒤에 이 Module안에 Router를 작성하게 되겠죠. 우리가 가지고 있는 <code class="highlighter-rouge">app.module.ts</code>라는 Root Module에 Router를 생성, 등록
+해도 됩니다. 하지만 실제 Application을 작성할 때는 사용되는 Routing이 많아지게 되는데 이때는 Routing Module로 빼서 
+관리하시는게 좋습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">각 Routing이 사용할 Component 생성</strong></p>
+
+<p>각 Routing 경로가 사용할 Component를 생성합니다. 그런데 위에서 특정 화면을 구성하는 구성요소를 Module화 시켜서 사용하는게 
+좋다고 했으니 우리의 2가지 화면에 대해 Module을 생성하고 이 안에 Component를 생성하도록 하겠습니다.</p>
+
+<p>Home은 아까 언급했듯이 별다른 기능이 없는 View이기 때문에 따로 Module로 생성하지 않고 <strong>도서 검색에 대한 Module</strong>과 
+<strong>영화 검색에 대한 Module</strong>만 만들도록 하겠습니다.</p>
+
+<p>Home 화면을 담당할 Component는 <code class="highlighter-rouge">src/app/pages</code> 하단에 생성하고 Root Module에서 직접 import해서 사용하도록 생성합니다.</p>
+
+<p>command 창에서 Angular CLI를 이용해 Component를 생성합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate component pages/home</strong></p>
+</blockquote>
+
+<p>이제 도서 검색을 위한 Module을 생성하고 그 안에 Component를 생성합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate module bookSearch</strong> <br />
+  <strong>ng generate component bookSearch/bookSearchMain</strong></p>
+</blockquote>
+
+<p>마지막으로 영화 검색을 위한 Module을 생성하고 그 안에 Component를 생성합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate module movieSearch</strong> <br />
+  <strong>ng generate component movieSearch/movieSearchMain</strong></p>
+</blockquote>
+
+<p>정상적으로 수행되면 아래의 그럼처럼 각각의 폴더안에 파일들이 생성되게 됩니다.</p>
+
+<p><img src="assets/built/images/step1-scaffolding-folder.png" alt="step1-scaffolding-folder" /></p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Routing Module 수정</strong></p>
+
+<p>이제 Routing Module을 수정하여 Router를 구성합니다. <code class="highlighter-rouge">app-routing.module.ts</code>를 다음과 같이 수정합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+
+<span class="c1">// Angular Router Module import</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Routes</span><span class="p">,</span> <span class="nx">RouterModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@angular/router"</span><span class="p">;</span>
+
+<span class="c1">// Routing 처리를 할 각각의 Component import</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">HomeComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"../pages/home/home.component"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BookSearchMainComponent</span> <span class="p">}</span> <span class="k">from</span>
+    <span class="s2">"../book-search/book-search-main/book-search-main.component"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MovieSearchMainComponent</span> <span class="p">}</span> <span class="k">from</span>
+    <span class="s2">"../movie-search/movie-search-main/movie-search-main.component"</span><span class="p">;</span>
+
+<span class="c1">// Router 생성( path 표시할 때 Root path에 대한 '/'는 제외 )</span>
+<span class="kd">const</span> <span class="nx">routers</span><span class="p">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">path</span> <span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="na">component</span> <span class="p">:</span> <span class="nx">HomeComponent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">path</span> <span class="p">:</span> <span class="s1">'book'</span><span class="p">,</span> <span class="na">component</span> <span class="p">:</span> <span class="nx">BookSearchMainComponent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">path</span> <span class="p">:</span> <span class="s1">'movie'</span><span class="p">,</span> <span class="na">component</span> <span class="p">:</span> <span class="nx">MovieSearchMainComponent</span> <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span><span class="p">,</span>
+    <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routers</span><span class="p">)</span>
+  <span class="p">],</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">RouterModule</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppRoutingModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Root Module 수정</strong></p>
+
+<p>Routing Module이 만들어졌으니 이제 Root Module에서 Routing Module을 불러들이는 코드를 작성해야 합니다.</p>
+
+<p><code class="highlighter-rouge">app.module.ts</code> 파일의 내용입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="c1">// BrowserAnimationsModule import 구문 추가</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserAnimationsModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser/animations'</span><span class="p">;</span>
+
+<span class="c1">// MatTableModule import 구문 추가</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatTableModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/table'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AppComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./app.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">HomeComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./pages/home/home.component'</span><span class="p">;</span>
+
+<span class="c1">// Feature Module import</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BookSearchModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./book-search/book-search.module"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MovieSearchModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./movie-search/movie-search.module"</span><span class="p">;</span>
+
+<span class="c1">// Routing Module import</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AppRoutingModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./app-routing/app-routing.module"</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppComponent</span><span class="p">,</span>
+    <span class="nx">HomeComponent</span>
+  <span class="p">],</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">BrowserModule</span><span class="p">,</span>
+    <span class="nx">BrowserAnimationsModule</span><span class="p">,</span>
+    <span class="nx">MatTableModule</span><span class="p">,</span>
+    <span class="nx">AppRoutingModule</span><span class="p">,</span>
+    <span class="nx">BookSearchModule</span><span class="p">,</span>
+    <span class="nx">MovieSearchModule</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Navigation Menu 작성</strong></p>
+
+<p>이제 Navigation Menu를 만들어야 합니다. Routing Module을 이용해 Router의 구성과 등록이 완성되었으나 
+해당 Routing Path에 대한 View를 어디에 표시할지는 아직 지정하지 않았습니다.
+<code class="highlighter-rouge">app.component.html</code>을 수정해 <code class="highlighter-rouge">RouterOutlet</code> directive를 이용해 View의 rendering위치를 지정해야 합니다.</p>
+
+<p>여기서는 <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>을 이용해서 화면을 구성했습니다. Bootstrap의 예제중에 
+<a href="https://getbootstrap.com/docs/4.0/examples/blog/" target="_blank">Blog</a> 예제가 있는데 그 형식을
+가져다가 사용했습니다. Bootstrap을 사용하기 위해서는 다음과 같이 Bootstrap을 설치하여야 합니다.</p>
+
+<blockquote>
+  <p><strong>npm install bootstrap@4.0.0-beta.2</strong></p>
+</blockquote>
+
+<p>버전에 약간 주의하셔야 합니다. 현재 최신 버전(bootstrap@4.0.0-beta.3)의 Bootstrap은 
+Angular CLI로 Production build를 했을 때 bundling 오류가 발생합니다.</p>
+
+<p>설치가 완료되면 Bootstrap을 import하셔야 합니다. <code class="highlighter-rouge">.angular-cli.json</code> 파일을 다음과 같이 수정합니다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">   </span><span class="s2">"styles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"../node_modules/bootstrap/dist/css/bootstrap.min.css"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"styles.css"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span></code></pre></div></div>
+
+<p>이제 <code class="highlighter-rouge">app.component.html</code> 파일을 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/book"</span><span class="nt">&gt;</span>도서검색<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/movie"</span><span class="nt">&gt;</span>영화검색<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+</code></pre></div></div>
+
+<p>쉽게 보기 위해 Bootstrap은 걷어내고 실제 필요한 부분만 명시했습니다. 주의해서 보셔야 할 건 <code class="highlighter-rouge">routerLink</code> 입니다.
+<code class="highlighter-rouge">&lt;a&gt;</code>의 href 속성을 이용하면 서버에 request를 보내게되니 href를 이용하지 않습니다.
+각각의 메뉴를 클릭했을 때 해당 URL을 Router에 전달하고 Router에 의해서 Component가 선택되서 
+<code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>안에 Component가 지정한 HTML이 출력되게 됩니다.</p>
+
+<p>결과가 잘 나오나요? Home 화면의 내용을 바꾸실려면 <code class="highlighter-rouge">src/app/pages/home</code> 폴더 안에 <code class="highlighter-rouge">home.component.html</code>을
+적절히 수정하시면 됩니다.</p>
+
+<p>참고로 다음과 같은 <code class="highlighter-rouge">routerLinkActive</code> directive를 이용하면 routerLink directive의 값과 현재 browser URL이 정확히 
+일치할 때 특정 style의 class를 지정할 수 있습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/book"</span>
+       <span class="err">[</span><span class="na">routerLinkActiveOptions</span><span class="err">]="{</span> <span class="na">exact:</span> <span class="na">true</span> <span class="err">}"</span>
+       <span class="na">routerLinkActive=</span><span class="s">"menuActiveClass"</span><span class="nt">&gt;</span>&gt;도서검색<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">"/movie"</span><span class="nt">&gt;</span>영화검색<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+</code></pre></div></div>
+
+<p>위의 예처럼 링크를 클릭해서 특정 경로로 Routing을 할 수도 있지만 버튼을 클릭했을 때 처럼 
+프로그램적으로 Routing을 변경해야 하는 경우도 있을 수 있습니다. 이런경우는 Angular Router의 
+<code class="highlighter-rouge">navigate</code> method를 이용하시면 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Router</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">route</span><span class="p">:</span><span class="nx">Router</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="nx">gotoBook</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Router객체에 대해 method호출</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">'book'</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>현재까지 우리가 작성한 Angular Project에 대해 production build를 진행하실려면 다음과 같이 하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>ng build --prod --base-href=/my-base-url/</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">도서 검색 화면</strong></p>
+
+<p>3개의 메뉴 중 Home 메뉴는 단일 페이지 이기 때문에 적절하게 수정해서 화면에 보여주면 됩니다. 
+먼저 최종적으로 만들어진 도서 검색 화면을 한번 보고 View을 어떻게 구성할지 개념적으로 확인하면 될 듯 싶습니다. 
+아래의 그림이 최종 만들어진 도서검색 화면입니다.</p>
+
+<p><img src="assets/built/images/exercise-result.jpg" alt="exercise-result" /></p>
+
+<p>총 4개의 View로 구성되어 있습니다. 파란색으로 되어 있는 가장 큰 View안에 
+검색결과를 보여주는 영역과 도서 종류를 선택하는 Select Box가 들어 있습니다. 부모 View안에 
+빨간색으로 되어있는 3개의 자식 View가 포함되어 있네요. 맨 위의 View는 검색어를 입력할 수 있는 View이고 
+제일 아래의 View는 검색어에 해당하는 책에 대한 리스트를 표현하는 View입니다. 
+가운데 View는 리스트에서 특정 책을 선택하면 그 책의 내용을 자세하게 출력해주는 View입니다.</p>
+
+<p>일단 화면을 만드는데 집중하고 실제 프로그램이 동작하는 로직에 관련된 부분은 
+나중에 <code class="highlighter-rouge">service</code>를 설명하면서 추가하도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">AppComponent 수정</strong></p>
+
+<p>이전에 만들어 놓은 mySearchProject를 수정하여 도서검색 화면을 만들고
+그에 따른 Component들을 생성, 등록까지 진행하도록 하겠습니다.</p>
+
+<p><code class="highlighter-rouge">src/app</code> 폴더안에 <code class="highlighter-rouge">app.component.ts</code> 파일을 열면 다음과 같은 내용을 보실 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-root'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'./app.component.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'./app.component.css'</span><span class="p">,</span> <span class="s1">'./blog.css'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+  <span class="nx">title</span> <span class="o">=</span> <span class="s1">'app'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 Component가 우리의 Root Component입니다.</p>
+
+<p><code class="highlighter-rouge">selector: 'app-root'</code> 설정에 의해 이 Component는 template 코드내에서 
+<code class="highlighter-rouge">&lt;app-root&gt;&lt;/app-root&gt;</code>로 되어 있는 부분을 rendering 한다는 것을 알 수 있습니다.<br />
+또한 <code class="highlighter-rouge">templateUrl</code>에 의해 <code class="highlighter-rouge">app.component.html</code>을 이용해 rendering한다는 것도
+파악할 수 있겠네요.</p>
+
+<p><code class="highlighter-rouge">index.html</code>을 보시면 다음과 같이 <code class="highlighter-rouge">&lt;app-root&gt;&lt;/app-root&gt;</code>로 되어있는 부분이 보이고 이 부분이 우리 Component에 의해서
+rendering되게 됩니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>MySearchProject<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;base</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/x-icon"</span> <span class="na">href=</span><span class="s">"favicon.ico"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Material Icon 설정. --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/icon?family=Material+Icons"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;app-root&gt;&lt;/app-root&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>결국 <code class="highlighter-rouge">index.html</code>안의 <code class="highlighter-rouge">&lt;app-root&gt;&lt;/app-root&gt;</code> 부분은 <code class="highlighter-rouge">app.component.html</code>의 내용으로 rendering된다는 
+것을 파악할 수 있습니다.</p>
+
+<p>이제 <code class="highlighter-rouge">app.component.html</code>의 코드를 보죠. 위에서 Routing Module을 이용했기 때문에 다음과 같은 코드가 나옵니다.
+Bootstrap 코드도 포함시켰습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"blog-header py-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row flex-nowrap justify-content-between align-items-center"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4 pt-1"</span><span class="nt">&gt;</span>
+
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4 text-center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"blog-header-logo text-dark"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>my Search Project<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4 d-flex justify-content-end align-items-center"</span><span class="nt">&gt;</span>
+
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav-scroller py-1 mb-2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav d-flex justify-content-between"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">routerLink=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">routerLink=</span><span class="s">"/book"</span><span class="nt">&gt;</span>도서 검색<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">routerLink=</span><span class="s">"/movie"</span><span class="nt">&gt;</span>영화 검색<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"p-2 text-muted"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"jumbotron p-3 p-md-5 text-dark rounded bg-warning"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12 px-0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Bootstrap을 이용했기 때문에 Style에 관련된 코드가 많네요. 여하간 Navigation Menu를 작성하고 각 Menu를
+클릭하면 Router에게 <code class="highlighter-rouge">routerLink</code>에 명시된 경로를 전달하게 됩니다. 그러면 Router는 해당 경로에 매핑되는 Component를
+찾게되고 해당 Component는 <code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>위치에 View를 Rendering 하게 됩니다.</p>
+
+<p>결과적으로 도서 검색 메뉴를 클릭하면 <code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> 부분에 <code class="highlighter-rouge">book-search-main.component.html</code>의
+내용이 rendering되게 되고 이제 그 내용을 수정해서 화면을 다시 구성합니다. 
+View를 추가하기 위해 Component를 생성하는 작업을 진행해야 합니다.</p>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">Component 추가</strong></p>
+
+<p><code class="highlighter-rouge">book-search-main.component.html</code>은 내부에 3개의 View 영역을 포함하고 있습니다.</p>
+
+<ul>
+  <li>첫번째 영역 : 검색 키워드를 입력하고 검색 버튼을 눌러 실행시키는 View 영역.</li>
+  <li>두번째 영역 : 검색된 책을 선택하면 책의 세부정보가 출력되는 View 영역.</li>
+  <li>세번째 영역 : 검색된 책들의 리스트를 출력하기 위한 View 영역.</li>
+</ul>
+
+<p>이렇게 3개의 View를 이용해서 화면을 구성할 것이고 3개의 Component를 추가하여 화면을 구성하려 합니다.</p>
+
+<p>Angular CLI를 이용하여 다음과 같이 실행해서 새로운 Component를 추가합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate component bookSearch/search-box</strong></p>
+</blockquote>
+
+<p>Angular CLI의 <code class="highlighter-rouge">generate</code>를 이용하여 Component 생성 시 Component를 구성하는 관련 파일들을 자동으로 손쉽게 생성할 수 있습니다. 
+generate를 다 쓰지 않고 앞글자인 <code class="highlighter-rouge">g</code> 만 써도 됩니다. generate는 뒤에 어떤 요소를 생성할 것인지 그리고 요소명은
+무엇인지를 받아 특정 요소를 생성하게 됩니다. 즉, Component만 생성할 수 있는건 아닙니다.</p>
+
+<p>생성된 <code class="highlighter-rouge">src/app/book-search/search-box</code> 폴더 안에 있는 <code class="highlighter-rouge">search-box.component.ts</code> 파일을 열어서 selector를 확인해보니 
+<code class="highlighter-rouge">app-search-box</code>로 지정되어 있습니다. 우리가 template 코드에서 <code class="highlighter-rouge">&lt;app-search-box&gt;&lt;/app-search-box&gt;</code>을 이용하면
+이 Component가 해당 영역을 rendering하게 되겠네요.</p>
+
+<p>이와 유사하게 2개의 Component를 더 생성합니다. 다음과 같이 실행해서 새로운 Component를 추가합니다.</p>
+
+<blockquote>
+  <p><strong>ng generate component bookSearch/detail-box</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>ng generate component bookSearch/list-box</strong></p>
+</blockquote>
+
+<p>자 이제 생성된 각각의 Component에 대한 selector를 참조해 <code class="highlighter-rouge">src/app/book-search/book-search-main</code> 안의 
+<code class="highlighter-rouge">book-search-main.component.html</code>의 내용을 다음과 같이 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bookSearch-outer"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"assets/images/search-icon.png"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">width=</span><span class="s">"48"</span> <span class="na">height=</span><span class="s">"48"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"lh-100"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mb-0 text-white lh-100"</span><span class="nt">&gt;</span>Search Result<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group col-md-4"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"inputState"</span><span class="nt">&gt;</span>도서 종류<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"inputState"</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">selected</span><span class="nt">&gt;</span>선택하세요...<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option&gt;</span>국내외도서<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option&gt;</span>국내도서<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option&gt;</span>국외도서<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-search-box&gt;&lt;/app-search-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-detail-box&gt;&lt;/app-detail-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;app-list-box&gt;&lt;/app-list-box&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>또한 <code class="highlighter-rouge">src/app/book-search/book-search-main</code> 안의 
+<code class="highlighter-rouge">book-search-main.component.css</code>의 내용을 다음과 같이 작성합니다. CSS에 대한 설명은 생략합니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.bookSearch-outer</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Georgia</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">70%</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">각 Component의 View 작성</strong></p>
+
+<p>이제 각각의 Component의 <code class="highlighter-rouge">templateUrl</code>에 명시된 html을 Angular Material을 이용해 우리가
+사용할 화면을 만들어 냅니다.</p>
+
+<p>제일 먼저 상단의 search-box 영역에 대한 HTML을 작성합니다.</p>
+
+<p>다음과 같이 <code class="highlighter-rouge">src/app/book-search/search-box</code> 폴더안의 <code class="highlighter-rouge">search-box.component.html</code>의 내용을 수정합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"example-container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mat-toolbar</span> <span class="na">class=</span><span class="s">"search-toolbar-style"</span><span class="nt">&gt;</span>Search Keyword : <span class="nt">&lt;/mat-toolbar&gt;</span>
+  <span class="nt">&lt;mat-form-field&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">matInput</span> <span class="na">placeholder=</span><span class="s">"Search Keyword"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/mat-form-field&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">mat-raised-button</span> <span class="na">color=</span><span class="s">"warn"</span><span class="nt">&gt;</span>Search!<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">search-box.component.css</code>의 내용은 다음과 같이 수정합니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.search-toolbar-style</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Georgia</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">teal</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Angular Material을 이용했기 때문에 해당 Element에 대한 Material Module을 <code class="highlighter-rouge">book-search.module.ts</code>안에
+import해 줍니다.</p>
+
+<p>다음은 <code class="highlighter-rouge">book-search.module.ts</code> 파일의 내용입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BookSearchMainComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./book-search-main/book-search-main.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SearchBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./search-box/search-box.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ListBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./list-box/list-box.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">DetailBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./detail-box/detail-box.component'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatFormFieldModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/form-field'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatInputModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatButtonModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/button'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatToolbarModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/toolbar'</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span><span class="p">,</span>
+    <span class="nx">MatFormFieldModule</span><span class="p">,</span>
+    <span class="nx">MatInputModule</span><span class="p">,</span>
+    <span class="nx">MatButtonModule</span><span class="p">,</span>
+    <span class="nx">MatToolbarModule</span>
+  <span class="p">],</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span><span class="nx">BookSearchMainComponent</span><span class="p">,</span> 
+                 <span class="nx">SearchBoxComponent</span><span class="p">,</span> 
+                 <span class="nx">ListBoxComponent</span><span class="p">,</span> 
+                 <span class="nx">DetailBoxComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">BookSearchModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>일단 여기까지 작성하고 실행을 시켜보면 다음과 같은 화면을 볼 수 있습니다.</p>
+
+<p><img src="assets/built/images/search-box-view.png" alt="search-box-view" /></p>
+
+<p>화면이 잘 나오나요? 아직 데이터 바인딩과 이벤트에 대한 내용은 설명하지 않았기 때문에 키워드를 입력하거나 버튼을 눌러도 아무런 
+반응을 하지 않습니다.</p>
+
+<p>이와 비슷하게 가운데 detail-box의 View는 다음과 같이 작성하시면 됩니다. list-box는 데이터 바인딩에 대한 내용을
+배워야지 사용할 수 있으니 list-box의 View는 데이터 바인딩에 대해 설명하고 작성하겠습니다.</p>
+
+<p>아래는 detail-box Component에 대한 각각의 코드입니다.</p>
+
+<p><code class="highlighter-rouge">detail-box.component.css</code> 파일입니다. <code class="highlighter-rouge">src/assets/images</code> 폴더안에 <code class="highlighter-rouge">book-icon.jpg</code> 파일을 하나 넣어두셔야 합니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.example-card</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.example-header-image</span> <span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('/assets/images/book-icon.jpg')</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.book-image</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.detail-header-style</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Georgia</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">detail-box.component.html</code> 파일입니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mat-card</span> <span class="na">class=</span><span class="s">"example-card"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mat-card-header</span> <span class="na">class=</span><span class="s">"detail-header-style"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">mat-card-avatar</span> <span class="na">class=</span><span class="s">"example-header-image"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;mat-card-title&gt;</span>제목 : Angular 일주일 완성<span class="nt">&lt;/mat-card-title&gt;</span>
+    <span class="nt">&lt;mat-card-subtitle&gt;</span>저자 : 홍길동<span class="nt">&lt;/mat-card-subtitle&gt;</span>
+  <span class="nt">&lt;/mat-card-header&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">mat-card-image</span> <span class="na">class=</span><span class="s">"book-image"</span> <span class="na">src=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mat-card-content&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+      ISBN : 123-456, 도서 가격 : 5000, 출판일 : 2017년 12월
+    <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/mat-card-content&gt;</span>
+  <span class="nt">&lt;mat-card-actions&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">mat-button</span> <span class="na">mat-raised-button</span> <span class="na">color=</span><span class="s">"primary"</span><span class="nt">&gt;</span>바로 구입<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/mat-card-actions&gt;</span>
+<span class="nt">&lt;/mat-card&gt;</span>
+</code></pre></div></div>
+
+<p>Material Card Layout Component를 사용했기 때문에 해당 Module에 대한 처리를 <code class="highlighter-rouge">book-search.module.ts</code>에 해주어야 하겠죠?</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CommonModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BookSearchMainComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./book-search-main/book-search-main.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SearchBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./search-box/search-box.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ListBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./list-box/list-box.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">DetailBoxComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./detail-box/detail-box.component'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatFormFieldModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/form-field'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatInputModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatButtonModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/button'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatToolbarModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/toolbar'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MatCardModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/material/card'</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">CommonModule</span><span class="p">,</span>
+    <span class="nx">MatFormFieldModule</span><span class="p">,</span>
+    <span class="nx">MatInputModule</span><span class="p">,</span>
+    <span class="nx">MatButtonModule</span><span class="p">,</span>
+    <span class="nx">MatToolbarModule</span><span class="p">,</span>
+    <span class="nx">MatCardModule</span>
+  <span class="p">],</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span><span class="nx">BookSearchMainComponent</span><span class="p">,</span> 
+                 <span class="nx">SearchBoxComponent</span><span class="p">,</span> 
+                 <span class="nx">ListBoxComponent</span><span class="p">,</span> 
+                 <span class="nx">DetailBoxComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">BookSearchModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong class="subtitle_fontAwesome">결과 화면</strong></p>
+
+<p>지금까지 작성한 내용을 실행시켜보면 다음과 같은 화면을 보실 수 있습니다.</p>
+
+<p><img src="assets/built/images/step-1-result.png" alt="step-1-result" /></p>
+
+<hr />
+
+<p>이번 포스트에서는 Component를 추가하고 Angular Material을 이용해 View를 작성해보았습니다. 다음 포스트에서는
+데이터 바인딩에 대한 내용을 알아보도록 하겠습니다.</p>
+
+<p>End.</p>
+
+<hr />
+
+<p><span class="lecture-reference">Angular 강좌는 아래의 책과 사이트를 참조했습니다.
+    조금 더 자세한 사항을 알고 싶으시면 해당 사이트를 방문하세요!!</span></p>
+<ul class="lecture-reference">
+    <li><a href="https://angular.io/" target="_blank">Angular Official HomePage</a></li>
+    <li><a href="https://material.angular.io/" target="_blank">Angular Material Official HomePage</a></li>
+    <li><a href="https://scotch.io/tutorials/build-a-mobile-app-with-angular-2-and-ionic-2" target="_blank">Build a Mobile App with Angular 2 and Ionic 2</a></li>
+    <li>Angular 첫걸음 - 한빛미디어</li>
+    <li>제대로 배우는 Angular 4 - 비제이퍼블릭</li>
+</ul>
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/angular/">Angular</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-lifecycle">Angular 강좌(20) - Component LifeCycle</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-pipe">Angular 강좌(19) - Pipe</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/angular-lecture-directive">Angular 강좌(18) - Directive</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/angular/">
+                                
+                                    See all 19 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/git-github">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/git-github-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/git-github">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Et-cetera</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Git과 GitHub의 간단 사용법</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>**Introduction**{: class="post_introduction" } `Git`과 `GitHub`에 대한 간단한 설명입니다. 간단한 이론과 함께 실습을 통해 command 기반의 명령어로 어떤일을 처리할 수 있는지를 알아보도록 하겠습니다. --- **{% include subtitle-fontawesome.html %} 누구나 한번쯤은 겪었던 일** ![need-of-vcs](../../assets/built/images/need-of-vcs.png) 위의</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/angular-lecture-material">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/angular-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/angular-lecture-material">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Angular</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Angular 강좌(4) - Angular Material</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Angular 강좌(5) - 실습(1)</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Angular+%EA%B0%95%EC%A2%8C%285%29+-+%EC%8B%A4%EC%8A%B5%281%29&amp;url=https://moon9342.github.io/angular-lecture-exercise-1"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/angular-lecture-exercise-1"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

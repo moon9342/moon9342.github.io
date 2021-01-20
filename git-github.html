@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Git과 GitHub의 간단 사용법</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- Font Awesome CDN 설정 => 느림.. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" href="/assets/built/custom.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/built/syntax.css">
+
+    <!-- gist.css -->
+    <link rel="stylesheet" href="/assets/built/better-gist-styles.css">
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--Dl Menu-->
+    <script src="/assets/js/modernizr.custom.js"></script>
+    <script src="/assets/js/jquery.dlmenu.js"></script>
+    <script src="/assets/js/menu_main.js"></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2687024418565562" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/git-github" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="IT Technical Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Git과 GitHub의 간단 사용법" />
+    <meta property="og:description" content="Introduction Git과 GitHub에 대한 간단한 설명입니다. 간단한 이론과 함께 실습을 통해 command 기반의 명령어로 어떤일을 처리할 수 있는지를 알아보도록 하겠습니다. 누구나 한번쯤은 겪었던 일 위의 그림은 누구나 한번쯤 겪어봤을 만한 상황입니다. 파일을 계속 수정해 나가면서 이름을 바꾸어 저장하는 경우입니다. 그 당시야 최종 파일이 어떤것인지 알 수 있겠지만 시간이 흐르면 당연히" />
+    <meta property="og:url" content="http://localhost:4000/git-github" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/git-github-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-02-02T23:21:00+09:00" />
+    <meta property="article:modified_time" content="2018-02-02T23:21:00+09:00" />
+    <meta property="article:tag" content="Et-cetera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Git과 GitHub의 간단 사용법" />
+    <meta name="twitter:description" content="Introduction Git과 GitHub에 대한 간단한 설명입니다. 간단한 이론과 함께 실습을 통해 command 기반의 명령어로 어떤일을 처리할 수 있는지를 알아보도록 하겠습니다. 누구나 한번쯤은 겪었던 일 위의 그림은 누구나 한번쯤 겪어봤을 만한 상황입니다. 파일을 계속 수정해 나가면서 이름을 바꾸어 저장하는 경우입니다. 그 당시야 최종 파일이 어떤것인지 알 수 있겠지만 시간이 흐르면 당연히" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/git-github-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="IT Technical Training" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Et-cetera" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "IT Technical Training",
+        "logo": "http://localhost:4000/"
+    },
+    "url": "http://localhost:4000/git-github",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000/assets/built/images/git-github-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/git-github"
+    },
+    "description": "Introduction Git과 GitHub에 대한 간단한 설명입니다. 간단한 이론과 함께 실습을 통해 command 기반의 명령어로 어떤일을 처리할 수 있는지를 알아보도록 하겠습니다. 누구나 한번쯤은 겪었던 일 위의 그림은 누구나 한번쯤 겪어봤을 만한 상황입니다. 파일을 계속 수정해 나가면서 이름을 바꾸어 저장하는 경우입니다. 그 당시야 최종 파일이 어떤것인지 알 수 있겠지만 시간이 흐르면 당연히"
+}
+    </script>
+
+    <!-- <script type="text/et-cetera" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/et-cetera">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <!-- 사용자 browser 확인 코드 - Chrome이 아니면 경고 메시지 출력 -->
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        var _iPhone = false;
+        var _chrome = false;
+        var result = false;
+        if (agent.indexOf("iphone") != -1) {
+            _iPhone = true;
+        }
+        if (agent.indexOf("chrome") != -1) {
+            _chrome = true;
+        }
+
+        if( _iPhone || _chrome ) {
+            result = true;
+        }
+
+        if( !result ) {
+            alert("이 블로그는 Google Chrome Browser에 최적화 되어 있습니다 !!");
+        }
+
+    </script>
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Git과 GitHub의 간단 사용법" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000">IT Technical Training</a>
+            
+        
+        
+            
+<ul class="nav" role="menu">
+<!--    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>-->
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+<!--
+    <li class="nav-data-analysis-article" role="menuitem"><a href="/author/data-analysis/">Data Analysis(R)</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/author/python/">Python</a></li>
+    <li class="nav-python-article" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
+    <li class="nav-miscellaneous-article" role="menuitem"><a href="/author/fragmentary-knowledge/">Miscellaneous Article</a></li>
+-->
+<!--
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/jekyll/">Jekyll Blog 생성</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/python/">Python</a>
+    </li>
+    <li class="nav-data-science" role="menuitem">
+        <a href="/tag/data-science/">Data Science</a>
+    </li>
+    <li class="nav-machine-learning" role="menuitem">
+        <a href="/tag/machine-learning/">Machine Learning</a>
+    </li>
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/r/">R 기초강의</a>
+    </li>
+<!--    <li class="nav-python" role="menuitem">-->
+<!--        <a href="/tag/angular/">Angular</a>-->
+<!--    </li>-->
+    <li class="nav-python" role="menuitem">
+        <a href="/tag/et-cetera/">Et cetera</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">All Posts</a>
+    </li>
+</ul>
+
+<!-- 아래 내용이 있으면 홈 화면 좌측 상단에 Navigation 버튼이 생성됨.. 굳이 필요없어서 comment 처리 -->
+
+<!--
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+    <button class="dl-trigger">Open Menu</button>
+    <ul class="dl-menu">
+        <li><a href="http://localhost:4000/">Home</a></li>
+        <li>
+            <a href="#">About</a>
+            <ul class="dl-submenu">
+                <li style="text-align: center">
+                    <img src="http://localhost:4000/assets/built/images/photo.jpg" alt="SungHoon Moon photo" class="author-photo">
+                </li>
+                <li>
+                    <h4>SungHoon Moon</h4>
+                    <p>Director of ATGLab. <br>Ph.D. in Computer Science</p>
+                </li>
+                <li><a href="http://localhost:4000/about/"><i class="fa fa-external-link"></i><span class="btn btn-inverse"> Learn More</span></a></li>
+                <li>
+                <a href="mailto:moon9342@gmail.com"><i class="fa fa-fw fa-envelope"></i> Email</a>
+            </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </li>
+        <li>
+            <a href="#">Posts</a>
+            <ul class="dl-submenu">
+                <li><a href="http://localhost:4000/archive">All Posts</a></li>
+                <li><a href="http://localhost:4000/author_archive">All Tags</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+-->
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-front-end ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 2 February 2018"> 2 February 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/et-cetera/'>ET-CETERA</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Git과 GitHub의 간단 사용법</h1>
+            </header>
+
+            
+<!--
+            post에 cover image를 표시하지 않게 설정
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/git-github-logo.png)">
+            </figure>
+-->
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p><strong class="post_introduction">Introduction</strong></p>
+
+<p><code class="highlighter-rouge">Git</code>과 <code class="highlighter-rouge">GitHub</code>에 대한 간단한 설명입니다. 간단한 이론과 함께 실습을 통해 command 기반의 명령어로 
+어떤일을 처리할 수 있는지를 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> 누구나 한번쯤은 겪었던 일</strong></p>
+
+<p><img src="../../assets/built/images/need-of-vcs.png" alt="need-of-vcs" /></p>
+
+<p>위의 그림은 누구나 한번쯤 겪어봤을 만한 상황입니다. 파일을 계속 수정해 나가면서 이름을 바꾸어 저장하는 경우입니다.
+그 당시야 최종 파일이 어떤것인지 알 수 있겠지만 시간이 흐르면 당연히 저 중 어떤 파일이 최종 Report파일인지 알 수
+없게 됩니다.</p>
+
+<p>아래의 그림은 조금 다른 경우입니다.</p>
+
+<p><img src="../../assets/built/images/vcs-conflict.png" alt="vcs-conflict" /></p>
+<div class="img-reference">( 이미지 출처 : http://slidedeck.io/cursor-education )</div>
+
+<p>여러명이 공동으로 같은 파일을 작업할 때 파일 내용을 덮어쓰는 문제가 생길 수 있습니다. 다른 사람이 작업한 사항을
+유실할 수 있다는 것이죠.</p>
+
+<p>이와 같은 문제가 항시 빈번하게 발생하게되고 이를 해결하기 위해 나온 시스템이 바로 <code class="highlighter-rouge">VCS</code>( Version Control System )
+입니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Version Control System ( VCS )</strong></p>
+
+<p><code class="highlighter-rouge">VCS</code> 는 파일의 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템을 의미합니다. 이런 VCS는
+다음과 같은 특징을 가지고 있습니다.</p>
+
+<ul>
+  <li>각 파일을 이전 상태로 되돌릴 수 있습니다.</li>
+  <li>시간에 따라 수정 내용을 비교해 볼 수 있습니다.</li>
+  <li>누가 문제를 일으켰는지 쉽게 추적할 수 있습니다.</li>
+  <li>파일을 잘못 고쳤을 때 쉽게 복구할 수 있습니다.</li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Centralized Version Control System ( CVCS )</strong></p>
+
+<p><code class="highlighter-rouge">CVCS</code>는 중앙집중식 버전 관리 시스템입니다. 우리가 예전에 사용했던 <code class="highlighter-rouge">CVS</code>나 <code class="highlighter-rouge">Subversion</code>같은 제품이 이 범주에 
+들어갑니다.</p>
+
+<p>파일을 관리하는 서버가 별도록 존재하고 클라이언트는 중앙 서버에서 파일을 받아서 사용하는 개념입니다. 그림으로
+표현하면 다음과 같습니다.</p>
+
+<p><img src="../../assets/built/images/centralized-version-control-system.png" alt="centralized-version-control-system" /></p>
+<div class="img-reference">( 이미지 출처 : https://git-scm.com/ )</div>
+
+<p>여기서 <code class="highlighter-rouge">Checkout</code>이라는 용어가 나오는데 나중에 우리가 살펴볼 Git의 Checkout과는 다른 
+개념임에 유의하셔야 합니다.</p>
+
+<p>이런 CVCS는 중앙서버에 문제가 발생하면 다른 사람과의 협업 자체가 불가능해지게 됩니다. 또한 중앙서버의 하드디스크에
+문제가 발생하면 프로젝트의 모든 History를 잃어버리게 됩니다.</p>
+
+<p>Backup서버를 운영하면 이런 문제점을 일시 해결할 순 있지만 본질적인 문제는 남아있게 됩니다. 
+( 백업서버까지 날라간다면??? )</p>
+
+<p>이런 문제점을 해결하기 위해 분산형 VCS가 등장하게 됩니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Distributed Version Control System ( DVCS )</strong></p>
+
+<p><code class="highlighter-rouge">DVCS</code>는 분산 버전 관리 시스템입니다. 우리가 알고 있는 <code class="highlighter-rouge">Git</code>이 대표적 제품입니다. 이 외에 다른 제품들도 있지만
+Git만 알아도 됩니다.</p>
+
+<p>이 방식은 <code class="highlighter-rouge">CVCS</code>처럼 클라이언트가 파일의 마지막 Snapshot을 Checkout하는 방식이 아닙니다. 클라이언트는 서버 저장소를
+통째로 로컬에 복제해서 사용합니다. 즉, 그림으로 보면 다음과 같습니다.</p>
+
+<p><img src="../../assets/built/images/distributed-version-control-system.png" alt="distributed-version-control-system" /></p>
+<div class="img-reference">( 이미지 출처 : https://git-scm.com/ )</div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Git의 탄생</strong></p>
+
+<p><code class="highlighter-rouge">Linux</code> kernel은 대규모의 open source project입니다. 이 project의 버전관리를 위해 초기에는
+<code class="highlighter-rouge">BitKeeper</code>라는 상용 DVCS를 사용했었는데 2005년도에 이 BitKeeper의 무료사용이 제고되면서 <code class="highlighter-rouge">리누스 토발즈</code>의 주도로
+Linux 개발 커뮤니티가 자체 VCS를 개발했는데 이게 바로 <code class="highlighter-rouge">Git</code>입니다.</p>
+
+<p><code class="highlighter-rouge">Git</code>은 다음과 같은 특징을 가집니다.</p>
+
+<ul>
+  <li>단순한 구조에서 오는 빠른 속도</li>
+  <li>완벽한 분산처리</li>
+  <li>branch를 사용한 비선형적 개발 가능</li>
+  <li>속도나 크기면에서 대형 Project에 적합</li>
+</ul>
+
+<p>Git의 데이터 저장 방식은 이 포스트의 범주를 넘어가니 그 부분은 제외하겠습니다. 실제 Git이 어떤 방식으로 데이터를 저장하는가에
+대한 내용은 <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank">여기</a>를 클릭해 살펴보시면 
+될 듯 합니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Git의 기본</strong></p>
+
+<p><code class="highlighter-rouge">Git</code>은 파일을 3가지 상태로 관리합니다. <code class="highlighter-rouge">Committed</code>, <code class="highlighter-rouge">Modified</code>, <code class="highlighter-rouge">Staged</code>라고 불리는 3가지 상태로 파일을 관리하게 되는데
+각각의 의미는 다음과 같습니다.</p>
+
+<blockquote>
+  <p>Git의 파일 상태</p>
+  <ul>
+    <li><code class="highlighter-rouge">Committed</code> : 파일을 수정한 후 해당 파일에 대해 <code class="highlighter-rouge">commit</code>명령을 실행해 파일을 
+로컬 데이터베이스(로컬 <code class="highlighter-rouge">Repository</code>)에 안전하게 저장한 상태를 의미합니다.</li>
+    <li><code class="highlighter-rouge">Modified</code> : 파일을 수정한 후 아직 로컬 데이터베이스에 commit하지 않은 상태를 의미합니다.</li>
+    <li><code class="highlighter-rouge">Staged</code> : 파일을 수정한 후 수정할 파일을 곧 commit할 것이라고 표시한 상태를 의미합니다.</li>
+  </ul>
+</blockquote>
+
+<p>Git은 파일상태 관리와 더불어 3가지 영역을 사용합니다.</p>
+
+<blockquote>
+  <p>Git의 사용 영역</p>
+  <ul>
+    <li><code class="highlighter-rouge">Git directory</code> : Git이 project의 메타데이터와 객체 데이터베이스를 저장하는 곳을 의미합니다.
+다른말로 <code class="highlighter-rouge">Local Repository</code>라고 하며 만약 특정 폴더를 Git directory(Local Repository)로 설정하려면 <code class="highlighter-rouge">git init</code>명령을
+이용하면 됩니다. Repository로 설정되면 <code class="highlighter-rouge">.git</code>이라는 숨김폴더가 생성되고 이 안에 Git 관리 정보들이 생성되게 됩니다.</li>
+    <li><code class="highlighter-rouge">Working directory</code> : project의 특정 branch를 checkout한 내용이 들어있는 폴더입니다.</li>
+    <li><code class="highlighter-rouge">Staging Area</code> : Git directory에 존재하며 단순한 파일입니다. 곧 commit할 파일에 대한 정보를 가지고 있게 됩니다.</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Git으로 하는 작업의 기본 순서</strong></p>
+
+<p>작업의 기본순서는 다음과 같습니다.</p>
+
+<ul>
+  <li>Working directory에서 파일 수정</li>
+  <li>Staging Area에 수정한 파일을 Stage해서 commit할 Snapshot 생성 ( <code class="highlighter-rouge">git add</code> )</li>
+  <li>Staging Area에 있는 수정된 파일을 commit해서 Git directory에 영구적인 Snapshot으로 저장 ( <code class="highlighter-rouge">git commit</code> )</li>
+</ul>
+
+<p><img src="../../assets/built/images/git-local-operation.png" alt="git-local-operation" /></p>
+<div class="img-reference">( 이미지 출처 : https://git-scm.com/ )</div>
+
+<p><img src="../../assets/built/images/git-local-operation-1.png" alt="git-local-operation-another" /></p>
+<div class="img-reference">( 이미지 출처 : http://egloos.zum.com/incredible/v/7278471 )</div>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Git 설치 &amp; 기본 설정</strong></p>
+
+<p><a href="http://git-scm.com" target="_blank">http://git-scm.com</a>를 클릭해서 Git Official HomePage로 이동해서 Git을
+다운로드 한 후 기본설정으로 install하시면 됩니다.</p>
+
+<p>Git을 설치하신 후 <code class="highlighter-rouge">git config</code>를 이용해 기본적인 환경설정을 하시면 됩니다. 설정파일은 크게 3가지 종류가 존재하는데 
+다음과 같습니다.</p>
+
+<blockquote>
+  <p>Git의 환경설정파일( Windows system 기준 )</p>
+  <ul>
+    <li><code class="highlighter-rouge">$GIT_HOME/mingw64/etc/gitconfig</code> : 시스템의 모든 사용자와 모든 저장소에 적용되는 설정으로
+<code class="highlighter-rouge">git config --system</code>으로 설정합니다.</li>
+    <li><code class="highlighter-rouge">$USER_HOME/.gitconfig</code> : 특정 사용자에게만 적용되는 설정입니다. <code class="highlighter-rouge">git config --global</code>으로 설정합니다.</li>
+    <li><code class="highlighter-rouge">.git/config</code> : Git directory안에 위치하며 특정 저장소에만 적용되는 설정입니다.</li>
+  </ul>
+</blockquote>
+
+<p>각각의 설정파일은 위에 나열된 순서의 역순으로 적용된다는 것도 같이 기억해 두셔야 합니다.</p>
+
+<p>Windows system에서 Git을 설치하면 <code class="highlighter-rouge">Git Bash</code> 메뉴가 생성되는데 이를 실행해 console을 실행시킨 후 사용자 이름과
+Email주소를 설정하시면 됩니다.</p>
+
+<p><img src="../../assets/built/images/git-config-user.png" alt="git-config-user" /></p>
+
+<blockquote>
+  <p>참고로 <code class="highlighter-rouge">MINGW64</code>는 Windows system으로 porting한 GNU 소프트웨어 도구 모음입니다.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Git Local Repository 생성</strong></p>
+
+<p>그럼 <code class="highlighter-rouge">Git</code>을 이용해 Git Repository를 만들어서 사용해 보도록 하겠습니다. 가지고 있는 project가 없기 때문에 간단하게
+폴더를 하나 생성하고 그 폴더를 project 폴더로 간주하고 진행하겠습니다.</p>
+
+<p><code class="highlighter-rouge">Git</code>의 기본 명령과 개념을 이해하는 목적이기 때문에 command 창에서 명령어를 이용해서 작업을 진행하겠습니다.
+추후에 실제 project에 적용하실 때는 <code class="highlighter-rouge">IDE</code>의 기능을 이용하거나 <code class="highlighter-rouge">SourceTree</code>와같은 GUI툴을 이용하시는게 좋습니다.</p>
+
+<p>다음과 같은 순서로 진행합니다.</p>
+
+<ul>
+  <li>윈도우 탐색기를 이용해 먼저 프로젝트 폴더를 생성합니다. <code class="highlighter-rouge">D:/MyProject</code>로 생성합니다. 나중에 Git으로 관리할
+파일을 하나 생성합니다. 다음과 같은 내용을 가지고 있는 파일을 생성하고 파일 이름은 <code class="highlighter-rouge">readme.txt</code>로 저장합니다.
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a sample text.
+</code></pre></div>    </div>
+  </li>
+  <li>project 폴더로 이동해 console을 통해 <code class="highlighter-rouge">git init</code>을 실행해 Git Repository를 생성합니다. 다음과 같은 메시지가 출력되는걸
+확인하실 수 있습니다.
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Initialized empty Git repository in D:/MyProject/.git/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>메시지에서 나온것 처럼 <code class="highlighter-rouge">.git</code> 폴더가 생성되고 그 안에 Git Repository가 생성됩니다. 또한 Repository에
+필요한 각종 Skeleton들도 같이 생성됩니다.</p>
+  </li>
+  <li>
+    <p>이 상태에서 <code class="highlighter-rouge">git status</code>를 실행합니다. 그러면 Git이 아직 추적하고 있지 않은 readme.txt가 존재한다고 알려줍니다.
+<img src="../../assets/built/images/git-status.png" alt="git-status" /></p>
+  </li>
+  <li>
+    <p>Git Repository를 생성했지만 아직 어떠한 파일도 관리를 하고 있지 않습니다. 이제 Git이 파일을 관리하게
+하려면 Repository에 <code class="highlighter-rouge">git add</code>를 이용해 파일을 추가하고 <code class="highlighter-rouge">git commit</code>을 이용해 commit까지 진행해야 합니다.
+다음의 그림처럼 명령을 이용하여 Repository에 파일 추가, 확인, commit까지 진행합니다. ( <code class="highlighter-rouge">-m option</code>은 commit message를 작성하기 위해서
+사용합니다. )
+<img src="../../assets/built/images/git-commit.png" alt="git-commit" /></p>
+  </li>
+  <li>이제 마지막으로 <code class="highlighter-rouge">readme.txt</code> 파일의 내용을 에디터를 이용해 적당히 수정한 후에 다시 <code class="highlighter-rouge">git status</code>를 실행시켜 보시면 됩니다. 
+그럼 Git은 해당 파일이 변경(Modified)됬다는 것을 인식해서 보여주게 됩니다. 변경된 내용을 적용해 Repository에 저장하려면 
+다시 <code class="highlighter-rouge">git add</code>를 이용해 해당 파일을 staging 한 후 <code class="highlighter-rouge">git commit</code>을 실행해야 합니다.
+<img src="../../assets/built/images/git-modify-commit.png" alt="git-modify-commit" /></li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Branch 생성</strong></p>
+
+<p>그 다음에 알아볼 내용은 <code class="highlighter-rouge">branch</code> 입니다. branch는 기본 project에 영향이 가지 않는 상태에서 새로운 기능을 추가하거나
+기존 기능을 변경해야 하는 경우에 유용하게 사용할 수 있습니다. 필요에 의해 만들어지는 이런 각각의 branch들은 서로간의 
+영향을 받지 않습니다. 그렇기 때문에 여러 작업을 동시에 진행시킬 수 있습니다.</p>
+
+<p><img src="../../assets/built/images/git-branches.png" alt="git-branches" /></p>
+<div class="img-reference">( 이미지 출처 : https://rogerdudler.github.io/git-guide/index.ko.html )</div>
+
+<p>Repository를 처음 생성하게 되면 Git는 <code class="highlighter-rouge">master</code>라는 이름의 branch를 만들어 줍니다. 위에서 우리가 <code class="highlighter-rouge">readme.txt</code> 파일을
+Repository에 추가하고 내용을 변경해서 commit까지 진행했었는데 모두 이 master라는 branch에서 처리했던 겁니다.</p>
+
+<p><code class="highlighter-rouge">master</code>가 아닌 다른 branch를 생성할 수 있습니다. 또한 <strong>“이제부터의 작업은 xxx branch에서 진행할꺼야!”</strong> 라는 식으로
+명령을 줄 수 있는데 이걸 <code class="highlighter-rouge">checkout</code>이라고 합니다. 즉, <code class="highlighter-rouge">checkout</code>은 특정 branch의 내용을 가져와서 Working directory를 
+설정하는 작업이라고 보시면 됩니다. 특정 branch에서 일어나지 않는 모든 작업은 당연히 <code class="highlighter-rouge">master</code> branch에서 일어나게 됩니다.</p>
+
+<p>현재 어떤 branch가 존재하는지 알아볼려면 <code class="highlighter-rouge">git branch</code> 명령을 이용하시면 됩니다. 만약 새로운 branch를 생성하고 싶으면 
+<code class="highlighter-rouge">git branch branch_name</code>형태로 branch이름을 명시하시면 새로운 branch가 생성됩니다.</p>
+
+<p>현재 작업중인 branch는 <code class="highlighter-rouge">*</code> 기호로 표시됩니다. 아래 그림은 새로운 branch를 생성하고 <code class="highlighter-rouge">git checkout</code> 명령을 이용하여 hotfix
+branch를 Working directory에 가져온 것입니다. 지금부터 하는 작업은 모두 <code class="highlighter-rouge">hotfix</code> branch에서 발생하는 것이고 master branch와는
+무관하게 동작합니다.</p>
+
+<p><img src="../../assets/built/images/git-branches-hotfix.png" alt="git-branches-hotfix" /></p>
+
+<p>실제로 파일을 변경하거나 추가해서 hotfix branch에서 작업한 후 다시 master branch를 checkout해보시면 아까 했던 작업이 master
+branch에는 영향을 미치지 않는다는 것을 확인하실 수 있습니다. 이 부분은 개별적으로 실습해 보시길 바랍니다.</p>
+
+<p>참고로 모든 branch를 확인하기 위해서는 다음의 명령을 실행하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git branch -a</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Branch Merge</strong></p>
+
+<p><code class="highlighter-rouge">Merge</code> 작업은 현재 작업중인 branch에 다른 branch를 가져와서 병합하는 작업을 의미합니다. <code class="highlighter-rouge">git merge branch_name</code>을 이용하여
+현재 branch에 명시된 이름의 branch를 가져와 파일을 병합하게 됩니다.</p>
+
+<p>만약 두개의 branch에서 같은 파일의 같은 곳을 수정했을 경우 해당 파일을 병합할 때 당연히 문제가 발생하게 됩니다. 그냥 합쳐질 수가
+없기 때문이지요. <code class="highlighter-rouge">conflict</code>가 발생했다고 표현합니다. 이런 경우 충돌이 일어난 내용을 살펴보고 수동으로 해결해야 합니다.</p>
+
+<blockquote>
+  <p><strong>Git은 병합이 실패했을 때 그 해결을 모두 사용자에게 일임합니다.</strong></p>
+</blockquote>
+
+<p>그래서 수동으로 파일을 수정한 후 다시 commit작업을 진행해야 합니다. <code class="highlighter-rouge">merge</code> 작업은 
+<code class="highlighter-rouge">Remote Repository</code> 를 설명하는 부분에서 다시 한번 다뤄보기로 하겠습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> .gitignore 파일</strong></p>
+
+<p>project 폴더 안에서 굳이 추적할 필요가 없는 파일들도 존재합니다. 입출력 데이터파일이나 로그파일, 혹은 <code class="highlighter-rouge">.class</code>와 같은 파일들은
+굳이 Git을 이용해서 관리할 필요가 없습니다. 즉, 임시로 사용되거나 결과물로 생성되는 파일들이 이 범주에 들어갑니다.</p>
+
+<p>이런경우 <code class="highlighter-rouge">.gitignore</code> 파일을 이용해 추적 관리할 필요가 없는 파일을 배제시킬 수 있습니다. 그냥 만들어도 되지만 
+<a href="https://www.gitignore.io/" target="_blank">여기</a>로 이동해 보시면 조금 쉽게 <code class="highlighter-rouge">.gitignore</code> 파일의 내용을 만들어 복사해서 
+사용하실 수 있습니다.</p>
+
+<p><img src="../../assets/built/images/gitignore-io.png" alt="gitignore-io" /></p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Remote Repository</strong></p>
+
+<p>Git은 혼자 사용할 수 도 있지만 기본적으로 다른 사람과 협업을 하기 위한 도구입니다. 협업 도구로서 Git의 
+가장 큰 유용함은 <code class="highlighter-rouge">Remote Repository</code>(원격 저장소)에 있습니다.</p>
+
+<p>이 Remote Repository는 우리가 따로 구축해서 사용할 수 있습니다. 또한 이런 Remote Repository를 서비스하는 회사도 굉장히 많이 
+있습니다. Git 기반의 Remote Repository 중 가장 대표적인 것이 바로 <code class="highlighter-rouge">GitHub</code>입니다.</p>
+
+<p>Remote Repository를 쉽게 생각하자면 로컬에서 작업한 Git Local Repository가 외부에 있는거라고 생각하시면 됩니다. <code class="highlighter-rouge">GitHub</code>는
+이런 Remote Repository를 전세계적으로 서비스하고 있고 굉장히 많은 사람들이 GitHub를 자신들이 수행하고 있는 project의 
+Remote Repository로 이용하고 있습니다.</p>
+
+<p>GitHub에 있는 이런 Remote Repository는 크게 <code class="highlighter-rouge">public repository</code>와 <code class="highlighter-rouge">private repository</code>로 구분됩니다. 
+말 그대로 public repository는 아무나 파일들을 열람할 수 있도록 공개되어 있는 repository이고
+private repository는 권한을 가진 사람들만 사용할 수 있는 repository입니다.</p>
+
+<p>GitHub는 <code class="highlighter-rouge">Fork</code>와 <code class="highlighter-rouge">Pull Request</code>라는 기능을 제공하고 있습니다. 정확히 말하자면 이 Fork와 Pull Request는 Git이 제공하는 것이
+아니라 GitHub가 제공하는 서비스 입니다.</p>
+
+<ul>
+  <li>
+    <p>Fork : 다른 사람의 Repository를 통째로 내 GitHub 계정으로 복사해 오는 기능입니다. 즉, GitHub 계정간 Repository를 서로
+복사해 갈 수 있는 기능이라고 보시면 됩니다.</p>
+  </li>
+  <li>
+    <p>Pull Request : 다른 사람의 Repository를 Fork한 후 그 내용을 수정한 다음 원본 Repository에 수정된 내용을 보내 병합을
+요청할 수 있는데 이 작업을 Pull Request라고 합니다. 아무나 Repository를 수정할 수 있는 권한을 주게 되면 Repository는 금방
+엉망이 될 테니 READ기능(Fork)만 제공하고 병합시에는 요청을 받아서 처리하도록 합니다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> GitHub에 Remote Repository 생성</strong></p>
+
+<p>그럼 이제 GitHub에 계정을 생성하고 Remote Repository를 생성해 사용하는 방법에 대해서 알아보겠습니다.</p>
+
+<p>GitHub에 계정을 생성하고 새로운 Repository를 생성하는 버튼을 클릭하면 다음과 같은 화면을 보실 수 있습니다. 
+Repository이름을 입력하고 간단한 설명을 입력합니다. Repository의 종류를 선택할 수 있는데 private은 비용을 지불해야 사용할 수 
+있습니다. 우리는 아까 만들어 놓은 Local Repository와 연결시키는 목적으로 사용할 것이기 때문에 README 파일을 만들지 않고
+Repository를 생성합니다.</p>
+
+<p><img src="../../assets/built/images/github-repository-create.png" alt="github-repository-create" /></p>
+
+<p>Repostiroy를 생성하면 다음과 같은 화면을 보실 수 있습니다. Repository에 현재 파일이 존재하지 않기 때문에
+이렇게 나오는 것이고 만약 특정 파일들이 저장되어 있으면 파일의 목록들이 보여지게 됩니다.</p>
+
+<p><img src="../../assets/built/images/github-repository-create-result.png" alt="github-repository-create-result" /></p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Remote Repository 관리 명령어</strong></p>
+
+<p>GitHub에 생성한 Remote Repository를 관리하기 위해서 Git은 몇몇개의 명령어를 제공합니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git clone</code> : Remote Repository의 모든 내용을 Local Repository로 복사합니다.</li>
+  <li><code class="highlighter-rouge">git remote</code> : Local Repository를 특정 Remote Repository와 연결시킬 때 사용합니다.</li>
+  <li><code class="highlighter-rouge">git push</code> : Local Repository에 추가된 파일이나 변경 사항을 연결된 Remote Repository에 저장하기 위해서 사용합니다.</li>
+  <li><code class="highlighter-rouge">get fetch</code> : Remote Repository와 Local Repository의 변경 사항이 다를 때 이를 비교 대조해서 충돌을 해결하고
+최신 데이터를 반영하기 위해서 사용합니다.</li>
+  <li><code class="highlighter-rouge">git pull</code> : 연결된 Remote Repository의 최신 내용을 Local Repository로 가져오면서 merge합니다. <code class="highlighter-rouge">git push</code>와 반대의 
+개념이라고 보시면 되지만 merge할 때 문제가 발생했을 때 추적이 어렵습니다. 따라서 <code class="highlighter-rouge">git pull</code>을 이용하는 것 보다는 일단
+<code class="highlighter-rouge">git fetch</code>로 변경사항을 받고 이를 확인해서 코드를 수정한 후 Local Repository에 commit한 다음 <code class="highlighter-rouge">git push</code>로 최종 변경 사항을
+Remote Repository에 반영하는게 더 좋은 방법입니다.</li>
+</ul>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> git clone</strong></p>
+
+<p><code class="highlighter-rouge">git clone</code>은 Remote Repository에 있는 project를 내 컴퓨터로 가져올 때 사용합니다. 즉, GitHub에서 Local 환경으로 복사하는 
+작업입니다. 위에서 생성했던 MyProjectRemote란 GitHub Remote Repository를 Local로 clone해 보도록 하겠습니다.</p>
+
+<ul>
+  <li>
+    <p>먼저 Remote Repository의 주소를 복사합니다.
+<img src="../../assets/built/images/git-remote-repository-url.png" alt="git-remote-repository-url" /></p>
+  </li>
+  <li>
+    <p>로컬 컴퓨터에서 프로젝트를 저장할 폴더를 생성한 후 git clone을 이용해 저장소를 복사합니다. 
+<code class="highlighter-rouge">D:/GitHub</code> 폴더를 생성한 후 이 폴더 안에서 다음의 명령을 실행시킵니다.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>git clone https://github.com/moon9342/MyProjectRemote.git</strong></p>
+</blockquote>
+
+<p><img src="../../assets/built/images/github-repository-clone.png" alt="github-repository-clone" /></p>
+
+<p>정상적으로 clone이 진행되면 저장소 이름으로 폴더가 하나 생성되는것을 볼 수 있습니다. 당연히 이 폴더는 
+Remote Repository와 연결되어 있는 Local Repository가 됩니다.</p>
+
+<p>이해를 돕기 위해 순차적으로 생각해보면 다음과 같이 project가 진행될 수 있습니다.</p>
+
+<ul>
+  <li>
+    <p>협업을 책임지는 사람(PM)이 GitHub에 빈 Remote Repository를 생성합니다.</p>
+  </li>
+  <li>
+    <p>PM은 자신의 Local Repository에 project에 필요한 기본 구조와 여러가지 환경설정 그리고 개발한 필요한 기타 사항들을
+만들어서 저장합니다.</p>
+  </li>
+  <li>
+    <p>PM은 project의 뼈대가 담겨있는 이 Local Repository를 GitHub에 생성해 놓은 빈 Remote Repository와 연결합니다. 이때 
+<code class="highlighter-rouge">git remote</code> 명령을 이용하게 됩니다.</p>
+  </li>
+  <li>
+    <p>PM은 자신이 Local Repository에 가지고 있는 내용을 Remote Repository에 <code class="highlighter-rouge">push</code> 합니다.</p>
+  </li>
+  <li>
+    <p>이제 협업하는 사람 모두가 이 Remote Repository를 clone해서 로컬로 복사해 간 다음 자신이 해야 하는 작업을 진행합니다.</p>
+  </li>
+</ul>
+
+<p>위와 같은 식으로 생각하면 <code class="highlighter-rouge">git remote</code>와 <code class="highlighter-rouge">git clone</code>의 차이점을 이해할 수 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> git remote</strong></p>
+
+<p>GitHub에 빈 Remote Repository를 생성한 후 <code class="highlighter-rouge">git remote</code>를 이용하여 Local Repository와 연결할 수 있습니다.
+다음과 같은 명령을 이용합니다.</p>
+
+<blockquote>
+  <p><strong>git remote add origin “Remote Repository URL”</strong></p>
+</blockquote>
+
+<p>연결이 성공했는지를 다음의 명령어를 이용해서 확인해 볼 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>git remote -v</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> git push</strong></p>
+
+<p><code class="highlighter-rouge">git remote</code>를 이용하여 Local Repository와 Remote Repository가 연결되었으면 이제 자신이 작업한 내용을
+Remote Repository에 upload를 할 수 있습니다.</p>
+
+<p>이 때 <code class="highlighter-rouge">git push</code> 명령을 이용하면 파일을 upload할 수 있는데 기본적으로 Remote Repository의 master branch에
+upload되게 됩니다. 따라서 만약 다른 branch의 내용을 upload하려 하면 다음과 같이 명령을 실행시켜야 합니다.</p>
+
+<blockquote>
+  <p><strong>git push origin “local branch명”</strong></p>
+</blockquote>
+
+<p>위의 명령에서 origin은 원격 저장소의 별칭입니다. <code class="highlighter-rouge">git remote</code>를 이용하여 Remote Repository를 연결할 때 
+이 <code class="highlighter-rouge">origin</code>이라는 별칭을 이용해서 원격 연결을 했었습니다.</p>
+
+<p>만약 <code class="highlighter-rouge">origin</code> 저장소에 Local의 모든 branch를 push하려면 다음과 같이 명령을 수행하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git push origin --all</strong></p>
+</blockquote>
+
+<p><code class="highlighter-rouge">git push</code>가 진행될 때 Remote Repository에 같은 이름의 branch가 존재한다면 내용이 변경될 것이고 만약
+해당 branch가 존재하지 않는다면 새로운 branch를 Remote Repository에 생성하게 됩니다. 같은 이름의 branch가
+존재하지만 내역이 다르다면 당연히 push는 일어나지 않고 작업이 거부됩니다.</p>
+
+<p>간단한 예를 들자면 Local Repository의 master branch의 내용을 Remote Repository에 push하려면 다음과 같이
+실행하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git push origin master</strong></p>
+</blockquote>
+
+<p>만약 Local Repository의 hotfix branch의 내용을 Remote Repository에 push하려면 다음과 같이 실행하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git push origin hotfix</strong></p>
+</blockquote>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> git fetch &amp; git pull</strong></p>
+
+<p>Remote Repository를 이용하다 보면 다른 누군가가 먼저 commit할 경우가 있습니다. 이런 경우
+git은 당연히 파일의 내용이 서로 상이하기 때문에 push를 허용하지 않습니다.</p>
+
+<p>Remote Repository와 Local Repository를 적절히 서로 맞춰야 하며 이럴 때 사용하는 것이 <code class="highlighter-rouge">git fetch</code> 입니다.
+즉, fetch는 Remote Repository의 commit들을 Local Repository로 가져오는 역할을 하고 사용자는 
+Local Repository로 가져온 commit들을 자신의 작업과 적절히 병합하여 Remote Repository에 push해야 합니다.</p>
+
+<p><code class="highlighter-rouge">git pull</code>은 Remote Repository의 정보를 가져오면서 자동으로 Local branch에 병합하는 명령어 입니다. 편하게 
+사용할 수 는 있지만 만약 conflict가 발생하면 내역 확인이 쉽지 않은 단점이 있습니다.</p>
+
+<hr />
+
+<p><strong><i class="fa fa-bolt" style="color:#01077c"></i> Remote Branch를 Local로 가져오기</strong></p>
+
+<p>만약 Local Repository에 Remote Repository의 branch가 존재하지 않는다면 <code class="highlighter-rouge">git pull</code>을 이용한다해도 
+자동으로 Remote Repository에 있는 branch를 가져오지 못합니다.
+Remote Repository에 있는 branch를 Local Repository로 가져오실려면 다음과 같이 작업하셔야 합니다.</p>
+
+<p>우선 git remote에 대한 내역을 갱신해야 합니다. 해당 명령을 하지 않을 경우 나중에 branch를 찾지 못한다는 오류가 발생할 수 있기
+때문입니다. 다음과 같은 명령을 이용합니다.</p>
+
+<blockquote>
+  <p><strong>git remote update</strong></p>
+</blockquote>
+
+<p>그 다음은 Remote Repository의 branch내역을 확인해야겠죠. <code class="highlighter-rouge">-a</code> option을 이용하면 Remote Repository와 
+Local Repository의 모든 branch를 확인할 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>git branch -r</strong></p>
+</blockquote>
+
+<p>이제 Local Repository에 동일 이름의 branch를 생성하면서 Remote Repostiroy의 branch를 가져온 후 
+해당 branch로 checkout을 해 보죠. 다음과 같이 실행하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git checkout -t &lt;Remote_Branch_Name&gt;</strong></p>
+</blockquote>
+
+<p>만약 Local Repository에 같은 이름의 branch가 아니라 다름이름의 branch를 생성하고 싶을 경우는 
+아래처럼 <code class="highlighter-rouge">-b</code> option을 이용하시면 됩니다.</p>
+
+<blockquote>
+  <p><strong>git checkout -b &lt;Local_Branch_Name&gt; &lt;Remote_Branch_Name&gt;</strong></p>
+</blockquote>
+
+<p>End.</p>
+
+<hr />
+
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 기존에 있던 post하단 이메일 subscribe 삭제 -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/moon9342">moon9342</a></h4>
+                                
+                                    <p><a href="https://www.youtube.com/channel/UCp-MztINXTRVkRGCnqnYNlQ">얼큰우동TV, 쉽게배우는 IT(Programming,Machine Learning,금융)</a></p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/moon9342">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover2.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; IT Technical Training &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/et-cetera/">Et-cetera</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/arduino">Arduino</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/can">CAN Protocol</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/hadoop">Hadoop 설치와 활용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/et-cetera/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/angular-lecture-databinding">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/angular-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/angular-lecture-databinding">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Angular</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Angular 강좌(6) - Data Binding</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>{% include angular-lecture-table-of-contents.html %} --- **Data Binding**{: class="subtitle_fontAwesome" } Angular는 View와 Component에서 발생한 데이터의 변경 사항을 자동으로 일치시키는 기능을 제공하는데 이를 `Data Binding`( 데이터 바인딩 )이라고 합니다. Angular의 데이터 바인딩은 다음과 같이 크게</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/angular-lecture-exercise-1">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/angular-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/angular-lecture-exercise-1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Angular</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Angular 강좌(5) - 실습(1)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Angular 강좌는 여러 절로 구성되어 있습니다. Angular 강좌(1) - Introduction Angular 강좌(2) - 개발환경세팅 Angular 강좌(3) - Component Angular 강좌(4) - Angular Material Angular 강좌(5) - 실습(1) Angular 강좌(6) - Data Binding Angular</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/economy-author-logo.jpg" alt="moon9342" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/moon9342/">moon9342</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+            <span>IT Technical Training</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Git과 GitHub의 간단 사용법</div>
+
+
+
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">이 포스트를 공유하세요 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Git%EA%B3%BC+GitHub%EC%9D%98+%EA%B0%84%EB%8B%A8+%EC%82%AC%EC%9A%A9%EB%B2%95&amp;url=https://moon9342.github.io/git-github"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://moon9342.github.io/git-github"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+
+
+    <!-- floating-header에 이미지 삽입 -->
+<!--
+    <div class="floating-header-share">
+        <img src="assets/images/photo.jpg" width="50">
+    </div>
+-->
+
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">IT Technical Training</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/">GitHub Pages</a></section>
+                <nav class="site-footer-nav">
+                    <a href="mailto:moon9342@gmail.com">moon9342@gmail.com</a>
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search IT Technical Training</h1>
+                <p class="subscribe-overlay-description">lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" id="searchtext" type="text" name="searchtext"  placeholder="Search..." />
+    </div>
+    <!--<button class="" onclick="myFunc()" id="searchBtn" type="button" ><span>Search</span></button>-->
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+    <!--<script type="text/et-cetera">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>-->
+</span>
+
+
+            </div>
+        </div>
+    
+
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113135179-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
